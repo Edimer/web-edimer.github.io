@@ -1,9 +1,13 @@
 ---
-title: "About this blog"
+title: "Información"
 description: |
-  Some additional details about the blog
+  Este blog contiene tutoriales cortos de *Statistical Learning* y *Machine Learning* con R y Python. Sirve al propósito de brindar recursos de información en **español** acerca de aplicaciones estadísticas con ambos lenguajes de programación.
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+<center>
+<img src = "https://miro.medium.com/max/1200/1*NhvyUCgQrxiTTAEWaeqrZQ.jpeg" width=310px/>
+</center>

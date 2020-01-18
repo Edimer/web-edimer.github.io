@@ -1,32 +1,35 @@
 [
   {
     "path": "posts/welcome/",
-    "title": "Welcome to Edimer",
-    "description": "Welcome to our new blog, Edimer. We hope you enjoy \nreading what we have to say!",
+    "title": "Prueba 1",
+    "description": "Esta es una prueba...",
     "author": [
       {
-        "name": "Nora Jones",
-        "url": "https://example.com/norajones"
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
       }
     ],
     "date": "2020-01-17",
-    "categories": [],
+    "categories": [
+      "R",
+      "Py"
+    ],
     "preview": {},
-    "last_modified": "2020-01-17T10:38:15-05:00"
+    "last_modified": "2020-01-17T20:25:36-05:00"
   },
   {
     "path": "posts/welcome2/",
-    "title": "Welcome to Edimer",
-    "description": "Welcome to our new blog, Edimer. We hope you enjoy \nreading what we have to say!",
+    "title": "Prueba 2",
+    "description": "Esta es otra prueba...",
     "author": [
       {
-        "name": "Nora Jones",
-        "url": "https://example.com/norajones"
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
       }
     ],
     "date": "2020-01-17",
     "categories": [],
     "preview": "posts/welcome2/img1.png",
-    "last_modified": "2020-01-17T11:35:38-05:00"
+    "last_modified": "2020-01-17T20:16:12-05:00"
   }
 ]

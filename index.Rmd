@@ -1,5 +1,5 @@
 ---
-title: "Edimer"
+title: "Statistical Learning: R + Py"
 site: distill::distill_website
 listing: posts
 ---

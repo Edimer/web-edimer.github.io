@@ -1,12 +1,15 @@
-name: "My Blog"
-title: "*Statistical Learning* con R y Python"
+name: "Statistical Learning: R + Python"
+title: "Statistical Learning: R + Python"
 description: |
-  Publicaciones
-output_dir: "_site"
+  Publications
+favicon: logo.png  
 navbar:
+  logo: logo.png
   right:
     - text: "Inicio"
       href: index.html
-    - text: "Información"
+    - text: "Blog"
       href: about.html
+    - icon: fa fa-github
+      href: https://github.com/Edimer  
 output: distill::distill_article

@@ -51,7 +51,7 @@
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["img.png","img1.PNG","img2.PNG","img3.PNG","img4.PNG","Normalidad_R_files/bowser-1.9.3/bowser.min.js","Normalidad_R_files/distill-2.2.21/template.v2.js","Normalidad_R_files/figure-html5/unnamed-chunk-1-1.png","Normalidad_R_files/jquery-1.11.3/jquery.min.js","Normalidad_R_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["img.png","img1.PNG","img2.PNG","img3.PNG","img4.PNG","Iris.csv","Normalidad_R_files/bowser-1.9.3/bowser.min.js","Normalidad_R_files/distill-2.2.21/template.v2.js","Normalidad_R_files/figure-html5/unnamed-chunk-1-1.png","Normalidad_R_files/figure-html5/unnamed-chunk-19-1.png","Normalidad_R_files/jquery-1.11.3/jquery.min.js","Normalidad_R_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 
@@ -1332,6 +1332,25 @@ document.addEventListener('DOMContentLoaded', function() {
 <li><a href="#usando-python">Usando <em>python</em></a></li>
 <li><a href="#función-de-python-llamada-por-r">Función de <em>python</em> llamada por <em>R</em></a></li>
 <li><a href="#usando-numpy">Usando <code>numpy</code></a></li>
+<li><a href="#gráfico-con-matplotlib">Gráfico con <code>matplotlib</code></a></li>
+<li><a href="#ayudas">Ayudas</a></li>
+<li><a href="#objetos">Objetos</a><ul>
+<li><a href="#tupla-desde-r">Tupla desde <em>R</em></a></li>
+<li><a href="#diccionario-desde-r">Diccionario desde <em>R</em></a></li>
+<li><a href="#tupla-en-python">Tupla en <em>python</em></a></li>
+<li><a href="#tipos-de-objetos-en-ambos-lenguajes">Tipos de objetos en ambos lenguajes</a></li>
+</ul></li>
+<li><a href="#índices">Índices</a></li>
+<li><a href="#instalando-un-módulo-de-python-desde-r">Instalando un módulo de <em>python</em> desde <em>R</em></a><ul>
+<li><a href="#instalando-pandas">Instalando <code>pandas</code></a></li>
+<li><a href="#importando-pandas-y-leyendo-archivo-.csv">Importando <code>pandas</code> y leyendo archivo <em>.csv</em></a></li>
+<li><a href="#importando-tensorflow-desde-python">Importando <code>tensorflow</code> desde python</a></li>
+</ul></li>
+<li><a href="#visualizando-datos-con-matplotlib">Visualizando datos con <code>matplotlib</code></a><ul>
+<li><a href="#ejemplo-1">Ejemplo 1</a></li>
+<li><a href="#ejemplo-2">Ejemplo 2</a></li>
+<li><a href="#ejemplo-3">Ejemplo 3</a></li>
+</ul></li>
 </ul>
 </nav>
 <hr class="d-toc-separator"/>
@@ -1452,6 +1471,460 @@ array([ 6.87303609,  0.16473076,  0.41548474, -1.21890587,  4.59622289,
         2.35702594, -0.01198686,  3.13269136,  2.36546381,  5.38845172,
         5.59675364,  2.55546925,  0.87414515,  0.08380878,  3.27048306,
         2.23202021,  0.96843897,  2.13079057,  0.13999747,  4.0940961 ])</code></pre>
+</div>
+<h1 id="gráfico-con-matplotlib">Gráfico con <code>matplotlib</code></h1>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+import matplotlib
+import matplotlib.pyplot as plt
+
+fig, g1 = plt.subplots()
+g1 = g1.hist(valores, bins = 30)
+plt.show(g1)</code></pre>
+</div>
+<h1 id="ayudas">Ayudas</h1>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+os &lt;- import(&quot;os&quot;)
+py_help(os$chdir)</code></pre>
+</div>
+<p>En el editor de texto aparecerá el siguiente texto:</p>
+<center>
+<img src="img2.PNG" width=650/>
+</center>
+<h1 id="objetos">Objetos</h1>
+<h2 id="tupla-desde-r">Tupla desde <em>R</em></h2>
+<ul>
+<li>Creando una tupla y obteniendo su clase:</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+tupla1 &lt;- tuple(c(1, 2, 3, &quot;A&quot;))
+tupla1
+([&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;A&#39;],)
+
+# Clase en python
+class(tupla1)
+[1] &quot;python.builtin.tuple&quot;  &quot;python.builtin.object&quot;</code></pre>
+</div>
+<ul>
+<li>Coercionar el objeto <code>tupla1</code> de clase <code>tuple</code> en <em>python</em> directamente a <em>R</em>:</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+tupla1_r &lt;- py_to_r(tupla1)
+tupla1_r
+[[1]]
+[1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;A&quot;
+
+# Clase en R
+class(tupla1_r)
+[1] &quot;list&quot;</code></pre>
+</div>
+<h2 id="diccionario-desde-r">Diccionario desde <em>R</em></h2>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Objeto
+dict1 &lt;- dict(x = &quot;Hola&quot;, y = 3.5, z = 1L)
+dict1
+{&#39;x&#39;: &#39;Hola&#39;, &#39;y&#39;: 3.5, &#39;z&#39;: 1}
+
+# Clase
+class(dict1)
+[1] &quot;python.builtin.dict&quot;   &quot;python.builtin.object&quot;
+
+# Nombres
+names(dict1)
+[1] &quot;x&quot; &quot;y&quot; &quot;z&quot;
+
+# Atributos
+attributes(dict1)
+$class
+[1] &quot;python.builtin.dict&quot;   &quot;python.builtin.object&quot;
+
+# Coerción a objeto R
+dict1_r &lt;- py_to_r(dict1)
+dict1_r
+$x
+[1] &quot;Hola&quot;
+
+$y
+[1] 3.5
+
+$z
+[1] 1
+
+# Clase en R
+class(dict1_r)
+[1] &quot;list&quot;</code></pre>
+</div>
+<h2 id="tupla-en-python">Tupla en <em>python</em></h2>
+<ul>
+<li>Creando tupla en <em>python</em>:</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+# Creando tupla
+altura = (1.65, 1.72, 1.56, 1.84, 1.92)
+altura</code></pre>
+<pre><code>
+(1.65, 1.72, 1.56, 1.84, 1.92)</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+# Otra tupla
+peso = (67, 75, 67, 78, 85)
+peso</code></pre>
+<pre><code>
+(67, 75, 67, 78, 85)</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+# Tipo (clase) de objetos
+type(altura)</code></pre>
+<pre><code>
+&lt;class &#39;tuple&#39;&gt;</code></pre>
+<pre class="python"><code>
+type(peso)</code></pre>
+<pre><code>
+&lt;class &#39;tuple&#39;&gt;</code></pre>
+</div>
+<ul>
+<li>Llamando la tupla desde <em>R</em>:</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+class(py$altura)
+[1] &quot;list&quot;
+plot(x = py$altura, y = py$peso, pch = 19, cex = 2)</code></pre>
+<p><img src="Normalidad_R_files/figure-html5/unnamed-chunk-19-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+<h2 id="tipos-de-objetos-en-ambos-lenguajes">Tipos de objetos en ambos lenguajes</h2>
+<center>
+<img src="img3.PNG" width = 650/>
+</center>
+<h1 id="índices">Índices</h1>
+<ul>
+<li>Desde <em>python</em>:</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+altura</code></pre>
+<pre><code>
+(1.65, 1.72, 1.56, 1.84, 1.92)</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+altura[0]</code></pre>
+<pre><code>
+1.65</code></pre>
+</div>
+<ul>
+<li>En <em>R</em>:</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+py$altura[1]</code></pre>
+<pre><code>
+[[1]]
+[1] 1.65</code></pre>
+</div>
+<h1 id="instalando-un-módulo-de-python-desde-r">Instalando un módulo de <em>python</em> desde <em>R</em></h1>
+<h2 id="instalando-pandas">Instalando <code>pandas</code></h2>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+py_install(&quot;pandas&quot;)</code></pre>
+</div>
+<h2 id="importando-pandas-y-leyendo-archivo-.csv">Importando <code>pandas</code> y leyendo archivo <em>.csv</em></h2>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+import pandas as pd
+iris_py = pd.read_csv(&quot;Iris.csv&quot;)
+iris_py</code></pre>
+<pre><code>
+     Sepal.Length  Sepal.Width  Petal.Length  Petal.Width    Species
+0             5.1          3.5           1.4          0.2     setosa
+1             4.9          3.0           1.4          0.2     setosa
+2             4.7          3.2           1.3          0.2     setosa
+3             4.6          3.1           1.5          0.2     setosa
+4             5.0          3.6           1.4          0.2     setosa
+..            ...          ...           ...          ...        ...
+145           6.7          3.0           5.2          2.3  virginica
+146           6.3          2.5           5.0          1.9  virginica
+147           6.5          3.0           5.2          2.0  virginica
+148           6.2          3.4           5.4          2.3  virginica
+149           5.9          3.0           5.1          1.8  virginica
+
+[150 rows x 5 columns]</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+type(iris_py)</code></pre>
+<pre><code>
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</code></pre>
+</div>
+<ul>
+<li>Estadísticos descriptivos:</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+iris_py.describe()</code></pre>
+<pre><code>
+       Sepal.Length  Sepal.Width  Petal.Length  Petal.Width
+count    150.000000   150.000000    150.000000   150.000000
+mean       5.843333     3.057333      3.758000     1.199333
+std        0.828066     0.435866      1.765298     0.762238
+min        4.300000     2.000000      1.000000     0.100000
+25%        5.100000     2.800000      1.600000     0.300000
+50%        5.800000     3.000000      4.350000     1.300000
+75%        6.400000     3.300000      5.100000     1.800000
+max        7.900000     4.400000      6.900000     2.500000</code></pre>
+</div>
+<ul>
+<li>Seleccionando variables por nombre:</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+iris_py[[&quot;Sepal.Length&quot;, &quot;Sepal.Width&quot;]]</code></pre>
+<pre><code>
+     Sepal.Length  Sepal.Width
+0             5.1          3.5
+1             4.9          3.0
+2             4.7          3.2
+3             4.6          3.1
+4             5.0          3.6
+..            ...          ...
+145           6.7          3.0
+146           6.3          2.5
+147           6.5          3.0
+148           6.2          3.4
+149           5.9          3.0
+
+[150 rows x 2 columns]</code></pre>
+</div>
+<ul>
+<li>Filtrando datos:</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+filtro = iris_py[&quot;Sepal.Width&quot;] &lt;= 2.2
+iris_py[filtro]</code></pre>
+<pre><code>
+     Sepal.Length  Sepal.Width  Petal.Length  Petal.Width     Species
+60            5.0          2.0           3.5          1.0  versicolor
+62            6.0          2.2           4.0          1.0  versicolor
+68            6.2          2.2           4.5          1.5  versicolor
+119           6.0          2.2           5.0          1.5   virginica</code></pre>
+</div>
+<ul>
+<li><code>Dataframe</code> como <code>array</code>:</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+iris_py.values</code></pre>
+<pre><code>
+array([[5.1, 3.5, 1.4, 0.2, &#39;setosa&#39;],
+       [4.9, 3.0, 1.4, 0.2, &#39;setosa&#39;],
+       [4.7, 3.2, 1.3, 0.2, &#39;setosa&#39;],
+       [4.6, 3.1, 1.5, 0.2, &#39;setosa&#39;],
+       [5.0, 3.6, 1.4, 0.2, &#39;setosa&#39;],
+       [5.4, 3.9, 1.7, 0.4, &#39;setosa&#39;],
+       [4.6, 3.4, 1.4, 0.3, &#39;setosa&#39;],
+       [5.0, 3.4, 1.5, 0.2, &#39;setosa&#39;],
+       [4.4, 2.9, 1.4, 0.2, &#39;setosa&#39;],
+       [4.9, 3.1, 1.5, 0.1, &#39;setosa&#39;],
+       [5.4, 3.7, 1.5, 0.2, &#39;setosa&#39;],
+       [4.8, 3.4, 1.6, 0.2, &#39;setosa&#39;],
+       [4.8, 3.0, 1.4, 0.1, &#39;setosa&#39;],
+       [4.3, 3.0, 1.1, 0.1, &#39;setosa&#39;],
+       [5.8, 4.0, 1.2, 0.2, &#39;setosa&#39;],
+       [5.7, 4.4, 1.5, 0.4, &#39;setosa&#39;],
+       [5.4, 3.9, 1.3, 0.4, &#39;setosa&#39;],
+       [5.1, 3.5, 1.4, 0.3, &#39;setosa&#39;],
+       [5.7, 3.8, 1.7, 0.3, &#39;setosa&#39;],
+       [5.1, 3.8, 1.5, 0.3, &#39;setosa&#39;],
+       [5.4, 3.4, 1.7, 0.2, &#39;setosa&#39;],
+       [5.1, 3.7, 1.5, 0.4, &#39;setosa&#39;],
+       [4.6, 3.6, 1.0, 0.2, &#39;setosa&#39;],
+       [5.1, 3.3, 1.7, 0.5, &#39;setosa&#39;],
+       [4.8, 3.4, 1.9, 0.2, &#39;setosa&#39;],
+       [5.0, 3.0, 1.6, 0.2, &#39;setosa&#39;],
+       [5.0, 3.4, 1.6, 0.4, &#39;setosa&#39;],
+       [5.2, 3.5, 1.5, 0.2, &#39;setosa&#39;],
+       [5.2, 3.4, 1.4, 0.2, &#39;setosa&#39;],
+       [4.7, 3.2, 1.6, 0.2, &#39;setosa&#39;],
+       [4.8, 3.1, 1.6, 0.2, &#39;setosa&#39;],
+       [5.4, 3.4, 1.5, 0.4, &#39;setosa&#39;],
+       [5.2, 4.1, 1.5, 0.1, &#39;setosa&#39;],
+       [5.5, 4.2, 1.4, 0.2, &#39;setosa&#39;],
+       [4.9, 3.1, 1.5, 0.2, &#39;setosa&#39;],
+       [5.0, 3.2, 1.2, 0.2, &#39;setosa&#39;],
+       [5.5, 3.5, 1.3, 0.2, &#39;setosa&#39;],
+       [4.9, 3.6, 1.4, 0.1, &#39;setosa&#39;],
+       [4.4, 3.0, 1.3, 0.2, &#39;setosa&#39;],
+       [5.1, 3.4, 1.5, 0.2, &#39;setosa&#39;],
+       [5.0, 3.5, 1.3, 0.3, &#39;setosa&#39;],
+       [4.5, 2.3, 1.3, 0.3, &#39;setosa&#39;],
+       [4.4, 3.2, 1.3, 0.2, &#39;setosa&#39;],
+       [5.0, 3.5, 1.6, 0.6, &#39;setosa&#39;],
+       [5.1, 3.8, 1.9, 0.4, &#39;setosa&#39;],
+       [4.8, 3.0, 1.4, 0.3, &#39;setosa&#39;],
+       [5.1, 3.8, 1.6, 0.2, &#39;setosa&#39;],
+       [4.6, 3.2, 1.4, 0.2, &#39;setosa&#39;],
+       [5.3, 3.7, 1.5, 0.2, &#39;setosa&#39;],
+       [5.0, 3.3, 1.4, 0.2, &#39;setosa&#39;],
+       [7.0, 3.2, 4.7, 1.4, &#39;versicolor&#39;],
+       [6.4, 3.2, 4.5, 1.5, &#39;versicolor&#39;],
+       [6.9, 3.1, 4.9, 1.5, &#39;versicolor&#39;],
+       [5.5, 2.3, 4.0, 1.3, &#39;versicolor&#39;],
+       [6.5, 2.8, 4.6, 1.5, &#39;versicolor&#39;],
+       [5.7, 2.8, 4.5, 1.3, &#39;versicolor&#39;],
+       [6.3, 3.3, 4.7, 1.6, &#39;versicolor&#39;],
+       [4.9, 2.4, 3.3, 1.0, &#39;versicolor&#39;],
+       [6.6, 2.9, 4.6, 1.3, &#39;versicolor&#39;],
+       [5.2, 2.7, 3.9, 1.4, &#39;versicolor&#39;],
+       [5.0, 2.0, 3.5, 1.0, &#39;versicolor&#39;],
+       [5.9, 3.0, 4.2, 1.5, &#39;versicolor&#39;],
+       [6.0, 2.2, 4.0, 1.0, &#39;versicolor&#39;],
+       [6.1, 2.9, 4.7, 1.4, &#39;versicolor&#39;],
+       [5.6, 2.9, 3.6, 1.3, &#39;versicolor&#39;],
+       [6.7, 3.1, 4.4, 1.4, &#39;versicolor&#39;],
+       [5.6, 3.0, 4.5, 1.5, &#39;versicolor&#39;],
+       [5.8, 2.7, 4.1, 1.0, &#39;versicolor&#39;],
+       [6.2, 2.2, 4.5, 1.5, &#39;versicolor&#39;],
+       [5.6, 2.5, 3.9, 1.1, &#39;versicolor&#39;],
+       [5.9, 3.2, 4.8, 1.8, &#39;versicolor&#39;],
+       [6.1, 2.8, 4.0, 1.3, &#39;versicolor&#39;],
+       [6.3, 2.5, 4.9, 1.5, &#39;versicolor&#39;],
+       [6.1, 2.8, 4.7, 1.2, &#39;versicolor&#39;],
+       [6.4, 2.9, 4.3, 1.3, &#39;versicolor&#39;],
+       [6.6, 3.0, 4.4, 1.4, &#39;versicolor&#39;],
+       [6.8, 2.8, 4.8, 1.4, &#39;versicolor&#39;],
+       [6.7, 3.0, 5.0, 1.7, &#39;versicolor&#39;],
+       [6.0, 2.9, 4.5, 1.5, &#39;versicolor&#39;],
+       [5.7, 2.6, 3.5, 1.0, &#39;versicolor&#39;],
+       [5.5, 2.4, 3.8, 1.1, &#39;versicolor&#39;],
+       [5.5, 2.4, 3.7, 1.0, &#39;versicolor&#39;],
+       [5.8, 2.7, 3.9, 1.2, &#39;versicolor&#39;],
+       [6.0, 2.7, 5.1, 1.6, &#39;versicolor&#39;],
+       [5.4, 3.0, 4.5, 1.5, &#39;versicolor&#39;],
+       [6.0, 3.4, 4.5, 1.6, &#39;versicolor&#39;],
+       [6.7, 3.1, 4.7, 1.5, &#39;versicolor&#39;],
+       [6.3, 2.3, 4.4, 1.3, &#39;versicolor&#39;],
+       [5.6, 3.0, 4.1, 1.3, &#39;versicolor&#39;],
+       [5.5, 2.5, 4.0, 1.3, &#39;versicolor&#39;],
+       [5.5, 2.6, 4.4, 1.2, &#39;versicolor&#39;],
+       [6.1, 3.0, 4.6, 1.4, &#39;versicolor&#39;],
+       [5.8, 2.6, 4.0, 1.2, &#39;versicolor&#39;],
+       [5.0, 2.3, 3.3, 1.0, &#39;versicolor&#39;],
+       [5.6, 2.7, 4.2, 1.3, &#39;versicolor&#39;],
+       [5.7, 3.0, 4.2, 1.2, &#39;versicolor&#39;],
+       [5.7, 2.9, 4.2, 1.3, &#39;versicolor&#39;],
+       [6.2, 2.9, 4.3, 1.3, &#39;versicolor&#39;],
+       [5.1, 2.5, 3.0, 1.1, &#39;versicolor&#39;],
+       [5.7, 2.8, 4.1, 1.3, &#39;versicolor&#39;],
+       [6.3, 3.3, 6.0, 2.5, &#39;virginica&#39;],
+       [5.8, 2.7, 5.1, 1.9, &#39;virginica&#39;],
+       [7.1, 3.0, 5.9, 2.1, &#39;virginica&#39;],
+       [6.3, 2.9, 5.6, 1.8, &#39;virginica&#39;],
+       [6.5, 3.0, 5.8, 2.2, &#39;virginica&#39;],
+       [7.6, 3.0, 6.6, 2.1, &#39;virginica&#39;],
+       [4.9, 2.5, 4.5, 1.7, &#39;virginica&#39;],
+       [7.3, 2.9, 6.3, 1.8, &#39;virginica&#39;],
+       [6.7, 2.5, 5.8, 1.8, &#39;virginica&#39;],
+       [7.2, 3.6, 6.1, 2.5, &#39;virginica&#39;],
+       [6.5, 3.2, 5.1, 2.0, &#39;virginica&#39;],
+       [6.4, 2.7, 5.3, 1.9, &#39;virginica&#39;],
+       [6.8, 3.0, 5.5, 2.1, &#39;virginica&#39;],
+       [5.7, 2.5, 5.0, 2.0, &#39;virginica&#39;],
+       [5.8, 2.8, 5.1, 2.4, &#39;virginica&#39;],
+       [6.4, 3.2, 5.3, 2.3, &#39;virginica&#39;],
+       [6.5, 3.0, 5.5, 1.8, &#39;virginica&#39;],
+       [7.7, 3.8, 6.7, 2.2, &#39;virginica&#39;],
+       [7.7, 2.6, 6.9, 2.3, &#39;virginica&#39;],
+       [6.0, 2.2, 5.0, 1.5, &#39;virginica&#39;],
+       [6.9, 3.2, 5.7, 2.3, &#39;virginica&#39;],
+       [5.6, 2.8, 4.9, 2.0, &#39;virginica&#39;],
+       [7.7, 2.8, 6.7, 2.0, &#39;virginica&#39;],
+       [6.3, 2.7, 4.9, 1.8, &#39;virginica&#39;],
+       [6.7, 3.3, 5.7, 2.1, &#39;virginica&#39;],
+       [7.2, 3.2, 6.0, 1.8, &#39;virginica&#39;],
+       [6.2, 2.8, 4.8, 1.8, &#39;virginica&#39;],
+       [6.1, 3.0, 4.9, 1.8, &#39;virginica&#39;],
+       [6.4, 2.8, 5.6, 2.1, &#39;virginica&#39;],
+       [7.2, 3.0, 5.8, 1.6, &#39;virginica&#39;],
+       [7.4, 2.8, 6.1, 1.9, &#39;virginica&#39;],
+       [7.9, 3.8, 6.4, 2.0, &#39;virginica&#39;],
+       [6.4, 2.8, 5.6, 2.2, &#39;virginica&#39;],
+       [6.3, 2.8, 5.1, 1.5, &#39;virginica&#39;],
+       [6.1, 2.6, 5.6, 1.4, &#39;virginica&#39;],
+       [7.7, 3.0, 6.1, 2.3, &#39;virginica&#39;],
+       [6.3, 3.4, 5.6, 2.4, &#39;virginica&#39;],
+       [6.4, 3.1, 5.5, 1.8, &#39;virginica&#39;],
+       [6.0, 3.0, 4.8, 1.8, &#39;virginica&#39;],
+       [6.9, 3.1, 5.4, 2.1, &#39;virginica&#39;],
+       [6.7, 3.1, 5.6, 2.4, &#39;virginica&#39;],
+       [6.9, 3.1, 5.1, 2.3, &#39;virginica&#39;],
+       [5.8, 2.7, 5.1, 1.9, &#39;virginica&#39;],
+       [6.8, 3.2, 5.9, 2.3, &#39;virginica&#39;],
+       [6.7, 3.3, 5.7, 2.5, &#39;virginica&#39;],
+       [6.7, 3.0, 5.2, 2.3, &#39;virginica&#39;],
+       [6.3, 2.5, 5.0, 1.9, &#39;virginica&#39;],
+       [6.5, 3.0, 5.2, 2.0, &#39;virginica&#39;],
+       [6.2, 3.4, 5.4, 2.3, &#39;virginica&#39;],
+       [5.9, 3.0, 5.1, 1.8, &#39;virginica&#39;]], dtype=object)</code></pre>
+</div>
+<h2 id="importando-tensorflow-desde-python">Importando <code>tensorflow</code> desde python</h2>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+import tensorflow as tf</code></pre>
+</div>
+<ul>
+<li>Funciones desde <code>tf</code>:</li>
+</ul>
+<center>
+<img src = "img4.PNG" width=650/>
+</center>
+<h1 id="visualizando-datos-con-matplotlib">Visualizando datos con <code>matplotlib</code></h1>
+<h2 id="ejemplo-1">Ejemplo 1</h2>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+import matplotlib.pyplot as plt
+x = np.arange(0, 20)
+y = x**2
+g1 = plt.plot(x, y, &quot;g--&quot;)
+g1 = plt.title(&quot;X vs Y&quot;)
+g1 = plt.xlabel(&quot;Eje x&quot;)
+g1 = plt.ylabel(&quot;Eje Y&quot;)
+g1</code></pre>
+</div>
+<h2 id="ejemplo-2">Ejemplo 2</h2>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+w = np.arange(0, 50).reshape(5, 10)
+w</code></pre>
+<pre><code>
+array([[ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9],
+       [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+       [20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
+       [30, 31, 32, 33, 34, 35, 36, 37, 38, 39],
+       [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]])</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+g2 = plt.imshow(w)
+g2 = plt.colorbar()
+plt.show()</code></pre>
+</div>
+<h2 id="ejemplo-3">Ejemplo 3</h2>
+<ul>
+<li>Gráfico desde un <code>Dataframe</code>:</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="python"><code>
+g3 = iris_py.plot(x = &quot;Sepal.Length&quot;, y = &quot;Sepal.Width&quot;, kind = &quot;scatter&quot;,
+                  color = &quot;red&quot;)
+g3</code></pre>
 </div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

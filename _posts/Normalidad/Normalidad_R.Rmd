@@ -1,5 +1,5 @@
 ---
-title: "Prueba 1"
+title: "Pruebas de Normalidad"
 description: |
   Esta es una prueba...
 author:

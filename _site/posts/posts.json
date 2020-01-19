@@ -1,7 +1,7 @@
 [
   {
-    "path": "posts/welcome/",
-    "title": "Prueba 1",
+    "path": "posts/Graphis_base/",
+    "title": "Gráficos con R: graphics",
     "description": "Esta es una prueba...",
     "author": [
       {
@@ -15,11 +15,11 @@
       "Py"
     ],
     "preview": {},
-    "last_modified": "2020-01-17T20:25:36-05:00"
+    "last_modified": "2020-01-18T23:28:47-05:00"
   },
   {
-    "path": "posts/welcome2/",
-    "title": "Prueba 2",
+    "path": "posts/Homocedasticidad/",
+    "title": "Pruebas de Homocedasticidad",
     "description": "Esta es otra prueba...",
     "author": [
       {
@@ -29,7 +29,25 @@
     ],
     "date": "2020-01-17",
     "categories": [],
-    "preview": "posts/welcome2/img1.png",
-    "last_modified": "2020-01-17T20:16:12-05:00"
+    "preview": "posts/Homocedasticidad/img1.png",
+    "last_modified": "2020-01-18T23:27:44-05:00"
+  },
+  {
+    "path": "posts/Normalidad/",
+    "title": "Pruebas de Normalidad",
+    "description": "Esta es una prueba...",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-17",
+    "categories": [
+      "R",
+      "Py"
+    ],
+    "preview": {},
+    "last_modified": "2020-01-18T23:26:01-05:00"
   }
 ]

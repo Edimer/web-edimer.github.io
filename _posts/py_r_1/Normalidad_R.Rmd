@@ -1,0 +1,116 @@
+---
+title: "R + Python: I"
+description: |
+  Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y entrenamiento de modelos con scikit-learn.
+preview: img.png
+author:
+  - name: Edimer David Jaramillo
+    url: https://edimer.github.io/
+    affiliation: R+Py
+    affiliation_url: https://edimer.github.io/
+date: 01-19-2020
+categories:
+  - R
+  - Py
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE,
+                      fig.align = "center")
+
+# Learn more about creating blogs with Distill at:
+# https://rstudio.github.io/distill/blog.html
+
+```
+
+# Requisitos previos
+
+- Tener instalado [Python](https://www.python.org/)
+- Recomendable instalar [Anaconda Navigator](https://anaconda.org/anaconda/anaconda-navigator)
+- Instalar la biblioteca [`reticulate`](https://rstudio.github.io/reticulate/index.html) desde R.
+
+# Biblioteca Reticulate
+
+<center>
+<img src = "https://rstudio.github.io/reticulate/images/reticulated_python.png" width=150 />
+</center>
+
+```{r}
+library(reticulate)
+```
+
+# Importando módulos de *python*
+
+## Importando `numpy`
+
+```{r}
+np <- import("numpy")
+np$argmin(c(2, 1, 3))
+```
+
+- En esta salida se muestra cómo aplicar la función `arcgmin` de *python* sobre un vector de *R*. Devuelve la posición (índice) donde se encuentra el valor mínimo del vector dado.
+- Es posible acceder a todas las funciones de `numpy` desde el objeto `np` con el símbolo dólar `$`.
+
+<center>
+<img src="img1.png" width=650/>
+</center>
+
+## Importando `os`
+
+```{r}
+os <- import("os")
+os$getcwd()
+```
+
+# Usando *python*
+
+```{python}
+import numpy as np
+np.argmax(np.array([1, 4, 10]))
+```
+
+# Función de *python* llamada por *R*
+
+- Declarando la función en *python*:
+
+```{python}
+def add(x, y):
+  return x + y
+  
+add(2, 2)  
+```
+
+- Llamando la función `add()` desde *R*
+
+```{r}
+py$add(2, 2)
+```
+
+# Usando `numpy`
+
+```{python}
+np.arange(0, 5)
+```
+
+```{python}
+np.arange(0, 10, 2)
+```
+
+```{python}
+np.ones((2, 2))
+```
+
+- **Simulando 100 valores aleatorios de la distribución normal, con media 2 y varianza 3:**.
+
+```{python}
+np.random.seed(1)
+valores = np.random.normal(loc = 2, scale = 3, size = 100)
+valores
+```
+

@@ -355,6 +355,7 @@ g3
 
 - [Ejemplo DataCamp](https://www.datacamp.com/community/tutorials/decision-tree-classification-python)
 - [Fuente de datos: PIMA](https://www.kaggle.com/uciml/pima-indians-diabetes-database)
+- [`scikit-learn`](https://scikit-learn.org/stable/)
 
 ## Importando módulos de *python*
 

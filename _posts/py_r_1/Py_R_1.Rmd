@@ -122,8 +122,13 @@ import matplotlib.pyplot as plt
 
 fig, g1 = plt.subplots()
 g1 = g1.hist(valores, bins = 30)
-plt.show(g1)
+g1 = plt.grid()
+g1
 ```
+
+<center>
+<img src="plt1.png"/>
+</center>
 
 # Ayudas
 
@@ -301,16 +306,20 @@ import tensorflow as tf
 
 ## Ejemplo 1
 
-```{python, eval = FALSE}
+```{python, eval= FALSE}
 import matplotlib.pyplot as plt
 x = np.arange(0, 20)
 y = x**2
 g1 = plt.plot(x, y, "g--")
 g1 = plt.title("X vs Y")
 g1 = plt.xlabel("Eje x")
-g1 = plt.ylabel("Eje Y")
+g1 = plt.ylabel("Eje Y")  
 g1
 ```
+
+<center>
+<img src="plt2.png"/>
+</center>
 
 ## Ejemplo 2
 
@@ -319,22 +328,28 @@ w = np.arange(0, 50).reshape(5, 10)
 w
 ```
 
-```{python, eval = FALSE}
+```{python, eval= FALSE}
 g2 = plt.imshow(w)
 g2 = plt.colorbar()
 plt.show()
 ```
 
+<center>
+<img src="plt3.png"/>
+</center>
+
 ## Ejemplo 3
 
 - Gráfico desde un `Dataframe`:
 
-```{python, eval = FALSE}
+```{python, eval= FALSE}
 g3 = iris_py.plot(x = "Sepal.Length", y = "Sepal.Width", kind = "scatter",
-                  color = "red")
+                  color = "red")                 
 g3
 ```
 
-
+<center>
+<img src="plt4.png"/>
+</center>
 
 

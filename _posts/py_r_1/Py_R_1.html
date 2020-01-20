@@ -49,7 +49,7 @@
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["img.png","img1.PNG","img2.PNG","img3.PNG","img4.PNG","Iris.csv","Py_R_1_files/figure-html5/unnamed-chunk-19-1.png"]}
+  {"type":"character","attributes":{},"value":["img.png","img1.PNG","img2.PNG","img3.PNG","img4.PNG","Iris.csv","plt1.png","plt2.png","plt3.png","plt4.png","Py_R_1_files/bowser-1.9.3/bowser.min.js","Py_R_1_files/distill-2.2.21/template.v2.js","Py_R_1_files/figure-html5/unnamed-chunk-19-1.png","Py_R_1_files/jquery-1.11.3/jquery.min.js","Py_R_1_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1123,8 +1123,12 @@ import matplotlib.pyplot as plt
 
 fig, g1 = plt.subplots()
 g1 = g1.hist(valores, bins = 30)
-plt.show(g1)</code></pre>
+g1 = plt.grid()
+g1</code></pre>
 </div>
+<center>
+<img src="plt1.png"/>
+</center>
 <h1 id="ayudas">Ayudas</h1>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>
@@ -1538,9 +1542,12 @@ y = x**2
 g1 = plt.plot(x, y, &quot;g--&quot;)
 g1 = plt.title(&quot;X vs Y&quot;)
 g1 = plt.xlabel(&quot;Eje x&quot;)
-g1 = plt.ylabel(&quot;Eje Y&quot;)
+g1 = plt.ylabel(&quot;Eje Y&quot;)  
 g1</code></pre>
 </div>
+<center>
+<img src="plt2.png"/>
+</center>
 <h2 id="ejemplo-2">Ejemplo 2</h2>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="python"><code>
@@ -1559,6 +1566,9 @@ g2 = plt.imshow(w)
 g2 = plt.colorbar()
 plt.show()</code></pre>
 </div>
+<center>
+<img src="plt3.png"/>
+</center>
 <h2 id="ejemplo-3">Ejemplo 3</h2>
 <ul>
 <li>Gráfico desde un <code>Dataframe</code>:</li>
@@ -1566,9 +1576,12 @@ plt.show()</code></pre>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="python"><code>
 g3 = iris_py.plot(x = &quot;Sepal.Length&quot;, y = &quot;Sepal.Width&quot;, kind = &quot;scatter&quot;,
-                  color = &quot;red&quot;)
+                  color = &quot;red&quot;)                 
 g3</code></pre>
 </div>
+<center>
+<img src="plt4.png"/>
+</center>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

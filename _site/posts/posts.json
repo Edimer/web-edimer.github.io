@@ -2,7 +2,7 @@
   {
     "path": "posts/py_r_1/",
     "title": "R + Python: I",
-    "description": "Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y entrenamiento de modelos con scikit-learn.",
+    "description": "Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.",
     "author": [
       {
         "name": "Edimer David Jaramillo",
@@ -15,7 +15,7 @@
       "Py"
     ],
     "preview": "posts/py_r_1/img.png",
-    "last_modified": "2020-01-20T08:56:25-05:00"
+    "last_modified": "2020-01-20T15:40:02-05:00"
   },
   {
     "path": "posts/Graphis_base/",

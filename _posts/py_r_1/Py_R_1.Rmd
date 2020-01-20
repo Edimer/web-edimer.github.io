@@ -1,7 +1,7 @@
 ---
 title: "R + Python: I"
 description: |
-  Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y entrenamiento de modelos con scikit-learn.
+  Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.
 preview: img.png
 author:
   - name: Edimer David Jaramillo
@@ -289,7 +289,6 @@ iris_py[filtro]
 iris_py.values
 ```
 
-
 ## Importando `tensorflow` desde python
 
 ```{python, eval = FALSE}
@@ -351,5 +350,66 @@ g3
 <center>
 <img src="plt4.png"/>
 </center>
+
+# Modelo con `scikit-learn`
+
+- [Ejemplo DataCamp](https://www.datacamp.com/community/tutorials/decision-tree-classification-python)
+- [Fuente de datos: PIMA](https://www.kaggle.com/uciml/pima-indians-diabetes-database)
+
+## Importando módulos de *python*
+
+```{python}
+import pandas as pd
+import sklearn
+from sklearn.tree import DecisionTreeClassifier 
+from sklearn.model_selection import train_test_split 
+from sklearn import metrics 
+```
+
+## Cargando datos
+
+```{python}
+col_names = ['pregnant', 'glucose', 'bp', 'skin', 'insulin', 'bmi', 'pedigree',
+             'age', 'label']
+# load dataset
+pima = pd.read_csv("diabetes.csv", header=None, names=col_names)
+pima = pima[1:]
+pima.head()
+```
+
+## Selección de características
+
+```{python}
+# Fraccionando la base de datos en predictoras (X) y respuesta (Y)
+feature_cols = ['pregnant', 'insulin', 'bmi', 'age','glucose','bp','pedigree']
+X = pima[feature_cols] 
+y = pima.label
+```
+
+## Train - Test
+
+```{python}
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1)
+```
+
+## Construyendo Modelo
+
+```{python}
+# Clasificador
+clf = DecisionTreeClassifier()
+
+# Clasificador en train --> Entrenando modelo
+clf_fit = clf.fit(X = X_train, y = y_train)
+```
+
+## Evaluación del modelo
+
+```{python}
+# Predicciones
+y_pred = clf_fit.predict(X_test)
+print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
+```
+
+
 
 

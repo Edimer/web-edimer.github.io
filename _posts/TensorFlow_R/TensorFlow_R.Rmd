@@ -1,14 +1,14 @@
 ---
-title: "Pruebas de Homocedasticidad"
+title: "TensorFlow con R"
 description: |
-  Esta es otra prueba...
+  Ejemplo de uso de TensorFlow con R para machine learning supervisado. Aplicación en problemas de regresión (regresión lineal simple) y clasificación (regresión logística). 
 preview: img1.png   
 author:
   - name: Edimer David Jaramillo
     url: https://edimer.github.io/
     affiliation: R+Py
     affiliation_url: https://edimer.github.io/
-date: 01-17-2020
+date: 01-21-2020
 output:
   distill::distill_article:
     self_contained: false

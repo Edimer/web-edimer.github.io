@@ -1,5 +1,35 @@
 [
   {
+    "path": "posts/Keras_R/",
+    "title": "Keras con R",
+    "description": "Ejemplo de uso de Keras con R para machine learning supervisado. Ajuste de modelos de deep learning con aplicaciones en problemas de regresión y clasificación.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [],
+    "preview": "posts/Keras_R/img1.png",
+    "last_modified": "2020-01-21T22:40:17-05:00"
+  },
+  {
+    "path": "posts/TensorFlow_R/",
+    "title": "TensorFlow con R",
+    "description": "Ejemplo de uso de TensorFlow con R para machine learning supervisado. Aplicación en problemas de regresión (regresión lineal simple) y clasificación (regresión logística).",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [],
+    "preview": "posts/TensorFlow_R/img1.png",
+    "last_modified": "2020-01-21T22:40:27-05:00"
+  },
+  {
     "path": "posts/py_r_1/",
     "title": "R + Python: I",
     "description": "Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.",
@@ -16,56 +46,5 @@
     ],
     "preview": "posts/py_r_1/img.png",
     "last_modified": "2020-01-20T15:51:24-05:00"
-  },
-  {
-    "path": "posts/Graphis_base/",
-    "title": "Gráficos con R: graphics",
-    "description": "Esta es una prueba...",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-17",
-    "categories": [
-      "R",
-      "Py"
-    ],
-    "preview": {},
-    "last_modified": "2020-01-18T23:28:47-05:00"
-  },
-  {
-    "path": "posts/Homocedasticidad/",
-    "title": "Pruebas de Homocedasticidad",
-    "description": "Esta es otra prueba...",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-17",
-    "categories": [],
-    "preview": "posts/Homocedasticidad/img1.png",
-    "last_modified": "2020-01-18T23:27:44-05:00"
-  },
-  {
-    "path": "posts/Normalidad/",
-    "title": "Pruebas de Normalidad",
-    "description": "Esta es una prueba...",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-17",
-    "categories": [
-      "R",
-      "Py"
-    ],
-    "preview": {},
-    "last_modified": "2020-01-18T23:26:01-05:00"
   }
 ]

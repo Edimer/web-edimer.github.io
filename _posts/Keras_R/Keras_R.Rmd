@@ -1,14 +1,14 @@
 ---
-title: "Pruebas de Homocedasticidad"
+title: "Keras con R"
 description: |
-  Esta es otra prueba...
+  Ejemplo de uso de Keras con R para machine learning supervisado. Ajuste de modelos de deep learning con aplicaciones en problemas de regresión y clasificación. 
 preview: img1.png   
 author:
   - name: Edimer David Jaramillo
     url: https://edimer.github.io/
     affiliation: R+Py
     affiliation_url: https://edimer.github.io/
-date: 01-17-2020
+date: 01-21-2020
 output:
   distill::distill_article:
     self_contained: false

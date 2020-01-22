@@ -1,16 +1,14 @@
 ---
-title: "Pruebas de Normalidad"
+title: "Pruebas de Homocedasticidad"
 description: |
-  Esta es una prueba...
+  Esta es otra prueba...
+preview: img1.png   
 author:
   - name: Edimer David Jaramillo
     url: https://edimer.github.io/
     affiliation: R+Py
     affiliation_url: https://edimer.github.io/
 date: 01-17-2020
-categories:
-  - R
-  - Py
 output:
   distill::distill_article:
     self_contained: false

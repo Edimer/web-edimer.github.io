@@ -1,5 +1,23 @@
 [
   {
+    "path": "posts/H2o_R/",
+    "title": "Machine Learning con H2o + R",
+    "description": "Ejemplo de uso de H2o con R para machine learning. Ajuste de modelos de series temporales (forecasting), random forest, regresión logística y clustering con k-means.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "Keras"
+    ],
+    "preview": "posts/H2o_R/img1.png",
+    "last_modified": "2020-01-21T22:47:54-05:00"
+  },
+  {
     "path": "posts/Keras_R/",
     "title": "Keras con R",
     "description": "Ejemplo de uso de Keras con R para machine learning supervisado. Ajuste de modelos de deep learning con aplicaciones en problemas de regresión y clasificación.",

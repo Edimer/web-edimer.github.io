@@ -1,0 +1,29 @@
+---
+title: "Machine Learning con tidymodels en R"
+description: |
+  Algoritmos de machine learning supervisado con tidymodels y R. Entrenamiento de modelos en problemas de clasificación y regresión.
+preview: img1.png   
+author:
+  - name: Edimer David Jaramillo
+    url: https://edimer.github.io/
+    affiliation: R+Py
+    affiliation_url: https://edimer.github.io/
+date: 01-21-2020
+categories:
+  - R
+  - tidymodels
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating blogs with Distill at:
+# https://rstudio.github.io/distill/blog.html
+
+```
+
+
+

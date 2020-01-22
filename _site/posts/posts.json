@@ -72,6 +72,24 @@
     "last_modified": "2020-01-21T22:56:35-05:00"
   },
   {
+    "path": "posts/Tidymodels_R/",
+    "title": "Machine Learning con tidymodels en R",
+    "description": "Algoritmos de machine learning supervisado con tidymodels y R. Entrenamiento de modelos en problemas de clasificación y regresión.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "tidymodels"
+    ],
+    "preview": "posts/Tidymodels_R/img1.png",
+    "last_modified": "2020-01-22T16:00:10-05:00"
+  },
+  {
     "path": "posts/py_r_1/",
     "title": "R + Python: I",
     "description": "Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.",

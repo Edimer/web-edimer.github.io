@@ -10,9 +10,12 @@
       }
     ],
     "date": "2020-01-21",
-    "categories": [],
+    "categories": [
+      "R",
+      "Keras"
+    ],
     "preview": "posts/Keras_R/img1.png",
-    "last_modified": "2020-01-21T22:40:17-05:00"
+    "last_modified": "2020-01-21T22:42:56-05:00"
   },
   {
     "path": "posts/TensorFlow_R/",
@@ -25,9 +28,12 @@
       }
     ],
     "date": "2020-01-21",
-    "categories": [],
+    "categories": [
+      "R",
+      "TensorFlow"
+    ],
     "preview": "posts/TensorFlow_R/img1.png",
-    "last_modified": "2020-01-21T22:40:27-05:00"
+    "last_modified": "2020-01-21T22:42:50-05:00"
   },
   {
     "path": "posts/py_r_1/",

@@ -9,6 +9,9 @@ author:
     affiliation: R+Py
     affiliation_url: https://edimer.github.io/
 date: 01-21-2020
+categories:
+  - R
+  - Keras
 output:
   distill::distill_article:
     self_contained: false

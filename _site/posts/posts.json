@@ -15,7 +15,7 @@
       "H2o"
     ],
     "preview": "posts/H2o_R/img1.png",
-    "last_modified": "2020-01-21T22:49:15-05:00"
+    "last_modified": "2020-01-21T22:56:11-05:00"
   },
   {
     "path": "posts/Keras_R/",
@@ -52,6 +52,24 @@
     ],
     "preview": "posts/TensorFlow_R/img1.png",
     "last_modified": "2020-01-21T22:42:50-05:00"
+  },
+  {
+    "path": "posts/caret_R/",
+    "title": "Machine Learning con caret en R",
+    "description": "Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest, support vector machine y red neuronal en problemas de clasificación y regresión.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "caret"
+    ],
+    "preview": "posts/caret_R/img1.png",
+    "last_modified": "2020-01-21T22:56:35-05:00"
   },
   {
     "path": "posts/py_r_1/",

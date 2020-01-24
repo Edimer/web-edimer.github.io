@@ -1,5 +1,23 @@
 [
   {
+    "path": "posts/caret_R/",
+    "title": "Machine Learning con caret en R",
+    "description": "Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest, support vector machine y red neuronal en problemas de clasificación y regresión.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "caret"
+    ],
+    "preview": "posts/caret_R/img1.png",
+    "last_modified": "2020-01-24T14:19:24-05:00"
+  },
+  {
     "path": "posts/H2o_R/",
     "title": "Machine Learning con H2o + R",
     "description": "Ejemplo de uso de H2o con R para machine learning. Ajuste de modelos de series temporales (forecasting), random forest, regresión logística y clustering con k-means.",
@@ -15,7 +33,7 @@
       "H2o"
     ],
     "preview": "posts/H2o_R/img1.png",
-    "last_modified": "2020-01-21T22:56:11-05:00"
+    "last_modified": "2020-01-24T14:19:29-05:00"
   },
   {
     "path": "posts/Keras_R/",
@@ -33,61 +51,7 @@
       "Keras"
     ],
     "preview": "posts/Keras_R/img1.png",
-    "last_modified": "2020-01-21T22:42:56-05:00"
-  },
-  {
-    "path": "posts/TensorFlow_R/",
-    "title": "TensorFlow con R",
-    "description": "Ejemplo de uso de TensorFlow con R para machine learning supervisado. Aplicación en problemas de regresión (regresión lineal simple) y clasificación (regresión logística).",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-21",
-    "categories": [
-      "R",
-      "TensorFlow"
-    ],
-    "preview": "posts/TensorFlow_R/img1.png",
-    "last_modified": "2020-01-21T22:42:50-05:00"
-  },
-  {
-    "path": "posts/caret_R/",
-    "title": "Machine Learning con caret en R",
-    "description": "Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest, support vector machine y red neuronal en problemas de clasificación y regresión.",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-21",
-    "categories": [
-      "R",
-      "caret"
-    ],
-    "preview": "posts/caret_R/img1.png",
-    "last_modified": "2020-01-21T22:56:35-05:00"
-  },
-  {
-    "path": "posts/Tidymodels_R/",
-    "title": "Machine Learning con tidymodels en R",
-    "description": "Algoritmos de machine learning supervisado con tidymodels y R. Entrenamiento de modelos en problemas de clasificación y regresión.",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-21",
-    "categories": [
-      "R",
-      "tidymodels"
-    ],
-    "preview": "posts/Tidymodels_R/img1.png",
-    "last_modified": "2020-01-22T16:00:10-05:00"
+    "last_modified": "2020-01-24T14:19:33-05:00"
   },
   {
     "path": "posts/Regression_R/",
@@ -105,7 +69,43 @@
       "Regresión"
     ],
     "preview": "posts/Regression_R/img1.png",
-    "last_modified": "2020-01-24T14:16:12-05:00"
+    "last_modified": "2020-01-24T14:19:19-05:00"
+  },
+  {
+    "path": "posts/TensorFlow_R/",
+    "title": "TensorFlow con R",
+    "description": "Ejemplo de uso de TensorFlow con R para machine learning supervisado. Aplicación en problemas de regresión (regresión lineal simple) y clasificación (regresión logística).",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "TensorFlow"
+    ],
+    "preview": "posts/TensorFlow_R/img1.png",
+    "last_modified": "2020-01-24T14:19:37-05:00"
+  },
+  {
+    "path": "posts/Tidymodels_R/",
+    "title": "Machine Learning con tidymodels en R",
+    "description": "Algoritmos de machine learning supervisado con tidymodels y R. Entrenamiento de modelos en problemas de clasificación y regresión.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "tidymodels"
+    ],
+    "preview": "posts/Tidymodels_R/img1.png",
+    "last_modified": "2020-01-24T14:19:42-05:00"
   },
   {
     "path": "posts/py_r_1/",

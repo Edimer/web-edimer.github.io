@@ -90,6 +90,24 @@
     "last_modified": "2020-01-22T16:00:10-05:00"
   },
   {
+    "path": "posts/Regression_R/",
+    "title": "Modelos de Regresión con R",
+    "description": "Ejemplo de usos de modelos de regresión lineal simple, múltiple, regresión polinómica, splines y modelos aditivos generalizados (GAM) con R.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "Regresión"
+    ],
+    "preview": "posts/Regression_R/img1.png",
+    "last_modified": "2020-01-24T14:16:12-05:00"
+  },
+  {
     "path": "posts/py_r_1/",
     "title": "R + Python: I",
     "description": "Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.",

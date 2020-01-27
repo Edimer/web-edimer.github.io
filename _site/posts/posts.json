@@ -1,5 +1,23 @@
 [
   {
+    "path": "posts/Tidymodels_R/",
+    "title": "Machine Learning con tidymodels en R",
+    "description": "Algoritmos de machine learning supervisado con tidymodels y R. Entranamiento de modelos en problemas de clasificación y regresión.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-27",
+    "categories": [
+      "R",
+      "Times Series"
+    ],
+    "preview": "posts/Tidymodels_R/img1.png",
+    "last_modified": "2020-01-27T06:50:30-05:00"
+  },
+  {
     "path": "posts/caret_R/",
     "title": "Machine Learning con caret en R",
     "description": "Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest, support vector machine y red neuronal en problemas de clasificación y regresión.",
@@ -69,7 +87,7 @@
       "Regresión"
     ],
     "preview": "posts/Regression_R/img1.png",
-    "last_modified": "2020-01-24T14:19:19-05:00"
+    "last_modified": "2020-01-24T14:19:20-05:00"
   },
   {
     "path": "posts/TensorFlow_R/",
@@ -87,12 +105,12 @@
       "TensorFlow"
     ],
     "preview": "posts/TensorFlow_R/img1.png",
-    "last_modified": "2020-01-24T14:19:37-05:00"
+    "last_modified": "2020-01-24T14:19:38-05:00"
   },
   {
-    "path": "posts/Tidymodels_R/",
-    "title": "Machine Learning con tidymodels en R",
-    "description": "Algoritmos de machine learning supervisado con tidymodels y R. Entrenamiento de modelos en problemas de clasificación y regresión.",
+    "path": "posts/TimesSeries_R/",
+    "title": "Series Temporales con R",
+    "description": "Comparación de modelos de series de tiempo para forecasting. Rendimiento de redes neuronales profundas (deep learning) recurrentes versus métodos clásicos en análisis de series temporales.",
     "author": [
       {
         "name": "Edimer David Jaramillo",
@@ -102,10 +120,10 @@
     "date": "2020-01-21",
     "categories": [
       "R",
-      "tidymodels"
+      "caret"
     ],
-    "preview": "posts/Tidymodels_R/img1.png",
-    "last_modified": "2020-01-24T14:19:42-05:00"
+    "preview": "posts/TimesSeries_R/img1.png",
+    "last_modified": "2020-01-27T06:50:42-05:00"
   },
   {
     "path": "posts/py_r_1/",

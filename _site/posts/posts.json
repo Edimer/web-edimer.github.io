@@ -126,6 +126,24 @@
     "last_modified": "2020-01-27T06:50:42-05:00"
   },
   {
+    "path": "posts/Inferencia_R/",
+    "title": "Inferencia con R",
+    "description": "Estadística inferencial con R. Validación de supuestos de normalidad, homocedasticidad e independencia. Aplicación de métodos paramétricos y no paramétricos. Pruebas t-student, análisis de varianza, prueba chi-cuadrado.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "caret"
+    ],
+    "preview": "posts/Inferencia_R/img1.png",
+    "last_modified": "2020-01-29T15:55:03-05:00"
+  },
+  {
     "path": "posts/py_r_1/",
     "title": "R + Python: I",
     "description": "Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.",

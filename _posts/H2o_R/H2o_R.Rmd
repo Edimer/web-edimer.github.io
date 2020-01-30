@@ -12,6 +12,7 @@ date: 01-21-2020
 categories:
   - R
   - H2o
+  - ML
 output:
   distill::distill_article:
     self_contained: false

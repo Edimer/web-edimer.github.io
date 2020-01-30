@@ -49,10 +49,11 @@
     "date": "2020-01-21",
     "categories": [
       "R",
-      "H2o"
+      "H2o",
+      "ML"
     ],
     "preview": "posts/H2o_R/img1.png",
-    "last_modified": "2020-01-24T14:19:29-05:00"
+    "last_modified": "2020-01-30T13:49:05-05:00"
   },
   {
     "path": "posts/Keras_R/",

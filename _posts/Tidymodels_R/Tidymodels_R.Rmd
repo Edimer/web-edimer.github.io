@@ -12,7 +12,8 @@ author:
 date: 01-27-2020
 categories:
   - R
-  - Times Series
+  - Tidymodels
+  - ML
 output:
   distill::distill_article:
     self_contained: false

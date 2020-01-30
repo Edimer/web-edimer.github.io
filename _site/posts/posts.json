@@ -144,6 +144,26 @@
     "last_modified": "2020-01-29T15:55:03-05:00"
   },
   {
+    "path": "posts/GAMs_R/",
+    "title": "Modelos GAM con R",
+    "description": "Ejemplo de aplicación de modelos aditivos generalizados (GAM) mediante la biblioteca mgcv y mgcViz. Ejemplo con variables que se distribuyen de forma binomial y poisson.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "mgcv",
+      "mgcViz",
+      "GAM"
+    ],
+    "preview": "posts/GAMs_R/img1.png",
+    "last_modified": "2020-01-30T13:30:08-05:00"
+  },
+  {
     "path": "posts/py_r_1/",
     "title": "R + Python: I",
     "description": "Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.",

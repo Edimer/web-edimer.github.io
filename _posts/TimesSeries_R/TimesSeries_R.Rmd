@@ -2,7 +2,7 @@
 title: "Series Temporales con R"
 description: |
   Comparación de modelos de series de tiempo para forecasting. Rendimiento de redes neuronales profundas (deep learning) recurrentes versus métodos clásicos en análisis de series temporales.
-preview: img2.png   
+preview: img1.png   
 author:
   - name: Edimer David Jaramillo
     url: https://edimer.github.io/

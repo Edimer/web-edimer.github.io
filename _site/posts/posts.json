@@ -87,10 +87,11 @@
     "date": "2020-01-21",
     "categories": [
       "R",
-      "Regresión"
+      "Regresión",
+      "ML"
     ],
     "preview": "posts/Regression_R/img1.png",
-    "last_modified": "2020-01-24T14:19:20-05:00"
+    "last_modified": "2020-01-30T13:51:36-05:00"
   },
   {
     "path": "posts/TensorFlow_R/",
@@ -105,10 +106,11 @@
     "date": "2020-01-21",
     "categories": [
       "R",
-      "TensorFlow"
+      "TensorFlow",
+      "ML"
     ],
     "preview": "posts/TensorFlow_R/img1.png",
-    "last_modified": "2020-01-24T14:19:38-05:00"
+    "last_modified": "2020-01-30T13:52:18-05:00"
   },
   {
     "path": "posts/TimesSeries_R/",

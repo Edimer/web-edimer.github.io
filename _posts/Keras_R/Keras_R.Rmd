@@ -12,6 +12,7 @@ date: 01-21-2020
 categories:
   - R
   - Keras
+  - ML
 output:
   distill::distill_article:
     self_contained: false

@@ -68,10 +68,11 @@
     "date": "2020-01-21",
     "categories": [
       "R",
-      "Keras"
+      "Keras",
+      "ML"
     ],
     "preview": "posts/Keras_R/img1.png",
-    "last_modified": "2020-01-24T14:19:33-05:00"
+    "last_modified": "2020-01-30T13:50:52-05:00"
   },
   {
     "path": "posts/Regression_R/",
@@ -140,10 +141,10 @@
     "date": "2020-01-21",
     "categories": [
       "R",
-      "caret"
+      "Inferencia"
     ],
     "preview": "posts/Inferencia_R/img1.png",
-    "last_modified": "2020-01-30T13:45:21-05:00"
+    "last_modified": "2020-01-30T13:50:31-05:00"
   },
   {
     "path": "posts/GAMs_R/",

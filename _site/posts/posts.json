@@ -170,6 +170,25 @@
     "last_modified": "2020-01-30T13:36:51-05:00"
   },
   {
+    "path": "posts/RandomF_R_Py/",
+    "title": "Random Forest con R y Python",
+    "description": "Ejemplo de uso de bosques aleatorios con R y Python en machine learning supervisado para clasificación y regresión. Comparación de modelos ajustados con ambos lenguajes de programación sobre los mismos conjuntos de datos.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "Py",
+      "Random Forest"
+    ],
+    "preview": "posts/RandomF_R_Py/img1.png",
+    "last_modified": "2020-02-03T07:33:00-05:00"
+  },
+  {
     "path": "posts/py_r_1/",
     "title": "R + Python: I",
     "description": "Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.",

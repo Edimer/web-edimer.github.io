@@ -15,8 +15,8 @@
       "Tidymodels",
       "ML"
     ],
-    "preview": "posts/Tidymodels_R/img1.png",
-    "last_modified": "2020-01-30T13:52:46-05:00"
+    "preview": "posts/Tidymodels_R/prueba.jpg",
+    "last_modified": "2020-02-03T07:44:46-05:00"
   },
   {
     "path": "posts/caret_R/",
@@ -204,7 +204,7 @@
       "SVM"
     ],
     "preview": "posts/SVM_R/img1.png",
-    "last_modified": "2020-02-03T07:39:59-05:00"
+    "last_modified": "2020-02-03T07:44:01-05:00"
   },
   {
     "path": "posts/py_r_1/",

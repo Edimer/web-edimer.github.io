@@ -3,7 +3,7 @@ title: "Machine Learning con tidymodels en R"
 description: | 
   Algoritmos de machine learning supervisado con tidymodels y R. Entranamiento de modelos en problemas de clasificación y regresión.
   
-preview: img1.png   
+preview: prueba.jpg  
 author:
   - name: Edimer David Jaramillo
     url: https://edimer.github.io/

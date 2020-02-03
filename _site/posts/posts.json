@@ -189,6 +189,24 @@
     "last_modified": "2020-02-03T07:33:00-05:00"
   },
   {
+    "path": "posts/SVM_R/",
+    "title": "Support Vector Machine con R",
+    "description": "Ejemplo de uso con máquinas de soporte vectorial en R para clasificación y regresión. Utilización de bibliotecas para entrenamiento y visualización de modelos.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "SVM"
+    ],
+    "preview": "posts/SVM_R/img1.png",
+    "last_modified": "2020-02-03T07:39:59-05:00"
+  },
+  {
     "path": "posts/py_r_1/",
     "title": "R + Python: I",
     "description": "Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.",

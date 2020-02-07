@@ -207,6 +207,24 @@
     "last_modified": "2020-02-03T07:44:01-05:00"
   },
   {
+    "path": "posts/SDM_R/",
+    "title": "Distribución de Especies con R",
+    "description": "Aplicación de algoritmos de machine learning en modelos de distribución de especies  (SDM - Species Distribution Models). Caso de uso en  modelamiento de nicho ecológico de Bothrops atrox (serpiente Mapana X) en Colombia.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "SVM"
+    ],
+    "preview": "posts/SDM_R/img1.png",
+    "last_modified": "2020-02-07T13:45:59-05:00"
+  },
+  {
     "path": "posts/py_r_1/",
     "title": "R + Python: I",
     "description": "Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.",

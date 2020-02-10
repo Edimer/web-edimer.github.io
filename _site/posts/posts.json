@@ -243,6 +243,24 @@
     "last_modified": "2020-02-10T15:28:41-05:00"
   },
   {
+    "path": "posts/mlr3_R/",
+    "title": "Machine Learning con mlr3 en R",
+    "description": "Machine learning con la biblioteca mlr3. Ejemplo de uso en problemas de aprendizaje supervisado (clasificación y regresión) y no supervisado (reducción de dimensionalidad, clustering).",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "mlr3"
+    ],
+    "preview": "posts/mlr3_R/img1.png",
+    "last_modified": "2020-02-10T15:34:16-05:00"
+  },
+  {
     "path": "posts/py_r_1/",
     "title": "R + Python: I",
     "description": "Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.",

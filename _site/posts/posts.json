@@ -225,6 +225,24 @@
     "last_modified": "2020-02-07T13:45:59-05:00"
   },
   {
+    "path": "posts/TreeD_R/",
+    "title": "Árbol de Decisión con R",
+    "description": "Ejemplo de uso de árboles de decisión con R en machine learning supervisado para clasificación y regresión. Comparando resultados con las bibliotecas caret, tidymodels y mlr3.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "Tree Decision"
+    ],
+    "preview": "posts/TreeD_R/img1.png",
+    "last_modified": "2020-02-10T15:28:41-05:00"
+  },
+  {
     "path": "posts/py_r_1/",
     "title": "R + Python: I",
     "description": "Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.",

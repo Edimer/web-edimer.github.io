@@ -1,7 +1,7 @@
 ---
-title: "Árbol de Decisión con R"
+title: "Ensemble Learning con R"
 description: |
-  Ejemplo de uso de árboles de decisión con R en machine learning supervisado para clasificación y regresión. Comparando resultados con las bibliotecas caret, tidymodels y mlr3.
+  Ejemplo de uso de meta-clasficador con métodos de ensemble learning en R.
 preview: img1.png   
 author:
   - name: Edimer David Jaramillo

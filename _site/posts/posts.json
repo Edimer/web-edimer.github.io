@@ -261,6 +261,24 @@
     "last_modified": "2020-02-10T15:34:16-05:00"
   },
   {
+    "path": "posts/ELearning_R/",
+    "title": "Ensemble Learning con R",
+    "description": "Ejemplo de uso de meta-clasficador con métodos de ensemble learning en R.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "Tree Decision"
+    ],
+    "preview": "posts/ELearning_R/img1.png",
+    "last_modified": "2020-02-11T15:46:19-05:00"
+  },
+  {
     "path": "posts/py_r_1/",
     "title": "R + Python: I",
     "description": "Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.",

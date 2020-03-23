@@ -37,7 +37,7 @@ library(RColorBrewer)
 
 ## Problema
 
-- **Descripción:** a través de emisiones de radio detectables en nuestro planeta, los científicos perfilan los púlsares en función de múltiples métricas provenientes del análisis de señales; el ruido causado por interferencia de radiofrecuencia dificulta la labor de los investigadores. Se propone generar un sistema automático proporcione alta precisión en detectar estrellas **púlsar**. ([ver más información](https://archive.ics.uci.edu/ml/datasets/HTRU2))
+- **Descripción:** a través de emisiones de radio detectables en nuestro planeta, los científicos perfilan los púlsares en función de múltiples métricas provenientes del análisis de señales; el ruido causado por interferencia de radiofrecuencia dificulta la labor de los investigadores. Se propone generar un sistema automático que proporcione alta precisión para detectar estrellas **púlsar**. ([ver más información](https://archive.ics.uci.edu/ml/datasets/HTRU2))
 - **Tipo de aprendizaje:** Aprendizaje Supervisado - Clasificación Binaria.
 - Algoritmos:
     - [Random Forest](https://es.wikipedia.org/wiki/Random_forest)

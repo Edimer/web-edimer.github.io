@@ -16,7 +16,7 @@
       "ML"
     ],
     "preview": "posts/Tidymodels_R/prueba.jpg",
-    "last_modified": "2020-02-03T07:44:46-05:00"
+    "last_modified": "2020-02-03T07:44:47-05:00"
   },
   {
     "path": "posts/caret_R/",
@@ -35,7 +35,45 @@
       "ML"
     ],
     "preview": "posts/caret_R/img1.png",
-    "last_modified": "2020-03-23T00:50:02-05:00"
+    "last_modified": "2020-03-23T00:50:03-05:00"
+  },
+  {
+    "path": "posts/ELearning_R/",
+    "title": "Ensemble Learning con R",
+    "description": "Ejemplo de uso de meta-clasficador con métodos de ensemble learning en R.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "Tree Decision"
+    ],
+    "preview": "posts/ELearning_R/img1.png",
+    "last_modified": "2020-02-11T15:46:20-05:00"
+  },
+  {
+    "path": "posts/GAMs_R/",
+    "title": "Modelos GAM con R",
+    "description": "Ejemplo de aplicación de modelos aditivos generalizados (GAM) mediante la biblioteca mgcv y mgcViz. Ejemplo con variables que se distribuyen de forma binomial y poisson.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "mgcv",
+      "mgcViz",
+      "GAM"
+    ],
+    "preview": "posts/GAMs_R/img1.png",
+    "last_modified": "2020-01-30T13:36:51-05:00"
   },
   {
     "path": "posts/H2o_R/",
@@ -57,6 +95,24 @@
     "last_modified": "2020-01-30T13:49:05-05:00"
   },
   {
+    "path": "posts/Inferencia_R/",
+    "title": "Inferencia con R",
+    "description": "Estadística inferencial con R. Validación de supuestos de normalidad, homocedasticidad e independencia. Aplicación de métodos paramétricos y no paramétricos. Pruebas t-student, análisis de varianza, prueba chi-cuadrado.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "Inferencia"
+    ],
+    "preview": "posts/Inferencia_R/img1.png",
+    "last_modified": "2020-01-30T13:50:32-05:00"
+  },
+  {
     "path": "posts/Keras_R/",
     "title": "Keras con R",
     "description": "Ejemplo de uso de Keras con R para machine learning supervisado. Ajuste de modelos de deep learning con aplicaciones en problemas de regresión y clasificación.",
@@ -76,6 +132,43 @@
     "last_modified": "2020-01-30T13:50:52-05:00"
   },
   {
+    "path": "posts/mlr3_R/",
+    "title": "Machine Learning con mlr3 en R",
+    "description": "Machine learning con la biblioteca mlr3. Ejemplo de uso en problemas de aprendizaje supervisado (clasificación y regresión) y no supervisado (reducción de dimensionalidad, clustering).",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "mlr3"
+    ],
+    "preview": "posts/mlr3_R/img1.png",
+    "last_modified": "2020-02-10T15:34:17-05:00"
+  },
+  {
+    "path": "posts/RandomF_R_Py/",
+    "title": "Random Forest con R y Python",
+    "description": "Ejemplo de uso de bosques aleatorios con R y Python en machine learning supervisado para clasificación y regresión. Comparación de modelos ajustados con ambos lenguajes de programación sobre los mismos conjuntos de datos.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "Py",
+      "Random Forest"
+    ],
+    "preview": "posts/RandomF_R_Py/img1.png",
+    "last_modified": "2020-02-03T07:33:00-05:00"
+  },
+  {
     "path": "posts/Regression_R/",
     "title": "Modelos de Regresión con R",
     "description": "Ejemplo de usos de modelos de regresión lineal simple, múltiple, regresión polinómica, splines y modelos aditivos generalizados (GAM) con R.",
@@ -93,6 +186,42 @@
     ],
     "preview": "posts/Regression_R/img1.png",
     "last_modified": "2020-01-30T15:21:00-05:00"
+  },
+  {
+    "path": "posts/SDM_R/",
+    "title": "Distribución de Especies con R",
+    "description": "Aplicación de algoritmos de machine learning en modelos de distribución de especies  (SDM - Species Distribution Models). Caso de uso en  modelamiento de nicho ecológico de Bothrops atrox (serpiente Mapana X) en Colombia.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "SVM"
+    ],
+    "preview": "posts/SDM_R/img1.png",
+    "last_modified": "2020-02-07T13:46:00-05:00"
+  },
+  {
+    "path": "posts/SVM_R/",
+    "title": "Support Vector Machine con R",
+    "description": "Ejemplo de uso con máquinas de soporte vectorial en R para clasificación y regresión. Utilización de bibliotecas para entrenamiento y visualización de modelos.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "SVM"
+    ],
+    "preview": "posts/SVM_R/img1.png",
+    "last_modified": "2020-02-03T07:44:01-05:00"
   },
   {
     "path": "posts/TensorFlow_R/",
@@ -129,100 +258,7 @@
       "Series Temporales"
     ],
     "preview": "posts/TimesSeries_R/img1.png",
-    "last_modified": "2020-01-30T15:26:26-05:00"
-  },
-  {
-    "path": "posts/Inferencia_R/",
-    "title": "Inferencia con R",
-    "description": "Estadística inferencial con R. Validación de supuestos de normalidad, homocedasticidad e independencia. Aplicación de métodos paramétricos y no paramétricos. Pruebas t-student, análisis de varianza, prueba chi-cuadrado.",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-21",
-    "categories": [
-      "R",
-      "Inferencia"
-    ],
-    "preview": "posts/Inferencia_R/img1.png",
-    "last_modified": "2020-01-30T13:50:31-05:00"
-  },
-  {
-    "path": "posts/GAMs_R/",
-    "title": "Modelos GAM con R",
-    "description": "Ejemplo de aplicación de modelos aditivos generalizados (GAM) mediante la biblioteca mgcv y mgcViz. Ejemplo con variables que se distribuyen de forma binomial y poisson.",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-21",
-    "categories": [
-      "R",
-      "mgcv",
-      "mgcViz",
-      "GAM"
-    ],
-    "preview": "posts/GAMs_R/img1.png",
-    "last_modified": "2020-01-30T13:36:51-05:00"
-  },
-  {
-    "path": "posts/RandomF_R_Py/",
-    "title": "Random Forest con R y Python",
-    "description": "Ejemplo de uso de bosques aleatorios con R y Python en machine learning supervisado para clasificación y regresión. Comparación de modelos ajustados con ambos lenguajes de programación sobre los mismos conjuntos de datos.",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-21",
-    "categories": [
-      "R",
-      "Py",
-      "Random Forest"
-    ],
-    "preview": "posts/RandomF_R_Py/img1.png",
-    "last_modified": "2020-02-03T07:33:00-05:00"
-  },
-  {
-    "path": "posts/SVM_R/",
-    "title": "Support Vector Machine con R",
-    "description": "Ejemplo de uso con máquinas de soporte vectorial en R para clasificación y regresión. Utilización de bibliotecas para entrenamiento y visualización de modelos.",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-21",
-    "categories": [
-      "R",
-      "SVM"
-    ],
-    "preview": "posts/SVM_R/img1.png",
-    "last_modified": "2020-02-03T07:44:01-05:00"
-  },
-  {
-    "path": "posts/SDM_R/",
-    "title": "Distribución de Especies con R",
-    "description": "Aplicación de algoritmos de machine learning en modelos de distribución de especies  (SDM - Species Distribution Models). Caso de uso en  modelamiento de nicho ecológico de Bothrops atrox (serpiente Mapana X) en Colombia.",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-21",
-    "categories": [
-      "R",
-      "SVM"
-    ],
-    "preview": "posts/SDM_R/img1.png",
-    "last_modified": "2020-02-07T13:45:59-05:00"
+    "last_modified": "2020-01-30T15:26:27-05:00"
   },
   {
     "path": "posts/TreeD_R/",
@@ -240,43 +276,7 @@
       "Tree Decision"
     ],
     "preview": "posts/TreeD_R/img1.png",
-    "last_modified": "2020-02-10T15:28:41-05:00"
-  },
-  {
-    "path": "posts/mlr3_R/",
-    "title": "Machine Learning con mlr3 en R",
-    "description": "Machine learning con la biblioteca mlr3. Ejemplo de uso en problemas de aprendizaje supervisado (clasificación y regresión) y no supervisado (reducción de dimensionalidad, clustering).",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-21",
-    "categories": [
-      "R",
-      "mlr3"
-    ],
-    "preview": "posts/mlr3_R/img1.png",
-    "last_modified": "2020-02-10T15:34:16-05:00"
-  },
-  {
-    "path": "posts/ELearning_R/",
-    "title": "Ensemble Learning con R",
-    "description": "Ejemplo de uso de meta-clasficador con métodos de ensemble learning en R.",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-21",
-    "categories": [
-      "R",
-      "Tree Decision"
-    ],
-    "preview": "posts/ELearning_R/img1.png",
-    "last_modified": "2020-02-11T15:46:19-05:00"
+    "last_modified": "2020-02-10T15:28:42-05:00"
   },
   {
     "path": "posts/py_r_1/",

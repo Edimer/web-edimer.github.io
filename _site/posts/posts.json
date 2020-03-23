@@ -20,7 +20,7 @@
   },
   {
     "path": "posts/caret_R/",
-    "title": "Machine Learning con caret en R (1)",
+    "title": "ML con caret en R (1)",
     "description": "Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest, support vector machine y red neuronal en problemas de clasificación y regresión.",
     "author": [
       {
@@ -35,7 +35,7 @@
       "ML"
     ],
     "preview": "posts/caret_R/img1.png",
-    "last_modified": "2020-03-23T00:47:27-05:00"
+    "last_modified": "2020-03-23T00:50:02-05:00"
   },
   {
     "path": "posts/H2o_R/",

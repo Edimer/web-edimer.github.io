@@ -21,7 +21,7 @@
   <!--radix_placeholder_meta_tags-->
 <title>Machine Learning con R y Python: ML con caret en R (1)</title>
 
-<meta property="description" itemprop="description" content="Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest, support vector machine y red neuronal en problemas de clasificación y regresión."/>
+<meta property="description" itemprop="description" content="Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest y support vector machine en problemas de clasificación supervisada."/>
 
 <link rel="icon" type="image/png" href="../../logo.png"/>
 
@@ -33,25 +33,25 @@
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
 <meta property="og:title" content="Machine Learning con R y Python: ML con caret en R (1)"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest, support vector machine y red neuronal en problemas de clasificación y regresión."/>
+<meta property="og:description" content="Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest y support vector machine en problemas de clasificación supervisada."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Machine Learning con R y Python"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary"/>
 <meta property="twitter:title" content="Machine Learning con R y Python: ML con caret en R (1)"/>
-<meta property="twitter:description" content="Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest, support vector machine y red neuronal en problemas de clasificación y regresión."/>
+<meta property="twitter:description" content="Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest y support vector machine en problemas de clasificación supervisada."/>
 
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","preview","author","date","categories","output"]}},"value":[{"type":"character","attributes":{},"value":["ML con caret en R (1)"]},{"type":"character","attributes":{},"value":["Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest, support vector machine y red neuronal en problemas de clasificación y regresión."]},{"type":"character","attributes":{},"value":["img1.png"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Edimer David Jaramillo"]},{"type":"character","attributes":{},"value":["https://edimer.github.io/"]},{"type":"character","attributes":{},"value":["R+Py"]},{"type":"character","attributes":{},"value":["https://edimer.github.io/"]}]}]},{"type":"character","attributes":{},"value":["03-23-2020"]},{"type":"character","attributes":{},"value":["R","caret","ML"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","preview","author","date","categories","output"]}},"value":[{"type":"character","attributes":{},"value":["ML con caret en R (1)"]},{"type":"character","attributes":{},"value":["Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest y support vector machine en problemas de clasificación supervisada."]},{"type":"character","attributes":{},"value":["img1.png"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Edimer David Jaramillo"]},{"type":"character","attributes":{},"value":["https://edimer.github.io/"]},{"type":"character","attributes":{},"value":["R+Py"]},{"type":"character","attributes":{},"value":["https://edimer.github.io/"]}]}]},{"type":"character","attributes":{},"value":["03-23-2020"]},{"type":"character","attributes":{},"value":["R","caret","ML"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["caret_R_files/bowser-1.9.3/bowser.min.js","caret_R_files/distill-2.2.21/template.v2.js","caret_R_files/jquery-1.11.3/jquery.min.js","caret_R_files/webcomponents-2.0.0/webcomponents.js","data/insurance.csv","data/pulsar_stars.csv","img1.png"]}
+  {"type":"character","attributes":{},"value":["caret_R_files/bowser-1.9.3/bowser.min.js","caret_R_files/distill-2.2.21/template.v2.js","caret_R_files/figure-html5/unnamed-chunk-14-1.png","caret_R_files/figure-html5/unnamed-chunk-3-1.png","caret_R_files/figure-html5/unnamed-chunk-4-1.png","caret_R_files/figure-html5/unnamed-chunk-5-1.png","caret_R_files/figure-html5/unnamed-chunk-7-1.png","caret_R_files/jquery-1.11.3/jquery.min.js","caret_R_files/webcomponents-2.0.0/webcomponents.js","data/insurance.csv","data/pulsar_stars.csv","img1.png","models_fit/RandomForest.rds","models_fit/SVM_Radial.rds"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 
@@ -1281,7 +1281,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"ML con caret en R (1)","description":"Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest, support vector machine y red neuronal en problemas de clasificación y regresión.","authors":[{"author":"Edimer David Jaramillo","authorURL":"https://edimer.github.io/","affiliation":"R+Py","affiliationURL":"https://edimer.github.io/"}],"publishedDate":"2020-03-23T00:00:00.000-05:00","citationText":"Jaramillo, 2020"}
+{"title":"ML con caret en R (1)","description":"Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest y support vector machine en problemas de clasificación supervisada.","authors":[{"author":"Edimer David Jaramillo","authorURL":"https://edimer.github.io/","affiliation":"R+Py","affiliationURL":"https://edimer.github.io/"}],"publishedDate":"2020-03-23T00:00:00.000-05:00","citationText":"Jaramillo, 2020"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1310,7 +1310,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="d-title">
 <h1>ML con caret en R (1)</h1>
-<p><p>Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest, support vector machine y red neuronal en problemas de clasificación y regresión.</p></p>
+<p><p>Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest y support vector machine en problemas de clasificación supervisada.</p></p>
 </div>
 
 <div class="d-byline">
@@ -1320,22 +1320,377 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div class="d-article">
+<h3 class="d-toc-header">Table of Contents</h3>
+<nav class="d-toc" id="TOC">
+<ul>
+<li><a href="#datos">Datos</a></li>
+<li><a href="#problema">Problema</a></li>
+<li><a href="#importando-datos">Importando datos</a></li>
+<li><a href="#exploración">Exploración</a><ul>
+<li><a href="#variable-respuesta">Variable respuesta</a></li>
+<li><a href="#distribuciones">Distribuciones</a></li>
+<li><a href="#correlaciones">Correlaciones</a></li>
+</ul></li>
+<li><a href="#train-y-test">Train y Test</a></li>
+<li><a href="#modelos">Modelos</a><ul>
+<li><a href="#random-forest">Random Forest</a><ul>
+<li><a href="#algoritmo">Algoritmo</a></li>
+<li><a href="#desempeño">Desempeño</a></li>
+</ul></li>
+<li><a href="#svm">SVM</a><ul>
+<li><a href="#algoritmo-1">Algoritmo</a></li>
+<li><a href="#desempeño-1">Desempeño</a></li>
+</ul></li>
+<li><a href="#comparación-de-modelos">Comparación de modelos</a></li>
+</ul></li>
+</ul>
+</nav>
+<hr class="d-toc-separator"/>
 <h1 id="datos">Datos</h1>
 <ul>
 <li><a href="https://www.kaggle.com/pavanraj159/predicting-a-pulsar-star#pulsar_stars.csv">Fuente: predicción de estrellas púlsar.</a></li>
 <li><a href="https://es.wikipedia.org/wiki/P%C3%BAlsar">¿Qué es un púlsar?</a></li>
 </ul>
-<h2 id="problema">Problema</h2>
+<h1 id="problema">Problema</h1>
 <ul>
 <li><strong>Descripción:</strong> a través de emisiones de radio detectables en nuestro planeta, los científicos perfilan los púlsares en función de múltiples métricas provenientes del análisis de señales; el ruido causado por interferencia de radiofrecuencia dificulta la labor de los investigadores. Se propone generar un sistema automático que proporcione alta precisión para detectar estrellas <strong>púlsar</strong>. (<a href="https://archive.ics.uci.edu/ml/datasets/HTRU2">ver más información</a>)</li>
 <li><strong>Tipo de aprendizaje:</strong> Aprendizaje Supervisado - Clasificación Binaria.</li>
 <li>Algoritmos:
 <ul>
 <li><a href="https://es.wikipedia.org/wiki/Random_forest">Random Forest</a></li>
-<li><a href="https://es.wikipedia.org/wiki/M%C3%A1quinas_de_vectores_de_soporte">Support Vector Machine</a></li>
-<li><a href="https://es.wikipedia.org/wiki/Perceptr%C3%B3n_multicapa">Red Neuronal (Perceptrón Multicapa - MLP)</a></li>
+<li><a href="https://es.wikipedia.org/wiki/M%C3%A1quinas_de_vectores_de_soporte">Support Vector Machine-SVM</a></li>
 </ul></li>
 </ul>
+<h1 id="importando-datos">Importando datos</h1>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Cargando biblioteca data.table
+library(data.table)
+
+# Nombres de variables
+nombres &lt;- c(&quot;media_pefil&quot;, &quot;de_perfil&quot;, &quot;curtosis_perfil&quot;, &quot;asimet_perfil&quot;, &quot;media_dmsnr&quot;,
+             &quot;de_dmsnr&quot;, &quot;curtosis_dmsnr&quot;, &quot;asimet_dmsnr&quot;, &quot;pulsar&quot;)
+
+df_pulsar &lt;- fread(&quot;data/pulsar_stars.csv&quot;, sep = &quot;,&quot;, col.names = nombres,
+                   colClasses = c(rep(&quot;numeric&quot;, 8), &quot;factor&quot;))
+head(df_pulsar)</code></pre>
+<pre><code>
+   media_pefil de_perfil curtosis_perfil asimet_perfil media_dmsnr
+1:   140.56250  55.68378     -0.23457141    -0.6996484    3.199833
+2:   102.50781  58.88243      0.46531815    -0.5150879    1.677258
+3:   103.01562  39.34165      0.32332837     1.0511644    3.121237
+4:   136.75000  57.17845     -0.06841464    -0.6362384    3.642977
+5:    88.72656  40.67223      0.60086608     1.1234917    1.178930
+6:    93.57031  46.69811      0.53190485     0.4167211    1.636288
+   de_dmsnr curtosis_dmsnr asimet_dmsnr pulsar
+1: 19.11043       7.975532     74.24222      0
+2: 14.86015      10.576487    127.39358      0
+3: 21.74467       7.735822     63.17191      0
+4: 20.95928       6.896499     53.59366      0
+5: 11.46872      14.269573    252.56731      0
+6: 14.54507      10.621748    131.39400      0</code></pre>
+</div>
+<h1 id="exploración">Exploración</h1>
+<ul>
+<li><strong>Definiento tema de <code>ggplot2</code> para gráficos:</strong></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Cargando biblioteca tidyverse
+library(tidyverse)
+
+# Tema personalizado para gráficos
+mi_temagg &lt;- theme_light() +
+  theme(axis.text.x = element_text(color = &quot;black&quot;),
+        axis.text.y = element_text(color = &quot;black&quot;),
+        strip.background = element_rect(fill = &quot;gray5&quot;),
+        strip.text = element_text(color = &quot;white&quot;, size = 12))</code></pre>
+</div>
+<h2 id="variable-respuesta">Variable respuesta</h2>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+df_pulsar %&gt;% group_by(pulsar) %&gt;% count() %&gt;% 
+  ggplot(data = ., aes(x = pulsar, y = n)) +
+  geom_col(color = &quot;black&quot;, fill = &quot;#033660&quot;) +
+  geom_label(aes(label = n)) +
+  labs(x = &quot;¿Púlsar?&quot;, title = &quot;Distribución de variable respuesta&quot;,
+       subtitle = &quot;0=No\n1=Sí&quot;) +
+  mi_temagg</code></pre>
+<p><img src="caret_R_files/figure-html5/unnamed-chunk-3-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+<h2 id="distribuciones">Distribuciones</h2>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+df_pulsar %&gt;% 
+  gather(key = &quot;variable&quot;, value = &quot;valor&quot;, -pulsar) %&gt;% 
+  ggplot(data = ., aes(x = valor, fill = pulsar)) +
+  facet_wrap(~variable, scales = &quot;free&quot;, ncol = 4) +
+  geom_density(alpha = 0.9) +
+  scale_x_log10() +
+  labs(x = &quot;&quot;, y = &quot;Densidad&quot;, title = &quot;Escala logarítmica&quot;,
+       fill = &quot;¿Púlsar?&quot;) +
+  scale_fill_manual(values = c(&quot;#790222&quot;, &quot;#033660&quot;)) +
+  mi_temagg</code></pre>
+<p><img src="caret_R_files/figure-html5/unnamed-chunk-4-1.png" width="768" style="display: block; margin: auto;" /></p>
+</div>
+<h2 id="correlaciones">Correlaciones</h2>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Cargando biblioteca corrplot
+library(corrplot)
+
+df_pulsar %&gt;% mutate_if(is.numeric, scale)  %&gt;% select_if(is.numeric) %&gt;%
+  cor(method = &quot;spearman&quot;) %&gt;% 
+  corrplot(method = &quot;pie&quot;, type = &quot;upper&quot;, order = &quot;hclust&quot;, diag = FALSE,
+           tl.srt = 35, tl.col = &quot;black&quot;, tl.cex = 1)</code></pre>
+<p><img src="caret_R_files/figure-html5/unnamed-chunk-5-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+<h1 id="train-y-test">Train y Test</h1>
+<ul>
+<li>La partición se hace 70 y 30%, para entrenamiento (<code>df_train</code>) y prueba (<code>df_test</code>), respectivamente.</li>
+<li>El argumento <code>list = FALSE</code> en la función <code>createDataPartition</code>, permite que el objeto sea devuelto en forma de <code>vector</code>.</li>
+<li><a href="https://topepo.github.io/caret/index.html">Documentación de biblioteca <code>caret</code>.</a></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Cargando biblioteca caret
+library(caret)
+
+# Semilla para reproducir resutlados
+set.seed(073)
+
+# Particiones
+idx &lt;- createDataPartition(y = df_pulsar$pulsar, times = 1, p = 0.7, list = FALSE)
+df_train &lt;- df_pulsar[idx, ]
+df_test &lt;- df_pulsar[-idx, ]</code></pre>
+</div>
+<ul>
+<li><strong>Proporción de la variable respuesta en train y test:</strong></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+ggpubr::ggarrange(
+  df_train %&gt;% group_by(pulsar) %&gt;% count() %&gt;% ungroup() %&gt;% mutate(prop = n/sum(n)) %&gt;% 
+  ggplot(data = ., aes(x = pulsar, y = prop)) +
+  geom_col(color = &quot;black&quot;, fill = &quot;#033660&quot;) +
+  geom_label(aes(label = round(prop, digits = 2))) +
+  labs(x = &quot;¿Púlsar?&quot;, title = &quot;Distribución en train&quot;,
+       subtitle = &quot;0=No\n1=Sí&quot;) +
+  mi_temagg,
+
+  df_test %&gt;% group_by(pulsar) %&gt;% count() %&gt;% ungroup() %&gt;% mutate(prop = n/sum(n)) %&gt;% 
+  ggplot(data = ., aes(x = pulsar, y = prop)) +
+  geom_col(color = &quot;black&quot;, fill = &quot;#033660&quot;) +
+  geom_label(aes(label = round(prop, digits = 2))) +
+  labs(x = &quot;¿Púlsar?&quot;, title = &quot;Distribución en test&quot;,
+       subtitle = &quot;0=No\n1=Sí&quot;) +
+  mi_temagg,
+  
+  ncol = 2
+)</code></pre>
+<p><img src="caret_R_files/figure-html5/unnamed-chunk-7-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+<h1 id="modelos">Modelos</h1>
+<ul>
+<li>Se utiliza el método <code>ranger</code>.</li>
+<li>Los argumentos se han dejado como están por defecto.</li>
+<li><a href="http://topepo.github.io/caret/train-models-by-tag.html#random-forest">Referencia de algorito random forest con caret.</a></li>
+<li>En este caso particular se usa el método <code>ranger</code> que permite ajustar tres hiperparámetros:
+<ul>
+<li><code>mtry</code>: número de predictores seleccionados.</li>
+<li><code>splitrule</code>: criterio de división. En problemas de clasificación se suele utilizar <code>Gini</code>, aunque hay más disponibles. <a href="https://cran.r-project.org/web/packages/ranger/ranger.pdf">Ver documentación de <code>ranger</code>.</a></li>
+<li><code>min.node.size</code>: número mínimo de observaciones en cada nodo. Por defecto para problemas de clasificación es 1.</li>
+</ul></li>
+</ul>
+<h2 id="random-forest">Random Forest</h2>
+<h3 id="algoritmo">Algoritmo</h3>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Algoritmo de random forest
+modelo_rf &lt;- train(pulsar ~ ., data = df_train, method = &quot;ranger&quot;)
+
+# Guardando modelo
+saveRDS(object = modelo_rf, file = &quot;models_fit/RandomForest.rds&quot;)</code></pre>
+</div>
+<ul>
+<li><strong>Resultados:</strong></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Cargando modelo
+mod_rf &lt;- readRDS(&quot;models_fit/RandomForest.rds&quot;)
+
+# Resultados del modelo
+mod_rf</code></pre>
+<pre><code>
+Random Forest 
+
+12530 samples
+    8 predictor
+    2 classes: &#39;0&#39;, &#39;1&#39; 
+
+No pre-processing
+Resampling: Bootstrapped (25 reps) 
+Summary of sample sizes: 12530, 12530, 12530, 12530, 12530, 12530, ... 
+Resampling results across tuning parameters:
+
+  mtry  splitrule   Accuracy   Kappa    
+  2     gini        0.9801226  0.8758954
+  2     extratrees  0.9794474  0.8705685
+  5     gini        0.9801169  0.8762727
+  5     extratrees  0.9803843  0.8777407
+  8     gini        0.9795793  0.8731006
+  8     extratrees  0.9804887  0.8788098
+
+Tuning parameter &#39;min.node.size&#39; was held constant at a value of 1
+Accuracy was used to select the optimal model using the
+ largest value.
+The final values used for the model were mtry = 8, splitrule
+ = extratrees and min.node.size = 1.</code></pre>
+</div>
+<h3 id="desempeño">Desempeño</h3>
+<ul>
+<li><strong>Matriz de confusión en test:</strong></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Predicciones en nuevos datos
+predict_rf &lt;- predict(object = mod_rf, newdata = df_test)
+
+# Matriz de confución
+confusionMatrix(predict_rf, df_test$pulsar, positive = &quot;1&quot;)</code></pre>
+<pre><code>
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    0    1
+         0 4840   84
+         1   37  407
+                                          
+               Accuracy : 0.9775          
+                 95% CI : (0.9731, 0.9813)
+    No Information Rate : 0.9085          
+    P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+                                          
+                  Kappa : 0.8583          
+                                          
+ Mcnemar&#39;s Test P-Value : 2.892e-05       
+                                          
+            Sensitivity : 0.82892         
+            Specificity : 0.99241         
+         Pos Pred Value : 0.91667         
+         Neg Pred Value : 0.98294         
+             Prevalence : 0.09147         
+         Detection Rate : 0.07582         
+   Detection Prevalence : 0.08271         
+      Balanced Accuracy : 0.91067         
+                                          
+       &#39;Positive&#39; Class : 1               
+                                          </code></pre>
+</div>
+<h2 id="svm">SVM</h2>
+<ul>
+<li>Se utiliza el método <code>svmRadial</code> que está contenido en la biblioteca <code>kernlab</code>.</li>
+<li>La configuración está por defecto.</li>
+<li>Este algoritmo permite ajustar hiperparámetros <code>sigma</code> y <code>C</code> (costo).</li>
+<li><a href="https://cran.r-project.org/web/packages/kernlab/kernlab.pdf">Documentación <code>kernlab</code>.</a></li>
+</ul>
+<h3 id="algoritmo-1">Algoritmo</h3>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Algoritmo
+modelo_svmR &lt;- train(pulsar ~ ., data = df_train, method = &quot;svmRadial&quot;)
+
+# Guardando modelo
+saveRDS(object = modelo_svmR, file = &quot;models_fit/SVM_Radial.rds&quot;)</code></pre>
+</div>
+<ul>
+<li><strong>Resultados:</strong></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Cargando modelo
+mod_svmR &lt;- readRDS(&quot;models_fit/SVM_Radial.rds&quot;)
+
+# Resultados del modelo
+mod_svmR</code></pre>
+<pre><code>
+Support Vector Machines with Radial Basis Function Kernel 
+
+12530 samples
+    8 predictor
+    2 classes: &#39;0&#39;, &#39;1&#39; 
+
+No pre-processing
+Resampling: Bootstrapped (25 reps) 
+Summary of sample sizes: 12530, 12530, 12530, 12530, 12530, 12530, ... 
+Resampling results across tuning parameters:
+
+  C     Accuracy   Kappa    
+  0.25  0.9785764  0.8629191
+  0.50  0.9785329  0.8635606
+  1.00  0.9787235  0.8654589
+
+Tuning parameter &#39;sigma&#39; was held constant at a value of 0.4893064
+Accuracy was used to select the optimal model using the
+ largest value.
+The final values used for the model were sigma = 0.4893064 and C = 1.</code></pre>
+</div>
+<h3 id="desempeño-1">Desempeño</h3>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+predict_svmR &lt;- predict(object = mod_svmR, newdata = df_test)
+confusionMatrix(predict_svmR, df_test$pulsar, positive = &quot;1&quot;)</code></pre>
+<pre><code>
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    0    1
+         0 4852   95
+         1   25  396
+                                          
+               Accuracy : 0.9776          
+                 95% CI : (0.9733, 0.9814)
+    No Information Rate : 0.9085          
+    P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+                                          
+                  Kappa : 0.8563          
+                                          
+ Mcnemar&#39;s Test P-Value : 2.999e-10       
+                                          
+            Sensitivity : 0.80652         
+            Specificity : 0.99487         
+         Pos Pred Value : 0.94062         
+         Neg Pred Value : 0.98080         
+             Prevalence : 0.09147         
+         Detection Rate : 0.07377         
+   Detection Prevalence : 0.07843         
+      Balanced Accuracy : 0.90070         
+                                          
+       &#39;Positive&#39; Class : 1               
+                                          </code></pre>
+</div>
+<h2 id="comparación-de-modelos">Comparación de modelos</h2>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+mod_svmR$resample %&gt;% 
+  select(-Resample) %&gt;% 
+  mutate(Modelo = &quot;SVM&quot;) %&gt;% 
+  bind_rows(mod_rf$resample) %&gt;% 
+  select(-Resample) %&gt;% 
+  replace_na(list(Modelo = &quot;Random Forest&quot;)) %&gt;% 
+  gather(key = &quot;Medida&quot;, value = &quot;Valor&quot;, -Modelo) %&gt;% 
+  ggplot(data = ., aes(x = Modelo, y = Valor, fill = Modelo)) +
+  facet_wrap(~Medida, scales = &quot;free&quot;, ncol = 2) +
+  geom_violin(alpha = 0.9) +
+  stat_summary(fun = mean, geom = &quot;point&quot;, pch = 19) +
+  labs(y = &quot;&quot;, title = &quot;Comparación de modelos&quot;,
+       subtitle = &quot;Predicción de estrellas púlsar&quot;) +
+  scale_fill_manual(values =  c(&quot;#790222&quot;, &quot;#033660&quot;)) +
+  mi_temagg +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<p><img src="caret_R_files/figure-html5/unnamed-chunk-14-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

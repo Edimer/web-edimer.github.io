@@ -2,7 +2,7 @@
   {
     "path": "posts/caret_R/",
     "title": "ML con caret en R (1)",
-    "description": "Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest, support vector machine y red neuronal en problemas de clasificación y regresión.",
+    "description": "Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest y support vector machine en problemas de clasificación supervisada.",
     "author": [
       {
         "name": "Edimer David Jaramillo",
@@ -16,7 +16,7 @@
       "ML"
     ],
     "preview": "posts/caret_R/img1.png",
-    "last_modified": "2020-03-23T01:31:16-05:00"
+    "last_modified": "2020-03-23T05:12:37-05:00"
   },
   {
     "path": "posts/Tidymodels_R/",

@@ -30,3 +30,10 @@ knitr::opts_chunk$set(echo = FALSE)
 <center>
 <img src="coming.gif"/>
 </center>
+
+# Datos
+
+- https://www.kaggle.com/pavanraj159/predicting-a-pulsar-star#pulsar_stars.csv
+- https://www.kaggle.com/mirichoi0218/insurance
+https://www.kaggle.com/rubenssjr/brasilian-houses-to-rent
+https://www.kaggle.com/mlg-ulb/creditcardfraud

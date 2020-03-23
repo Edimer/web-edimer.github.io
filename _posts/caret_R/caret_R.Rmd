@@ -24,16 +24,22 @@ knitr::opts_chunk$set(echo = FALSE)
 # Learn more about creating blogs with Distill at:
 # https://rstudio.github.io/distill/blog.html
 
+# Bibliotecas
+library(tidyverse)
+library(caret)
+library(RColorBrewer)
 ```
-
-
-<center>
-<img src="coming.gif"/>
-</center>
 
 # Datos
 
-- https://www.kaggle.com/pavanraj159/predicting-a-pulsar-star#pulsar_stars.csv
-- https://www.kaggle.com/mirichoi0218/insurance
-https://www.kaggle.com/rubenssjr/brasilian-houses-to-rent
-https://www.kaggle.com/mlg-ulb/creditcardfraud
+- [Fuente: predicción de estrellas púlsar.](https://www.kaggle.com/pavanraj159/predicting-a-pulsar-star#pulsar_stars.csv)
+- [¿Qué es un púlsar?](https://es.wikipedia.org/wiki/P%C3%BAlsar)
+
+## Problema
+
+- **Descripción:** a través de emisiones de radio detectables en nuestro planeta, los científicos perfilan los púlsares en función de múltiples métricas provenientes del análisis de señales; el ruido causado por interferencia de radiofrecuencia dificulta la labor de los investigadores. Se propone generar un sistema automático proporcione alta precisión en detectar estrellas **púlsar**. ([ver más información](https://archive.ics.uci.edu/ml/datasets/HTRU2))
+- **Tipo de aprendizaje:** Aprendizaje Supervisado - Clasificación Binaria.
+- Algoritmos:
+    - [Random Forest](https://es.wikipedia.org/wiki/Random_forest)
+    - [Support Vector Machine](https://es.wikipedia.org/wiki/M%C3%A1quinas_de_vectores_de_soporte)
+    - [Red Neuronal (Perceptrón Multicapa - MLP)](https://es.wikipedia.org/wiki/Perceptr%C3%B3n_multicapa)

@@ -1,5 +1,24 @@
 [
   {
+    "path": "posts/caret_R/",
+    "title": "ML con caret en R (1)",
+    "description": "Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest, support vector machine y red neuronal en problemas de clasificación y regresión.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-03-23",
+    "categories": [
+      "R",
+      "caret",
+      "ML"
+    ],
+    "preview": "posts/caret_R/img1.png",
+    "last_modified": "2020-03-23T00:56:26-05:00"
+  },
+  {
     "path": "posts/Tidymodels_R/",
     "title": "Machine Learning con tidymodels en R",
     "description": "Algoritmos de machine learning supervisado con tidymodels y R. Entranamiento de modelos en problemas de clasificación y regresión.",
@@ -17,25 +36,6 @@
     ],
     "preview": "posts/Tidymodels_R/prueba.jpg",
     "last_modified": "2020-02-03T07:44:47-05:00"
-  },
-  {
-    "path": "posts/caret_R/",
-    "title": "ML con caret en R (1)",
-    "description": "Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest, support vector machine y red neuronal en problemas de clasificación y regresión.",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-21",
-    "categories": [
-      "R",
-      "caret",
-      "ML"
-    ],
-    "preview": "posts/caret_R/img1.png",
-    "last_modified": "2020-03-23T00:50:03-05:00"
   },
   {
     "path": "posts/ELearning_R/",

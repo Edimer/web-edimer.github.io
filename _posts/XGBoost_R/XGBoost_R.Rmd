@@ -1,7 +1,7 @@
 ---
 title: "XGBoost: R+H2o"
-description: |
-  Algortimo XGBoost en clasificación binaria y multiclase con R. Comparación de implementación con H2o+R y biblioteca xgboost.
+description: 
+  Algortimo XGBoost en clasificación binaria y multiclase. Comparación de implementación con H2o+R y biblioteca xgboost.
 preview: img2.png  
 author:
   - name: Edimer David Jaramillo

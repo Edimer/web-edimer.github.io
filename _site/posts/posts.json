@@ -2,7 +2,7 @@
   {
     "path": "posts/XGBoost_R/",
     "title": "XGBoost: R+H2o",
-    "description": "Algortimo XGBoost en clasificación binaria y multiclase con R. Comparación de implementación con H2o+R y biblioteca xgboost.",
+    "description": "Algortimo XGBoost en clasificación binaria y multiclase. Comparación de implementación con H2o+R y biblioteca xgboost.",
     "author": [
       {
         "name": "Edimer David Jaramillo",
@@ -16,7 +16,7 @@
       "Gradient Boosting"
     ],
     "preview": "posts/XGBoost_R/img2.png",
-    "last_modified": "2020-04-19T23:43:18-05:00"
+    "last_modified": "2020-04-19T23:45:18-05:00"
   },
   {
     "path": "posts/LGBM_Py/",

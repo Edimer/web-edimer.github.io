@@ -38,6 +38,25 @@
     "last_modified": "2020-04-19T23:43:12-05:00"
   },
   {
+    "path": "posts/catBoost_r/",
+    "title": "catBoost en R y Python",
+    "description": "Algortimo catBoost con R y Python. Ejemplo en problemas de regresión y clasificación.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-04-19",
+    "categories": [
+      "R",
+      "xgboost",
+      "Gradient Boosting"
+    ],
+    "preview": "posts/catBoost_r/img2.png",
+    "last_modified": "2020-04-20T00:16:56-05:00"
+  },
+  {
     "path": "posts/caret_R/",
     "title": "ML con caret en R (1)",
     "description": "Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest y support vector machine en problemas de clasificación supervisada.",
@@ -185,7 +204,7 @@
       "mlr3"
     ],
     "preview": "posts/mlr3_R/img1.png",
-    "last_modified": "2020-02-10T15:34:17-05:00"
+    "last_modified": "2020-04-20T00:21:06-05:00"
   },
   {
     "path": "posts/RandomF_R_Py/",

@@ -1,8 +1,8 @@
 ---
-title: "LightGBM Python"
+title: "XGBoost: R+H2o"
 description: |
-  Ejemplo aplicado del algoritmo LightGBM (Microsoft) con python, en problemas de clasificación y regresión. 
-preview: img1.png  
+  Algortimo XGBoost en clasificación binaria y multiclase con R. Comparación de implementación con H2o+R y biblioteca xgboost.
+preview: img2.png  
 author:
   - name: Edimer David Jaramillo
     url: https://edimer.github.io/
@@ -10,8 +10,8 @@ author:
     affiliation_url: https://edimer.github.io/
 date: 04-19-2020
 categories:
-  - Py
-  - lightgbm
+  - R
+  - xgboost
   - Gradient Boosting
 output:
   distill::distill_article:

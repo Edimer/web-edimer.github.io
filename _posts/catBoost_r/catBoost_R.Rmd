@@ -1,7 +1,7 @@
 ---
-title: "catBoost en R y Python"
+title: "CatBoost en R y Python"
 description: 
-  Algortimo catBoost con R y Python. Ejemplo en problemas de regresión y clasificación.
+  Algortimo CatBoost con R y Python. Ejemplo en problemas de regresión y clasificación.
 preview: img2.png  
 author:
   - name: Edimer David Jaramillo

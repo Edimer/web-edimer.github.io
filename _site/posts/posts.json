@@ -39,8 +39,8 @@
   },
   {
     "path": "posts/catBoost_r/",
-    "title": "catBoost en R y Python",
-    "description": "Algortimo catBoost con R y Python. Ejemplo en problemas de regresión y clasificación.",
+    "title": "CatBoost en R y Python",
+    "description": "Algortimo CatBoost con R y Python. Ejemplo en problemas de regresión y clasificación.",
     "author": [
       {
         "name": "Edimer David Jaramillo",
@@ -54,7 +54,7 @@
       "Gradient Boosting"
     ],
     "preview": "posts/catBoost_r/img2.png",
-    "last_modified": "2020-04-20T00:16:56-05:00"
+    "last_modified": "2020-04-20T00:24:20-05:00"
   },
   {
     "path": "posts/caret_R/",

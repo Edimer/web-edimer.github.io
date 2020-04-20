@@ -1,5 +1,23 @@
 [
   {
+    "path": "posts/LGBM_Py/",
+    "title": "LightGBM Python",
+    "description": "Ejemplo aplicado del algoritmo LightGBM (Microsoft) con python, en problemas de clasificación y regresión. Comparación de XGBoost, catBoost y LightGBM.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-10-04",
+    "categories": [
+      "Py",
+      "Gradient Boosting"
+    ],
+    "preview": "posts/LGBM_Py/img1.png",
+    "last_modified": "2020-04-19T23:15:55-05:00"
+  },
+  {
     "path": "posts/caret_R/",
     "title": "ML con caret en R (1)",
     "description": "Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest y support vector machine en problemas de clasificación supervisada.",

@@ -1,7 +1,7 @@
 ---
 title: "Información"
 description: |
-  Este blog contiene tutoriales cortos de *Statistical Learning* y *Machine Learning* con R y Python. Sirve al propósito de brindar recursos de información en **español** acerca de aplicaciones estadísticas con ambos lenguajes de programación.
+  Este blog contiene tutoriales cortos de *Statistical Learning* y *Machine Learning* con R y Python. Sirve al propósito de brindar recursos de información en **español** acerca de aplicaciones estadísticas e inteligencia artificial con ambos lenguajes de programación.
 ---
 
 ```{r setup, include=FALSE}

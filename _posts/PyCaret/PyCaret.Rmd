@@ -2,7 +2,7 @@
 title: "PyCaret"
 description: |
   Algoritmos de machine learning con la nueva (lanzamiento en marzo de 2020) herramienta PyCaret. 
-preview: img1.png  
+preview: img2.png  
 author:
   - name: Edimer David Jaramillo
     url: https://edimer.github.io/
@@ -24,7 +24,6 @@ knitr::opts_chunk$set(echo = FALSE)
 # https://rstudio.github.io/distill/blog.html
 
 ```
-
 
 <center>
 <img src="coming.gif"/>

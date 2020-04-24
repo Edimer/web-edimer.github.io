@@ -1,5 +1,23 @@
 [
   {
+    "path": "posts/PyCaret/",
+    "title": "PyCaret",
+    "description": "Algoritmos de machine learning con la nueva (lanzamiento en marzo de 2020) herramienta PyCaret.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-04-24",
+    "categories": [
+      "Py",
+      "ML"
+    ],
+    "preview": "posts/PyCaret/img2.png",
+    "last_modified": "2020-04-24T13:03:54-05:00"
+  },
+  {
     "path": "posts/XGBoost_R/",
     "title": "XGBoost: R+H2o",
     "description": "Algortimo XGBoost en clasificación binaria y multiclase. Comparación de implementación con H2o+R y biblioteca xgboost.",

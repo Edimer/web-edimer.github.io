@@ -169,7 +169,7 @@ ggpubr::ggarrange(
 
 - Se utiliza el método `ranger`.
 - Los argumentos se han dejado como están por defecto.
-- [Referencia de algorito random forest con caret.](http://topepo.github.io/caret/train-models-by-tag.html#random-forest)
+- [Referencia de algoritmo random forest con caret.](http://topepo.github.io/caret/train-models-by-tag.html#random-forest)
 - En este caso particular se usa el método `ranger` que permite ajustar tres hiperparámetros:
     - `mtry`: número de predictores seleccionados.
     - `splitrule`: criterio de división. En problemas de clasificación se suele utilizar `Gini`, aunque hay más disponibles. [Ver documentación de `ranger`.](https://cran.r-project.org/web/packages/ranger/ranger.pdf)

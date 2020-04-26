@@ -1,19 +1,17 @@
 ---
-title: "Tidymodels en R: Clasificación"
-description: | 
-  Algoritmos de machine learning supervisado con tidymodels y R. Entranamiento de modelos en problema de clasificación. Replicación de estudio publicado en Plos One.
-  
-preview: img1.jpg  
+title: "Gradient Boosting con R"
+description: |
+  Ejemplo de uso de algoritmo Gradient Boosting con R en machine learning supervisado para clasificación.
+preview: img1.png   
 author:
   - name: Edimer David Jaramillo
     url: https://edimer.github.io/
     affiliation: R+Py
     affiliation_url: https://edimer.github.io/
-date: 04-24-2020
+date: 04-26-2020
 categories:
   - R
-  - Tidymodels
-  - ML
+  - GBM
 output:
   distill::distill_article:
     self_contained: false
@@ -27,9 +25,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
-# Generalidades
 
-- 
-
-
-
+<center>
+<img src="coming.gif"/>
+</center>

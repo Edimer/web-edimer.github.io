@@ -1,5 +1,23 @@
 [
   {
+    "path": "posts/GBM_R/",
+    "title": "Gradient Boosting con R",
+    "description": "Ejemplo de uso de algoritmo Gradient Boosting con R en machine learning supervisado para clasificación.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-04-26",
+    "categories": [
+      "R",
+      "GBM"
+    ],
+    "preview": "posts/GBM_R/img1.png",
+    "last_modified": "2020-04-26T12:34:07-05:00"
+  },
+  {
     "path": "posts/PyCaret/",
     "title": "PyCaret",
     "description": "Algoritmos de machine learning con la nueva (lanzamiento en marzo de 2020) herramienta PyCaret.",
@@ -34,7 +52,7 @@
       "ML"
     ],
     "preview": "posts/Tidymodels_R/img1.jpg",
-    "last_modified": "2020-04-26T02:15:19-05:00"
+    "last_modified": "2020-04-26T02:28:12-05:00"
   },
   {
     "path": "posts/XGBoost_R/",

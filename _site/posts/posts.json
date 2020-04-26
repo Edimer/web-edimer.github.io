@@ -18,6 +18,25 @@
     "last_modified": "2020-04-24T13:08:39-05:00"
   },
   {
+    "path": "posts/Tidymodels_R/",
+    "title": "Tidymodels en R: Regresión",
+    "description": "Algoritmos de machine learning supervisado con tidymodels y R. Entranamiento de modelos en problema de clasificación. Replicación de estudio publicado en Plos One.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-04-24",
+    "categories": [
+      "R",
+      "Tidymodels",
+      "ML"
+    ],
+    "preview": "posts/Tidymodels_R/img1.jpg",
+    "last_modified": "2020-04-26T02:14:12-05:00"
+  },
+  {
     "path": "posts/XGBoost_R/",
     "title": "XGBoost: R+H2o",
     "description": "Algortimo XGBoost en clasificación binaria y multiclase. Comparación de implementación con H2o+R y biblioteca xgboost.",
@@ -91,26 +110,7 @@
       "ML"
     ],
     "preview": "posts/caret_R/img1.png",
-    "last_modified": "2020-03-23T05:12:37-05:00"
-  },
-  {
-    "path": "posts/Tidymodels_R/",
-    "title": "Machine Learning con tidymodels en R",
-    "description": "Algoritmos de machine learning supervisado con tidymodels y R. Entranamiento de modelos en problemas de clasificación y regresión.",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-27",
-    "categories": [
-      "R",
-      "Tidymodels",
-      "ML"
-    ],
-    "preview": "posts/Tidymodels_R/prueba.jpg",
-    "last_modified": "2020-02-03T07:44:47-05:00"
+    "last_modified": "2020-04-24T17:41:58-05:00"
   },
   {
     "path": "posts/ELearning_R/",

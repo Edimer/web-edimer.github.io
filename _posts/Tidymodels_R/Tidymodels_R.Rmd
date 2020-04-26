@@ -1,15 +1,15 @@
 ---
-title: "Machine Learning con tidymodels en R"
+title: "Tidymodels en R: Regresión"
 description: | 
-  Algoritmos de machine learning supervisado con tidymodels y R. Entranamiento de modelos en problemas de clasificación y regresión.
+  Algoritmos de machine learning supervisado con tidymodels y R. Entranamiento de modelos en problema de clasificación. Replicación de estudio publicado en Plos One.
   
-preview: prueba.jpg  
+preview: img1.jpg  
 author:
   - name: Edimer David Jaramillo
     url: https://edimer.github.io/
     affiliation: R+Py
     affiliation_url: https://edimer.github.io/
-date: 01-27-2020
+date: 04-24-2020
 categories:
   - R
   - Tidymodels
@@ -27,7 +27,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
+# Generalidades
 
-<center>
-<img src="coming.gif"/>
-</center>
+- 
+
+
+# Regresión

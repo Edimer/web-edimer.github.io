@@ -1,5 +1,5 @@
 ---
-title: "Tidymodels en R: Regresión"
+title: "Tidymodels en R: Clasificación"
 description: | 
   Algoritmos de machine learning supervisado con tidymodels y R. Entranamiento de modelos en problema de clasificación. Replicación de estudio publicado en Plos One.
   

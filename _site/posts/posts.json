@@ -19,7 +19,7 @@
   },
   {
     "path": "posts/Tidymodels_R/",
-    "title": "Tidymodels en R: Regresión",
+    "title": "Tidymodels en R: Clasificación",
     "description": "Algoritmos de machine learning supervisado con tidymodels y R. Entranamiento de modelos en problema de clasificación. Replicación de estudio publicado en Plos One.",
     "author": [
       {
@@ -34,7 +34,7 @@
       "ML"
     ],
     "preview": "posts/Tidymodels_R/img1.jpg",
-    "last_modified": "2020-04-26T02:14:12-05:00"
+    "last_modified": "2020-04-26T02:15:19-05:00"
   },
   {
     "path": "posts/XGBoost_R/",

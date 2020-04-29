@@ -1,5 +1,23 @@
 [
   {
+    "path": "posts/TextMining_R/",
+    "title": "Minería de texto con R",
+    "description": "Algortimos de machine learning para clasificación de texto.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-04-29",
+    "categories": [
+      "R",
+      "Text Mining"
+    ],
+    "preview": "posts/TextMining_R/img2.png",
+    "last_modified": "2020-04-29T08:53:45-05:00"
+  },
+  {
     "path": "posts/GBM_R/",
     "title": "Gradient Boosting con R",
     "description": "Ejemplo de uso de algoritmo Gradient Boosting con R en machine learning supervisado para clasificación.",

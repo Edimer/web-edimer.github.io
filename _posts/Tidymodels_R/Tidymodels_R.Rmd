@@ -2,7 +2,6 @@
 title: "Tidymodels en R: Clasificación"
 description: | 
   Algoritmos de machine learning supervisado con tidymodels y R. Entranamiento de modelos en problema de clasificación. Replicación de estudio publicado en Plos One.
-  
 preview: img1.jpg  
 author:
   - name: Edimer David Jaramillo

@@ -28,7 +28,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Generalidades
 
-- 
+- [Artículo Plos One](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0213829#sec013)
 
 
 

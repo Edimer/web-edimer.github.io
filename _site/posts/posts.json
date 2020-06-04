@@ -1,5 +1,26 @@
 [
   {
+    "path": "posts/BERT_Text/",
+    "title": "BERT con R y Python",
+    "description": "Ejemplo de uso de TensorFlow con R y Python para procesamiento de texto con algoritmo BERT de Google.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-06-04",
+    "categories": [
+      "R",
+      "Py",
+      "TensorFlow",
+      "ML",
+      "Text Mining"
+    ],
+    "preview": "posts/BERT_Text/bert2.png",
+    "last_modified": "2020-06-04T17:03:53-05:00"
+  },
+  {
     "path": "posts/TextMining_R/",
     "title": "Minería de texto con R",
     "description": "Algortimos de machine learning para clasificación de texto.",
@@ -388,27 +409,6 @@
     ],
     "preview": "posts/TreeD_R/img1.png",
     "last_modified": "2020-02-10T15:28:42-05:00"
-  },
-  {
-    "path": "posts/BERT_Text/",
-    "title": "BERT con R y Python",
-    "description": "Ejemplo de uso de TensorFlow con R y Python para procesamiento de texto con algoritmo BERT de Google.",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-21",
-    "categories": [
-      "R",
-      "Py",
-      "TensorFlow",
-      "ML",
-      "Text Mining"
-    ],
-    "preview": "posts/BERT_Text/googlebert.jpg",
-    "last_modified": "2020-06-04T16:57:51-05:00"
   },
   {
     "path": "posts/py_r_1/",

@@ -2,13 +2,13 @@
 title: "BERT con R y Python"
 description: |
   Ejemplo de uso de TensorFlow con R y Python para procesamiento de texto con algoritmo BERT de Google.
-preview: googlebert.jpg  
+preview: bert2.png  
 author:
   - name: Edimer David Jaramillo
     url: https://edimer.github.io/
     affiliation: R+Py
     affiliation_url: https://edimer.github.io/
-date: 01-21-2020
+date: 06-04-2020
 categories:
   - R
   - Py

@@ -147,8 +147,12 @@ summary(myAnova)
 
 ## Generalidades
 
+<center>
+<img src = "www/img4.png" />
+</center>
+
 - Los árboles de decisión se pueden utilizar para problemas de regresión y clasificación.
-- Se pueden definir como una estructura jerárquica que busca particionar el espacio de características e identificar centroides representativos. Desde la parte superior a inferior cada árbol tiene *nodo raíz*, *nodos de decisión o internos* y *nodos hojas o terminales*, los dos primeros  se generan con base en reglas  binarias. En árboles de clasficación es necesario medir la **impureza** de una región específica que contiene datos de diferentes clases, por ejemplo, "bueno" o "malo". 
+- Se pueden definir como una estructura jerárquica que busca particionar el espacio de características e identificar subconjuntos representativos. Desde la parte superior a inferior cada árbol tiene *nodo raíz*, *nodos de decisión o internos* y *nodos hojas o terminales*, los dos primeros  se generan con base en reglas  binarias. Mayor grado de pureza es la recompensa que busca el algoritmo al particionar el espacio inicial en subregiones, en ese orden de ideas el objetivo siempre será particionar los datos en nodos que sean lo más puros posibles, sin embargo, matemáticamente es más fácil medir la **impureza** de una región específica, proporcionando una idea de qué tan heterogéneas son las clases en ese nodo; una métrica de uso común en problemas de clasificación para medir la impureza es el **índice GINI**, donde valores bajos indican mayor grado de pureza. Además del índice GINI también es posible utilizar otras métricas como la **ganancia de información** o la **entropía**.
 - **Ventajas:**
     - Fácil de interpretar (sujeto a la profundidad).
     - No requieren estandarización o normalización de variables predictoras numéricas.
@@ -159,7 +163,10 @@ summary(myAnova)
 - **Desventajas:**
     - Si no se controla adecuadamente la profundidad del árbol existe alta probabilidad de incurrir en [*sobreajuste (overfitting)*.](https://es.wikipedia.org/wiki/Sobreajuste)
     - Alta varianza, pequeños cambios en los datos pueden arrojar resultados muy diferentes.
-- **Hiperparámetros:**
+- **Hiperparámetros:** aunque ejecutar la función `rpart()` con valores predeterminados puede ser una buena estrategia para iniciar, siempre estaremos interesados en ajustar determinados parámetros que nos permitan obtener mejor rendimiento predictivo. La función `rpart.control()` permite controlar manualmente otras opciones. Dentro los hiperparámetros más importantes en árboles de decisión están los siguientes: 
+    - Mínimo número de observaciones para generar una partición. En la biblioteca `rpart` lleva el nombre de `minsplit` y su valor por defecto es 20.
+    - Máxima profundiad del árbol. En la biblioteca `rpart` lleva el nombre de `maxdepth` y su valor predeterminado es 30. Este parámetro es de alta relevancia para evitar el sobreajuste.
+    - Parámetro de complejidad. En la biblioteca `rpart` lleva el nombre de `cp` y su valor por defecto es 0.01. Este parámetro sirve al propósito de penalizar y contolar el tamaño del árbol, valores bajos indican árboles de mayor complejidad, es decir, mayor número de divisiones. La función `rpart()` internamente ejecuta [validación cruzada](https://es.wikipedia.org/wiki/Validaci%C3%B3n_cruzada) 10 veces para estimar el valor óptimo de **cp**, es posible acceder a dicho resultado a través de la función `plotcp()` que permitirá facilmente determinar el valor adecuado para este parámetro. Cuando se tiene el valor óptimo de **cp** será posible "podar" el árbol para que el modelo sea optimizado, dicho resultado es posible a través de la función `prune()`.
 
 ## Train - Test
 
@@ -194,6 +201,33 @@ predichos_mod0 <- predict(object = modArbol0, newdata = dataTest, type = "class"
 confusionMatrix(data = predichos_mod0, reference = as.factor(dataTest$class),
                 positive = "good")
 ```
+
+- **Parámetro de complejidad (CP):**
+
+```{r}
+plotcp(modArbol0)
+```
+
+- **"Podando" el árbol:** se elige el valor de cp = 0.025 por mostrar mejores resultados (bajo error).
+
+```{r}
+modArbol0_prune <- prune(tree = modArbol0, cp = 0.025)
+modArbol0_prune
+```
+- **Gráfico de árbol "podado":**
+
+```{r, fig.height=5}
+rpart.plot(modArbol0_prune)
+```
+
+- **Matriz de confusión árbol "podado":** respecto al árbol sin podar, la diferncia en precisión es muy pequeña (<0.01), sin embargo, la especificidad se aumenta de 0.3444 a 0.4556 con la "poda", aunque la sensitividad haya reducido de 0.8762 a 0.8381.
+
+```{r}
+predichos_mod0_prune <- predict(object = modArbol0_prune, newdata = dataTest, type = "class")
+confusionMatrix(data = predichos_mod0_prune, reference = as.factor(dataTest$class),
+                positive = "good")
+```
+
 
 ## Tuning con caret
 

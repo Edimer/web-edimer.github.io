@@ -51,7 +51,7 @@
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data/dataset_31_credit-g.csv","img1.png","TreeD_R_files/bowser-1.9.3/bowser.min.js","TreeD_R_files/distill-2.2.21/template.v2.js","TreeD_R_files/figure-html5/unnamed-chunk-10-1.png","TreeD_R_files/figure-html5/unnamed-chunk-4-1.png","TreeD_R_files/figure-html5/unnamed-chunk-5-1.png","TreeD_R_files/figure-html5/unnamed-chunk-6-1.png","TreeD_R_files/figure-html5/unnamed-chunk-9-1.png","TreeD_R_files/jquery-1.11.3/jquery.min.js","TreeD_R_files/webcomponents-2.0.0/webcomponents.js","www/img1.PNG","www/img2.PNG","www/img3.PNG"]}
+  {"type":"character","attributes":{},"value":["data/dataset_31_credit-g.csv","img1.png","TreeD_R_files/bowser-1.9.3/bowser.min.js","TreeD_R_files/distill-2.2.21/template.v2.js","TreeD_R_files/figure-html5/unnamed-chunk-10-1.png","TreeD_R_files/figure-html5/unnamed-chunk-12-1.png","TreeD_R_files/figure-html5/unnamed-chunk-14-1.png","TreeD_R_files/figure-html5/unnamed-chunk-4-1.png","TreeD_R_files/figure-html5/unnamed-chunk-5-1.png","TreeD_R_files/figure-html5/unnamed-chunk-6-1.png","TreeD_R_files/figure-html5/unnamed-chunk-9-1.png","TreeD_R_files/jquery-1.11.3/jquery.min.js","TreeD_R_files/webcomponents-2.0.0/webcomponents.js","www/img1.PNG","www/img2.PNG","www/img3.PNG","www/img4.PNG"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 
@@ -1486,9 +1486,12 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <img src = "www/img3.PNG" />
 </center>
 <h2 id="generalidades">Generalidades</h2>
+<center>
+<img src = "www/img4.PNG" />
+</center>
 <ul>
 <li>Los árboles de decisión se pueden utilizar para problemas de regresión y clasificación.</li>
-<li>Se pueden definir como una estructura jerárquica que busca particionar el espacio de características e identificar centroides representativos. Desde la parte superior a inferior cada árbol tiene <em>nodo raíz</em>, <em>nodos de decisión o internos</em> y <em>nodos hojas o terminales</em>, los dos primeros se generan con base en reglas binarias. En árboles de clasficación es necesario medir la <strong>impureza</strong> de una región específica que contiene datos de diferentes clases, por ejemplo, “bueno” o “malo”.</li>
+<li>Se pueden definir como una estructura jerárquica que busca particionar el espacio de características e identificar subconjuntos representativos. Desde la parte superior a inferior cada árbol tiene <em>nodo raíz</em>, <em>nodos de decisión o internos</em> y <em>nodos hojas o terminales</em>, los dos primeros se generan con base en reglas binarias. Mayor grado de pureza es la recompensa que busca el algoritmo al particionar el espacio inicial en subregiones, en ese orden de ideas el objetivo siempre será particionar los datos en nodos que sean lo más puros posibles, sin embargo, matemáticamente es más fácil medir la <strong>impureza</strong> de una región específica, proporcionando una idea de qué tan heterogéneas son las clases en ese nodo; una métrica de uso común en problemas de clasificación para medir la impureza es el <strong>índice GINI</strong>, donde valores bajos indican mayor grado de pureza. Además del índice GINI también es posible utilizar otras métricas como la <strong>ganancia de información</strong> o la <strong>entropía</strong>.</li>
 <li><strong>Ventajas:</strong>
 <ul>
 <li>Fácil de interpretar (sujeto a la profundidad).</li>
@@ -1503,7 +1506,12 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <li>Si no se controla adecuadamente la profundidad del árbol existe alta probabilidad de incurrir en <a href="https://es.wikipedia.org/wiki/Sobreajuste"><em>sobreajuste (overfitting)</em>.</a></li>
 <li>Alta varianza, pequeños cambios en los datos pueden arrojar resultados muy diferentes.</li>
 </ul></li>
-<li><strong>Hiperparámetros:</strong></li>
+<li><strong>Hiperparámetros:</strong> aunque ejecutar la función <code>rpart()</code> con valores predeterminados puede ser una buena estrategia para iniciar, siempre estaremos interesados en ajustar determinados parámetros que nos permitan obtener mejor rendimiento predictivo. La función <code>rpart.control()</code> permite controlar manualmente otras opciones. Dentro los hiperparámetros más importantes en árboles de decisión están los siguientes:
+<ul>
+<li>Mínimo número de observaciones para generar una partición. En la biblioteca <code>rpart</code> lleva el nombre de <code>minsplit</code> y su valor por defecto es 20.</li>
+<li>Máxima profundiad del árbol. En la biblioteca <code>rpart</code> lleva el nombre de <code>maxdepth</code> y su valor predeterminado es 30. Este parámetro es de alta relevancia para evitar el sobreajuste.</li>
+<li>Parámetro de complejidad. En la biblioteca <code>rpart</code> lleva el nombre de <code>cp</code> y su valor por defecto es 0.01. Este parámetro sirve al propósito de penalizar y contolar el tamaño del árbol, valores bajos indican árboles de mayor complejidad, es decir, mayor número de divisiones. La función <code>rpart()</code> internamente ejecuta <a href="https://es.wikipedia.org/wiki/Validaci%C3%B3n_cruzada">validación cruzada</a> 10 veces para estimar el valor óptimo de <strong>cp</strong>, es posible acceder a dicho resultado a través de la función <code>plotcp()</code> que permitirá facilmente determinar el valor adecuado para este parámetro. Cuando se tiene el valor óptimo de <strong>cp</strong> será posible “podar” el árbol para que el modelo sea optimizado, dicho resultado es posible a través de la función <code>prune()</code>.</li>
+</ul></li>
 </ul>
 <h2 id="train---test">Train - Test</h2>
 <ul>
@@ -1596,6 +1604,84 @@ Prediction bad good
                                         
        &#39;Positive&#39; Class : good          
                                         </code></pre>
+</div>
+<ul>
+<li><strong>Parámetro de complejidad (CP):</strong></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+plotcp(modArbol0)</code></pre>
+<p><img src="TreeD_R_files/figure-html5/unnamed-chunk-12-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+<ul>
+<li><strong>“Podando” el árbol:</strong> se elige el valor de cp = 0.025 por mostrar mejores resultados (bajo error).</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+modArbol0_prune &lt;- prune(tree = modArbol0, cp = 0.025)
+modArbol0_prune</code></pre>
+<pre><code>
+n= 700 
+
+node), split, n, loss, yval, (yprob)
+      * denotes terminal node
+
+ 1) root 700 210 good (0.3000000 0.7000000)  
+   2) checking_status=&lt;0,0&lt;=X&lt;200 385 168 good (0.4363636 0.5636364)  
+     4) credit_history=all paid,no credits/all paid 51  14 bad (0.7254902 0.2745098) *
+     5) credit_history=critical/other existing credit,delayed previously,existing paid 334 131 good (0.3922156 0.6077844)  
+      10) duration&gt;=27.5 77  30 bad (0.6103896 0.3896104) *
+      11) duration&lt; 27.5 257  84 good (0.3268482 0.6731518)  
+        22) purpose=domestic appliance,education,new car,retraining 83  41 good (0.4939759 0.5060241)  
+          44) age&lt; 35.5 42  13 bad (0.6904762 0.3095238) *
+          45) age&gt;=35.5 41  12 good (0.2926829 0.7073171) *
+        23) purpose=business,furniture/equipment,other,radio/tv,repairs,used car 174  43 good (0.2471264 0.7528736) *
+   3) checking_status=&gt;=200,no checking 315  42 good (0.1333333 0.8666667) *</code></pre>
+</div>
+<ul>
+<li><strong>Gráfico de árbol “podado”:</strong></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+rpart.plot(modArbol0_prune)</code></pre>
+<p><img src="TreeD_R_files/figure-html5/unnamed-chunk-14-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+<ul>
+<li><strong>Matriz de confusión árbol “podado”:</strong> respecto al árbol sin podar, la diferncia en precisión es muy pequeña (&lt;0.01), sin embargo, la especificidad se aumenta de 0.3444 a 0.4556 con la “poda”, aunque la sensitividad haya reducido de 0.8762 a 0.8381.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+predichos_mod0_prune &lt;- predict(object = modArbol0_prune, newdata = dataTest, type = &quot;class&quot;)
+confusionMatrix(data = predichos_mod0_prune, reference = as.factor(dataTest$class),
+                positive = &quot;good&quot;)</code></pre>
+<pre><code>
+Confusion Matrix and Statistics
+
+          Reference
+Prediction bad good
+      bad   41   34
+      good  49  176
+                                         
+               Accuracy : 0.7233         
+                 95% CI : (0.669, 0.7732)
+    No Information Rate : 0.7            
+    P-Value [Acc &gt; NIR] : 0.2072         
+                                         
+                  Kappa : 0.3083         
+                                         
+ Mcnemar&#39;s Test P-Value : 0.1244         
+                                         
+            Sensitivity : 0.8381         
+            Specificity : 0.4556         
+         Pos Pred Value : 0.7822         
+         Neg Pred Value : 0.5467         
+             Prevalence : 0.7000         
+         Detection Rate : 0.5867         
+   Detection Prevalence : 0.7500         
+      Balanced Accuracy : 0.6468         
+                                         
+       &#39;Positive&#39; Class : good           
+                                         </code></pre>
 </div>
 <h2 id="tuning-con-caret">Tuning con caret</h2>
 <h1 id="recursos-de-información">Recursos de información</h1>

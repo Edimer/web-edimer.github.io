@@ -1,7 +1,7 @@
 ---
 title: "Árbol de clasificación con R"
 description: |
-  Ejemplo de uso de árboles de decisión con R en machine learning supervisado para clasificación. Usos de la biblioteca rpart y caret.
+  Ejemplo de árboles de decisión en machine learning supervisado para clasificación. Uso de las bibliotecas rpart, rpart.plot y caret en perfilamiento de riesgo crediticio.
 preview: img1.png   
 author:
   - name: Edimer David Jaramillo
@@ -15,6 +15,7 @@ categories:
 output:
   distill::distill_article:
     self_contained: false
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
@@ -28,12 +29,25 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ```
 
+<center>
+<img src = "www/img2.png" />
+</center>
+
+# Contenido
+
+**1.** Información general (requisitos previos, bibliotecas, etc).   
+**2.** Análisis inicial de los datos. Como el objetivo principal del documento es entrenar un modelo de *árbol de decisión* con R, el análisis inicial incluye sólo una parte exploratoria y algunas pruebas estadísticas.   
+**3.** Entrenamiento de modelo por defecto con `rpart`.   
+**4.** Ajuste de hiperparámetros con la biblioteca `caret`.     
+**5.** Comparación de modelos. La métrica para evaluar el desempeño predictivo de los modelos es el [área bajo la curva ROC.](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)          
+**6.** Recursos de información. 
+
 # Requisitos previos
 
 - Instalar las bibliotecas [`rpart`](https://cran.r-project.org/web/packages/rpart/rpart.pdf) y [rpart.plot](https://cran.r-project.org/web/packages/rpart.plot/rpart.plot.pdf) para entrenar y gráficar modelos basados en árboles.
 - Instalar la biblioteca [`caret`.](http://topepo.github.io/caret/index.html)
 - [Descargar datos para ejemplo](https://www.openml.org/d/31) desde la página [openML](https://www.openml.org/). La base de datos proporciona información de personas perfiladas con riesgo crediticio *bueno* o *malo*.
-- **Bibliotecas complementarias:** `ggplot2` para visualizaciones,  `jcolors` para colores de gráficos, `dplyr` para manejo de datos y `Metrics` para métricas de precisión (evaluación de modelos).
+- **Bibliotecas complementarias:** para visualizaciones **`ggplot2`**, **`jcolors`** y **`hrbrthemes`**, para manejo de datos **`dplyr`**  y **`Metrics`** para métricas de error y/o precisión.
 
 # Bibliotecas
 
@@ -41,6 +55,7 @@ knitr::opts_chunk$set(echo = TRUE,
 library(dplyr)
 library(ggplot2)
 library(jcolors)
+library(hrbrthemes)
 library(Metrics)
 library(rpart)
 library(rpart.plot)
@@ -52,19 +67,78 @@ library(caret)
 - Además de la variable respuesta *class*, se cuenta con las siguientes 20 variables.
 
 <center>
-<img src = "www/img1.png" />
+<img src = "www/img1.png" /> 
 </center>
 
 # Datos
 
-- Se importan los datos y se aplica la función `mutate_if()` para eliminar las comillas simples (*''*) que están presentes en las variables tipo texto (`character`).
+- Se importan los datos y se aplica la función `mutate_if()` para eliminar las comillas simples (*''*) que están presentes en las variables tipo texto (`character`). A continuación sólo se muestran 5 variables (columnas) con 10 observaciones. La variable **`class`** es nuestro *target* o *variable respeusta*.
 
 ```{r}
 data <- data.table::fread(file = "data/dataset_31_credit-g.csv") %>% 
   mutate_if(is.character, funs(gsub("'", "", .)))
-head(data[])
+head(data[1:10, c(1, 5, 10, 15, 21)], n = 10L) # Imprimiendo sólo 5 columnas
   
 ```
+
+- **Dimensión de la base de datos:**
+
+```{r}
+dim(data)
+```
+
+# Distribución de variable respuesta
+
+```{r}
+data %>% 
+  ggplot(mapping = aes(x = class, fill = class)) +
+  geom_bar(color = "black") + 
+  scale_fill_manual(values = c("#5A5156", "#F6222E")) +
+  theme_ipsum() +
+  theme(legend.position = "none")
+```
+
+# Exploratorio
+
+- **Distribución de edad por variable objetivo:** se puede apreciar que la edad promedio de los clasificados como *"buenos"* es más alta, además, los clasificados como *"malos"* en su mayoría son personas entre 20 y 30 años de edad.
+
+```{r}
+data %>% 
+  ggplot(mapping = aes(x = class, y = age, fill = class)) +
+  geom_violin() +
+  geom_boxplot(color = "#E4E1E3", width = 0.1, show.legend = FALSE)  +
+  stat_summary(fun.y = mean, color = "#E4E1E3", pch = 17) +
+  scale_fill_manual(values = c("#5A5156", "#F6222E")) +
+  theme_ipsum() +
+  theme(legend.position = "none") +
+  labs(caption = "El triángulo representa el promedio.")
+```
+- **Propósitos de crédito más frecuentes:** la distribución de personas clasificadas como *buenas* o *malas* cuando el propósito es vehículo, discrepa bastante entre la opción de **nuevo** o **usado**. En vehículos usados la gran mayoría son clasificados como "buenos", sin embargo, cuando se trata de vehículos nuevos, la distribución es similar, lo que permite inferir que es más probable que una persona se comporte como mal pagador en créditos para vehículo nuevo respecto a créditos para vehículos usados. También se podría intuir que cuando se trata de créditos para educación es igual de probable que la persona sea clasificada como "bueno" o "malo".
+
+```{r, fig.height=5}
+data %>% 
+  group_by(class, purpose) %>% 
+  count() %>% 
+  ggplot(mapping = aes(x = reorder(purpose, n), y = n, fill = class)) +
+  geom_col(color = "#E4E1E3", position = "dodge") +
+  scale_fill_manual(values = c("#5A5156", "#F6222E")) +
+  labs(x = "Purpose") +
+  theme_ipsum() +
+  theme(legend.position = "top",
+        axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+# Inferencia
+
+- **Análisis de varianza:** en vista de la discrepancia que se observa en la distribución de las edades para personas clasificadas como "buenas" o "malas", realizo el [análisis de varianza](https://es.wikipedia.org/wiki/An%C3%A1lisis_de_la_varianza) para contrastar si dichas diferencias son estadísticamente significativas. **Nota:** aunque nuestra variable respuesta es *class*, en este caso actúa como "predictora" o fuente de variación.
+
+```{r}
+myAnova <- aov(age ~ class, data = data)
+summary(myAnova)
+```
+
+- El resultado de la prueba muestra que existe evidencia estadísticamente significativa (*p=0.00393*) para considerar que la variación de la edad entre ambos grupos es diferente.
+
 
 # Recursos de información
 

@@ -170,6 +170,25 @@
     "last_modified": "2020-04-24T17:41:58-05:00"
   },
   {
+    "path": "posts/TreeD_R/",
+    "title": "Árbol de clasificación con R",
+    "description": "Ejemplo de uso de árboles de decisión con R en machine learning supervisado para clasificación. Usos de la biblioteca rpart y caret.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-01-21",
+    "categories": [
+      "R",
+      "Tree Decision"
+    ],
+    "preview": "posts/TreeD_R/img1.png",
+    "last_modified": "2020-07-17T19:59:59-05:00",
+    "input_file": "TreeD_R.utf8.md"
+  },
+  {
     "path": "posts/ELearning_R/",
     "title": "Ensemble Learning con R",
     "description": "Ejemplo de uso de meta-clasficador con métodos de ensemble learning en R.",
@@ -391,24 +410,6 @@
     ],
     "preview": "posts/TimesSeries_R/img1.png",
     "last_modified": "2020-01-30T15:26:27-05:00"
-  },
-  {
-    "path": "posts/TreeD_R/",
-    "title": "Árbol de Decisión con R",
-    "description": "Ejemplo de uso de árboles de decisión con R en machine learning supervisado para clasificación y regresión. Comparando resultados con las bibliotecas caret, tidymodels y mlr3.",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-21",
-    "categories": [
-      "R",
-      "Tree Decision"
-    ],
-    "preview": "posts/TreeD_R/img1.png",
-    "last_modified": "2020-02-10T15:28:42-05:00"
   },
   {
     "path": "posts/py_r_1/",

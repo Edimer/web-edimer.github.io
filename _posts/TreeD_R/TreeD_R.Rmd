@@ -139,6 +139,43 @@ summary(myAnova)
 
 - El resultado de la prueba muestra que existe evidencia estadísticamente significativa (*p=0.00393*) para considerar que la variación de la edad entre ambos grupos es diferente.
 
+# Árboles de decisión
+
+<center>
+<img src = "www/img3.png" />
+</center>
+
+## Generalidades
+
+- Los árboles de decisión se pueden utilizar para problemas de regresión y clasificación.
+- Se pueden definir como una estructura jerárquica que busca particionar el espacio de características e identificar centroides representativos. Desde la parte superior a inferior cada árbol tiene *nodo raíz*, *nodos de decisión o internos* y *nodos hojas o terminales*, los dos primeros  se generan con base en reglas  binarias. En árboles de clasficación es necesario medir la **impureza** de una región específica que contiene datos de diferentes clases, por ejemplo, "bueno" o "malo". 
+- **Ventajas:**
+    - Fácil de interpretar (sujeto a la profundidad).
+    - No requieren estandarización o normalización de variables predictoras numéricas.
+    - Permiten manipular variables categóricas sin necesidad de aplicar codificaciones tipo *one-hot* o *variables dummy*.
+    - Requieren poco preprocesamiento de datos.
+    - Permiten valores ausentes (`NA`).
+    - Permite relaciones no lineales.
+- **Desventajas:**
+    - Si no se controla adecuadamente la profundidad del árbol existe alta probabilidad de incurrir en [*sobreajuste (overfitting)*.](https://es.wikipedia.org/wiki/Sobreajuste)
+    - Alta varianza, pequeños cambios en los datos pueden arrojar resultados muy diferentes.
+- **Hiperparámetros:**
+
+## `rpart` *default*
+
+- **Ajuste del modelo:** en este caso se utilizan todas las variables predictoras para entrenar el modelo. Al imprimir el objeto que contiene el modelo  podemos observar el conjunto de reglas que dan como resultado la estructura final del árbol.
+
+```{r}
+modArbol0 <- rpart(class ~ ., data = data)
+modArbol0
+```
+- **Gráfico del modelo:** la variable más importante y que da origen al nodo raíz es **`checking_status`**, que hace referencia al estado de la cuenta corriente. La duración del contrato, el estado de la cuenta de ahorros y el propósito del crédito, también son factores determinantes. No tener suficiente capital en cualquiera de las dos cuentas y además solicitar períodos de pago de alta duración, pueden ser características no deseables a la hora de solicitar un crédito.
+
+```{r, fig.width=9, fig.height=8}
+rpart.plot(modArbol0)
+```
+
+## Tuning con caret
 
 # Recursos de información
 

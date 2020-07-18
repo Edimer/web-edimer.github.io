@@ -51,7 +51,7 @@
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data/dataset_31_credit-g.csv","img1.png","TreeD_R_files/bowser-1.9.3/bowser.min.js","TreeD_R_files/distill-2.2.21/template.v2.js","TreeD_R_files/figure-html5/unnamed-chunk-4-1.png","TreeD_R_files/figure-html5/unnamed-chunk-5-1.png","TreeD_R_files/figure-html5/unnamed-chunk-6-1.png","TreeD_R_files/jquery-1.11.3/jquery.min.js","TreeD_R_files/webcomponents-2.0.0/webcomponents.js","www/img1.PNG","www/img2.PNG"]}
+  {"type":"character","attributes":{},"value":["data/dataset_31_credit-g.csv","img1.png","TreeD_R_files/bowser-1.9.3/bowser.min.js","TreeD_R_files/distill-2.2.21/template.v2.js","TreeD_R_files/figure-html5/unnamed-chunk-4-1.png","TreeD_R_files/figure-html5/unnamed-chunk-5-1.png","TreeD_R_files/figure-html5/unnamed-chunk-6-1.png","TreeD_R_files/figure-html5/unnamed-chunk-9-1.png","TreeD_R_files/jquery-1.11.3/jquery.min.js","TreeD_R_files/webcomponents-2.0.0/webcomponents.js","www/img1.PNG","www/img2.PNG","www/img3.PNG"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 
@@ -1341,6 +1341,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <li><a href="#distribución-de-variable-respuesta">Distribución de variable respuesta</a></li>
 <li><a href="#exploratorio">Exploratorio</a></li>
 <li><a href="#inferencia">Inferencia</a></li>
+<li><a href="#árboles-de-decisión">Árboles de decisión</a><ul>
+<li><a href="#generalidades">Generalidades</a></li>
+<li><a href="#rpart-default"><code>rpart</code> <em>default</em></a></li>
+<li><a href="#tuning-con-caret">Tuning con caret</a></li>
+</ul></li>
 <li><a href="#recursos-de-información">Recursos de información</a></li>
 </ul>
 </nav>
@@ -1475,6 +1480,77 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <ul>
 <li>El resultado de la prueba muestra que existe evidencia estadísticamente significativa (<em>p=0.00393</em>) para considerar que la variación de la edad entre ambos grupos es diferente.</li>
 </ul>
+<h1 id="árboles-de-decisión">Árboles de decisión</h1>
+<center>
+<img src = "www/img3.PNG" />
+</center>
+<h2 id="generalidades">Generalidades</h2>
+<ul>
+<li>Los árboles de decisión se pueden utilizar para problemas de regresión y clasificación.</li>
+<li>Se pueden definir como una estructura jerárquica que busca particionar el espacio de características e identificar centroides representativos. Desde la parte superior a inferior cada árbol tiene <em>nodo raíz</em>, <em>nodos de decisión o internos</em> y <em>nodos hojas o terminales</em>, los dos primeros se generan con base en reglas binarias. En árboles de clasficación es necesario medir la <strong>impureza</strong> de una región específica que contiene datos de diferentes clases, por ejemplo, “bueno” o “malo”.</li>
+<li><strong>Ventajas:</strong>
+<ul>
+<li>Fácil de interpretar (sujeto a la profundidad).</li>
+<li>No requieren estandarización o normalización de variables predictoras numéricas.</li>
+<li>Permiten manipular variables categóricas sin necesidad de aplicar codificaciones tipo <em>one-hot</em> o <em>variables dummy</em>.</li>
+<li>Requieren poco preprocesamiento de datos.</li>
+<li>Permiten valores ausentes (<code>NA</code>).</li>
+<li>Permite relaciones no lineales.</li>
+</ul></li>
+<li><strong>Desventajas:</strong>
+<ul>
+<li>Si no se controla adecuadamente la profundidad del árbol existe alta probabilidad de incurrir en <a href="https://es.wikipedia.org/wiki/Sobreajuste"><em>sobreajuste (overfitting)</em>.</a></li>
+<li>Alta varianza, pequeños cambios en los datos pueden arrojar resultados muy diferentes.</li>
+</ul></li>
+<li><strong>Hiperparámetros:</strong></li>
+</ul>
+<h2 id="rpart-default"><code>rpart</code> <em>default</em></h2>
+<ul>
+<li><strong>Ajuste del modelo:</strong> en este caso se utilizan todas las variables predictoras para entrenar el modelo. Al imprimir el objeto que contiene el modelo podemos observar el conjunto de reglas que dan como resultado la estructura final del árbol.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+modArbol0 &lt;- rpart(class ~ ., data = data)
+modArbol0</code></pre>
+<pre><code>
+n= 1000 
+
+node), split, n, loss, yval, (yprob)
+      * denotes terminal node
+
+  1) root 1000 300 good (0.3000000 0.7000000)  
+    2) checking_status=&lt;0,0&lt;=X&lt;200 543 240 good (0.4419890 0.5580110)  
+      4) duration&gt;=22.5 237 103 bad (0.5654008 0.4345992)  
+        8) savings_status=&lt;100,100&lt;=X&lt;500,500&lt;=X&lt;1000 196  74 bad (0.6224490 0.3775510)  
+         16) duration&gt;=47.5 36   5 bad (0.8611111 0.1388889) *
+         17) duration&lt; 47.5 160  69 bad (0.5687500 0.4312500)  
+           34) purpose=business,education,furniture/equipment,new car,other,radio/tv,repairs 137  52 bad (0.6204380 0.3795620) *
+           35) purpose=used car 23   6 good (0.2608696 0.7391304) *
+        9) savings_status=&gt;=1000,no known savings 41  12 good (0.2926829 0.7073171) *
+      5) duration&lt; 22.5 306 106 good (0.3464052 0.6535948)  
+       10) credit_history=all paid,no credits/all paid 28   7 bad (0.7500000 0.2500000) *
+       11) credit_history=critical/other existing credit,delayed previously,existing paid 278  85 good (0.3057554 0.6942446)  
+         22) credit_amount&gt;=7491.5 7   1 bad (0.8571429 0.1428571) *
+         23) credit_amount&lt; 7491.5 271  79 good (0.2915129 0.7084871)  
+           46) purpose=domestic appliance,education 15   5 bad (0.6666667 0.3333333) *
+           47) purpose=business,furniture/equipment,new car,other,radio/tv,repairs,retraining,used car 256  69 good (0.2695312 0.7304688)  
+             94) duration&gt;=11.5 183  60 good (0.3278689 0.6721311)  
+              188) credit_amount&lt; 1387.5 65  31 good (0.4769231 0.5230769)  
+                376) property_magnitude=car,no known property 20   3 bad (0.8500000 0.1500000) *
+                377) property_magnitude=life insurance,real estate 45  14 good (0.3111111 0.6888889) *
+              189) credit_amount&gt;=1387.5 118  29 good (0.2457627 0.7542373) *
+             95) duration&lt; 11.5 73   9 good (0.1232877 0.8767123) *
+    3) checking_status=&gt;=200,no checking 457  60 good (0.1312910 0.8687090) *</code></pre>
+</div>
+<ul>
+<li><strong>Gráfico del modelo:</strong> la variable más importante y que da origen al nodo raíz es <strong><code>checking_status</code></strong>, que hace referencia al estado de la cuenta corriente. La duración del contrato, el estado de la cuenta de ahorros y el propósito del crédito, también son factores determinantes. No tener suficiente capital en cualquiera de las dos cuentas y además solicitar períodos de pago de alta duración, pueden ser características no deseables a la hora de solicitar un crédito.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+rpart.plot(modArbol0)</code></pre>
+<p><img src="TreeD_R_files/figure-html5/unnamed-chunk-9-1.png" width="864" style="display: block; margin: auto;" /></p>
+</div>
+<h2 id="tuning-con-caret">Tuning con caret</h2>
 <h1 id="recursos-de-información">Recursos de información</h1>
 <ul>
 <li><a href="http://faculty.marshall.usc.edu/gareth-james/ISL/">An Introduction to Statistical Learning with Applications in R.</a></li>

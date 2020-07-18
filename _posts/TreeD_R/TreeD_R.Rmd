@@ -161,18 +161,38 @@ summary(myAnova)
     - Alta varianza, pequeños cambios en los datos pueden arrojar resultados muy diferentes.
 - **Hiperparámetros:**
 
-## `rpart` *default*
+## Train - Test
 
-- **Ajuste del modelo:** en este caso se utilizan todas las variables predictoras para entrenar el modelo. Al imprimir el objeto que contiene el modelo  podemos observar el conjunto de reglas que dan como resultado la estructura final del árbol.
+- Para entrenar el modelo inicialmente fracciono los datos en *train* y *test* con proporciones de 70 y 30%, respectivamente. Este proceso aunque es posible hacerlo manualmente con la función `sample()`, la función `createDataPartition()` del paquete `caret` agiliza el procedimiento. Para garantizar replicabilidad en los resultados se agrega la semilla.
 
 ```{r}
-modArbol0 <- rpart(class ~ ., data = data)
+set.seed(1992)
+idx <- createDataPartition(y = data$class, times = 1, p = 0.70, list = FALSE)
+dataTrain <- data[idx, ]
+dataTest <- data[-idx, ]
+```
+
+## `rpart` *default*
+
+- **Ajuste del modelo:** en este caso se utilizan todas las variables predictoras para entrenar el modelo. Al imprimir el objeto que contiene el modelo  podemos observar el conjunto de reglas que dan como resultado la estructura final del árbol. El método igualado a **`method = "class"`** indica que es un problema de clasificación, si fuese un problema de regresión el argumento tomaría el valor de  **`method = "anova"`**, aunque también permite otras opciones (consulte `?rpart` o `help("rpart")`).
+
+```{r}
+modArbol0 <- rpart(class ~ ., data = dataTrain, method = "class")
 modArbol0
 ```
-- **Gráfico del modelo:** la variable más importante y que da origen al nodo raíz es **`checking_status`**, que hace referencia al estado de la cuenta corriente. La duración del contrato, el estado de la cuenta de ahorros y el propósito del crédito, también son factores determinantes. No tener suficiente capital en cualquiera de las dos cuentas y además solicitar períodos de pago de alta duración, pueden ser características no deseables a la hora de solicitar un crédito.
+
+- **Gráfico del modelo:** la variable más importante y que da origen al nodo raíz es **`checking_status`**, que hace referencia al estado de la cuenta corriente. El historial crediticio, la duración del tiempo para pagar el crédito, el estado de la cuenta de ahorros y el propósito del crédito, también son factores determinantes. No tener suficiente capital en cualquiera de las dos cuentas, tener mal historial crediticio y además solicitar períodos de pago de alta duración, pueden ser características no deseables a la hora de solicitar un crédito.
 
 ```{r, fig.width=9, fig.height=8}
 rpart.plot(modArbol0)
+```
+
+- **Matriz de confusión:** el modelo por *default* tiene precisión promedio de 0.7167, con dificultades para clasificar de forma correcta los "malos", es decir, que tiene baja especificidad.
+
+```{r}
+predichos_mod0 <- predict(object = modArbol0, newdata = dataTest, type = "class")
+confusionMatrix(data = predichos_mod0, reference = as.factor(dataTest$class),
+                positive = "good")
 ```
 
 ## Tuning con caret

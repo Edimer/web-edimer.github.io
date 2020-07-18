@@ -49,7 +49,7 @@
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data/dataset_31_credit-g.csv","img1.png","TreeD_R_files/bowser-1.9.3/bowser.min.js","TreeD_R_files/distill-2.2.21/template.v2.js","TreeD_R_files/figure-html5/unnamed-chunk-4-1.png","TreeD_R_files/figure-html5/unnamed-chunk-5-1.png","TreeD_R_files/figure-html5/unnamed-chunk-6-1.png","TreeD_R_files/figure-html5/unnamed-chunk-9-1.png","TreeD_R_files/jquery-1.11.3/jquery.min.js","TreeD_R_files/webcomponents-2.0.0/webcomponents.js","www/img1.PNG","www/img2.PNG","www/img3.PNG"]}
+  {"type":"character","attributes":{},"value":["data/dataset_31_credit-g.csv","img1.png","TreeD_R_files/bowser-1.9.3/bowser.min.js","TreeD_R_files/distill-2.2.21/template.v2.js","TreeD_R_files/figure-html5/unnamed-chunk-10-1.png","TreeD_R_files/figure-html5/unnamed-chunk-4-1.png","TreeD_R_files/figure-html5/unnamed-chunk-5-1.png","TreeD_R_files/figure-html5/unnamed-chunk-6-1.png","TreeD_R_files/figure-html5/unnamed-chunk-9-1.png","TreeD_R_files/jquery-1.11.3/jquery.min.js","TreeD_R_files/webcomponents-2.0.0/webcomponents.js","www/img1.PNG","www/img2.PNG","www/img3.PNG"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -986,6 +986,7 @@
 <li><a href="#inferencia">Inferencia</a></li>
 <li><a href="#árboles-de-decisión">Árboles de decisión</a><ul>
 <li><a href="#generalidades">Generalidades</a></li>
+<li><a href="#train---test">Train - Test</a></li>
 <li><a href="#rpart-default"><code>rpart</code> <em>default</em></a></li>
 <li><a href="#tuning-con-caret">Tuning con caret</a></li>
 </ul></li>
@@ -1147,51 +1148,97 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 </ul></li>
 <li><strong>Hiperparámetros:</strong></li>
 </ul>
-<h2 id="rpart-default"><code>rpart</code> <em>default</em></h2>
+<h2 id="train---test">Train - Test</h2>
 <ul>
-<li><strong>Ajuste del modelo:</strong> en este caso se utilizan todas las variables predictoras para entrenar el modelo. Al imprimir el objeto que contiene el modelo podemos observar el conjunto de reglas que dan como resultado la estructura final del árbol.</li>
+<li>Para entrenar el modelo inicialmente fracciono los datos en <em>train</em> y <em>test</em> con proporciones de 70 y 30%, respectivamente. Este proceso aunque es posible hacerlo manualmente con la función <code>sample()</code>, la función <code>createDataPartition()</code> del paquete <code>caret</code> agiliza el procedimiento. Para garantizar replicabilidad en los resultados se agrega la semilla.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>
-modArbol0 &lt;- rpart(class ~ ., data = data)
+set.seed(1992)
+idx &lt;- createDataPartition(y = data$class, times = 1, p = 0.70, list = FALSE)
+dataTrain &lt;- data[idx, ]
+dataTest &lt;- data[-idx, ]</code></pre>
+</div>
+<h2 id="rpart-default"><code>rpart</code> <em>default</em></h2>
+<ul>
+<li><strong>Ajuste del modelo:</strong> en este caso se utilizan todas las variables predictoras para entrenar el modelo. Al imprimir el objeto que contiene el modelo podemos observar el conjunto de reglas que dan como resultado la estructura final del árbol. El método igualado a <strong><code>method = "class"</code></strong> indica que es un problema de clasificación, si fuese un problema de regresión el argumento tomaría el valor de <strong><code>method = "anova"</code></strong>, aunque también permite otras opciones (consulte <code>?rpart</code> o <code>help("rpart")</code>).</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+modArbol0 &lt;- rpart(class ~ ., data = dataTrain, method = &quot;class&quot;)
 modArbol0</code></pre>
 <pre><code>
-n= 1000 
+n= 700 
 
 node), split, n, loss, yval, (yprob)
       * denotes terminal node
 
-  1) root 1000 300 good (0.3000000 0.7000000)  
-    2) checking_status=&lt;0,0&lt;=X&lt;200 543 240 good (0.4419890 0.5580110)  
-      4) duration&gt;=22.5 237 103 bad (0.5654008 0.4345992)  
-        8) savings_status=&lt;100,100&lt;=X&lt;500,500&lt;=X&lt;1000 196  74 bad (0.6224490 0.3775510)  
-         16) duration&gt;=47.5 36   5 bad (0.8611111 0.1388889) *
-         17) duration&lt; 47.5 160  69 bad (0.5687500 0.4312500)  
-           34) purpose=business,education,furniture/equipment,new car,other,radio/tv,repairs 137  52 bad (0.6204380 0.3795620) *
-           35) purpose=used car 23   6 good (0.2608696 0.7391304) *
-        9) savings_status=&gt;=1000,no known savings 41  12 good (0.2926829 0.7073171) *
-      5) duration&lt; 22.5 306 106 good (0.3464052 0.6535948)  
-       10) credit_history=all paid,no credits/all paid 28   7 bad (0.7500000 0.2500000) *
-       11) credit_history=critical/other existing credit,delayed previously,existing paid 278  85 good (0.3057554 0.6942446)  
-         22) credit_amount&gt;=7491.5 7   1 bad (0.8571429 0.1428571) *
-         23) credit_amount&lt; 7491.5 271  79 good (0.2915129 0.7084871)  
-           46) purpose=domestic appliance,education 15   5 bad (0.6666667 0.3333333) *
-           47) purpose=business,furniture/equipment,new car,other,radio/tv,repairs,retraining,used car 256  69 good (0.2695312 0.7304688)  
-             94) duration&gt;=11.5 183  60 good (0.3278689 0.6721311)  
-              188) credit_amount&lt; 1387.5 65  31 good (0.4769231 0.5230769)  
-                376) property_magnitude=car,no known property 20   3 bad (0.8500000 0.1500000) *
-                377) property_magnitude=life insurance,real estate 45  14 good (0.3111111 0.6888889) *
-              189) credit_amount&gt;=1387.5 118  29 good (0.2457627 0.7542373) *
-             95) duration&lt; 11.5 73   9 good (0.1232877 0.8767123) *
-    3) checking_status=&gt;=200,no checking 457  60 good (0.1312910 0.8687090) *</code></pre>
+  1) root 700 210 good (0.3000000 0.7000000)  
+    2) checking_status=&lt;0,0&lt;=X&lt;200 385 168 good (0.4363636 0.5636364)  
+      4) credit_history=all paid,no credits/all paid 51  14 bad (0.7254902 0.2745098)  
+        8) savings_status=&lt;100,100&lt;=X&lt;500 42   8 bad (0.8095238 0.1904762) *
+        9) savings_status=500&lt;=X&lt;1000,no known savings 9   3 good (0.3333333 0.6666667) *
+      5) credit_history=critical/other existing credit,delayed previously,existing paid 334 131 good (0.3922156 0.6077844)  
+       10) duration&gt;=27.5 77  30 bad (0.6103896 0.3896104)  
+         20) purpose=domestic appliance,education,furniture/equipment,new car 39  10 bad (0.7435897 0.2564103) *
+         21) purpose=business,other,radio/tv,repairs,used car 38  18 good (0.4736842 0.5263158)  
+           42) checking_status=&lt;0 19   7 bad (0.6315789 0.3684211) *
+           43) checking_status=0&lt;=X&lt;200 19   6 good (0.3157895 0.6842105) *
+       11) duration&lt; 27.5 257  84 good (0.3268482 0.6731518)  
+         22) purpose=domestic appliance,education,new car,retraining 83  41 good (0.4939759 0.5060241)  
+           44) age&lt; 35.5 42  13 bad (0.6904762 0.3095238)  
+             88) credit_amount&lt; 1392 20   1 bad (0.9500000 0.0500000) *
+             89) credit_amount&gt;=1392 22  10 good (0.4545455 0.5454545)  
+              178) property_magnitude=life insurance,real estate 13   4 bad (0.6923077 0.3076923) *
+              179) property_magnitude=car,no known property 9   1 good (0.1111111 0.8888889) *
+           45) age&gt;=35.5 41  12 good (0.2926829 0.7073171) *
+         23) purpose=business,furniture/equipment,other,radio/tv,repairs,used car 174  43 good (0.2471264 0.7528736) *
+    3) checking_status=&gt;=200,no checking 315  42 good (0.1333333 0.8666667) *</code></pre>
 </div>
 <ul>
-<li><strong>Gráfico del modelo:</strong> la variable más importante y que da origen al nodo raíz es <strong><code>checking_status</code></strong>, que hace referencia al estado de la cuenta corriente. La duración del contrato, el estado de la cuenta de ahorros y el propósito del crédito, también son factores determinantes. No tener suficiente capital en cualquiera de las dos cuentas y además solicitar períodos de pago de alta duración, pueden ser características no deseables a la hora de solicitar un crédito.</li>
+<li><strong>Gráfico del modelo:</strong> la variable más importante y que da origen al nodo raíz es <strong><code>checking_status</code></strong>, que hace referencia al estado de la cuenta corriente. El historial crediticio, la duración del tiempo para pagar el crédito, el estado de la cuenta de ahorros y el propósito del crédito, también son factores determinantes. No tener suficiente capital en cualquiera de las dos cuentas, tener mal historial crediticio y además solicitar períodos de pago de alta duración, pueden ser características no deseables a la hora de solicitar un crédito.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>
 rpart.plot(modArbol0)</code></pre>
-<p><img src="TreeD_R_files/figure-html5/unnamed-chunk-9-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p><img src="TreeD_R_files/figure-html5/unnamed-chunk-10-1.png" width="864" style="display: block; margin: auto;" /></p>
+</div>
+<ul>
+<li><strong>Matriz de confusión:</strong> el modelo por <em>default</em> tiene precisión promedio de 0.7167, con dificultades para clasificar de forma correcta los “malos”, es decir, que tiene baja especificidad.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+predichos_mod0 &lt;- predict(object = modArbol0, newdata = dataTest, type = &quot;class&quot;)
+confusionMatrix(data = predichos_mod0, reference = as.factor(dataTest$class),
+                positive = &quot;good&quot;)</code></pre>
+<pre><code>
+Confusion Matrix and Statistics
+
+          Reference
+Prediction bad good
+      bad   31   26
+      good  59  184
+                                        
+               Accuracy : 0.7167        
+                 95% CI : (0.662, 0.767)
+    No Information Rate : 0.7           
+    P-Value [Acc &gt; NIR] : 0.2873596     
+                                        
+                  Kappa : 0.2465        
+                                        
+ Mcnemar&#39;s Test P-Value : 0.0005187     
+                                        
+            Sensitivity : 0.8762        
+            Specificity : 0.3444        
+         Pos Pred Value : 0.7572        
+         Neg Pred Value : 0.5439        
+             Prevalence : 0.7000        
+         Detection Rate : 0.6133        
+   Detection Prevalence : 0.8100        
+      Balanced Accuracy : 0.6103        
+                                        
+       &#39;Positive&#39; Class : good          
+                                        </code></pre>
 </div>
 <h2 id="tuning-con-caret">Tuning con caret</h2>
 <h1 id="recursos-de-información">Recursos de información</h1>

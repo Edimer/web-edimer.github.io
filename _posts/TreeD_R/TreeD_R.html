@@ -49,7 +49,7 @@
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data/dataset_31_credit-g.csv","img1.png","TreeD_R_files/bowser-1.9.3/bowser.min.js","TreeD_R_files/distill-2.2.21/template.v2.js","TreeD_R_files/figure-html5/unnamed-chunk-10-1.png","TreeD_R_files/figure-html5/unnamed-chunk-12-1.png","TreeD_R_files/figure-html5/unnamed-chunk-14-1.png","TreeD_R_files/figure-html5/unnamed-chunk-4-1.png","TreeD_R_files/figure-html5/unnamed-chunk-5-1.png","TreeD_R_files/figure-html5/unnamed-chunk-6-1.png","TreeD_R_files/figure-html5/unnamed-chunk-9-1.png","TreeD_R_files/jquery-1.11.3/jquery.min.js","TreeD_R_files/webcomponents-2.0.0/webcomponents.js","www/img1.PNG","www/img2.PNG","www/img3.PNG","www/img4.PNG"]}
+  {"type":"character","attributes":{},"value":["data/dataset_31_credit-g.csv","functions/myROC.R","img1.png","TreeD_R_files/bowser-1.9.3/bowser.min.js","TreeD_R_files/distill-2.2.21/template.v2.js","TreeD_R_files/figure-html5/unnamed-chunk-10-1.png","TreeD_R_files/figure-html5/unnamed-chunk-12-1.png","TreeD_R_files/figure-html5/unnamed-chunk-13-1.png","TreeD_R_files/figure-html5/unnamed-chunk-14-1.png","TreeD_R_files/figure-html5/unnamed-chunk-16-1.png","TreeD_R_files/figure-html5/unnamed-chunk-19-1.png","TreeD_R_files/figure-html5/unnamed-chunk-4-1.png","TreeD_R_files/figure-html5/unnamed-chunk-5-1.png","TreeD_R_files/figure-html5/unnamed-chunk-6-1.png","TreeD_R_files/figure-html5/unnamed-chunk-9-1.png","TreeD_R_files/jquery-1.11.3/jquery.min.js","TreeD_R_files/webcomponents-2.0.0/webcomponents.js","www/img1.PNG","www/img2.PNG","www/img3.PNG","www/img4.PNG"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -990,6 +990,9 @@
 <li><a href="#rpart-default"><code>rpart</code> <em>default</em></a></li>
 <li><a href="#tuning-con-caret">Tuning con caret</a></li>
 </ul></li>
+<li><a href="#complementario">Complementario</a><ul>
+<li><a href="#función-myroc">Función <code>myROC()</code></a></li>
+</ul></li>
 <li><a href="#recursos-de-información">Recursos de información</a></li>
 </ul>
 </nav>
@@ -1003,13 +1006,13 @@
 <strong>3.</strong> Entrenamiento de modelo por defecto con <code>rpart</code>.<br />
 <strong>4.</strong> Ajuste de hiperparámetros con la biblioteca <code>caret</code>.<br />
 <strong>5.</strong> Comparación de modelos. La métrica para evaluar el desempeño predictivo de los modelos es el <a href="https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5">área bajo la curva ROC.</a><br />
-<strong>6.</strong> Recursos de información.</p>
+<strong>6.</strong> Material complementario. Resultados de códigos adicionales para árboles de decisión y más temas de machine learning. <strong>7.</strong> Recursos de información.</p>
 <h1 id="requisitos-previos">Requisitos previos</h1>
 <ul>
 <li>Instalar las bibliotecas <a href="https://cran.r-project.org/web/packages/rpart/rpart.pdf"><code>rpart</code></a> y <a href="https://cran.r-project.org/web/packages/rpart.plot/rpart.plot.pdf">rpart.plot</a> para entrenar y gráficar modelos basados en árboles.</li>
 <li>Instalar la biblioteca <a href="http://topepo.github.io/caret/index.html"><code>caret</code>.</a></li>
 <li><a href="https://www.openml.org/d/31">Descargar datos para ejemplo</a> desde la página <a href="https://www.openml.org/">openML</a>. La base de datos proporciona información de personas perfiladas con riesgo crediticio <em>bueno</em> o <em>malo</em>.</li>
-<li><strong>Bibliotecas complementarias:</strong> para visualizaciones <strong><code>ggplot2</code></strong>, <strong><code>jcolors</code></strong> y <strong><code>hrbrthemes</code></strong>, para manejo de datos <strong><code>dplyr</code></strong> y <strong><code>Metrics</code></strong> para métricas de error y/o precisión.</li>
+<li><strong>Bibliotecas complementarias:</strong> para visualizaciones <strong><code>ggplot2</code></strong>, <strong><code>jcolors</code></strong> y <strong><code>hrbrthemes</code></strong>, para manejo de datos <strong><code>dplyr</code></strong> y para métricas de error y/o precisión <strong><code>Metrics</code></strong> y <strong><code>pROC</code></strong>.</li>
 </ul>
 <h1 id="bibliotecas">Bibliotecas</h1>
 <div class="layout-chunk" data-layout="l-body">
@@ -1018,10 +1021,11 @@ library(dplyr)
 library(ggplot2)
 library(jcolors)
 library(hrbrthemes)
-library(Metrics)
 library(rpart)
 library(rpart.plot)
-library(caret)</code></pre>
+library(caret)
+library(Metrics)
+library(pROC)</code></pre>
 </div>
 <h1 id="descripción-de-variables">Descripción de variables</h1>
 <ul>
@@ -1249,12 +1253,42 @@ Prediction bad good
                                         </code></pre>
 </div>
 <ul>
+<li><strong>Área bajo la curva:</strong></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Probabilidades predichas para la clase &quot;good&quot;
+pred0 &lt;- as.data.frame(predict(object = modArbol0,
+                               newdata = dataTest, type = &quot;prob&quot;))$good
+
+# Transformando respuesta a entero. A la clase &quot;good&quot; le agrego 1 y 
+# a la clase &quot;bad&quot; le agrego 0.
+target &lt;- as.integer(as.factor(dataTest$class)) - 1
+
+# AUC
+Metrics::auc(actual = target, predicted = pred0)</code></pre>
+<pre><code>
+[1] 0.7034392</code></pre>
+</div>
+<ul>
+<li><strong>Curva ROC:</strong> la función con la que obtengo el siguiente gráfico puede ser encontrada en <a href="">mi Github.</a></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Cargando función
+source(&quot;functions/myROC.R&quot;)
+
+# Ver función myROC() al final en material complementario    
+myROC(predichos = pred0, reales = target)</code></pre>
+<p><img src="TreeD_R_files/figure-html5/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<ul>
 <li><strong>Parámetro de complejidad (CP):</strong></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>
 plotcp(modArbol0)</code></pre>
-<p><img src="TreeD_R_files/figure-html5/unnamed-chunk-12-1.png" width="624" style="display: block; margin: auto;" /></p>
+<p><img src="TreeD_R_files/figure-html5/unnamed-chunk-14-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <ul>
 <li><strong>“Podando” el árbol:</strong> se elige el valor de cp = 0.025 por mostrar mejores resultados (bajo error).</li>
@@ -1282,15 +1316,15 @@ node), split, n, loss, yval, (yprob)
    3) checking_status=&gt;=200,no checking 315  42 good (0.1333333 0.8666667) *</code></pre>
 </div>
 <ul>
-<li><strong>Gráfico de árbol “podado”:</strong></li>
+<li><strong>Gráfico de árbol con “poda”:</strong></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>
 rpart.plot(modArbol0_prune)</code></pre>
-<p><img src="TreeD_R_files/figure-html5/unnamed-chunk-14-1.png" width="624" style="display: block; margin: auto;" /></p>
+<p><img src="TreeD_R_files/figure-html5/unnamed-chunk-16-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <ul>
-<li><strong>Matriz de confusión árbol “podado”:</strong> respecto al árbol sin podar, la diferncia en precisión es muy pequeña (&lt;0.01), sin embargo, la especificidad se aumenta de 0.3444 a 0.4556 con la “poda”, aunque la sensitividad haya reducido de 0.8762 a 0.8381.</li>
+<li><strong>Matriz de confusión árbol con “poda”:</strong> respecto al árbol sin podar, la diferncia en precisión es muy pequeña (&lt;0.01), sin embargo, la especificidad se aumenta de 0.3444 a 0.4556 con la “poda”, aunque la sensitividad haya reducido de 0.8762 a 0.8381.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>
@@ -1326,7 +1360,71 @@ Prediction bad good
        &#39;Positive&#39; Class : good           
                                          </code></pre>
 </div>
+<ul>
+<li><strong>Área bajo la curva de árbol con “poda”:</strong></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Probabilidades predichas para la clase &quot;good&quot;
+pred0_prune &lt;- as.data.frame(predict(object = modArbol0_prune,
+                                     newdata = dataTest, type = &quot;prob&quot;))$good
+
+# AUC
+Metrics::auc(actual = target, predicted = pred0_prune)</code></pre>
+<pre><code>
+[1] 0.7203175</code></pre>
+</div>
+<ul>
+<li><strong>Curva ROC:</strong></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Ver función myROC() al final en material complementario    
+myROC(predichos = pred0_prune, reales = target)</code></pre>
+<p><img src="TreeD_R_files/figure-html5/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
 <h2 id="tuning-con-caret">Tuning con caret</h2>
+<h1 id="complementario">Complementario</h1>
+<h2 id="función-myroc">Función <code>myROC()</code></h2>
+<ul>
+<li>Es necesario tener cargadas las bibliotecaS <code>dplyr</code>, <code>ggplot2</code>, <code>hrbrthemes</code>, <code>Metrics</code> y <code>pROC</code> para ejecutar la función.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+myROC &lt;- function(predichos, reales) {
+  suppressMessages(suppressWarnings(library(dplyr)))
+  suppressMessages(suppressWarnings(library(ggplot2)))
+  suppressMessages(suppressWarnings(library(pROC)))
+  suppressMessages(suppressWarnings(library(Metrics)))
+  x = roc(reales, predichos)
+  df = data_frame(TPR = x$sensitivities,
+                  FPR = 1 - x$specificities)
+  gg = df %&gt;%
+    ggplot(aes(x = FPR, ymin = 0, ymax = TPR)) +
+    geom_polygon(aes(y = TPR), fill = &quot;#5A5156&quot;, alpha = 0.7) +
+    geom_path(aes(y = TPR), col = &quot;#F6222E&quot;, size = 1.3) +
+    geom_abline(
+      intercept = 0,
+      slope = 1,
+      color = &quot;gray37&quot;,
+      size = 1,
+      linetype = &quot;dashed&quot;
+    ) +
+    theme_ipsum() +
+    coord_equal() +
+    labs(
+      x = &quot;FPR (1 - Especificidad)&quot;,
+      y = &quot;TPR (Sensitividad)&quot;,
+      title = paste0(&quot;Curva ROC&quot;),
+      subtitle = paste0(
+        &quot;Valor AUC: &quot;,
+        Metrics::auc(actual = reales,
+                     predicted = predichos) %&gt;% round(4)
+      )
+    )
+  return(gg)
+}</code></pre>
+</div>
 <h1 id="recursos-de-información">Recursos de información</h1>
 <ul>
 <li><a href="http://faculty.marshall.usc.edu/gareth-james/ISL/">An Introduction to Statistical Learning with Applications in R.</a></li>

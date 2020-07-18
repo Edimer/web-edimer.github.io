@@ -27,6 +27,7 @@ knitr::opts_chunk$set(echo = TRUE,
 # Learn more about creating blogs with Distill at:
 # https://rstudio.github.io/distill/blog.html
 
+# Cargando función
 ```
 
 <center>
@@ -39,15 +40,16 @@ knitr::opts_chunk$set(echo = TRUE,
 **2.** Análisis inicial de los datos. Como el objetivo principal del documento es entrenar un modelo de *árbol de decisión* con R, el análisis inicial incluye sólo una parte exploratoria y algunas pruebas estadísticas.   
 **3.** Entrenamiento de modelo por defecto con `rpart`.   
 **4.** Ajuste de hiperparámetros con la biblioteca `caret`.     
-**5.** Comparación de modelos. La métrica para evaluar el desempeño predictivo de los modelos es el [área bajo la curva ROC.](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)          
-**6.** Recursos de información. 
+**5.** Comparación de modelos. La métrica para evaluar el desempeño predictivo de los modelos es el [área bajo la curva ROC.](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)   
+**6.** Material complementario. Resultados de códigos adicionales para árboles de decisión y más temas de machine learning.
+**7.** Recursos de información. 
 
 # Requisitos previos
 
 - Instalar las bibliotecas [`rpart`](https://cran.r-project.org/web/packages/rpart/rpart.pdf) y [rpart.plot](https://cran.r-project.org/web/packages/rpart.plot/rpart.plot.pdf) para entrenar y gráficar modelos basados en árboles.
 - Instalar la biblioteca [`caret`.](http://topepo.github.io/caret/index.html)
 - [Descargar datos para ejemplo](https://www.openml.org/d/31) desde la página [openML](https://www.openml.org/). La base de datos proporciona información de personas perfiladas con riesgo crediticio *bueno* o *malo*.
-- **Bibliotecas complementarias:** para visualizaciones **`ggplot2`**, **`jcolors`** y **`hrbrthemes`**, para manejo de datos **`dplyr`**  y **`Metrics`** para métricas de error y/o precisión.
+- **Bibliotecas complementarias:** para visualizaciones **`ggplot2`**, **`jcolors`** y **`hrbrthemes`**, para manejo de datos **`dplyr`**  y  para métricas de error y/o precisión **`Metrics`** y **`pROC`**.
 
 # Bibliotecas
 
@@ -56,10 +58,11 @@ library(dplyr)
 library(ggplot2)
 library(jcolors)
 library(hrbrthemes)
-library(Metrics)
 library(rpart)
 library(rpart.plot)
 library(caret)
+library(Metrics)
+library(pROC)
 ```
 
 # Descripción de variables
@@ -202,6 +205,31 @@ confusionMatrix(data = predichos_mod0, reference = as.factor(dataTest$class),
                 positive = "good")
 ```
 
+- **Área bajo la curva:**
+
+```{r}
+# Probabilidades predichas para la clase "good"
+pred0 <- as.data.frame(predict(object = modArbol0,
+                               newdata = dataTest, type = "prob"))$good
+
+# Transformando respuesta a entero. A la clase "good" le agrego 1 y 
+# a la clase "bad" le agrego 0.
+target <- as.integer(as.factor(dataTest$class)) - 1
+
+# AUC
+Metrics::auc(actual = target, predicted = pred0)
+```
+
+- **Curva ROC:** la función con la que obtengo el siguiente gráfico puede ser encontrada en [mi Github.]()
+
+```{r, fig.height=5, fig.width=7}
+# Cargando función
+source("functions/myROC.R")
+
+# Ver función myROC() al final en material complementario    
+myROC(predichos = pred0, reales = target)
+```
+
 - **Parámetro de complejidad (CP):**
 
 ```{r}
@@ -214,22 +242,81 @@ plotcp(modArbol0)
 modArbol0_prune <- prune(tree = modArbol0, cp = 0.025)
 modArbol0_prune
 ```
-- **Gráfico de árbol "podado":**
+- **Gráfico de árbol con "poda":**
 
 ```{r, fig.height=5}
 rpart.plot(modArbol0_prune)
 ```
 
-- **Matriz de confusión árbol "podado":** respecto al árbol sin podar, la diferncia en precisión es muy pequeña (<0.01), sin embargo, la especificidad se aumenta de 0.3444 a 0.4556 con la "poda", aunque la sensitividad haya reducido de 0.8762 a 0.8381.
+- **Matriz de confusión árbol con "poda":** respecto al árbol sin podar, la diferncia en precisión es muy pequeña (<0.01), sin embargo, la especificidad se aumenta de 0.3444 a 0.4556 con la "poda", aunque la sensitividad haya reducido de 0.8762 a 0.8381.
 
 ```{r}
 predichos_mod0_prune <- predict(object = modArbol0_prune, newdata = dataTest, type = "class")
 confusionMatrix(data = predichos_mod0_prune, reference = as.factor(dataTest$class),
                 positive = "good")
 ```
+- **Área bajo la curva de árbol con "poda":**
 
+```{r}
+# Probabilidades predichas para la clase "good"
+pred0_prune <- as.data.frame(predict(object = modArbol0_prune,
+                                     newdata = dataTest, type = "prob"))$good
+
+# AUC
+Metrics::auc(actual = target, predicted = pred0_prune)
+```
+
+- **Curva ROC:**
+
+```{r, fig.height=5, fig.width=7}
+# Ver función myROC() al final en material complementario    
+myROC(predichos = pred0_prune, reales = target)
+```
 
 ## Tuning con caret
+
+# Complementario
+
+## Función `myROC()`
+
+- Es necesario tener cargadas las bibliotecaS  `dplyr`, `ggplot2`, `hrbrthemes`, `Metrics` y `pROC` para ejecutar la función.
+
+```{r}
+myROC <- function(predichos, reales) {
+  suppressMessages(suppressWarnings(library(dplyr)))
+  suppressMessages(suppressWarnings(library(ggplot2)))
+  suppressMessages(suppressWarnings(library(pROC)))
+  suppressMessages(suppressWarnings(library(Metrics)))
+  x = roc(reales, predichos)
+  df = data_frame(TPR = x$sensitivities,
+                  FPR = 1 - x$specificities)
+  gg = df %>%
+    ggplot(aes(x = FPR, ymin = 0, ymax = TPR)) +
+    geom_polygon(aes(y = TPR), fill = "#5A5156", alpha = 0.7) +
+    geom_path(aes(y = TPR), col = "#F6222E", size = 1.3) +
+    geom_abline(
+      intercept = 0,
+      slope = 1,
+      color = "gray37",
+      size = 1,
+      linetype = "dashed"
+    ) +
+    theme_ipsum() +
+    coord_equal() +
+    labs(
+      x = "FPR (1 - Especificidad)",
+      y = "TPR (Sensitividad)",
+      title = paste0("Curva ROC"),
+      subtitle = paste0(
+        "Valor AUC: ",
+        Metrics::auc(actual = reales,
+                     predicted = predichos) %>% round(4)
+      )
+    )
+  return(gg)
+}
+```
+
 
 # Recursos de información
 

@@ -1,5 +1,24 @@
 [
   {
+    "path": "posts/TreeD_R/",
+    "title": "Árbol de clasificación con R",
+    "description": "Ejemplo de uso de árboles de decisión con R en machine learning supervisado para clasificación. Usos de la biblioteca rpart y caret.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2020-07-17",
+    "categories": [
+      "R",
+      "Tree Decision"
+    ],
+    "preview": "posts/TreeD_R/img1.png",
+    "last_modified": "2020-07-17T20:02:28-05:00",
+    "input_file": "TreeD_R.utf8.md"
+  },
+  {
     "path": "posts/BERT_Text/",
     "title": "BERT con R y Python",
     "description": "Ejemplo de uso de TensorFlow con R y Python para procesamiento de texto con algoritmo BERT de Google.",
@@ -168,25 +187,6 @@
     ],
     "preview": "posts/caret_R/img1.png",
     "last_modified": "2020-04-24T17:41:58-05:00"
-  },
-  {
-    "path": "posts/TreeD_R/",
-    "title": "Árbol de clasificación con R",
-    "description": "Ejemplo de uso de árboles de decisión con R en machine learning supervisado para clasificación. Usos de la biblioteca rpart y caret.",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-01-21",
-    "categories": [
-      "R",
-      "Tree Decision"
-    ],
-    "preview": "posts/TreeD_R/img1.png",
-    "last_modified": "2020-07-17T19:59:59-05:00",
-    "input_file": "TreeD_R.utf8.md"
   },
   {
     "path": "posts/ELearning_R/",

@@ -220,7 +220,7 @@ target <- as.integer(as.factor(dataTest$class)) - 1
 Metrics::auc(actual = target, predicted = pred0)
 ```
 
-- **Curva ROC:** la función con la que obtengo el siguiente gráfico puede ser encontrada en [mi Github.]()
+- **Curva ROC:** la función con la que obtengo el siguiente gráfico puede ser encontrada en [mi Github.](https://github.com/web-edimer/web-edimer.github.io/blob/master/_posts/TreeD_R/functions/myROC.R)
 
 ```{r, fig.height=5, fig.width=7}
 # Cargando función

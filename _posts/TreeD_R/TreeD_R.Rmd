@@ -18,7 +18,10 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE,
+                      fig.align = "center")
 
 # Learn more about creating blogs with Distill at:
 # https://rstudio.github.io/distill/blog.html
@@ -27,9 +30,41 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Requisitos previos
 
-- Instalar la biblioteca [`rpart`.](https://cran.r-project.org/web/packages/rpart/rpart.pdf)
+- Instalar las bibliotecas [`rpart`](https://cran.r-project.org/web/packages/rpart/rpart.pdf) y [rpart.plot](https://cran.r-project.org/web/packages/rpart.plot/rpart.plot.pdf) para entrenar y gráficar modelos basados en árboles.
 - Instalar la biblioteca [`caret`.](http://topepo.github.io/caret/index.html)
-- [Descargar datos para ejemplo](https://www.openml.org/d/1556) desde la página [openML](https://www.openml.org/). Estos registros fueron creados por médicos cuyo interés radicaba en evaluar la capacidad en el  diagnóstico presuntivo de dos patologías urinarias, relacionadas con inflamaciones agudas.
+- [Descargar datos para ejemplo](https://www.openml.org/d/31) desde la página [openML](https://www.openml.org/). La base de datos proporciona información de personas perfiladas con riesgo crediticio *bueno* o *malo*.
+- **Bibliotecas complementarias:** `ggplot2` para visualizaciones,  `jcolors` para colores de gráficos, `dplyr` para manejo de datos y `Metrics` para métricas de precisión (evaluación de modelos).
+
+# Bibliotecas
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(jcolors)
+library(Metrics)
+library(rpart)
+library(rpart.plot)
+library(caret)
+```
+
+# Descripción de variables
+
+- Además de la variable respuesta *class*, se cuenta con las siguientes 20 variables.
+
+<center>
+<img src = "www/img1.png" />
+</center>
+
+# Datos
+
+- Se importan los datos y se aplica la función `mutate_if()` para eliminar las comillas simples (*''*) que están presentes en las variables tipo texto (`character`).
+
+```{r}
+data <- data.table::fread(file = "data/dataset_31_credit-g.csv") %>% 
+  mutate_if(is.character, funs(gsub("'", "", .)))
+head(data[])
+  
+```
 
 # Recursos de información
 

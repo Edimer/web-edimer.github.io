@@ -49,7 +49,7 @@
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["coming.gif","data/phpJ1rDu3.csv","img1.png","TreeD_R_files/bowser-1.9.3/bowser.min.js","TreeD_R_files/distill-2.2.21/template.v2.js","TreeD_R_files/jquery-1.11.3/jquery.min.js","TreeD_R_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["coming.gif","data/dataset_31_credit-g.csv","img1.png","TreeD_R_files/bowser-1.9.3/bowser.min.js","TreeD_R_files/distill-2.2.21/template.v2.js","TreeD_R_files/jquery-1.11.3/jquery.min.js","TreeD_R_files/webcomponents-2.0.0/webcomponents.js","www/img1.PNG"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -975,10 +975,82 @@
 <div class="d-article">
 <h1 id="requisitos-previos">Requisitos previos</h1>
 <ul>
-<li>Instalar la biblioteca <a href="https://cran.r-project.org/web/packages/rpart/rpart.pdf"><code>rpart</code>.</a></li>
+<li>Instalar las bibliotecas <a href="https://cran.r-project.org/web/packages/rpart/rpart.pdf"><code>rpart</code></a> y <a href="https://cran.r-project.org/web/packages/rpart.plot/rpart.plot.pdf">rpart.plot</a> para entrenar y gráficar modelos basados en árboles.</li>
 <li>Instalar la biblioteca <a href="http://topepo.github.io/caret/index.html"><code>caret</code>.</a></li>
-<li><a href="https://www.openml.org/d/1556">Descargar datos para ejemplo</a> desde la página <a href="https://www.openml.org/">openML</a>. Estos registros fueron creados por médicos cuyo interés radicaba en evaluar la capacidad en el diagnóstico presuntivo de dos patologías urinarias, relacionadas con inflamaciones agudas.</li>
+<li><a href="https://www.openml.org/d/31">Descargar datos para ejemplo</a> desde la página <a href="https://www.openml.org/">openML</a>. La base de datos proporciona información de personas perfiladas con riesgo crediticio <em>bueno</em> o <em>malo</em>.</li>
+<li><strong>Bibliotecas complementarias:</strong> <code>ggplot2</code> para visualizaciones, <code>jcolors</code> para colores de gráficos, <code>dplyr</code> para manejo de datos y <code>Metrics</code> para métricas de precisión (evaluación de modelos).</li>
 </ul>
+<h1 id="bibliotecas">Bibliotecas</h1>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+library(dplyr)
+library(ggplot2)
+library(jcolors)
+library(Metrics)
+library(rpart)
+library(rpart.plot)
+library(caret)</code></pre>
+</div>
+<h1 id="descripción-de-variables">Descripción de variables</h1>
+<ul>
+<li>Además de la variable respuesta <em>class</em>, se cuenta con las siguientes 20 variables.</li>
+</ul>
+<center>
+<img src = "www/img1.PNG" />
+</center>
+<h1 id="datos">Datos</h1>
+<ul>
+<li>Se importan los datos y se aplica la función <code>mutate_if()</code> para eliminar las comillas simples (<em>’’</em>) que están presentes en las variables tipo texto (<code>character</code>).</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+data &lt;- data.table::fread(file = &quot;data/dataset_31_credit-g.csv&quot;) %&gt;% 
+  mutate_if(is.character, funs(gsub(&quot;&#39;&quot;, &quot;&quot;, .)))
+head(data[])</code></pre>
+<pre><code>
+   checking_status duration                 credit_history
+1:              &lt;0        6 critical/other existing credit
+2:        0&lt;=X&lt;200       48                  existing paid
+3:     no checking       12 critical/other existing credit
+4:              &lt;0       42                  existing paid
+5:              &lt;0       24             delayed previously
+6:     no checking       36                  existing paid
+               purpose credit_amount   savings_status employment
+1:            radio/tv          1169 no known savings        &gt;=7
+2:            radio/tv          5951             &lt;100     1&lt;=X&lt;4
+3:           education          2096             &lt;100     4&lt;=X&lt;7
+4: furniture/equipment          7882             &lt;100     4&lt;=X&lt;7
+5:             new car          4870             &lt;100     1&lt;=X&lt;4
+6:           education          9055 no known savings     1&lt;=X&lt;4
+   installment_commitment    personal_status other_parties
+1:                      4        male single          none
+2:                      2 female div/dep/mar          none
+3:                      2        male single          none
+4:                      2        male single     guarantor
+5:                      3        male single          none
+6:                      2        male single          none
+   residence_since property_magnitude age other_payment_plans
+1:               4        real estate  67                none
+2:               2        real estate  22                none
+3:               3        real estate  49                none
+4:               4     life insurance  45                none
+5:               4  no known property  53                none
+6:               4  no known property  35                none
+    housing existing_credits                job num_dependents
+1:      own                2            skilled              1
+2:      own                1            skilled              1
+3:      own                1 unskilled resident              2
+4: for free                1            skilled              2
+5: for free                2            skilled              2
+6: for free                1 unskilled resident              2
+   own_telephone foreign_worker class
+1:           yes            yes  good
+2:          none            yes   bad
+3:          none            yes  good
+4:          none            yes  good
+5:          none            yes   bad
+6:           yes            yes  good</code></pre>
+</div>
 <h1 id="recursos-de-información">Recursos de información</h1>
 <ul>
 <li><a href="http://faculty.marshall.usc.edu/gareth-james/ISL/">An Introduction to Statistical Learning with Applications in R.</a></li>

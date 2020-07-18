@@ -25,7 +25,15 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
+# Requisitos previos
 
-<center>
-<img src="coming.gif"/>
-</center>
+- Instalar la biblioteca [`rpart`.](https://cran.r-project.org/web/packages/rpart/rpart.pdf)
+- Instalar la biblioteca [`caret`.](http://topepo.github.io/caret/index.html)
+- [Descargar datos para ejemplo](https://www.openml.org/d/1556) desde la página [openML](https://www.openml.org/). Estos registros fueron creados por médicos cuyo interés radicaba en evaluar la capacidad en el  diagnóstico presuntivo de dos patologías urinarias, relacionadas con inflamaciones agudas.
+
+# Recursos de información
+
+- [An Introduction to Statistical Learning with Applications in R.](http://faculty.marshall.usc.edu/gareth-james/ISL/)
+- [Tree-Based Models.](https://www.statmethods.net/advstats/cart.html)
+- [Árboles de predicción - Joaquín A. Rodrigo.](https://rpubs.com/Joaquin_AR/255596)
+- [Curso DataCamp - *Tree-Based Models in R*.](https://www.datacamp.com/courses/machine-learning-with-tree-based-models-in-r)

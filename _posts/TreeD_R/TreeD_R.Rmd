@@ -40,7 +40,7 @@ knitr::opts_chunk$set(echo = TRUE,
 **2.** Análisis inicial de los datos. Como el objetivo principal del documento es entrenar un modelo de *árbol de decisión* con R, el análisis inicial incluye sólo una parte exploratoria y algunas pruebas estadísticas.   
 **3.** Entrenamiento de modelo por defecto con `rpart`.   
 **4.** Ajuste de hiperparámetros con la biblioteca `caret`. La métrica para evaluar el desempeño predictivo de los modelos es el [área bajo la curva ROC.](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)     
-**5.** Material complementario. Resultados de códigos adicionales para árboles de decisión y más temas de machine learning.    
+**5.** Material complementario.   
 **6.** Recursos de información. 
 
 # Requisitos previos
@@ -324,6 +324,26 @@ myROC(predichos = pred_tune, reales = target)
 
 
 # Complementario
+
+## Función `plot` + `caret`
+
+- La función `plot()` tiene un método específico para resultados obtenidos a través de `caret`, en este caso muestra el gráfico del hiperparámetro de interés, la máxima profundidad del árbol vs la curva ROC en el eje Y, tratando de evidenicar el valor óptimo.
+
+```{r}
+plot(modArbol_tune)
+```
+
+## Gráfico interactivo con `visNetwork`
+
+- La biblioteca [`visNetwork`](https://datastorm-open.github.io/visNetwork/) permite crear gráficos interactivos para objetos de la clase *rpart*. A manera de ejemplo se presenta el gráfico para el árbol de decisión con poda. Recuerde que es interactivo y puede manipularlo con el *mouse*.
+
+```{r}
+library(visNetwork)
+visTree(modArbol0_prune, 
+        main = "Árbol con poda", width = "100%",
+        height = "800px",  edgesFontSize = 14, nodesFontSize = 16,)
+```
+
 
 ## Función `myROC()`
 

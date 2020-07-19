@@ -1152,7 +1152,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 </center>
 <ul>
 <li>Los árboles de decisión se pueden utilizar para problemas de regresión y clasificación.</li>
-<li>Se pueden definir como una estructura jerárquica que busca particionar el espacio de características e identificar subconjuntos representativos. Desde la parte superior a inferior cada árbol tiene <em>nodo raíz</em>, <em>nodos de decisión o internos</em> y <em>nodos hojas o terminales</em>, los dos primeros se generan con base en reglas binarias. Mayor grado de pureza es la recompensa que busca el algoritmo al particionar el espacio inicial en subregiones, en ese orden de ideas el objetivo siempre será particionar los datos en nodos que sean lo más puros posibles, sin embargo, matemáticamente es más fácil medir la <strong>impureza</strong> de una región específica, proporcionando una idea de qué tan heterogéneas son las clases en ese nodo; una métrica de uso común en problemas de clasificación para medir la impureza es el <strong>índice GINI</strong>, donde valores bajos indican mayor grado de pureza. Además del índice GINI también es posible utilizar otras métricas como la <strong>ganancia de información</strong> o la <strong>entropía</strong>.</li>
+<li>Se pueden definir como una estructura jerárquica que busca particionar el espacio de características e identificar subconjuntos representativos. Desde la parte superior a inferior cada árbol tiene <em>nodo raíz</em>, <em>nodos de decisión o internos</em> y <em>nodos hojas o terminales</em>, los dos primeros se generan con base en reglas binarias. Mayor grado de pureza es la recompensa que busca el algoritmo al particionar el espacio inicial en subregiones, en ese orden de ideas el objetivo siempre será particionar los datos en nodos que sean lo más puros posible, sin embargo, matemáticamente es más fácil medir la <strong>impureza</strong> de una región específica, proporcionando una idea de qué tan heterogéneas son las clases en ese nodo; una métrica de uso común en problemas de clasificación para medir la impureza es el <strong>índice GINI</strong>, donde valores bajos indican mayor grado de pureza. Además del índice GINI también es posible utilizar otras métricas como la <strong>ganancia de información</strong> o la <strong>entropía</strong>.</li>
 <li><strong>Ventajas:</strong>
 <ul>
 <li>Fácil de interpretar (sujeto a la profundidad).</li>
@@ -1338,7 +1338,7 @@ rpart.plot(modArbol0_prune)</code></pre>
 <p><img src="TreeD_R_files/figure-html5/unnamed-chunk-16-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <ul>
-<li><strong>Matriz de confusión árbol con “poda”:</strong> respecto al árbol sin podar, la diferncia en precisión es muy pequeña (&lt;0.01), sin embargo, la especificidad se aumenta de 0.3444 a 0.4556 con la “poda”, aunque la sensitividad haya reducido de 0.8762 a 0.8381.</li>
+<li><strong>Matriz de confusión árbol con “poda”:</strong> respecto al árbol sin podar, la diferencia en precisión es muy pequeña (&lt;0.01), sin embargo, la especificidad se aumenta de 0.3444 a 0.4556 con la “poda”, aunque la sensitividad haya reducido de 0.8762 a 0.8381.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>

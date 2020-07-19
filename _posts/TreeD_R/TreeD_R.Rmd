@@ -154,7 +154,7 @@ summary(myAnova)
 </center>
 
 - Los árboles de decisión se pueden utilizar para problemas de regresión y clasificación.
-- Se pueden definir como una estructura jerárquica que busca particionar el espacio de características e identificar subconjuntos representativos. Desde la parte superior a inferior cada árbol tiene *nodo raíz*, *nodos de decisión o internos* y *nodos hojas o terminales*, los dos primeros  se generan con base en reglas  binarias. Mayor grado de pureza es la recompensa que busca el algoritmo al particionar el espacio inicial en subregiones, en ese orden de ideas el objetivo siempre será particionar los datos en nodos que sean lo más puros posibles, sin embargo, matemáticamente es más fácil medir la **impureza** de una región específica, proporcionando una idea de qué tan heterogéneas son las clases en ese nodo; una métrica de uso común en problemas de clasificación para medir la impureza es el **índice GINI**, donde valores bajos indican mayor grado de pureza. Además del índice GINI también es posible utilizar otras métricas como la **ganancia de información** o la **entropía**.
+- Se pueden definir como una estructura jerárquica que busca particionar el espacio de características e identificar subconjuntos representativos. Desde la parte superior a inferior cada árbol tiene *nodo raíz*, *nodos de decisión o internos* y *nodos hojas o terminales*, los dos primeros  se generan con base en reglas  binarias. Mayor grado de pureza es la recompensa que busca el algoritmo al particionar el espacio inicial en subregiones, en ese orden de ideas el objetivo siempre será particionar los datos en nodos que sean lo más puros posible, sin embargo, matemáticamente es más fácil medir la **impureza** de una región específica, proporcionando una idea de qué tan heterogéneas son las clases en ese nodo; una métrica de uso común en problemas de clasificación para medir la impureza es el **índice GINI**, donde valores bajos indican mayor grado de pureza. Además del índice GINI también es posible utilizar otras métricas como la **ganancia de información** o la **entropía**.
 - **Ventajas:**
     - Fácil de interpretar (sujeto a la profundidad).
     - No requieren estandarización o normalización de variables predictoras numéricas.
@@ -247,7 +247,7 @@ modArbol0_prune
 rpart.plot(modArbol0_prune)
 ```
 
-- **Matriz de confusión árbol con "poda":** respecto al árbol sin podar, la diferncia en precisión es muy pequeña (<0.01), sin embargo, la especificidad se aumenta de 0.3444 a 0.4556 con la "poda", aunque la sensitividad haya reducido de 0.8762 a 0.8381.
+- **Matriz de confusión árbol con "poda":** respecto al árbol sin podar, la diferencia en precisión es muy pequeña (<0.01), sin embargo, la especificidad se aumenta de 0.3444 a 0.4556 con la "poda", aunque la sensitividad haya reducido de 0.8762 a 0.8381.
 
 ```{r}
 predichos_mod0_prune <- predict(object = modArbol0_prune, newdata = dataTest, type = "class")

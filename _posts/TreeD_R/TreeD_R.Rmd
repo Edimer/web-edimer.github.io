@@ -39,10 +39,9 @@ knitr::opts_chunk$set(echo = TRUE,
 **1.** Información general (requisitos previos, bibliotecas, etc).   
 **2.** Análisis inicial de los datos. Como el objetivo principal del documento es entrenar un modelo de *árbol de decisión* con R, el análisis inicial incluye sólo una parte exploratoria y algunas pruebas estadísticas.   
 **3.** Entrenamiento de modelo por defecto con `rpart`.   
-**4.** Ajuste de hiperparámetros con la biblioteca `caret`.     
-**5.** Comparación de modelos. La métrica para evaluar el desempeño predictivo de los modelos es el [área bajo la curva ROC.](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)   
-**6.** Material complementario. Resultados de códigos adicionales para árboles de decisión y más temas de machine learning.
-**7.** Recursos de información. 
+**4.** Ajuste de hiperparámetros con la biblioteca `caret`. La métrica para evaluar el desempeño predictivo de los modelos es el [área bajo la curva ROC.](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)     
+**5.** Material complementario. Resultados de códigos adicionales para árboles de decisión y más temas de machine learning.    
+**6.** Recursos de información. 
 
 # Requisitos previos
 
@@ -274,6 +273,55 @@ myROC(predichos = pred0_prune, reales = target)
 ```
 
 ## Tuning con caret
+
+- A diferencia de los parámetros que se "aprenden" duarante el entrenamiento del modelo, los hipeparámetros se definen previo al ajuste del mismo. 
+- El ajuste de [hiperparámetros](https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)) se constituye como parte fundamental de la optimización del modelo.
+- La biblioteca [`caret`](http://topepo.github.io/caret/index.html) proporciona un marco de trabajo unificado para entrenar y validar modelos de machine learning. En este caso, con `caret` podremos ajustar dos de los tres hiperparámetros mencionados anteriormente, el parámetro de complejidad y la profundidad del árbol. Las funciones **`trainControl()`** y **`train`** de la biblioteca `caret` facilitan el proceso.
+    - **`trainControl()`:** permite establecer la estrategia de validación, por ejemplo validación cruzada *k-fold*, validación cruzada repetida, bootstrapping, entre otras. Desde esta misma función también es posible determinar el método de búsqueda de hiperparámetros, que puede ser *aleatoria* o *cuadrícula (grid)*. En este caso particular utilizo *validación cruzada con repeticiones*, con k = 5 y 3 repeticiones. El argumento `summaryFunction = twoClassSummary` permite computar las métricas necesarias (sensitividad y especificidad) para obtener ROC.  Busque  más ayuda con `help("trainControl")`.
+    - **`train()`:** ajuste el modelo estableciendo la fórmula habitual en R, el método o algoritmo para entrenar, ([lista de algoritmos en `caret`](http://topepo.github.io/caret/available-models.html)) los datos, la configuración para el entrenamiento (`tcConrol = myControl`) y la longitud de hiperparámetros a considerar en el entrenamiento (`tuneLenth`). Este último argumento dependerá de los hiperparámetros que estén disponibles en `caret`, aunque también es posible asignarlos manualmente a través de `expand.grid()`. Utilizar el método igualado a "rpart" permitirá optimizar el parámetro *cp* y utilizando "rpart2" es posible optimizar la máxima profundidad del árbol. Cuando se declara `tuneLength = 5` se informa que el número máximo de profundidades a probar será 5, es decir, que al final existirán 5 resultados diferentes con el mismo algoritmo. Por último, se agrega la métrica que será utilizada para comparar los resultados de la validación cruzada.
+- **Nota:** como el procedimiento de validación cruzada implica muestreo aleatorio, es necesario asignar la semilla para garantizar replicabilidad de resultados.
+
+```{r}
+myControl <- trainControl(method = "repeatedcv",
+                          number = 5,
+                          repeats = 3,
+                          classProbs = TRUE,  # Permite predecir probabilidades
+                          summaryFunction = twoClassSummary) 
+set.seed(1992)
+modArbol_tune <- train(class ~ .,
+                       method = "rpart2",
+                       data = data,
+                       trControl = myControl,
+                       tuneLength = 5,
+                       metric = "ROC")
+modArbol_tune
+```
+- Se observa que la mejor profundidad es 14 con la mayor sensitividad aún cuando no tiene la mejor especificidad. A continuación la matriz de confusión en el conjunto de test muestra mejoras en la capacidad de detectar los clasificados como "malos", ademas la precisión es notablemente superior.
+
+```{r}
+predichos_tune <- predict(object = modArbol_tune, newdata = dataTest, type = "raw")
+confusionMatrix(data = predichos_tune, reference = as.factor(dataTest$class),
+                positive = "good")
+```
+
+- **Área bajo la curva de árbol con "poda":** el modelo evidentemente consigue mejores resultados respecto a los ajustados inicialmente, de tal manera que el ajuste de hiperparámetros ha logrado mejorar nuestras predicciones en datos que el modelo aún no ha visto. Posiblemente el hecho de ajustar la máxima profundidad sumado al uso de validación cruzada, permite que el modelo capture de mejor manera las relaciones subyacentes entre características.
+
+```{r}
+# Probabilidades predichas para la clase "good"
+pred_tune <- as.data.frame(predict(object = modArbol_tune,
+                                   newdata = dataTest, type = "prob"))$good
+
+# AUC
+Metrics::auc(actual = target, predicted = pred_tune)
+```
+
+- **Curva ROC:**
+
+```{r, fig.height=5, fig.width=7, warning=FALSE, message=FALSE}
+# Ver función myROC() al final en material complementario    
+myROC(predichos = pred_tune, reales = target)
+```
+
 
 # Complementario
 

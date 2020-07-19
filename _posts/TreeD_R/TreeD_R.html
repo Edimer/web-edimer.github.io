@@ -49,7 +49,7 @@
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data/dataset_31_credit-g.csv","functions/myROC.R","img1.png","TreeD_R_files/bowser-1.9.3/bowser.min.js","TreeD_R_files/distill-2.2.21/template.v2.js","TreeD_R_files/figure-html5/unnamed-chunk-10-1.png","TreeD_R_files/figure-html5/unnamed-chunk-12-1.png","TreeD_R_files/figure-html5/unnamed-chunk-13-1.png","TreeD_R_files/figure-html5/unnamed-chunk-14-1.png","TreeD_R_files/figure-html5/unnamed-chunk-16-1.png","TreeD_R_files/figure-html5/unnamed-chunk-19-1.png","TreeD_R_files/figure-html5/unnamed-chunk-4-1.png","TreeD_R_files/figure-html5/unnamed-chunk-5-1.png","TreeD_R_files/figure-html5/unnamed-chunk-6-1.png","TreeD_R_files/figure-html5/unnamed-chunk-9-1.png","TreeD_R_files/jquery-1.11.3/jquery.min.js","TreeD_R_files/webcomponents-2.0.0/webcomponents.js","www/img1.PNG","www/img2.PNG","www/img3.PNG","www/img4.PNG"]}
+  {"type":"character","attributes":{},"value":["data/dataset_31_credit-g.csv","functions/myROC.R","img1.png","TreeD_R_files/bowser-1.9.3/bowser.min.js","TreeD_R_files/distill-2.2.21/template.v2.js","TreeD_R_files/figure-html5/unnamed-chunk-10-1.png","TreeD_R_files/figure-html5/unnamed-chunk-12-1.png","TreeD_R_files/figure-html5/unnamed-chunk-13-1.png","TreeD_R_files/figure-html5/unnamed-chunk-14-1.png","TreeD_R_files/figure-html5/unnamed-chunk-16-1.png","TreeD_R_files/figure-html5/unnamed-chunk-19-1.png","TreeD_R_files/figure-html5/unnamed-chunk-23-1.png","TreeD_R_files/figure-html5/unnamed-chunk-4-1.png","TreeD_R_files/figure-html5/unnamed-chunk-5-1.png","TreeD_R_files/figure-html5/unnamed-chunk-6-1.png","TreeD_R_files/figure-html5/unnamed-chunk-9-1.png","TreeD_R_files/jquery-1.11.3/jquery.min.js","TreeD_R_files/webcomponents-2.0.0/webcomponents.js","www/img1.PNG","www/img2.PNG","www/img3.PNG","www/img4.PNG"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1004,9 +1004,9 @@
 <p><strong>1.</strong> Información general (requisitos previos, bibliotecas, etc).<br />
 <strong>2.</strong> Análisis inicial de los datos. Como el objetivo principal del documento es entrenar un modelo de <em>árbol de decisión</em> con R, el análisis inicial incluye sólo una parte exploratoria y algunas pruebas estadísticas.<br />
 <strong>3.</strong> Entrenamiento de modelo por defecto con <code>rpart</code>.<br />
-<strong>4.</strong> Ajuste de hiperparámetros con la biblioteca <code>caret</code>.<br />
-<strong>5.</strong> Comparación de modelos. La métrica para evaluar el desempeño predictivo de los modelos es el <a href="https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5">área bajo la curva ROC.</a><br />
-<strong>6.</strong> Material complementario. Resultados de códigos adicionales para árboles de decisión y más temas de machine learning. <strong>7.</strong> Recursos de información.</p>
+<strong>4.</strong> Ajuste de hiperparámetros con la biblioteca <code>caret</code>. La métrica para evaluar el desempeño predictivo de los modelos es el <a href="https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5">área bajo la curva ROC.</a><br />
+<strong>5.</strong> Material complementario. Resultados de códigos adicionales para árboles de decisión y más temas de machine learning.<br />
+<strong>6.</strong> Recursos de información.</p>
 <h1 id="requisitos-previos">Requisitos previos</h1>
 <ul>
 <li>Instalar las bibliotecas <a href="https://cran.r-project.org/web/packages/rpart/rpart.pdf"><code>rpart</code></a> y <a href="https://cran.r-project.org/web/packages/rpart.plot/rpart.plot.pdf">rpart.plot</a> para entrenar y gráficar modelos basados en árboles.</li>
@@ -1384,6 +1384,113 @@ myROC(predichos = pred0_prune, reales = target)</code></pre>
 <p><img src="TreeD_R_files/figure-html5/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <h2 id="tuning-con-caret">Tuning con caret</h2>
+<ul>
+<li>A diferencia de los parámetros que se “aprenden” duarante el entrenamiento del modelo, los hipeparámetros se definen previo al ajuste del mismo.</li>
+<li>El ajuste de <a href="https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)">hiperparámetros</a> se constituye como parte fundamental de la optimización del modelo.</li>
+<li>La biblioteca <a href="http://topepo.github.io/caret/index.html"><code>caret</code></a> proporciona un marco de trabajo unificado para entrenar y validar modelos de machine learning. En este caso, con <code>caret</code> podremos ajustar dos de los tres hiperparámetros mencionados anteriormente, el parámetro de complejidad y la profundidad del árbol. Las funciones <strong><code>trainControl()</code></strong> y <strong><code>train</code></strong> de la biblioteca <code>caret</code> facilitan el proceso.
+<ul>
+<li><strong><code>trainControl()</code>:</strong> permite establecer la estrategia de validación, por ejemplo validación cruzada <em>k-fold</em>, validación cruzada repetida, bootstrapping, entre otras. Desde esta misma función también es posible determinar el método de búsqueda de hiperparámetros, que puede ser <em>aleatoria</em> o <em>cuadrícula (grid)</em>. En este caso particular utilizo <em>validación cruzada con repeticiones</em>, con k = 5 y 3 repeticiones. El argumento <code>summaryFunction = twoClassSummary</code> permite computar las métricas necesarias (sensitividad y especificidad) para obtener ROC. Busque más ayuda con <code>help("trainControl")</code>.</li>
+<li><strong><code>train()</code>:</strong> ajuste el modelo estableciendo la fórmula habitual en R, el método o algoritmo para entrenar, (<a href="http://topepo.github.io/caret/available-models.html">lista de algoritmos en <code>caret</code></a>) los datos, la configuración para el entrenamiento (<code>tcConrol = myControl</code>) y la longitud de hiperparámetros a considerar en el entrenamiento (<code>tuneLenth</code>). Este último argumento dependerá de los hiperparámetros que estén disponibles en <code>caret</code>, aunque también es posible asignarlos manualmente a través de <code>expand.grid()</code>. Utilizar el método igualado a “rpart” permitirá optimizar el parámetro <em>cp</em> y utilizando “rpart2” es posible optimizar la máxima profundidad del árbol. Cuando se declara <code>tuneLength = 5</code> se informa que el número máximo de profundidades a probar será 5, es decir, que al final existirán 5 resultados diferentes con el mismo algoritmo. Por último, se agrega la métrica que será utilizada para comparar los resultados de la validación cruzada.</li>
+</ul></li>
+<li><strong>Nota:</strong> como el procedimiento de validación cruzada implica muestreo aleatorio, es necesario asignar la semilla para garantizar replicabilidad de resultados.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+myControl &lt;- trainControl(method = &quot;repeatedcv&quot;,
+                          number = 5,
+                          repeats = 3,
+                          classProbs = TRUE,  # Permite predecir probabilidades
+                          summaryFunction = twoClassSummary) 
+set.seed(1992)
+modArbol_tune &lt;- train(class ~ .,
+                       method = &quot;rpart2&quot;,
+                       data = data,
+                       trControl = myControl,
+                       tuneLength = 5,
+                       metric = &quot;ROC&quot;)
+modArbol_tune</code></pre>
+<pre><code>
+CART 
+
+1000 samples
+  20 predictor
+   2 classes: &#39;bad&#39;, &#39;good&#39; 
+
+No pre-processing
+Resampling: Cross-Validated (5 fold, repeated 3 times) 
+Summary of sample sizes: 800, 800, 800, 800, 800, 800, ... 
+Resampling results across tuning parameters:
+
+  maxdepth  ROC        Sens       Spec     
+   3        0.7028968  0.3011111  0.8885714
+   6        0.7138095  0.3244444  0.8880952
+  11        0.7211151  0.3988889  0.8642857
+  14        0.7213571  0.4055556  0.8623810
+  18        0.7211746  0.3911111  0.8671429
+
+ROC was used to select the optimal model using the largest value.
+The final value used for the model was maxdepth = 14.</code></pre>
+</div>
+<ul>
+<li>Se observa que la mejor profundidad es 14 con la mayor sensitividad aún cuando no tiene la mejor especificidad. A continuación la matriz de confusión en el conjunto de test muestra mejoras en la capacidad de detectar los clasificados como “malos”, ademas la precisión es notablemente superior.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+predichos_tune &lt;- predict(object = modArbol_tune, newdata = dataTest, type = &quot;raw&quot;)
+confusionMatrix(data = predichos_tune, reference = as.factor(dataTest$class),
+                positive = &quot;good&quot;)</code></pre>
+<pre><code>
+Confusion Matrix and Statistics
+
+          Reference
+Prediction bad good
+      bad   52   29
+      good  38  181
+                                          
+               Accuracy : 0.7767          
+                 95% CI : (0.7253, 0.8225)
+    No Information Rate : 0.7             
+    P-Value [Acc &gt; NIR] : 0.001839        
+                                          
+                  Kappa : 0.4526          
+                                          
+ Mcnemar&#39;s Test P-Value : 0.328393        
+                                          
+            Sensitivity : 0.8619          
+            Specificity : 0.5778          
+         Pos Pred Value : 0.8265          
+         Neg Pred Value : 0.6420          
+             Prevalence : 0.7000          
+         Detection Rate : 0.6033          
+   Detection Prevalence : 0.7300          
+      Balanced Accuracy : 0.7198          
+                                          
+       &#39;Positive&#39; Class : good            
+                                          </code></pre>
+</div>
+<ul>
+<li><strong>Área bajo la curva de árbol con “poda”:</strong> el modelo evidentemente consigue mejores resultados respecto a los ajustados inicialmente, de tal manera que el ajuste de hiperparámetros ha logrado mejorar nuestras predicciones en datos que el modelo aún no ha visto. Posiblemente el hecho de ajustar la máxima profundidad sumado al uso de validación cruzada, permite que el modelo capture de mejor manera las relaciones subyacentes entre características.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Probabilidades predichas para la clase &quot;good&quot;
+pred_tune &lt;- as.data.frame(predict(object = modArbol_tune,
+                                   newdata = dataTest, type = &quot;prob&quot;))$good
+
+# AUC
+Metrics::auc(actual = target, predicted = pred_tune)</code></pre>
+<pre><code>
+[1] 0.7888624</code></pre>
+</div>
+<ul>
+<li><strong>Curva ROC:</strong></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Ver función myROC() al final en material complementario    
+myROC(predichos = pred_tune, reales = target)</code></pre>
+<p><img src="TreeD_R_files/figure-html5/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
 <h1 id="complementario">Complementario</h1>
 <h2 id="función-myroc">Función <code>myROC()</code></h2>
 <ul>

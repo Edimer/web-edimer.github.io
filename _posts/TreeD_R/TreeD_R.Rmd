@@ -304,7 +304,7 @@ confusionMatrix(data = predichos_tune, reference = as.factor(dataTest$class),
                 positive = "good")
 ```
 
-- **Área bajo la curva de árbol con "poda":** el modelo evidentemente consigue mejores resultados respecto a los ajustados inicialmente, de tal manera que el ajuste de hiperparámetros ha logrado mejorar nuestras predicciones en datos que el modelo aún no ha visto. Posiblemente el hecho de ajustar la máxima profundidad sumado al uso de validación cruzada, permite que el modelo capture de mejor manera las relaciones subyacentes entre características.
+- **Área bajo la curva** el modelo evidentemente consigue mejores resultados respecto a los ajustados inicialmente, de tal manera que el ajuste de hiperparámetros ha logrado mejorar nuestras predicciones en datos que el modelo aún no ha visto. Posiblemente el hecho de ajustar la máxima profundidad sumado al uso de validación cruzada, permite que el modelo capture de mejor manera las relaciones subyacentes entre características.
 
 ```{r}
 # Probabilidades predichas para la clase "good"

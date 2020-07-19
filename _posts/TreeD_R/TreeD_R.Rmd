@@ -74,7 +74,7 @@ library(pROC)
 
 # Datos
 
-- Se importan los datos y se aplica la función `mutate_if()` para eliminar las comillas simples (*''*) que están presentes en las variables tipo texto (`character`). A continuación sólo se muestran 5 variables (columnas) con 10 observaciones. La variable **`class`** es nuestro *target* o *variable respeusta*.
+- Se importan los datos y se aplica la función `mutate_if()` para eliminar las comillas simples (*''*) que están presentes en las variables tipo texto (`character`). A continuación sólo se muestran 5 variables (columnas) con 10 observaciones. La variable **`class`** es nuestro *target* o *variable respuesta*.
 
 ```{r}
 data <- data.table::fread(file = "data/dataset_31_credit-g.csv") %>% 

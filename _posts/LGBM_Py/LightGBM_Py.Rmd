@@ -1,7 +1,7 @@
 ---
-title: "LightGBM Python"
+title: "LightGBM con R"
 description: |
-  Ejemplo aplicado del algoritmo LightGBM (Microsoft) con python, en problemas de clasificación y regresión. 
+  Ejemplo aplicado del algoritmo LightGBM (Microsoft) con R, en problemas de clasificación y regresión. 
 preview: img1.png  
 author:
   - name: Edimer David Jaramillo
@@ -10,7 +10,7 @@ author:
     affiliation_url: https://edimer.github.io/
 date: 04-19-2020
 categories:
-  - Py
+  - R
   - lightgbm
   - Gradient Boosting
 output:

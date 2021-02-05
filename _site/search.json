@@ -1,0 +1,26 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "Información",
+      "description": "Este blog contiene tutoriales cortos de *Statistical Learning* y *Machine Learning* con R y Python. Sirve al propósito de brindar recursos de información en **español** acerca de aplicaciones estadísticas e inteligencia artificial con ambos lenguajes de programación.",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-02-05T18:55:52-05:00"
+    },
+    {
+      "path": "index.html",
+      "title": "Machine Learning con R y Python",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-02-05T18:55:53-05:00"
+    },
+    {
+      "path": "README.html",
+      "author": [],
+      "contents": "\r\nBlog para R y Python\r\nURL: https://blogrpy.netlify.com/\r\nPara conocer más de la biblioteca distill:\r\nBlog con distill\r\nCreación de página web con distill\r\nBiblioteca distill\r\n\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-02-05T18:55:54-05:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}

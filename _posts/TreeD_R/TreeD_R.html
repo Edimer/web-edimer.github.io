@@ -18,77 +18,188 @@
  <!--radix_placeholder_import_source-->
  <!--/radix_placeholder_import_source-->
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
   <!--radix_placeholder_meta_tags-->
   <title>Árbol de clasificación con R</title>
-  
+
   <meta property="description" itemprop="description" content="Ejemplo de árboles de decisión en machine learning supervisado para clasificación. Uso de las bibliotecas rpart, rpart.plot y caret en perfilamiento de riesgo crediticio."/>
-  
-  
+
+
   <!--  https://schema.org/Article -->
   <meta property="article:published" itemprop="datePublished" content="2020-07-18"/>
   <meta property="article:created" itemprop="dateCreated" content="2020-07-18"/>
-  <meta name="article:author" content="Edimer David Jaramillo"/>
-  
+  <meta name="article:author" content="Edimer David Jaramillo (Sidereus)"/>
+
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="Árbol de clasificación con R"/>
   <meta property="og:type" content="article"/>
   <meta property="og:description" content="Ejemplo de árboles de decisión en machine learning supervisado para clasificación. Uso de las bibliotecas rpart, rpart.plot y caret en perfilamiento de riesgo crediticio."/>
   <meta property="og:locale" content="en_US"/>
-  
+
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
   <meta property="twitter:title" content="Árbol de clasificación con R"/>
   <meta property="twitter:description" content="Ejemplo de árboles de decisión en machine learning supervisado para clasificación. Uso de las bibliotecas rpart, rpart.plot y caret en perfilamiento de riesgo crediticio."/>
-  
+
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
-  
+
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","preview","author","date","categories","output"]}},"value":[{"type":"character","attributes":{},"value":["Árbol de clasificación con R"]},{"type":"character","attributes":{},"value":["Ejemplo de árboles de decisión en machine learning supervisado para clasificación. Uso de las bibliotecas rpart, rpart.plot y caret en perfilamiento de riesgo crediticio.\n"]},{"type":"character","attributes":{},"value":["img1.png"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Edimer David Jaramillo"]},{"type":"character","attributes":{},"value":["https://edimer.github.io/"]},{"type":"character","attributes":{},"value":["R+Py"]},{"type":"character","attributes":{},"value":["https://edimer.github.io/"]}]}]},{"type":"character","attributes":{},"value":["07-18-2020"]},{"type":"character","attributes":{},"value":["R","Tree Decision"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","preview","author","date","categories","output"]}},"value":[{"type":"character","attributes":{},"value":["Árbol de clasificación con R"]},{"type":"character","attributes":{},"value":["Ejemplo de árboles de decisión en machine learning supervisado para clasificación. Uso de las bibliotecas rpart, rpart.plot y caret en perfilamiento de riesgo crediticio.\n"]},{"type":"character","attributes":{},"value":["img1.png"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Edimer David Jaramillo (Sidereus)"]},{"type":"character","attributes":{},"value":["https://edimer.github.io/"]},{"type":"character","attributes":{},"value":["R+Py"]},{"type":"character","attributes":{},"value":["https://edimer.github.io/"]}]}]},{"type":"character","attributes":{},"value":["07-18-2020"]},{"type":"character","attributes":{},"value":["R","Tree Decision"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data/dataset_31_credit-g.csv","functions/myROC.R","img1.png","TreeD_R_files/Blob-1.0/Blob.js","TreeD_R_files/Blob-1.0/LICENSE.md","TreeD_R_files/Blob-1.0/README.md","TreeD_R_files/bowser-1.9.3/bowser.min.js","TreeD_R_files/canvas-toBlob-1.0/canvas-toBlob.js","TreeD_R_files/canvas-toBlob-1.0/LICENSE.md","TreeD_R_files/canvas-toBlob-1.0/README.md","TreeD_R_files/distill-2.2.21/template.v2.js","TreeD_R_files/figure-html5/unnamed-chunk-10-1.png","TreeD_R_files/figure-html5/unnamed-chunk-12-1.png","TreeD_R_files/figure-html5/unnamed-chunk-13-1.png","TreeD_R_files/figure-html5/unnamed-chunk-14-1.png","TreeD_R_files/figure-html5/unnamed-chunk-16-1.png","TreeD_R_files/figure-html5/unnamed-chunk-19-1.png","TreeD_R_files/figure-html5/unnamed-chunk-23-1.png","TreeD_R_files/figure-html5/unnamed-chunk-24-1.png","TreeD_R_files/figure-html5/unnamed-chunk-4-1.png","TreeD_R_files/figure-html5/unnamed-chunk-5-1.png","TreeD_R_files/figure-html5/unnamed-chunk-6-1.png","TreeD_R_files/figure-html5/unnamed-chunk-9-1.png","TreeD_R_files/FileSaver-1.1.20151003/FileSaver.min.js","TreeD_R_files/FileSaver-1.1.20151003/LICENSE.md","TreeD_R_files/FileSaver-1.1.20151003/README.md","TreeD_R_files/html2canvas-0.5.0/html2canvas.js","TreeD_R_files/htmlwidgets-1.5.1/htmlwidgets.js","TreeD_R_files/jquery-1.11.3/jquery-AUTHORS.txt","TreeD_R_files/jquery-1.11.3/jquery.min.js","TreeD_R_files/jquery-sparkline-2.1.2/jquery.sparkline.css","TreeD_R_files/jquery-sparkline-2.1.2/jquery.sparkline.js","TreeD_R_files/jquery-sparkline-2.1.2/jquery.sparkline.min.js","TreeD_R_files/jquery-sparkline-2.1.2/package.json","TreeD_R_files/jquery-sparkline-2.1.2/README.md","TreeD_R_files/jspdf-1.3.2/jspdf.debug.js","TreeD_R_files/sparkline-binding-2.0/sparkline.js","TreeD_R_files/vis-4.20.1/img/network/acceptDeleteIcon.png","TreeD_R_files/vis-4.20.1/img/network/addNodeIcon.png","TreeD_R_files/vis-4.20.1/img/network/backIcon.png","TreeD_R_files/vis-4.20.1/img/network/connectIcon.png","TreeD_R_files/vis-4.20.1/img/network/cross.png","TreeD_R_files/vis-4.20.1/img/network/cross2.png","TreeD_R_files/vis-4.20.1/img/network/deleteIcon.png","TreeD_R_files/vis-4.20.1/img/network/downArrow.png","TreeD_R_files/vis-4.20.1/img/network/editIcon.png","TreeD_R_files/vis-4.20.1/img/network/leftArrow.png","TreeD_R_files/vis-4.20.1/img/network/minus.png","TreeD_R_files/vis-4.20.1/img/network/plus.png","TreeD_R_files/vis-4.20.1/img/network/rightArrow.png","TreeD_R_files/vis-4.20.1/img/network/upArrow.png","TreeD_R_files/vis-4.20.1/img/network/zoomExtends.png","TreeD_R_files/vis-4.20.1/vis.css","TreeD_R_files/vis-4.20.1/vis.min.js","TreeD_R_files/visNetwork-binding-2.0.9/visNetwork.js","TreeD_R_files/webcomponents-2.0.0/webcomponents.js","www/img1.PNG","www/img2.PNG","www/img3.PNG","www/img4.PNG"]}
+  {"type":"character","attributes":{},"value":["data/dataset_31_credit-g.csv","functions/myROC.R","img1.png","TreeD_R_files/anchor-4.2.2/anchor.min.js","TreeD_R_files/Blob-1.0/Blob.js","TreeD_R_files/Blob-1.0/LICENSE.md","TreeD_R_files/Blob-1.0/README.md","TreeD_R_files/bowser-1.9.3/bowser.min.js","TreeD_R_files/canvas-toBlob-1.0/canvas-toBlob.js","TreeD_R_files/canvas-toBlob-1.0/LICENSE.md","TreeD_R_files/canvas-toBlob-1.0/README.md","TreeD_R_files/distill-2.2.21/template.v2.js","TreeD_R_files/figure-html5/unnamed-chunk-10-1.png","TreeD_R_files/figure-html5/unnamed-chunk-12-1.png","TreeD_R_files/figure-html5/unnamed-chunk-13-1.png","TreeD_R_files/figure-html5/unnamed-chunk-14-1.png","TreeD_R_files/figure-html5/unnamed-chunk-16-1.png","TreeD_R_files/figure-html5/unnamed-chunk-19-1.png","TreeD_R_files/figure-html5/unnamed-chunk-23-1.png","TreeD_R_files/figure-html5/unnamed-chunk-24-1.png","TreeD_R_files/figure-html5/unnamed-chunk-4-1.png","TreeD_R_files/figure-html5/unnamed-chunk-5-1.png","TreeD_R_files/figure-html5/unnamed-chunk-6-1.png","TreeD_R_files/figure-html5/unnamed-chunk-9-1.png","TreeD_R_files/FileSaver-1.1.20151003/FileSaver.min.js","TreeD_R_files/FileSaver-1.1.20151003/LICENSE.md","TreeD_R_files/FileSaver-1.1.20151003/README.md","TreeD_R_files/header-attrs-2.6/header-attrs.js","TreeD_R_files/html2canvas-0.5.0/html2canvas.js","TreeD_R_files/htmlwidgets-1.5.1/htmlwidgets.js","TreeD_R_files/htmlwidgets-1.5.3/htmlwidgets.js","TreeD_R_files/jquery-1.11.3/jquery-AUTHORS.txt","TreeD_R_files/jquery-1.11.3/jquery.min.js","TreeD_R_files/jquery-sparkline-2.1.2/jquery.sparkline.css","TreeD_R_files/jquery-sparkline-2.1.2/jquery.sparkline.js","TreeD_R_files/jquery-sparkline-2.1.2/jquery.sparkline.min.js","TreeD_R_files/jquery-sparkline-2.1.2/package.json","TreeD_R_files/jquery-sparkline-2.1.2/README.md","TreeD_R_files/jspdf-1.3.2/jspdf.debug.js","TreeD_R_files/popper-2.6.0/popper.min.js","TreeD_R_files/sparkline-binding-2.0/sparkline.js","TreeD_R_files/tippy-6.2.7/tippy-bundle.umd.min.js","TreeD_R_files/tippy-6.2.7/tippy-light-border.css","TreeD_R_files/tippy-6.2.7/tippy.css","TreeD_R_files/tippy-6.2.7/tippy.umd.min.js","TreeD_R_files/vis-4.20.1/img/network/acceptDeleteIcon.png","TreeD_R_files/vis-4.20.1/img/network/addNodeIcon.png","TreeD_R_files/vis-4.20.1/img/network/backIcon.png","TreeD_R_files/vis-4.20.1/img/network/connectIcon.png","TreeD_R_files/vis-4.20.1/img/network/cross.png","TreeD_R_files/vis-4.20.1/img/network/cross2.png","TreeD_R_files/vis-4.20.1/img/network/deleteIcon.png","TreeD_R_files/vis-4.20.1/img/network/downArrow.png","TreeD_R_files/vis-4.20.1/img/network/editIcon.png","TreeD_R_files/vis-4.20.1/img/network/leftArrow.png","TreeD_R_files/vis-4.20.1/img/network/minus.png","TreeD_R_files/vis-4.20.1/img/network/plus.png","TreeD_R_files/vis-4.20.1/img/network/rightArrow.png","TreeD_R_files/vis-4.20.1/img/network/upArrow.png","TreeD_R_files/vis-4.20.1/img/network/zoomExtends.png","TreeD_R_files/vis-4.20.1/vis.css","TreeD_R_files/vis-4.20.1/vis.min.js","TreeD_R_files/visNetwork-binding-2.0.9/visNetwork.js","TreeD_R_files/webcomponents-2.0.0/webcomponents.js","www/img1.PNG","www/img2.PNG","www/img3.PNG","www/img4.PNG"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
-  
+
   <style type="text/css">
-  
+
   body {
     background-color: white;
   }
-  
+
   .pandoc-table {
     width: 100%;
   }
-  
+
   .pandoc-table>caption {
     margin-bottom: 10px;
   }
-  
+
   .pandoc-table th:not([align]) {
     text-align: left;
   }
-  
+
   .pagedtable-footer {
     font-size: 15px;
   }
-  
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
   .html-widget {
     margin-bottom: 2.0em;
   }
-  
+
   .l-screen-inset {
     padding-right: 16px;
   }
-  
+
   .l-screen .caption {
     margin-left: 10px;
   }
-  
+
   .shaded {
     background: rgb(247, 247, 247);
     padding-top: 20px;
@@ -96,43 +207,130 @@
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
-  
+
   .shaded .html-widget {
     margin-bottom: 0;
     border: 1px solid rgba(0, 0, 0, 0.1);
   }
-  
+
   .shaded .shaded-content {
     background: white;
   }
-  
+
   .text-output {
     margin-top: 0;
     line-height: 1.5em;
   }
-  
+
   .hidden {
     display: none !important;
   }
-  
+
   d-article {
+    padding-top: 2.5rem;
     padding-bottom: 30px;
   }
-  
+
   d-appendix {
     padding-top: 30px;
   }
-  
+
   d-article>p>img {
     width: 100%;
   }
-  
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
   d-article iframe {
     border: 1px solid rgba(0, 0, 0, 0.1);
     margin-bottom: 2.0em;
     width: 100%;
   }
-  
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
   figure img.external {
     background: white;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -140,128 +338,107 @@
     padding: 18px;
     box-sizing: border-box;
   }
-  
-  /* CSS for table of contents */
-  
-  .d-toc {
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
     color: rgba(0,0,0,0.8);
-    font-size: 0.8em;
-    line-height: 1em;
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
   }
-  
-  .d-toc-header {
-    font-size: 0.6rem;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 0.5);
-    text-transform: uppercase;
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
     margin-top: 0;
-    margin-bottom: 1.3em;
+    margin-bottom: 1em;
   }
-  
-  .d-toc a {
-    border-bottom: none;
+
+  .d-contents li {
+    list-style-type: none
   }
-  
-  .d-toc ul {
+
+  .d-contents nav > ul {
     padding-left: 0;
   }
-  
-  .d-toc li>ul {
-    padding-top: 0.8em;
-    padding-left: 16px;
-    margin-bottom: 0.6em;
+
+  .d-contents ul {
+    padding-left: 1em
   }
-  
-  .d-toc ul,
-  .d-toc li {
-    list-style-type: none;
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
   }
-  
-  .d-toc li {
-    margin-bottom: 0.9em;
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
   }
-  
-  .d-toc-separator {
-    margin-top: 20px;
-    margin-bottom: 2em;
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
   }
-  
-  .d-article-with-toc {
-    border-top: none;
-    padding-top: 0;
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
   }
-  
-  
-  
-  /* Tweak code blocks (note that this CSS is repeated above in an injection
-     into the d-code shadow dom) */
-  
-  d-code {
-    overflow-x: auto !important;
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
   }
-  
-  pre.d-code code.d-code {
-    padding-left: 10px;
-    font-size: 12px;
-    border-left: 2px solid rgba(0,0,0,0.1);
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
   }
-  
-  pre.text-output {
-  
-    font-size: 12px;
-    color: black;
-    background: none;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: 1.5;
-  
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-  
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    hyphens: none;
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
   }
-  
-  @media(min-width: 768px) {
-  
-  d-code {
-    overflow-x: visible !important;
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
   }
-  
-  pre.d-code code.d-code  {
-      padding-left: 18px;
-      font-size: 14px;
-  }
-  pre.text-output {
-    font-size: 14px;
-  }
-  }
-  
+
+
   /* Figure */
-  
+
   .figure {
     position: relative;
     margin-bottom: 2.5em;
     margin-top: 1.5em;
   }
-  
+
   .figure img {
     width: 100%;
   }
-  
+
   .figure .caption {
     color: rgba(0, 0, 0, 0.6);
     font-size: 12px;
     line-height: 1.5em;
   }
-  
+
   .figure img.external {
     background: white;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -269,21 +446,42 @@
     padding: 18px;
     box-sizing: border-box;
   }
-  
+
   .figure .caption a {
     color: rgba(0, 0, 0, 0.6);
   }
-  
+
   .figure .caption b,
   .figure .caption strong, {
     font-weight: 600;
     color: rgba(0, 0, 0, 1.0);
   }
-  
-  
-  
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
   /* Tweak 1000px media break to show more text */
-  
+
   @media(min-width: 1000px) {
     .base-grid,
     distill-header,
@@ -299,11 +497,11 @@
       grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
       grid-column-gap: 16px;
     }
-  
+
     .grid {
       grid-column-gap: 16px;
     }
-  
+
     d-article {
       font-size: 1.06rem;
       line-height: 1.7em;
@@ -312,7 +510,7 @@
       font-size: 13px;
     }
   }
-  
+
   @media(min-width: 1180px) {
     .base-grid,
     distill-header,
@@ -328,16 +526,16 @@
       grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
       grid-column-gap: 32px;
     }
-  
+
     .grid {
       grid-column-gap: 32px;
     }
   }
-  
-  
+
+
   /* Get the citation styles for the appendix (not auto-injected on render since
      we do our own rendering of the citation appendix) */
-  
+
   d-appendix .citation-appendix,
   .d-appendix .citation-appendix {
     font-size: 11px;
@@ -354,111 +552,401 @@
     white-space: pre-wrap;
     word-wrap: break-word;
   }
-  
-  
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
   /* Social footer */
-  
+
   .social_footer {
     margin-top: 30px;
     margin-bottom: 0;
     color: rgba(0,0,0,0.67);
   }
-  
+
   .disqus-comments {
     margin-right: 30px;
   }
-  
+
   .disqus-comment-count {
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     cursor: pointer;
   }
-  
+
   #disqus_thread {
     margin-top: 30px;
   }
-  
+
   .article-sharing a {
     border-bottom: none;
     margin-right: 8px;
   }
-  
+
   .article-sharing a:hover {
     border-bottom: none;
   }
-  
+
   .sidebar-section.subscribe {
     font-size: 12px;
     line-height: 1.6em;
   }
-  
+
   .subscribe p {
     margin-bottom: 0.5em;
   }
-  
-  
+
+
   .article-footer .subscribe {
     font-size: 15px;
     margin-top: 45px;
   }
-  
-  
+
+
   .sidebar-section.custom {
     font-size: 12px;
     line-height: 1.6em;
   }
-  
+
   .custom p {
     margin-bottom: 0.5em;
   }
-  
-  
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
   /* Improve display for browsers without grid (IE/Edge <= 15) */
-  
+
   .downlevel {
     line-height: 1.6em;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
     margin: 0;
   }
-  
+
   .downlevel .d-title {
     padding-top: 6rem;
     padding-bottom: 1.5rem;
   }
-  
+
   .downlevel .d-title h1 {
     font-size: 50px;
     font-weight: 700;
     line-height: 1.1em;
     margin: 0 0 0.5rem;
   }
-  
+
   .downlevel .d-title p {
     font-weight: 300;
     font-size: 1.2rem;
     line-height: 1.55em;
     margin-top: 0;
   }
-  
+
   .downlevel .d-byline {
     padding-top: 0.8em;
     padding-bottom: 0.8em;
     font-size: 0.8rem;
     line-height: 1.8em;
   }
-  
+
   .downlevel .section-separator {
     border: none;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
-  
+
   .downlevel .d-article {
     font-size: 1.06rem;
     line-height: 1.7em;
     padding-top: 1rem;
     padding-bottom: 2rem;
   }
-  
-  
+
+
   .downlevel .d-appendix {
     padding-left: 0;
     padding-right: 0;
@@ -470,11 +958,11 @@
     padding-top: 40px;
     padding-bottom: 48px;
   }
-  
+
   .downlevel .footnotes ol {
     padding-left: 13px;
   }
-  
+
   .downlevel .base-grid,
   .downlevel .distill-header,
   .downlevel .d-title,
@@ -491,7 +979,7 @@
     padding-left: 40px;
     padding-right: 40px;
   }
-  
+
   @media(min-width: 768px) {
     .downlevel .base-grid,
     .downlevel .distill-header,
@@ -511,14 +999,14 @@
     max-width: 900px;
   }
   }
-  
+
   .downlevel pre code {
     display: block;
     border-left: 2px solid rgba(0, 0, 0, .1);
     padding: 0 0 0 20px;
     font-size: 14px;
   }
-  
+
   .downlevel code, .downlevel pre {
     color: black;
     background: none;
@@ -529,21 +1017,27 @@
     word-break: normal;
     word-wrap: normal;
     line-height: 1.5;
-  
+
     -moz-tab-size: 4;
     -o-tab-size: 4;
     tab-size: 4;
-  
+
     -webkit-hyphens: none;
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
   }
-  
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
   </style>
-  
+
   <script type="application/javascript">
-  
+
   function is_downlevel_browser() {
     if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
                                    window.navigator.userAgent)) {
@@ -552,13 +1046,20 @@
       return window.load_distill_framework === undefined;
     }
   }
-  
+
   // show body when load is complete
   function on_load_complete() {
-  
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
     // set body to visible
     document.body.style.visibility = 'visible';
-  
+
     // force redraw for leaflet widgets
     if (window.HTMLWidgets) {
       var maps = window.HTMLWidgets.findAll(".leaflet");
@@ -571,54 +1072,39 @@
         });
       });
     }
-  
+
     // trigger 'shown' so htmlwidgets resize
     $('d-article').trigger('shown');
   }
-  
+
   function init_distill() {
-  
+
     init_common();
-  
+
     // create front matter
     var front_matter = $('<d-front-matter></d-front-matter>');
     $('#distill-front-matter').wrap(front_matter);
-  
+
     // create d-title
     $('.d-title').changeElementType('d-title');
-  
+
     // create d-byline
     var byline = $('<d-byline></d-byline>');
     $('.d-byline').replaceWith(byline);
-  
+
     // create d-article
     var article = $('<d-article></d-article>');
     $('.d-article').wrap(article).children().unwrap();
-  
+
     // move posts container into article
     $('.posts-container').appendTo($('d-article'));
-  
+
     // create d-appendix
     $('.d-appendix').changeElementType('d-appendix');
-  
-    // create d-bibliography
-    var bibliography = $('<d-bibliography></d-bibliography>');
-    $('#distill-bibliography').wrap(bibliography);
-  
+
     // flag indicating that we have appendix items
     var appendix = $('.appendix-bottom').children('h3').length > 0;
-  
-    // replace citations with <d-cite>
-    $('.citation').each(function(i, val) {
-      appendix = true;
-      var cites = $(this).attr('data-cites').split(" ");
-      var dt_cite = $('<d-cite></d-cite>');
-      dt_cite.attr('key', cites.join());
-      $(this).replaceWith(dt_cite);
-    });
-    // remove refs
-    $('#refs').remove();
-  
+
     // replace footnotes with <d-footnote>
     $('.footnote-ref').each(function(i, val) {
       appendix = true;
@@ -634,49 +1120,31 @@
     });
     // remove footnotes
     $('.footnotes').remove();
-  
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
     $('h1.appendix, h2.appendix').each(function(i, val) {
       $(this).changeElementType('h3');
     });
     $('h3.appendix').each(function(i, val) {
       var id = $(this).attr('id');
-      $('.d-toc a[href="#' + id + '"]').parent().remove();
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
       appendix = true;
       $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
     });
-  
+
     // show d-appendix if we have appendix content
     $("d-appendix").css('display', appendix ? 'grid' : 'none');
-  
-    // replace code blocks with d-code
-    $('pre>code').each(function(i, val) {
-      var code = $(this);
-      var pre = code.parent();
-      var clz = "";
-      var language = pre.attr('class');
-      if (language) {
-        // map unknown languages to "clike" (without this they just dissapear)
-        if ($.inArray(language, ["bash", "clike", "css", "go", "html",
-                                 "javascript", "js", "julia", "lua", "markdown",
-                                 "markup", "mathml", "python", "svg", "xml"]) == -1)
-          language = "clike";
-        language = ' language="' + language + '"';
-        var dt_code = $('<d-code block' + language + clz + '></d-code>');
-        dt_code.text(code.text());
-        pre.replaceWith(dt_code);
-      } else {
-        code.addClass('text-output').unwrap().changeElementType('pre');
-      }
-    });
-  
+
     // localize layout chunks to just output
     $('.layout-chunk').each(function(i, val) {
-  
+
       // capture layout
       var layout = $(this).attr('data-layout');
-  
+
       // apply layout to markdown level block elements
-      var elements = $(this).children().not('d-code, pre.text-output, script');
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
       elements.each(function(i, el) {
         var layout_div = $('<div class="' + layout + '"></div>');
         if (layout_div.hasClass('shaded')) {
@@ -687,39 +1155,60 @@
           $(this).wrap(layout_div);
         }
       });
-  
-  
+
+
       // unwrap the layout-chunk div
       $(this).children().unwrap();
     });
-  
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
     // load distill framework
     load_distill_framework();
-  
+
     // wait for window.distillRunlevel == 4 to do post processing
     function distill_post_process() {
-  
+
       if (!window.distillRunlevel || window.distillRunlevel < 4)
         return;
-  
+
       // hide author/affiliations entirely if we have no authors
       var front_matter = JSON.parse($("#distill-front-matter").html());
       var have_authors = front_matter.authors && front_matter.authors.length > 0;
       if (!have_authors)
         $('d-byline').addClass('hidden');
-  
-      // table of contents
-      if (have_authors) // adjust border if we are in authors
-        $('.d-toc').parent().addClass('d-article-with-toc');
-  
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
       // strip links that point to #
       $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
-  
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
       // hide elements of author/affiliations grid that have no value
       function hide_byline_column(caption) {
         $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
       }
-  
+
       // affiliations
       var have_affiliations = false;
       for (var i = 0; i<front_matter.authors.length; ++i) {
@@ -731,11 +1220,11 @@
       }
       if (!have_affiliations)
         $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
-  
+
       // published date
       if (!front_matter.publishedDate)
         hide_byline_column("Published");
-  
+
       // document object identifier
       var doi = $('d-byline').find('h3:contains("DOI")');
       var doi_p = doi.next().empty();
@@ -755,61 +1244,68 @@
            .html(front_matter.doi)
            .appendTo(doi_p);
       }
-  
+
        // change plural form of authors/affiliations
       if (front_matter.authors.length === 1) {
         var grid = $('.authors-affiliations');
         grid.children('h3:contains("Authors")').text('Author');
         grid.children('h3:contains("Affiliations")').text('Affiliation');
       }
-  
-      // inject pre code styles (can't do this with a global stylesheet b/c a shadow root is used)
-      $('d-code').each(function(i, val) {
-        var style = document.createElement('style');
-        style.innerHTML = 'pre code { padding-left: 10px; font-size: 12px; border-left: 2px solid rgba(0,0,0,0.1); } ' +
-                          '@media(min-width: 768px) { pre code { padding-left: 18px; font-size: 14px; } }';
-        if (this.shadowRoot)
-          this.shadowRoot.appendChild(style);
-      });
-  
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
       // move appendix-bottom entries to the bottom
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
       $('.appendix-bottom').remove();
-  
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
       // clear polling timer
       clearInterval(tid);
-  
+
       // show body now that everything is ready
       on_load_complete();
     }
-  
+
     var tid = setInterval(distill_post_process, 50);
     distill_post_process();
-  
+
   }
-  
+
   function init_downlevel() {
-  
+
     init_common();
-  
+
      // insert hr after d-title
     $('.d-title').after($('<hr class="section-separator"/>'));
-  
+
     // check if we have authors
     var front_matter = JSON.parse($("#distill-front-matter").html());
     var have_authors = front_matter.authors && front_matter.authors.length > 0;
-  
+
     // manage byline/border
     if (!have_authors)
       $('.d-byline').remove();
     $('.d-byline').after($('<hr class="section-separator"/>'));
     $('.d-byline a').remove();
-  
+
     // remove toc
-    $('.d-toc-header').remove();
-    $('.d-toc').remove();
-    $('.d-toc-separator').remove();
-  
+    $('.d-contents').remove();
+
     // move appendix elements
     $('h1.appendix, h2.appendix').each(function(i, val) {
       $(this).changeElementType('h3');
@@ -817,62 +1313,62 @@
     $('h3.appendix').each(function(i, val) {
       $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
     });
-  
-  
+
+
     // inject headers into references and footnotes
     var refs_header = $('<h3></h3>');
     refs_header.text('References');
     $('#refs').prepend(refs_header);
-  
+
     var footnotes_header = $('<h3></h3');
     footnotes_header.text('Footnotes');
     $('.footnotes').children('hr').first().replaceWith(footnotes_header);
-  
+
     // move appendix-bottom entries to the bottom
     $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
     $('.appendix-bottom').remove();
-  
+
     // remove appendix if it's empty
     if ($('.d-appendix').children().length === 0)
       $('.d-appendix').remove();
-  
+
     // prepend separator above appendix
     $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
-  
+
     // trim code
     $('pre>code').each(function(i, val) {
       $(this).html($.trim($(this).html()));
     });
-  
+
     // move posts-container right before article
     $('.posts-container').insertBefore($('.d-article'));
-  
+
     $('body').addClass('downlevel');
-  
+
     on_load_complete();
   }
-  
-  
+
+
   function init_common() {
-  
+
     // jquery plugin to change element types
     (function($) {
       $.fn.changeElementType = function(newType) {
         var attrs = {};
-  
+
         $.each(this[0].attributes, function(idx, attr) {
           attrs[attr.nodeName] = attr.nodeValue;
         });
-  
+
         this.replaceWith(function() {
           return $("<" + newType + "/>", attrs).append($(this).contents());
         });
       };
     })(jQuery);
-  
+
     // prevent underline for linked images
     $('a > img').parent().css({'border-bottom' : 'none'});
-  
+
     // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
       var figures = $(this).find('img, .html-widget');
@@ -884,35 +1380,35 @@
           var fig = $(this);
           fig.css('width', fig.attr('width') + 'px');
         });
-  
+
       }
     });
-  
+
     // auto-append index.html to post-preview links in file: protocol
     // and in rstudio ide preview
     $('.post-preview').each(function(i, val) {
       if (window.location.protocol === "file:")
         $(this).attr('href', $(this).attr('href') + "index.html");
     });
-  
+
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
       $('.distill-site-header a[href]').each(function(i,val) {
         $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
       });
     }
-  
+
     // add class to pandoc style tables
     $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
     $('.kable-table').children('table').addClass('pandoc-table');
-  
+
     // add figcaption style to table captions
     $('caption').parent('table').addClass("figcaption");
-  
+
     // initialize posts list
     if (window.init_posts_list)
       window.init_posts_list();
-  
+
     // implmement disqus comment link
     $('.disqus-comment-count').click(function() {
       window.headroom_prevent_pin = true;
@@ -926,18 +1422,19 @@
       }
     });
   }
-  
+
   document.addEventListener('DOMContentLoaded', function() {
     if (is_downlevel_browser())
       init_downlevel();
     else
       window.addEventListener('WebComponentsReady', init_distill);
   });
-  
+
   </script>
-  
+
   <!--/radix_placeholder_distill-->
-  <script src="TreeD_R_files/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+  <script src="TreeD_R_files/header-attrs-2.6/header-attrs.js"></script>
+  <script src="TreeD_R_files/htmlwidgets-1.5.3/htmlwidgets.js"></script>
   <link href="TreeD_R_files/vis-4.20.1/vis.css" rel="stylesheet" />
   <script src="TreeD_R_files/vis-4.20.1/vis.min.js"></script>
   <script src="TreeD_R_files/visNetwork-binding-2.0.9/visNetwork.js"></script>
@@ -950,6 +1447,11 @@
   <link href="TreeD_R_files/jquery-sparkline-2.1.2/jquery.sparkline.css" rel="stylesheet" />
   <script src="TreeD_R_files/jquery-sparkline-2.1.2/jquery.sparkline.js"></script>
   <script src="TreeD_R_files/sparkline-binding-2.0/sparkline.js"></script>
+  <script src="TreeD_R_files/popper-2.6.0/popper.min.js"></script>
+  <link href="TreeD_R_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="TreeD_R_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="TreeD_R_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="TreeD_R_files/anchor-4.2.2/anchor.min.js"></script>
   <script src="TreeD_R_files/bowser-1.9.3/bowser.min.js"></script>
   <script src="TreeD_R_files/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="TreeD_R_files/distill-2.2.21/template.v2.js"></script>
@@ -964,7 +1466,7 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Árbol de clasificación con R","description":"Ejemplo de árboles de decisión en machine learning supervisado para clasificación. Uso de las bibliotecas rpart, rpart.plot y caret en perfilamiento de riesgo crediticio.","authors":[{"author":"Edimer David Jaramillo","authorURL":"https://edimer.github.io/","affiliation":"R+Py","affiliationURL":"https://edimer.github.io/"}],"publishedDate":"2020-07-18T00:00:00.000-05:00","citationText":"Jaramillo, 2020"}
+{"title":"Árbol de clasificación con R","description":"Ejemplo de árboles de decisión en machine learning supervisado para clasificación. Uso de las bibliotecas rpart, rpart.plot y caret en perfilamiento de riesgo crediticio.","authors":[{"author":"Edimer David Jaramillo (Sidereus)","authorURL":"https://edimer.github.io/","affiliation":"R+Py","affiliationURL":"https://edimer.github.io/","orcidID":""}],"publishedDate":"2020-07-18T00:00:00.000-05:00","citationText":"(Sidereus), 2020"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -975,18 +1477,25 @@
 
 <div class="d-title">
 <h1>Árbol de clasificación con R</h1>
+<!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt=tag">R</div>
+<div class="dt=tag">Tree Decision</div>
+</div>
+<!--/radix_placeholder_categories-->
 <p><p>Ejemplo de árboles de decisión en machine learning supervisado para clasificación. Uso de las bibliotecas rpart, rpart.plot y caret en perfilamiento de riesgo crediticio.</p></p>
 </div>
 
 <div class="d-byline">
-  Edimer David Jaramillo <a href="https://edimer.github.io/" class="uri">https://edimer.github.io/</a> (R+Py)<a href="https://edimer.github.io/" class="uri">https://edimer.github.io/</a>
+  Edimer David Jaramillo (Sidereus) <a href="https://edimer.github.io/" class="uri">https://edimer.github.io/</a> (R+Py)<a href="https://edimer.github.io/" class="uri">https://edimer.github.io/</a>
   
 <br/>07-18-2020
 </div>
 
 <div class="d-article">
-<h3 class="d-toc-header">Table of Contents</h3>
-<nav class="d-toc" id="TOC">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
 <ul>
 <li><a href="#contenido">Contenido</a></li>
 <li><a href="#requisitos-previos">Requisitos previos</a></li>
@@ -996,13 +1505,15 @@
 <li><a href="#distribución-de-variable-respuesta">Distribución de variable respuesta</a></li>
 <li><a href="#exploratorio">Exploratorio</a></li>
 <li><a href="#inferencia">Inferencia</a></li>
-<li><a href="#árboles-de-decisión">Árboles de decisión</a><ul>
+<li><a href="#árboles-de-decisión">Árboles de decisión</a>
+<ul>
 <li><a href="#generalidades">Generalidades</a></li>
 <li><a href="#train---test">Train - Test</a></li>
 <li><a href="#rpart-default"><code>rpart</code> <em>default</em></a></li>
 <li><a href="#tuning-con-caret">Tuning con caret</a></li>
 </ul></li>
-<li><a href="#complementario">Complementario</a><ul>
+<li><a href="#complementario">Complementario</a>
+<ul>
 <li><a href="#función-plot-caret">Función <code>plot</code> + <code>caret</code></a></li>
 <li><a href="#gráfico-interactivo-con-visnetwork">Gráfico interactivo con <code>visNetwork</code></a></li>
 <li><a href="#función-myroc">Función <code>myROC()</code></a></li>
@@ -1010,7 +1521,7 @@
 <li><a href="#recursos-de-información">Recursos de información</a></li>
 </ul>
 </nav>
-<hr class="d-toc-separator"/>
+</div>
 <center>
 <img src = "www/img2.PNG" />
 </center>
@@ -1030,16 +1541,18 @@
 </ul>
 <h1 id="bibliotecas">Bibliotecas</h1>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-library(dplyr)
-library(ggplot2)
-library(jcolors)
-library(hrbrthemes)
-library(rpart)
-library(rpart.plot)
-library(caret)
-library(Metrics)
-library(pROC)</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://jaredhuling.github.io/jcolors/'>jcolors</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://github.com/hrbrmstr/hrbrthemes'>hrbrthemes</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/bethatkinson/rpart'>rpart</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.milbo.org/rpart-plot/index.html'>rpart.plot</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/topepo/caret/'>caret</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/mfrasco/Metrics'>Metrics</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://expasy.org/tools/pROC/'>pROC</a></span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <h1 id="descripción-de-variables">Descripción de variables</h1>
 <ul>
@@ -1053,12 +1566,13 @@ library(pROC)</code></pre>
 <li>Se importan los datos y se aplica la función <code>mutate_if()</code> para eliminar las comillas simples (<em>’’</em>) que están presentes en las variables tipo texto (<code>character</code>). A continuación sólo se muestran 5 variables (columnas) con 10 observaciones. La variable <strong><code>class</code></strong> es nuestro <em>target</em> o <em>variable respuesta</em>.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-data &lt;- data.table::fread(file = &quot;data/dataset_31_credit-g.csv&quot;) %&gt;% 
-  mutate_if(is.character, funs(gsub(&quot;&#39;&quot;, &quot;&quot;, .)))
-head(data[1:10, c(1, 5, 10, 15, 21)], n = 10L) # Imprimiendo sólo 5 columnas</code></pre>
-<pre><code>
-    checking_status credit_amount other_parties  housing class
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'>data.table</span><span class='fu'>::</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/fread.html'>fread</a></span><span class='op'>(</span>file <span class='op'>=</span> <span class='st'>"data/dataset_31_credit-g.csv"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate_all.html'>mutate_if</a></span><span class='op'>(</span><span class='va'>is.character</span>, <span class='fu'><a href='https://dplyr.tidyverse.org/reference/funs.html'>funs</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span><span class='op'>(</span><span class='st'>"'"</span>, <span class='st'>""</span>, <span class='va'>.</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>5</span>, <span class='fl'>10</span>, <span class='fl'>15</span>, <span class='fl'>21</span><span class='op'>)</span><span class='op'>]</span>, n <span class='op'>=</span> <span class='fl'>10L</span><span class='op'>)</span> <span class='co'># Imprimiendo sólo 5 columnas</span>
+</code></pre>
+</div>
+<pre><code>    checking_status credit_amount other_parties  housing class
  1:              &lt;0          1169          none      own  good
  2:        0&lt;=X&lt;200          5951          none      own   bad
  3:     no checking          2096          none      own  good
@@ -1074,20 +1588,23 @@ head(data[1:10, c(1, 5, 10, 15, 21)], n = 10L) # Imprimiendo sólo 5 columnas</c
 <li><strong>Dimensión de la base de datos:</strong></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-dim(data)</code></pre>
-<pre><code>
-[1] 1000   21</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 1000   21</code></pre>
 </div>
 <h1 id="distribución-de-variable-respuesta">Distribución de variable respuesta</h1>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-data %&gt;% 
-  ggplot(mapping = aes(x = class, fill = class)) +
-  geom_bar(color = &quot;black&quot;) + 
-  scale_fill_manual(values = c(&quot;#5A5156&quot;, &quot;#F6222E&quot;)) +
-  theme_ipsum() +
-  theme(legend.position = &quot;none&quot;)</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>class</span>, fill <span class='op'>=</span> <span class='va'>class</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#5A5156"</span>, <span class='st'>"#F6222E"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/hrbrthemes/man/theme_ipsum.html'>theme_ipsum</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="TreeD_R_files/figure-html5/unnamed-chunk-4-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <h1 id="exploratorio">Exploratorio</h1>
@@ -1095,33 +1612,37 @@ data %&gt;%
 <li><strong>Distribución de edad por variable objetivo:</strong> se puede apreciar que la edad promedio de los clasificados como <em>“buenos”</em> es más alta, además, los clasificados como <em>“malos”</em> en su mayoría son personas entre 20 y 30 años de edad.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-data %&gt;% 
-  ggplot(mapping = aes(x = class, y = age, fill = class)) +
-  geom_violin() +
-  geom_boxplot(color = &quot;#E4E1E3&quot;, width = 0.1, show.legend = FALSE)  +
-  stat_summary(fun.y = mean, color = &quot;#E4E1E3&quot;, pch = 17) +
-  scale_fill_manual(values = c(&quot;#5A5156&quot;, &quot;#F6222E&quot;)) +
-  theme_ipsum() +
-  theme(legend.position = &quot;none&quot;) +
-  labs(caption = &quot;El triángulo representa el promedio.&quot;)</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>class</span>, y <span class='op'>=</span> <span class='va'>age</span>, fill <span class='op'>=</span> <span class='va'>class</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_violin.html'>geom_violin</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"#E4E1E3"</span>, width <span class='op'>=</span> <span class='fl'>0.1</span>, show.legend <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>  <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/stat_summary.html'>stat_summary</a></span><span class='op'>(</span>fun.y <span class='op'>=</span> <span class='va'>mean</span>, color <span class='op'>=</span> <span class='st'>"#E4E1E3"</span>, pch <span class='op'>=</span> <span class='fl'>17</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#5A5156"</span>, <span class='st'>"#F6222E"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/hrbrthemes/man/theme_ipsum.html'>theme_ipsum</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>caption <span class='op'>=</span> <span class='st'>"El triángulo representa el promedio."</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="TreeD_R_files/figure-html5/unnamed-chunk-5-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <ul>
 <li><strong>Propósitos de crédito más frecuentes:</strong> la distribución de personas clasificadas como <em>buenas</em> o <em>malas</em> cuando el propósito es vehículo, discrepa bastante entre la opción de <strong>nuevo</strong> o <strong>usado</strong>. En vehículos usados la gran mayoría son clasificados como “buenos”, sin embargo, cuando se trata de vehículos nuevos, la distribución es similar, lo que permite inferir que es más probable que una persona se comporte como mal pagador en créditos para vehículo nuevo respecto a créditos para vehículos usados. También se podría intuir que cuando se trata de créditos para educación es igual de probable que la persona sea clasificada como “bueno” o “malo”.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-data %&gt;% 
-  group_by(class, purpose) %&gt;% 
-  count() %&gt;% 
-  ggplot(mapping = aes(x = reorder(purpose, n), y = n, fill = class)) +
-  geom_col(color = &quot;#E4E1E3&quot;, position = &quot;dodge&quot;) +
-  scale_fill_manual(values = c(&quot;#5A5156&quot;, &quot;#F6222E&quot;)) +
-  labs(x = &quot;Purpose&quot;) +
-  theme_ipsum() +
-  theme(legend.position = &quot;top&quot;,
-        axis.text.x = element_text(angle = 45, hjust = 1))</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>class</span>, <span class='va'>purpose</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span><span class='op'>(</span><span class='va'>purpose</span>, <span class='va'>n</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='va'>n</span>, fill <span class='op'>=</span> <span class='va'>class</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"#E4E1E3"</span>, position <span class='op'>=</span> <span class='st'>"dodge"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#5A5156"</span>, <span class='st'>"#F6222E"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Purpose"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/hrbrthemes/man/theme_ipsum.html'>theme_ipsum</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"top"</span>,
+        axis.text.x <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>45</span>, hjust <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="TreeD_R_files/figure-html5/unnamed-chunk-6-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <h1 id="inferencia">Inferencia</h1>
@@ -1129,11 +1650,12 @@ data %&gt;%
 <li><strong>Análisis de varianza:</strong> en vista de la discrepancia que se observa en la distribución de las edades para personas clasificadas como “buenas” o “malas”, realizo el <a href="https://es.wikipedia.org/wiki/An%C3%A1lisis_de_la_varianza">análisis de varianza</a> para contrastar si dichas diferencias son estadísticamente significativas. <strong>Nota:</strong> aunque nuestra variable respuesta es <em>class</em>, en este caso actúa como “predictora” o fuente de variación.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-myAnova &lt;- aov(age ~ class, data = data)
-summary(myAnova)</code></pre>
-<pre><code>
-             Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>myAnova</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aov.html'>aov</a></span><span class='op'>(</span><span class='va'>age</span> <span class='op'>~</span> <span class='va'>class</span>, data <span class='op'>=</span> <span class='va'>data</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>myAnova</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>             Df Sum Sq Mean Sq F value  Pr(&gt;F)   
 class         1   1074  1073.5   8.357 0.00393 **
 Residuals   998 128198   128.5                   
 ---
@@ -1179,22 +1701,25 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <li>Para entrenar el modelo inicialmente fracciono los datos en <em>train</em> y <em>test</em> con proporciones de 70 y 30%, respectivamente. Este proceso aunque es posible hacerlo manualmente con la función <code>sample()</code>, la función <code>createDataPartition()</code> del paquete <code>caret</code> agiliza el procedimiento. Para garantizar replicabilidad en los resultados se agrega la semilla.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-set.seed(1992)
-idx &lt;- createDataPartition(y = data$class, times = 1, p = 0.70, list = FALSE)
-dataTrain &lt;- data[idx, ]
-dataTest &lt;- data[-idx, ]</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1992</span><span class='op'>)</span>
+<span class='va'>idx</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/createDataPartition.html'>createDataPartition</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>data</span><span class='op'>$</span><span class='va'>class</span>, times <span class='op'>=</span> <span class='fl'>1</span>, p <span class='op'>=</span> <span class='fl'>0.70</span>, list <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>dataTrain</span> <span class='op'>&lt;-</span> <span class='va'>data</span><span class='op'>[</span><span class='va'>idx</span>, <span class='op'>]</span>
+<span class='va'>dataTest</span> <span class='op'>&lt;-</span> <span class='va'>data</span><span class='op'>[</span><span class='op'>-</span><span class='va'>idx</span>, <span class='op'>]</span>
+</code></pre>
+</div>
 </div>
 <h2 id="rpart-default"><code>rpart</code> <em>default</em></h2>
 <ul>
 <li><strong>Ajuste del modelo:</strong> en este caso se utilizan todas las variables predictoras para entrenar el modelo. Al imprimir el objeto que contiene el modelo podemos observar el conjunto de reglas que dan como resultado la estructura final del árbol. El método igualado a <strong><code>method = "class"</code></strong> indica que es un problema de clasificación, si fuese un problema de regresión el argumento tomaría el valor de <strong><code>method = "anova"</code></strong>, aunque también permite otras opciones (consulte <code>?rpart</code> o <code>help("rpart")</code>).</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-modArbol0 &lt;- rpart(class ~ ., data = dataTrain, method = &quot;class&quot;)
-modArbol0</code></pre>
-<pre><code>
-n= 700 
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modArbol0</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/rpart/man/rpart.html'>rpart</a></span><span class='op'>(</span><span class='va'>class</span> <span class='op'>~</span> <span class='va'>.</span>, data <span class='op'>=</span> <span class='va'>dataTrain</span>, method <span class='op'>=</span> <span class='st'>"class"</span><span class='op'>)</span>
+<span class='va'>modArbol0</span>
+</code></pre>
+</div>
+<pre><code>n= 700 
 
 node), split, n, loss, yval, (yprob)
       * denotes terminal node
@@ -1225,20 +1750,23 @@ node), split, n, loss, yval, (yprob)
 <li><strong>Gráfico del modelo:</strong> la variable más importante y que da origen al nodo raíz es <strong><code>checking_status</code></strong>, que hace referencia al estado de la cuenta corriente. El historial crediticio, la duración del tiempo para pagar el crédito, el estado de la cuenta de ahorros y el propósito del crédito, también son factores determinantes. No tener suficiente capital en cualquiera de las dos cuentas, tener mal historial crediticio y además solicitar períodos de pago de alta duración, pueden ser características no deseables a la hora de solicitar un crédito.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-rpart.plot(modArbol0)</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/rpart.plot/man/rpart.plot.html'>rpart.plot</a></span><span class='op'>(</span><span class='va'>modArbol0</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="TreeD_R_files/figure-html5/unnamed-chunk-10-1.png" width="864" style="display: block; margin: auto;" /></p>
 </div>
 <ul>
 <li><strong>Matriz de confusión:</strong> el modelo por <em>default</em> tiene precisión promedio de 0.7167, con dificultades para clasificar de forma correcta los “malos”, es decir, que tiene baja especificidad.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-predichos_mod0 &lt;- predict(object = modArbol0, newdata = dataTest, type = &quot;class&quot;)
-confusionMatrix(data = predichos_mod0, reference = as.factor(dataTest$class),
-                positive = &quot;good&quot;)</code></pre>
-<pre><code>
-Confusion Matrix and Statistics
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>predichos_mod0</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span>object <span class='op'>=</span> <span class='va'>modArbol0</span>, newdata <span class='op'>=</span> <span class='va'>dataTest</span>, type <span class='op'>=</span> <span class='st'>"class"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/caret/man/confusionMatrix.html'>confusionMatrix</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>predichos_mod0</span>, reference <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>dataTest</span><span class='op'>$</span><span class='va'>class</span><span class='op'>)</span>,
+                positive <span class='op'>=</span> <span class='st'>"good"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Confusion Matrix and Statistics
 
           Reference
 Prediction bad good
@@ -1270,49 +1798,55 @@ Prediction bad good
 <li><strong>Área bajo la curva:</strong></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-# Probabilidades predichas para la clase &quot;good&quot;
-pred0 &lt;- as.data.frame(predict(object = modArbol0,
-                               newdata = dataTest, type = &quot;prob&quot;))$good
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Probabilidades predichas para la clase "good"</span>
+<span class='va'>pred0</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span>object <span class='op'>=</span> <span class='va'>modArbol0</span>,
+                               newdata <span class='op'>=</span> <span class='va'>dataTest</span>, type <span class='op'>=</span> <span class='st'>"prob"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>good</span>
 
-# Transformando respuesta a entero. A la clase &quot;good&quot; le agrego 1 y 
-# a la clase &quot;bad&quot; le agrego 0.
-target &lt;- as.integer(as.factor(dataTest$class)) - 1
+<span class='co'># Transformando respuesta a entero. A la clase "good" le agrego 1 y </span>
+<span class='co'># a la clase "bad" le agrego 0.</span>
+<span class='va'>target</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>dataTest</span><span class='op'>$</span><span class='va'>class</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>-</span> <span class='fl'>1</span>
 
-# AUC
-Metrics::auc(actual = target, predicted = pred0)</code></pre>
-<pre><code>
-[1] 0.7034392</code></pre>
+<span class='co'># AUC</span>
+<span class='fu'>Metrics</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/Metrics/man/auc.html'>auc</a></span><span class='op'>(</span>actual <span class='op'>=</span> <span class='va'>target</span>, predicted <span class='op'>=</span> <span class='va'>pred0</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 0.7034392</code></pre>
 </div>
 <ul>
 <li><strong>Curva ROC:</strong> la función con la que obtengo el siguiente gráfico puede ser encontrada en <a href="https://github.com/web-edimer/web-edimer.github.io/blob/master/_posts/TreeD_R/functions/myROC.R">mi Github.</a></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-# Cargando función
-source(&quot;functions/myROC.R&quot;)
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Cargando función</span>
+<span class='kw'><a href='https://rdrr.io/r/base/source.html'>source</a></span><span class='op'>(</span><span class='st'>"functions/myROC.R"</span><span class='op'>)</span>
 
-# Ver función myROC() al final en material complementario    
-myROC(predichos = pred0, reales = target)</code></pre>
+<span class='co'># Ver función myROC() al final en material complementario    </span>
+<span class='fu'>myROC</span><span class='op'>(</span>predichos <span class='op'>=</span> <span class='va'>pred0</span>, reales <span class='op'>=</span> <span class='va'>target</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="TreeD_R_files/figure-html5/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <ul>
 <li><strong>Parámetro de complejidad (CP):</strong></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-plotcp(modArbol0)</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/rpart/man/plotcp.html'>plotcp</a></span><span class='op'>(</span><span class='va'>modArbol0</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="TreeD_R_files/figure-html5/unnamed-chunk-14-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <ul>
 <li><strong>“Podando” el árbol:</strong> se elige el valor de cp = 0.025 por mostrar mejores resultados (bajo error).</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-modArbol0_prune &lt;- prune(tree = modArbol0, cp = 0.025)
-modArbol0_prune</code></pre>
-<pre><code>
-n= 700 
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modArbol0_prune</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/rpart/man/prune.rpart.html'>prune</a></span><span class='op'>(</span>tree <span class='op'>=</span> <span class='va'>modArbol0</span>, cp <span class='op'>=</span> <span class='fl'>0.025</span><span class='op'>)</span>
+<span class='va'>modArbol0_prune</span>
+</code></pre>
+</div>
+<pre><code>n= 700 
 
 node), split, n, loss, yval, (yprob)
       * denotes terminal node
@@ -1333,20 +1867,23 @@ node), split, n, loss, yval, (yprob)
 <li><strong>Gráfico de árbol con “poda”:</strong></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-rpart.plot(modArbol0_prune)</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/rpart.plot/man/rpart.plot.html'>rpart.plot</a></span><span class='op'>(</span><span class='va'>modArbol0_prune</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="TreeD_R_files/figure-html5/unnamed-chunk-16-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <ul>
 <li><strong>Matriz de confusión árbol con “poda”:</strong> respecto al árbol sin podar, la diferencia en precisión es muy pequeña (&lt;0.01), sin embargo, la especificidad se aumenta de 0.3444 a 0.4556 con la “poda”, aunque la sensitividad haya reducido de 0.8762 a 0.8381.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-predichos_mod0_prune &lt;- predict(object = modArbol0_prune, newdata = dataTest, type = &quot;class&quot;)
-confusionMatrix(data = predichos_mod0_prune, reference = as.factor(dataTest$class),
-                positive = &quot;good&quot;)</code></pre>
-<pre><code>
-Confusion Matrix and Statistics
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>predichos_mod0_prune</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span>object <span class='op'>=</span> <span class='va'>modArbol0_prune</span>, newdata <span class='op'>=</span> <span class='va'>dataTest</span>, type <span class='op'>=</span> <span class='st'>"class"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/caret/man/confusionMatrix.html'>confusionMatrix</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>predichos_mod0_prune</span>, reference <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>dataTest</span><span class='op'>$</span><span class='va'>class</span><span class='op'>)</span>,
+                positive <span class='op'>=</span> <span class='st'>"good"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Confusion Matrix and Statistics
 
           Reference
 Prediction bad good
@@ -1378,23 +1915,26 @@ Prediction bad good
 <li><strong>Área bajo la curva de árbol con “poda”:</strong></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-# Probabilidades predichas para la clase &quot;good&quot;
-pred0_prune &lt;- as.data.frame(predict(object = modArbol0_prune,
-                                     newdata = dataTest, type = &quot;prob&quot;))$good
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Probabilidades predichas para la clase "good"</span>
+<span class='va'>pred0_prune</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span>object <span class='op'>=</span> <span class='va'>modArbol0_prune</span>,
+                                     newdata <span class='op'>=</span> <span class='va'>dataTest</span>, type <span class='op'>=</span> <span class='st'>"prob"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>good</span>
 
-# AUC
-Metrics::auc(actual = target, predicted = pred0_prune)</code></pre>
-<pre><code>
-[1] 0.7203175</code></pre>
+<span class='co'># AUC</span>
+<span class='fu'>Metrics</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/Metrics/man/auc.html'>auc</a></span><span class='op'>(</span>actual <span class='op'>=</span> <span class='va'>target</span>, predicted <span class='op'>=</span> <span class='va'>pred0_prune</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 0.7203175</code></pre>
 </div>
 <ul>
 <li><strong>Curva ROC:</strong></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-# Ver función myROC() al final en material complementario    
-myROC(predichos = pred0_prune, reales = target)</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ver función myROC() al final en material complementario    </span>
+<span class='fu'>myROC</span><span class='op'>(</span>predichos <span class='op'>=</span> <span class='va'>pred0_prune</span>, reales <span class='op'>=</span> <span class='va'>target</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="TreeD_R_files/figure-html5/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <h2 id="tuning-con-caret">Tuning con caret</h2>
@@ -1409,22 +1949,23 @@ myROC(predichos = pred0_prune, reales = target)</code></pre>
 <li><strong>Nota:</strong> como el procedimiento de validación cruzada implica muestreo aleatorio, es necesario asignar la semilla para garantizar replicabilidad de resultados.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-myControl &lt;- trainControl(method = &quot;repeatedcv&quot;,
-                          number = 5,
-                          repeats = 3,
-                          classProbs = TRUE,  # Permite predecir probabilidades
-                          summaryFunction = twoClassSummary) 
-set.seed(1992)
-modArbol_tune &lt;- train(class ~ .,
-                       method = &quot;rpart2&quot;,
-                       data = data,
-                       trControl = myControl,
-                       tuneLength = 5,
-                       metric = &quot;ROC&quot;)
-modArbol_tune</code></pre>
-<pre><code>
-CART 
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>myControl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/trainControl.html'>trainControl</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"repeatedcv"</span>,
+                          number <span class='op'>=</span> <span class='fl'>5</span>,
+                          repeats <span class='op'>=</span> <span class='fl'>3</span>,
+                          classProbs <span class='op'>=</span> <span class='cn'>TRUE</span>,  <span class='co'># Permite predecir probabilidades</span>
+                          summaryFunction <span class='op'>=</span> <span class='va'>twoClassSummary</span><span class='op'>)</span> 
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1992</span><span class='op'>)</span>
+<span class='va'>modArbol_tune</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span><span class='va'>class</span> <span class='op'>~</span> <span class='va'>.</span>,
+                       method <span class='op'>=</span> <span class='st'>"rpart2"</span>,
+                       data <span class='op'>=</span> <span class='va'>data</span>,
+                       trControl <span class='op'>=</span> <span class='va'>myControl</span>,
+                       tuneLength <span class='op'>=</span> <span class='fl'>5</span>,
+                       metric <span class='op'>=</span> <span class='st'>"ROC"</span><span class='op'>)</span>
+<span class='va'>modArbol_tune</span>
+</code></pre>
+</div>
+<pre><code>CART 
 
 1000 samples
   20 predictor
@@ -1449,12 +1990,13 @@ The final value used for the model was maxdepth = 14.</code></pre>
 <li>Se observa que la mejor profundidad es 14 con la mayor sensitividad aún cuando no tiene la mejor especificidad. A continuación la matriz de confusión en el conjunto de test muestra mejoras en la capacidad de detectar los clasificados como “malos”, ademas la precisión es notablemente superior.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-predichos_tune &lt;- predict(object = modArbol_tune, newdata = dataTest, type = &quot;raw&quot;)
-confusionMatrix(data = predichos_tune, reference = as.factor(dataTest$class),
-                positive = &quot;good&quot;)</code></pre>
-<pre><code>
-Confusion Matrix and Statistics
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>predichos_tune</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span>object <span class='op'>=</span> <span class='va'>modArbol_tune</span>, newdata <span class='op'>=</span> <span class='va'>dataTest</span>, type <span class='op'>=</span> <span class='st'>"raw"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/caret/man/confusionMatrix.html'>confusionMatrix</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>predichos_tune</span>, reference <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>dataTest</span><span class='op'>$</span><span class='va'>class</span><span class='op'>)</span>,
+                positive <span class='op'>=</span> <span class='st'>"good"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Confusion Matrix and Statistics
 
           Reference
 Prediction bad good
@@ -1486,23 +2028,26 @@ Prediction bad good
 <li><strong>Área bajo la curva</strong> el modelo evidentemente consigue mejores resultados respecto a los ajustados inicialmente, de tal manera que el ajuste de hiperparámetros ha logrado mejorar nuestras predicciones en datos que el modelo aún no ha visto. Posiblemente el hecho de ajustar la máxima profundidad sumado al uso de validación cruzada, permite que el modelo capture de mejor manera las relaciones subyacentes entre características.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-# Probabilidades predichas para la clase &quot;good&quot;
-pred_tune &lt;- as.data.frame(predict(object = modArbol_tune,
-                                   newdata = dataTest, type = &quot;prob&quot;))$good
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Probabilidades predichas para la clase "good"</span>
+<span class='va'>pred_tune</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span>object <span class='op'>=</span> <span class='va'>modArbol_tune</span>,
+                                   newdata <span class='op'>=</span> <span class='va'>dataTest</span>, type <span class='op'>=</span> <span class='st'>"prob"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>good</span>
 
-# AUC
-Metrics::auc(actual = target, predicted = pred_tune)</code></pre>
-<pre><code>
-[1] 0.7888624</code></pre>
+<span class='co'># AUC</span>
+<span class='fu'>Metrics</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/Metrics/man/auc.html'>auc</a></span><span class='op'>(</span>actual <span class='op'>=</span> <span class='va'>target</span>, predicted <span class='op'>=</span> <span class='va'>pred_tune</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 0.7888624</code></pre>
 </div>
 <ul>
 <li><strong>Curva ROC:</strong></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-# Ver función myROC() al final en material complementario    
-myROC(predichos = pred_tune, reales = target)</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ver función myROC() al final en material complementario    </span>
+<span class='fu'>myROC</span><span class='op'>(</span>predichos <span class='op'>=</span> <span class='va'>pred_tune</span>, reales <span class='op'>=</span> <span class='va'>target</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="TreeD_R_files/figure-html5/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <h1 id="complementario">Complementario</h1>
@@ -1511,8 +2056,10 @@ myROC(predichos = pred_tune, reales = target)</code></pre>
 <li>La función <code>plot()</code> tiene un método específico para resultados obtenidos a través de <code>caret</code>, en este caso muestra el gráfico del hiperparámetro de interés, la máxima profundidad del árbol vs la curva ROC en el eje Y, tratando de evidenicar el valor óptimo.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-plot(modArbol_tune)</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/pROC/man/plot.roc.html'>plot</a></span><span class='op'>(</span><span class='va'>modArbol_tune</span><span class='op'>)</span>
+</code></pre>
+</div>
 <p><img src="TreeD_R_files/figure-html5/unnamed-chunk-24-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <h2 id="gráfico-interactivo-con-visnetwork">Gráfico interactivo con <code>visNetwork</code></h2>
@@ -1520,11 +2067,13 @@ plot(modArbol_tune)</code></pre>
 <li>La biblioteca <a href="https://datastorm-open.github.io/visNetwork/"><code>visNetwork</code></a> permite crear gráficos interactivos para objetos de la clase <em>rpart</em>. A manera de ejemplo se presenta el gráfico para el árbol de decisión con poda. Recuerde que es interactivo y puede manipularlo con el <em>mouse</em>.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-library(visNetwork)
-visTree(modArbol0_prune, 
-        main = &quot;Árbol con poda&quot;, width = &quot;100%&quot;,
-        height = &quot;800px&quot;,  edgesFontSize = 14, nodesFontSize = 16,)</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://datastorm-open.github.io/visNetwork/'>visNetwork</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/visNetwork/man/visTree.html'>visTree</a></span><span class='op'>(</span><span class='va'>modArbol0_prune</span>, 
+        main <span class='op'>=</span> <span class='st'>"Árbol con poda"</span>, width <span class='op'>=</span> <span class='st'>"100%"</span>,
+        height <span class='op'>=</span> <span class='st'>"800px"</span>,  edgesFontSize <span class='op'>=</span> <span class='fl'>14</span>, nodesFontSize <span class='op'>=</span> <span class='fl'>16</span>,<span class='op'>)</span>
+</code></pre>
+</div>
 <div id="htmlwidget-4b2849920125f3c0d1eb" style="width:100%;height:800px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-4b2849920125f3c0d1eb">{"x":{"nodes":{"id":[1,2,4,5,10,11,22,44,45,23,3],"label":["checking_status","credit_history","bad","duration","bad","purpose","age","bad","good","good","good"],"level":[1,2,3,3,4,4,5,6,6,5,2],"color":["#F1B8C2","#DAC49C","#7D91B6","#A9D1A5","#7D91B6","#8AD3D0","#B4C7ED","#7D91B6","#B9828C","#B9828C","#B9828C"],"value":[700,385,51,334,77,257,83,42,41,174,315],"shape":["dot","dot","square","dot","square","dot","dot","square","square","square","square"],"title":["<div style=\"text-align:center;\">N : <b>100%<\/b> (700)<br>Complexity : <b>0.055<\/b><br>bad : <b>30%<\/b> (210)<br>good : <b>70%<\/b> (490)<\/div>","<div style=\"text-align:center;\">N : <b>55%<\/b> (385)<br>Complexity : <b>0.055<\/b><br>bad : <b>43.6%<\/b> (168)<br>good : <b>56.4%<\/b> (217)<hr class = \"rPartvisNetwork\">\n<div class =\"showOnMe2\"><div style=\"text-align:center;\"><U style=\"color:blue;\" class = \"classActivePointer\">Rules<\/U><\/div>\n<div class=\"showMeRpartTTp2\" style=\"display:none;\">\n<b> checking_status <\/b> <0, 0<=X<200<\/script><script type=\"text/javascript\">$(document).ready(function(){\n$(\".showOnMe2\").click(function(){\n$(\".showMeRpartTTp2\").toggle();\n$.sparkline_display_visible();\n});\n  });<\/script><\/div><\/div>\n\n<\/div>","<div style=\"text-align:center;\">N : <b>7.3%<\/b> (51)<br>Complexity : <b>0.014<\/b><br>bad : <b>72.5%<\/b> (37)<br>good : <b>27.5%<\/b> (14)<hr class = \"rPartvisNetwork\">\n<div class =\"showOnMe2\"><div style=\"text-align:center;\"><U style=\"color:blue;\" class = \"classActivePointer\">Rules<\/U><\/div>\n<div class=\"showMeRpartTTp2\" style=\"display:none;\">\n<b> checking_status <\/b> <0, 0<=X<200<br><b> credit_history <\/b> all paid, no credits/all paid<\/script><script type=\"text/javascript\">$(document).ready(function(){\n$(\".showOnMe2\").click(function(){\n$(\".showMeRpartTTp2\").toggle();\n$.sparkline_display_visible();\n});\n  });<\/script><\/div><\/div>\n\n<\/div>","<div style=\"text-align:center;\">N : <b>47.7%<\/b> (334)<br>Complexity : <b>0.055<\/b><br>bad : <b>39.2%<\/b> (131)<br>good : <b>60.8%<\/b> (203)<hr class = \"rPartvisNetwork\">\n<div class =\"showOnMe2\"><div style=\"text-align:center;\"><U style=\"color:blue;\" class = \"classActivePointer\">Rules<\/U><\/div>\n<div class=\"showMeRpartTTp2\" style=\"display:none;\">\n<b> checking_status <\/b> <0, 0<=X<200<br><b> credit_history <\/b> critical/other existing credit, delayed previously, existing paid<\/script><script type=\"text/javascript\">$(document).ready(function(){\n$(\".showOnMe2\").click(function(){\n$(\".showMeRpartTTp2\").toggle();\n$.sparkline_display_visible();\n});\n  });<\/script><\/div><\/div>\n\n<\/div>","<div style=\"text-align:center;\">N : <b>11%<\/b> (77)<br>Complexity : <b>0.017<\/b><br>bad : <b>61%<\/b> (47)<br>good : <b>39%<\/b> (30)<hr class = \"rPartvisNetwork\">\n<div class =\"showOnMe2\"><div style=\"text-align:center;\"><U style=\"color:blue;\" class = \"classActivePointer\">Rules<\/U><\/div>\n<div class=\"showMeRpartTTp2\" style=\"display:none;\">\n<b> checking_status <\/b> <0, 0<=X<200<br><b> credit_history <\/b> critical/other existing credit, delayed previously, existing paid<br><b> duration <\/b> >= 27.5<\/script><script type=\"text/javascript\">$(document).ready(function(){\n$(\".showOnMe2\").click(function(){\n$(\".showMeRpartTTp2\").toggle();\n$.sparkline_display_visible();\n});\n  });<\/script><\/div><\/div>\n\n<\/div>","<div style=\"text-align:center;\">N : <b>36.7%<\/b> (257)<br>Complexity : <b>0.038<\/b><br>bad : <b>32.7%<\/b> (84)<br>good : <b>67.3%<\/b> (173)<hr class = \"rPartvisNetwork\">\n<div class =\"showOnMe2\"><div style=\"text-align:center;\"><U style=\"color:blue;\" class = \"classActivePointer\">Rules<\/U><\/div>\n<div class=\"showMeRpartTTp2\" style=\"display:none;\">\n<b> checking_status <\/b> <0, 0<=X<200<br><b> credit_history <\/b> critical/other existing credit, delayed previously, existing paid<br><b> duration <\/b> < 27.5<\/script><script type=\"text/javascript\">$(document).ready(function(){\n$(\".showOnMe2\").click(function(){\n$(\".showMeRpartTTp2\").toggle();\n$.sparkline_display_visible();\n});\n  });<\/script><\/div><\/div>\n\n<\/div>","<div style=\"text-align:center;\">N : <b>11.9%<\/b> (83)<br>Complexity : <b>0.038<\/b><br>bad : <b>49.4%<\/b> (41)<br>good : <b>50.6%<\/b> (42)<hr class = \"rPartvisNetwork\">\n<div class =\"showOnMe2\"><div style=\"text-align:center;\"><U style=\"color:blue;\" class = \"classActivePointer\">Rules<\/U><\/div>\n<div class=\"showMeRpartTTp2\" style=\"display:none;\">\n<b> checking_status <\/b> <0, 0<=X<200<br><b> credit_history <\/b> critical/other existing credit, delayed previously, existing paid<br><b> duration <\/b> < 27.5<br><b> purpose <\/b> domestic appliance, education, new car, retraining<\/script><script type=\"text/javascript\">$(document).ready(function(){\n$(\".showOnMe2\").click(function(){\n$(\".showMeRpartTTp2\").toggle();\n$.sparkline_display_visible();\n});\n  });<\/script><\/div><\/div>\n\n<\/div>","<div style=\"text-align:center;\">N : <b>6%<\/b> (42)<br>Complexity : <b>0.017<\/b><br>bad : <b>69%<\/b> (29)<br>good : <b>31%<\/b> (13)<hr class = \"rPartvisNetwork\">\n<div class =\"showOnMe2\"><div style=\"text-align:center;\"><U style=\"color:blue;\" class = \"classActivePointer\">Rules<\/U><\/div>\n<div class=\"showMeRpartTTp2\" style=\"display:none;\">\n<b> checking_status <\/b> <0, 0<=X<200<br><b> credit_history <\/b> critical/other existing credit, delayed previously, existing paid<br><b> duration <\/b> < 27.5<br><b> purpose <\/b> domestic appliance, education, new car, retraining<br><b> age <\/b> < 35.5<\/script><script type=\"text/javascript\">$(document).ready(function(){\n$(\".showOnMe2\").click(function(){\n$(\".showMeRpartTTp2\").toggle();\n$.sparkline_display_visible();\n});\n  });<\/script><\/div><\/div>\n\n<\/div>","<div style=\"text-align:center;\">N : <b>5.9%<\/b> (41)<br>Complexity : <b>0.01<\/b><br>bad : <b>29.3%<\/b> (12)<br>good : <b>70.7%<\/b> (29)<hr class = \"rPartvisNetwork\">\n<div class =\"showOnMe2\"><div style=\"text-align:center;\"><U style=\"color:blue;\" class = \"classActivePointer\">Rules<\/U><\/div>\n<div class=\"showMeRpartTTp2\" style=\"display:none;\">\n<b> checking_status <\/b> <0, 0<=X<200<br><b> credit_history <\/b> critical/other existing credit, delayed previously, existing paid<br><b> duration <\/b> < 27.5<br><b> purpose <\/b> domestic appliance, education, new car, retraining<br><b> age <\/b> >= 35.5<\/script><script type=\"text/javascript\">$(document).ready(function(){\n$(\".showOnMe2\").click(function(){\n$(\".showMeRpartTTp2\").toggle();\n$.sparkline_display_visible();\n});\n  });<\/script><\/div><\/div>\n\n<\/div>","<div style=\"text-align:center;\">N : <b>24.9%<\/b> (174)<br>Complexity : <b>0.01<\/b><br>bad : <b>24.7%<\/b> (43)<br>good : <b>75.3%<\/b> (131)<hr class = \"rPartvisNetwork\">\n<div class =\"showOnMe2\"><div style=\"text-align:center;\"><U style=\"color:blue;\" class = \"classActivePointer\">Rules<\/U><\/div>\n<div class=\"showMeRpartTTp2\" style=\"display:none;\">\n<b> checking_status <\/b> <0, 0<=X<200<br><b> credit_history <\/b> critical/other existing credit, delayed previously, existing paid<br><b> duration <\/b> < 27.5<br><b> purpose <\/b> business, furniture/equipment, other, radio/tv, repairs, used car<\/script><script type=\"text/javascript\">$(document).ready(function(){\n$(\".showOnMe2\").click(function(){\n$(\".showMeRpartTTp2\").toggle();\n$.sparkline_display_visible();\n});\n  });<\/script><\/div><\/div>\n\n<\/div>","<div style=\"text-align:center;\">N : <b>45%<\/b> (315)<br>Complexity : <b>0.01<\/b><br>bad : <b>13.3%<\/b> (42)<br>good : <b>86.7%<\/b> (273)<hr class = \"rPartvisNetwork\">\n<div class =\"showOnMe2\"><div style=\"text-align:center;\"><U style=\"color:blue;\" class = \"classActivePointer\">Rules<\/U><\/div>\n<div class=\"showMeRpartTTp2\" style=\"display:none;\">\n<b> checking_status <\/b> >=200, no checking<\/script><script type=\"text/javascript\">$(document).ready(function(){\n$(\".showOnMe2\").click(function(){\n$(\".showMeRpartTTp2\").toggle();\n$.sparkline_display_visible();\n});\n  });<\/script><\/div><\/div>\n\n<\/div>"],"fixed":[true,true,true,true,true,true,true,true,true,true,true],"colorClust":["#B9828C","#B9828C","#7D91B6","#B9828C","#7D91B6","#B9828C","#B9828C","#7D91B6","#B9828C","#B9828C","#B9828C"],"labelClust":["good","good","bad","good","bad","good","good","bad","good","good","good"],"Leaf":[0,0,1,0,1,0,0,1,1,1,1],"font.size":[16,16,16,16,16,16,16,16,16,16,16],"scaling.min":[22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5],"scaling.max":[22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5,22.5]},"edges":{"id":["edge1","edge2","edge3","edge4","edge5","edge6","edge7","edge8","edge9","edge10"],"from":[1,2,2,5,5,11,22,22,11,1],"to":[2,4,5,10,11,22,44,45,23,3],"label":["<0, 0<=...","all pai...","critica...",">= 27.5","< 27.5","domesti...","< 35.5",">= 35.5","busines...",">=200, ..."],"value":[385,51,334,77,257,83,42,41,174,315],"title":["<div style=\"text-align:center;\"><b>checking_status<\/b><\/div><div style=\"text-align:center;\"><0<\/div><div style=\"text-align:center;\">0<=X<200<\/div>","<div style=\"text-align:center;\"><b>credit_history<\/b><\/div><div style=\"text-align:center;\">all paid<\/div><div style=\"text-align:center;\">no credits/all paid<\/div>","<div style=\"text-align:center;\"><b>credit_history<\/b><\/div><div style=\"text-align:center;\">critical/other existing credit<\/div><div style=\"text-align:center;\">delayed previously<\/div><div style=\"text-align:center;\">existing paid<\/div>","<div style=\"text-align:center;\"><b>duration<\/b><\/div><div style=\"text-align:center;\">>=27.5<\/div>","<div style=\"text-align:center;\"><b>duration<\/b><\/div><div style=\"text-align:center;\"><27.5<\/div>","<div style=\"text-align:center;\"><b>purpose<\/b><\/div><div style=\"text-align:center;\">domestic appliance<\/div><div style=\"text-align:center;\">education<\/div><div style=\"text-align:center;\">new car<\/div><div style=\"text-align:center;\">retraining<\/div>","<div style=\"text-align:center;\"><b>age<\/b><\/div><div style=\"text-align:center;\"><35.5<\/div>","<div style=\"text-align:center;\"><b>age<\/b><\/div><div style=\"text-align:center;\">>=35.5<\/div>","<div style=\"text-align:center;\"><b>purpose<\/b><\/div><div style=\"text-align:center;\">business<\/div><div style=\"text-align:center;\">furniture/equipment<\/div><div style=\"text-align:center;\">other<\/div><div style=\"text-align:center;\">radio/tv<\/div><div style=\"text-align:center;\">repairs<\/div><div style=\"text-align:center;\">used car<\/div>","<div style=\"text-align:center;\"><b>checking_status<\/b><\/div><div style=\"text-align:center;\">>=200<\/div><div style=\"text-align:center;\">no checking<\/div>"],"color":["#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7","#8181F7"],"font.size":[14,14,14,14,14,14,14,14,14,14],"font.align":["horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal","horizontal"],"smooth.enabled":[true,true,true,true,true,true,true,true,true,true],"smooth.type":["cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier","cubicBezier"],"smooth.roundness":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"layout":{"hierarchical":{"enabled":true,"direction":"UD"}},"interaction":{"dragNodes":false,"selectConnectedEdges":false,"tooltipDelay":500},"edges":{"scaling":{"label":{"enabled":false}}}},"groups":null,"width":"100%","height":"800px","idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":{"text":"Árbol con poda","style":"font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"},"submain":{"text":"","style":"font-family:Georgia, Times New Roman, Times, serif;font-size:12px;text-align:center;"},"footer":{"text":"","style":"font-family:Georgia, Times New Roman, Times, serif;font-size:12px;text-align:center;"},"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":{"from":50000,"to":0},"algorithm":"hierarchical","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":true,"fit":true,"resetHighlight":true,"clusterOptions":{"fixed":true,"physics":false},"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;\n                      white-space: nowrap;\n                      font-family: cursive;font-size:12px;font-color:purple;background-color: #E6E6E6;\n                      border-radius: 15px;","OnceEvents":{"stabilized":"function() { \n        this.setOptions({layout:{hierarchical:false}, physics:{solver:'barnesHut', enabled:true, stabilization : false}, nodes : {physics : false, fixed : true}});\n    }"},"legend":{"width":0.1,"useGroups":false,"position":"left","ncol":1,"stepX":100,"stepY":100,"zoom":true,"nodes":{"label":["age","checking_status","credit_history","duration","purpose","bad","good"],"color":["#B4C7ED","#F1B8C2","#DAC49C","#A9D1A5","#8AD3D0","#7D91B6","#B9828C"],"shape":["dot","dot","dot","dot","dot","square","square"],"size":[22,22,22,22,22,22,22],"Leaf":[0,0,0,0,0,1,1],"font.size":[16,16,16,16,16,16,16],"id":[10000,10001,10002,10003,10004,10005,10006]},"nodesToDataframe":true},"tree":{"updateShape":true,"shapeVar":"dot","shapeY":"square","colorVar":{"variable":["checking_status","credit_history","duration","purpose","age"],"color":["#F1B8C2","#DAC49C","#A9D1A5","#8AD3D0","#B4C7ED"]},"colorY":{"colorY":{"modality":["bad","good"],"color":["#7D91B6","#B9828C"]},"vardecidedClust":["good","good","bad","good","bad","good","good","bad","good","good","good"]}},"export":{"type":"png","css":"float:right;-webkit-border-radius: 10;\n                  -moz-border-radius: 10;\n                  border-radius: 10px;\n                  font-family: Arial;\n                  color: #ffffff;\n                  font-size: 12px;\n                  background: #090a0a;\n                  padding: 4px 8px 4px 4px;\n                  text-decoration: none;","background":"#fff","name":"network.png","label":"Export as png"}},"evals":["OnceEvents.stabilized"],"jsHooks":[]}</script>
 </div>
@@ -1533,40 +2082,42 @@ visTree(modArbol0_prune,
 <li>Es necesario tener cargadas las bibliotecaS <code>dplyr</code>, <code>ggplot2</code>, <code>hrbrthemes</code>, <code>Metrics</code> y <code>pROC</code> para ejecutar la función.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-myROC &lt;- function(predichos, reales) {
-  suppressMessages(suppressWarnings(library(dplyr)))
-  suppressMessages(suppressWarnings(library(ggplot2)))
-  suppressMessages(suppressWarnings(library(pROC)))
-  suppressMessages(suppressWarnings(library(Metrics)))
-  x = roc(reales, predichos)
-  df = data_frame(TPR = x$sensitivities,
-                  FPR = 1 - x$specificities)
-  gg = df %&gt;%
-    ggplot(aes(x = FPR, ymin = 0, ymax = TPR)) +
-    geom_polygon(aes(y = TPR), fill = &quot;#5A5156&quot;, alpha = 0.7) +
-    geom_path(aes(y = TPR), col = &quot;#F6222E&quot;, size = 1.3) +
-    geom_abline(
-      intercept = 0,
-      slope = 1,
-      color = &quot;gray37&quot;,
-      size = 1,
-      linetype = &quot;dashed&quot;
-    ) +
-    theme_ipsum() +
-    coord_equal() +
-    labs(
-      x = &quot;FPR (1 - Especificidad)&quot;,
-      y = &quot;TPR (Sensitividad)&quot;,
-      title = paste0(&quot;Curva ROC&quot;),
-      subtitle = paste0(
-        &quot;Valor AUC: &quot;,
-        Metrics::auc(actual = reales,
-                     predicted = predichos) %&gt;% round(4)
-      )
-    )
-  return(gg)
-}</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>myROC</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>predichos</span>, <span class='va'>reales</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressMessages</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressMessages</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressMessages</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://expasy.org/tools/pROC/'>pROC</a></span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressMessages</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/mfrasco/Metrics'>Metrics</a></span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/pROC/man/roc.html'>roc</a></span><span class='op'>(</span><span class='va'>reales</span>, <span class='va'>predichos</span><span class='op'>)</span>
+  <span class='va'>df</span> <span class='op'>=</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/deprecated.html'>data_frame</a></span><span class='op'>(</span>TPR <span class='op'>=</span> <span class='va'>x</span><span class='op'>$</span><span class='va'>sensitivities</span>,
+                  FPR <span class='op'>=</span> <span class='fl'>1</span> <span class='op'>-</span> <span class='va'>x</span><span class='op'>$</span><span class='va'>specificities</span><span class='op'>)</span>
+  <span class='va'>gg</span> <span class='op'>=</span> <span class='va'>df</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>FPR</span>, ymin <span class='op'>=</span> <span class='fl'>0</span>, ymax <span class='op'>=</span> <span class='va'>TPR</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_polygon.html'>geom_polygon</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>TPR</span><span class='op'>)</span>, fill <span class='op'>=</span> <span class='st'>"#5A5156"</span>, alpha <span class='op'>=</span> <span class='fl'>0.7</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_path</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>TPR</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"#F6222E"</span>, size <span class='op'>=</span> <span class='fl'>1.3</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_abline</a></span><span class='op'>(</span>
+      intercept <span class='op'>=</span> <span class='fl'>0</span>,
+      slope <span class='op'>=</span> <span class='fl'>1</span>,
+      color <span class='op'>=</span> <span class='st'>"gray37"</span>,
+      size <span class='op'>=</span> <span class='fl'>1</span>,
+      linetype <span class='op'>=</span> <span class='st'>"dashed"</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/hrbrthemes/man/theme_ipsum.html'>theme_ipsum</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_fixed.html'>coord_equal</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>
+      x <span class='op'>=</span> <span class='st'>"FPR (1 - Especificidad)"</span>,
+      y <span class='op'>=</span> <span class='st'>"TPR (Sensitividad)"</span>,
+      title <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"Curva ROC"</span><span class='op'>)</span>,
+      subtitle <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span>
+        <span class='st'>"Valor AUC: "</span>,
+        <span class='fu'>Metrics</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/Metrics/man/auc.html'>auc</a></span><span class='op'>(</span>actual <span class='op'>=</span> <span class='va'>reales</span>,
+                     predicted <span class='op'>=</span> <span class='va'>predichos</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fl'>4</span><span class='op'>)</span>
+      <span class='op'>)</span>
+    <span class='op'>)</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>gg</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
 </div>
 <h1 id="recursos-de-información">Recursos de información</h1>
 <ul>
@@ -1575,6 +2126,7 @@ myROC &lt;- function(predichos, reales) {
 <li><a href="https://rpubs.com/Joaquin_AR/255596">Árboles de predicción - Joaquín A. Rodrigo.</a></li>
 <li><a href="https://www.datacamp.com/courses/machine-learning-with-tree-based-models-in-r">Curso DataCamp - <em>Tree-Based Models in R</em>.</a></li>
 </ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -18,40 +18,106 @@
  <!--radix_placeholder_import_source-->
  <!--/radix_placeholder_import_source-->
 
-  <!--radix_placeholder_meta_tags-->
-<title>Machine Learning con R y Python: XGBoost: R+H2o</title>
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
 
-<meta property="description" itemprop="description" content="Algortimo XGBoost en clasificación binaria y multiclase. Comparación de implementación con H2o+R y biblioteca xgboost."/>
+  <!--radix_placeholder_meta_tags-->
+<title>Machine Learning con R y Python: XGBoost: R</title>
+
+<meta property="description" itemprop="description" content="Algortimo XGBoost con R para resolver problemas de aprendizaje supervisado (clasificación y regresión)."/>
 
 <link rel="icon" type="image/png" href="../../logo.png"/>
 
 <!--  https://schema.org/Article -->
-<meta property="article:published" itemprop="datePublished" content="2020-04-19"/>
-<meta property="article:created" itemprop="dateCreated" content="2020-04-19"/>
-<meta name="article:author" content="Edimer David Jaramillo"/>
+<meta property="article:published" itemprop="datePublished" content="2021-04-02"/>
+<meta property="article:created" itemprop="dateCreated" content="2021-04-02"/>
+<meta name="article:author" content="Edimer David Jaramillo (Sidereus)"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="Machine Learning con R y Python: XGBoost: R+H2o"/>
+<meta property="og:title" content="Machine Learning con R y Python: XGBoost: R"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="Algortimo XGBoost en clasificación binaria y multiclase. Comparación de implementación con H2o+R y biblioteca xgboost."/>
+<meta property="og:description" content="Algortimo XGBoost con R para resolver problemas de aprendizaje supervisado (clasificación y regresión)."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Machine Learning con R y Python"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary"/>
-<meta property="twitter:title" content="Machine Learning con R y Python: XGBoost: R+H2o"/>
-<meta property="twitter:description" content="Algortimo XGBoost en clasificación binaria y multiclase. Comparación de implementación con H2o+R y biblioteca xgboost."/>
+<meta property="twitter:title" content="Machine Learning con R y Python: XGBoost: R"/>
+<meta property="twitter:description" content="Algortimo XGBoost con R para resolver problemas de aprendizaje supervisado (clasificación y regresión)."/>
 
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","preview","author","date","categories","output"]}},"value":[{"type":"character","attributes":{},"value":["XGBoost: R+H2o"]},{"type":"character","attributes":{},"value":["Algortimo XGBoost en clasificación binaria y multiclase. Comparación de implementación con H2o+R y biblioteca xgboost."]},{"type":"character","attributes":{},"value":["img2.png"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Edimer David Jaramillo"]},{"type":"character","attributes":{},"value":["https://edimer.github.io/"]},{"type":"character","attributes":{},"value":["R+Py"]},{"type":"character","attributes":{},"value":["https://edimer.github.io/"]}]}]},{"type":"character","attributes":{},"value":["04-19-2020"]},{"type":"character","attributes":{},"value":["R","xgboost","Gradient Boosting"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","preview","author","date","categories","output"]}},"value":[{"type":"character","attributes":{},"value":["XGBoost: R"]},{"type":"character","attributes":{},"value":["Algortimo XGBoost con R para resolver problemas de aprendizaje supervisado (clasificación y regresión)."]},{"type":"character","attributes":{},"value":["img2.png"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Edimer David Jaramillo (Sidereus)"]},{"type":"character","attributes":{},"value":["https://edimer.github.io/"]},{"type":"character","attributes":{},"value":["R+Py"]},{"type":"character","attributes":{},"value":["https://edimer.github.io/"]}]}]},{"type":"character","attributes":{},"value":["04-02-2021"]},{"type":"character","attributes":{},"value":["R","xgboost","Gradient Boosting"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["coming.gif","img1.PNG","img2.png","XGBoost_R_files/bowser-1.9.3/bowser.min.js","XGBoost_R_files/distill-2.2.21/template.v2.js","XGBoost_R_files/jquery-1.11.3/jquery.min.js","XGBoost_R_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["coming.gif","img/img2.png","img/paper_classification.PNG","img/paper_regression.PNG","XGBoost_R_files/anchor-4.2.2/anchor.min.js","XGBoost_R_files/bowser-1.9.3/bowser.min.js","XGBoost_R_files/distill-2.2.21/template.v2.js","XGBoost_R_files/header-attrs-2.6/header-attrs.js","XGBoost_R_files/jquery-1.11.3/jquery.min.js","XGBoost_R_files/popper-2.6.0/popper.min.js","XGBoost_R_files/tippy-6.2.7/tippy-bundle.umd.min.js","XGBoost_R_files/tippy-6.2.7/tippy-light-border.css","XGBoost_R_files/tippy-6.2.7/tippy.css","XGBoost_R_files/tippy-6.2.7/tippy.umd.min.js","XGBoost_R_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -1975,7 +2041,13 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
+  <script src="../../site_libs/header-attrs-2.6/header-attrs.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="../../site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="../../site_libs/distill-2.2.21/template.v2.js"></script>
@@ -1990,7 +2062,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"XGBoost: R+H2o","description":"Algortimo XGBoost en clasificación binaria y multiclase. Comparación de implementación con H2o+R y biblioteca xgboost.","authors":[{"author":"Edimer David Jaramillo","authorURL":"https://edimer.github.io/","affiliation":"R+Py","affiliationURL":"https://edimer.github.io/","orcidID":""}],"publishedDate":"2020-04-19T00:00:00.000-05:00","citationText":"Jaramillo, 2020"}
+{"title":"XGBoost: R","description":"Algortimo XGBoost con R para resolver problemas de aprendizaje supervisado (clasificación y regresión).","authors":[{"author":"Edimer David Jaramillo (Sidereus)","authorURL":"https://edimer.github.io/","affiliation":"R+Py","affiliationURL":"https://edimer.github.io/","orcidID":""}],"publishedDate":"2021-04-02T00:00:00.000-05:00","citationText":"(Sidereus), 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2019,20 +2091,131 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>XGBoost: R+H2o</h1>
-<p>Algortimo XGBoost en clasificación binaria y multiclase. Comparación de implementación con H2o+R y biblioteca xgboost.</p>
+<h1>XGBoost: R</h1>
+<!--radix_placeholder_categories-->
+<div class="dt-tags">
+  <a href="../../index.html#category:R" class="dt-tag">R</a>
+  <a href="../../index.html#category:xgboost" class="dt-tag">xgboost</a>
+  <a href="../../index.html#category:Gradient_Boosting" class="dt-tag">Gradient Boosting</a>
+</div>
+<!--/radix_placeholder_categories-->
+<p>Algortimo XGBoost con R para resolver problemas de aprendizaje supervisado (clasificación y regresión).</p>
 </div>
 
 <div class="d-byline">
-  Edimer David Jaramillo <a href="https://edimer.github.io/" class="uri">https://edimer.github.io/</a> (R+Py)<a href="https://edimer.github.io/" class="uri">https://edimer.github.io/</a>
+  Edimer David Jaramillo (Sidereus) <a href="https://edimer.github.io/" class="uri">https://edimer.github.io/</a> (R+Py)<a href="https://edimer.github.io/" class="uri">https://edimer.github.io/</a>
   
-<br/>04-19-2020
+<br/>04-02-2021
 </div>
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#algortimo-xgboost">Algortimo <code>xgboost</code></a>
+<ul>
+<li><a href="#generalidades">Generalidades</a></li>
+<li><a href="#implementación-en-r">Implementación en R</a></li>
+<li><a href="#documentación-xgboost">Documentación <code>xgboost</code></a></li>
+</ul></li>
+<li><a href="#datos-de-ejemplo">Datos de ejemplo</a>
+<ul>
+<li><a href="#clasificación-detección-de-mastitis">Clasificación: detección de mastitis</a></li>
+<li><a href="#regresión-predicción-de-la-producción-de-sorgo">Regresión: predicción de la producción de sorgo</a></li>
+</ul></li>
+<li><a href="#requisitos-previos">Requisitos previos</a></li>
+<li><a href="#bibliotecas">Bibliotecas</a></li>
+<li><a href="#detección-de-mastitis">Detección de mastitis</a>
+<ul>
+<li><a href="#análisis-exploratorio">Análisis exploratorio</a></li>
+<li><a href="#train-y-test">Train y Test</a></li>
+<li><a href="#tuning-con-tidymodels">Tuning con <code>tidymodels</code></a></li>
+<li><a href="#desempeño-del-modelo">Desempeño del modelo</a></li>
+<li><a href="#importancia-de-variables">Importancia de variables</a></li>
+</ul></li>
+<li><a href="#producción-de-sorgo">Producción de sorgo</a>
+<ul>
+<li><a href="#análisis-exploratorio-1">Análisis exploratorio</a></li>
+<li><a href="#train-y-test-1">Train y Test</a></li>
+<li><a href="#tuning-con-tidymodels-1">Tuning con <code>tidymodels</code></a></li>
+<li><a href="#desempeño-del-modelo-1">Desempeño del modelo</a></li>
+<li><a href="#importancia-de-variables-1">Importancia de variables</a></li>
+</ul></li>
+<li><a href="#recursos-de-información">Recursos de información</a></li>
+</ul>
+</nav>
+</div>
+<h1 id="algortimo-xgboost">Algortimo <code>xgboost</code></h1>
+<h2 id="generalidades">Generalidades</h2>
+<h2 id="implementación-en-r">Implementación en R</h2>
+<h2 id="documentación-xgboost">Documentación <code>xgboost</code></h2>
+<ul>
+<li><a href="https://xgboost.readthedocs.io/en/latest/#">Documentación oficial <code>xgboost</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/xgboost/xgboost.pdf">Biblioteca <code>xgboost</code> en R</a></li>
+<li><a href="https://xgboost.readthedocs.io/en/latest/R-package/xgboostPresentation.html">Tutorial de <code>xgboost</code> en R</a></li>
+</ul>
+<h1 id="datos-de-ejemplo">Datos de ejemplo</h1>
+<p>En este documento se pretende mostrar cómo implementar el algoritmo <code>xgboost</code> con R a través de la biblioteca que lleva el mismo nombre y haciendo uso del <a href="https://www.tidymodels.org/"><code>tidymodels</code>.</a> Para ejemplificar el ajuste de <em>modelos de clasificación</em> se obtuvieron datos de ejemplo aplicado en ciencias animales, especificamente en la detección de patrones de infección de mastitis en vacas. Para el ejemplo de <em>modelos de regresión</em> se usaron datos de producción de sorgo en Italia.</p>
+<h2 id="clasificación-detección-de-mastitis">Clasificación: detección de mastitis</h2>
+<ul>
+<li><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0249136">Artículo publicado en PLOS ONE</a></li>
+</ul>
 <center>
-<img src="coming.gif"/>
+<img src = "img/paper_regression.PNG" width = 750/>
 </center>
+<h2 id="regresión-predicción-de-la-producción-de-sorgo">Regresión: predicción de la producción de sorgo</h2>
+<ul>
+<li><a href="https://www.nature.com/articles/s41598-020-61126-8#Sec15">Artículo publicado en Nature</a></li>
+</ul>
+<center>
+<img src = "img/paper_classification.PNG" width = 750 />
+</center>
+<h1 id="requisitos-previos">Requisitos previos</h1>
+<ul>
+<li>Para replicar este documento es necesario instalar las siguientes bibliotecas:
+<ul>
+<li><strong><code>tidyverse</code>:</strong> manipulación y visualización de datos.</li>
+<li><strong>`readxl``:</strong> lectura de datos en formato de Excel.</li>
+<li><strong><code>janitor</code>:</strong> manipulación de datos.</li>
+<li><strong><code>skimr</code>:</strong> análisis descriptivo y exploratorio de datos.</li>
+<li><strong><code>tidymodels</code>:</strong> entrenamiento y evaluación de modelos de machine learning.</li>
+<li><strong><code>xgboost</code>:</strong> algoritmo <code>xgboost</code>.</li>
+<li><strong><code>tidyquant</code>:</strong> (opcional) definición de tema (<code>theme_tq()</code>) para gráficos con <code>ggplot2</code>.</li>
+</ul></li>
+<li>Descargar los datos para cada ejemplo:
+<ul>
+<li><a href="https://www.nature.com/articles/s41598-020-61126-8#Sec15">Datos para detección de mastitis</a></li>
+<li><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0249136#sec014">Datos de producción de sorgo</a></li>
+</ul></li>
+</ul>
+<h1 id="bibliotecas">Bibliotecas</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readxl.tidyverse.org'>readxl</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://docs.ropensci.org/skimr'>skimr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/sfirke/janitor'>janitor</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidymodels.tidymodels.org'>tidymodels</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/dmlc/xgboost'>xgboost</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/business-science/tidyquant'>tidyquant</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="detección-de-mastitis">Detección de mastitis</h1>
+<h2 id="análisis-exploratorio">Análisis exploratorio</h2>
+<h2 id="train-y-test">Train y Test</h2>
+<h2 id="tuning-con-tidymodels">Tuning con <code>tidymodels</code></h2>
+<h2 id="desempeño-del-modelo">Desempeño del modelo</h2>
+<h2 id="importancia-de-variables">Importancia de variables</h2>
+<h1 id="producción-de-sorgo">Producción de sorgo</h1>
+<h2 id="análisis-exploratorio-1">Análisis exploratorio</h2>
+<h2 id="train-y-test-1">Train y Test</h2>
+<h2 id="tuning-con-tidymodels-1">Tuning con <code>tidymodels</code></h2>
+<h2 id="desempeño-del-modelo-1">Desempeño del modelo</h2>
+<h2 id="importancia-de-variables-1">Importancia de variables</h2>
+<h1 id="recursos-de-información">Recursos de información</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

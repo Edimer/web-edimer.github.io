@@ -4,7 +4,7 @@ description: |
   Utilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.
 preview: img.png
 author:
-  - name: Edimer David Jaramillo
+  - name: Edimer David Jaramillo (Sidereus)
     url: https://edimer.github.io/
     affiliation: R+Py
     affiliation_url: https://edimer.github.io/

@@ -4,7 +4,7 @@ description: |
   Ejemplo de árboles de decisión en machine learning supervisado para clasificación. Uso de las bibliotecas rpart, rpart.plot y caret en perfilamiento de riesgo crediticio.
 preview: img1.png   
 author:
-  - name: Edimer David Jaramillo
+  - name: Edimer David Jaramillo (Sidereus)
     url: https://edimer.github.io/
     affiliation: R+Py
     affiliation_url: https://edimer.github.io/

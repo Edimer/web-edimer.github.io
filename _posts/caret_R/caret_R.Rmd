@@ -4,7 +4,7 @@ description: |
   Algoritmos de machine learning con caret y R. Entrenamiento de modelos random forest y support vector machine en problemas de clasificación supervisada.
 preview: img1.png   
 author:
-  - name: Edimer David Jaramillo
+  - name: Edimer David Jaramillo (Sidereus)
     url: https://edimer.github.io/
     affiliation: R+Py
     affiliation_url: https://edimer.github.io/

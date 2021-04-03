@@ -1,14 +1,14 @@
 ---
-title: "XGBoost: R+H2o"
+title: "XGBoost: R"
 description: 
-  Algortimo XGBoost en clasificación binaria y multiclase. Comparación de implementación con H2o+R y biblioteca xgboost.
+  Algortimo XGBoost con R para resolver problemas de aprendizaje supervisado (clasificación y regresión).
 preview: img2.png  
 author:
-  - name: Edimer David Jaramillo
+  - name: Edimer David Jaramillo (Sidereus)
     url: https://edimer.github.io/
     affiliation: R+Py
     affiliation_url: https://edimer.github.io/
-date: 04-19-2020
+date: 04-02-2021
 categories:
   - R
   - xgboost
@@ -16,10 +16,11 @@ categories:
 output:
   distill::distill_article:
     self_contained: false
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 # Learn more about creating blogs with Distill at:
 # https://rstudio.github.io/distill/blog.html
@@ -27,6 +28,87 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
+# Algortimo `xgboost`
+
+## Generalidades
+
+## Implementación en R
+
+## Documentación `xgboost`
+
+- [Documentación oficial `xgboost`](https://xgboost.readthedocs.io/en/latest/#)
+- [Biblioteca `xgboost` en R](https://cran.r-project.org/web/packages/xgboost/xgboost.pdf)
+- [Tutorial de `xgboost` en R](https://xgboost.readthedocs.io/en/latest/R-package/xgboostPresentation.html)
+
+# Datos de ejemplo
+
+En este documento se pretende mostrar cómo implementar el algoritmo `xgboost` con R a través de la biblioteca que lleva el mismo nombre y haciendo uso del [`tidymodels`.](https://www.tidymodels.org/) Para ejemplificar el ajuste de *modelos de clasificación* se obtuvieron datos de ejemplo aplicado en ciencias animales, especificamente en la detección de patrones de infección de mastitis en vacas. Para el ejemplo de  *modelos de regresión* se usaron datos de producción de sorgo en Italia.
+
+## Clasificación: detección de mastitis
+
+- [Artículo publicado en PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0249136)
+
 <center>
-<img src="coming.gif"/>
+<img src = "img/paper_regression.PNG" width = 750/>
 </center>
+
+## Regresión: predicción de la producción de sorgo
+
+- [Artículo publicado en Nature](https://www.nature.com/articles/s41598-020-61126-8#Sec15)
+
+<center>
+<img src = "img/paper_classification.PNG" width = 750 />
+</center>
+
+# Requisitos previos
+
+- Para replicar este documento es necesario instalar las siguientes bibliotecas:
+  - **`tidyverse`:** manipulación  y visualización de datos.
+  - **`readxl``:** lectura de datos en formato de Excel.
+  - **`janitor`:** manipulación de datos.
+  - **`skimr`:** análisis descriptivo y exploratorio de datos. 
+  - **`tidymodels`:** entrenamiento y evaluación de modelos de machine learning.
+  - **`xgboost`:** algoritmo `xgboost`. 
+  - **`tidyquant`:** (opcional) definición de tema (`theme_tq()`) para gráficos con `ggplot2`.
+- Descargar los datos para cada ejemplo:
+  - [Datos para detección de mastitis](https://www.nature.com/articles/s41598-020-61126-8#Sec15)
+  - [Datos de producción de sorgo](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0249136#sec014)
+
+# Bibliotecas
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(skimr)
+library(janitor)
+library(tidymodels)
+library(xgboost)
+library(tidyquant)
+```
+
+# Detección de mastitis
+
+## Análisis exploratorio
+
+## Train y Test
+
+## Tuning con `tidymodels`
+
+## Desempeño del modelo
+
+## Importancia de variables
+
+# Producción de sorgo
+
+## Análisis exploratorio
+
+## Train y Test
+
+## Tuning con `tidymodels`
+
+## Desempeño del modelo
+
+## Importancia de variables
+
+# Recursos de información
+

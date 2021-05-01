@@ -1,14 +1,14 @@
 ---
 title: "XGBoost: R"
 description: 
-  Algortimo XGBoost con R para resolver problemas de aprendizaje supervisado (clasificación y regresión).
+  Algortimo XGBoost con R para resolver problemas de aprendizaje supervisado (clasificación).
 preview: img2.png  
 author:
   - name: Edimer David Jaramillo (Sidereus)
     url: https://edimer.github.io/
     affiliation: R+Py
     affiliation_url: https://edimer.github.io/
-date: 04-02-2021
+date: 05-01-2021
 categories:
   - R
   - xgboost
@@ -27,7 +27,6 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 ```
 
-
 # Algortimo `xgboost`
 
 ## Generalidades
@@ -42,7 +41,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 # Datos de ejemplo
 
-En este documento se pretende mostrar cómo implementar el algoritmo `xgboost` con R a través de la biblioteca que lleva el mismo nombre y haciendo uso del [`tidymodels`.](https://www.tidymodels.org/) Para ejemplificar el ajuste de *modelos de clasificación* se obtuvieron datos de ejemplo aplicado en ciencias animales, especificamente en la detección de patrones de infección de mastitis en vacas. Para el ejemplo de  *modelos de regresión* se usaron datos de producción de sorgo en Italia.
+En este documento se pretende mostrar cómo implementar el algoritmo `xgboost` con R a través de la biblioteca que lleva el mismo nombre y haciendo uso del [`tidymodels`.](https://www.tidymodels.org/) Para ejemplificar el ajuste de *modelos de clasificación* se obtuvieron datos de ejemplo aplicado en ciencias animales, especificamente en la detección de patrones de infección de mastitis en vacas.
 
 ## Clasificación: detección de mastitis
 
@@ -64,11 +63,12 @@ En este documento se pretende mostrar cómo implementar el algoritmo `xgboost` c
 
 - Para replicar este documento es necesario instalar las siguientes bibliotecas:
   - **`tidyverse`:** manipulación  y visualización de datos.
-  - **`readxl``:** lectura de datos en formato de Excel.
+  - **`readxl`:** lectura de datos en formato de Excel.
   - **`janitor`:** manipulación de datos.
   - **`skimr`:** análisis descriptivo y exploratorio de datos. 
   - **`tidymodels`:** entrenamiento y evaluación de modelos de machine learning.
   - **`xgboost`:** algoritmo `xgboost`. 
+  - **`vip`:** calcular importancia de variables.
   - **`tidyquant`:** (opcional) definición de tema (`theme_tq()`) para gráficos con `ggplot2`.
 - Descargar los datos para cada ejemplo:
   - [Datos para detección de mastitis](https://www.nature.com/articles/s41598-020-61126-8#Sec15)
@@ -84,11 +84,42 @@ library(janitor)
 library(tidymodels)
 library(xgboost)
 library(tidyquant)
+library(vip)
+```
+
+# Tema para `ggplot2`
+
+```{r}
+theme_set(theme_tq())
 ```
 
 # Detección de mastitis
 
+- La variable respuesta está identificada como `diagnosis`. En principio tiene 4 niveles, sin embargo, para el ejemplo fueron filtrados sólo los niveles `EDP` (transmisión en el período seco - sin lactancia) y `EL` (transmisión en período de lactancia).
+- La base de datos consta de 1000 observaciones y 229 variables, es decir, que existen 228 variables predictoras. Cuando se aplicó el filtro quedaron 914 observaciones.
+
+## Base de datos
+
+```{r}
+mastitis <- read_csv("data/mastitis.csv") %>% 
+  clean_names() %>% 
+  filter(diagnosis %in% c("EDP", "EL"))
+
+mastitis %>% head()
+```
+
 ## Análisis exploratorio
+
+- **Frecuencia de variable respuesta:**
+
+```{r, fig.cap="Frecuencia absoluta de variable respuesta"}
+mastitis %>% 
+  count(diagnosis) %>% 
+  ggplot(aes(x = diagnosis, y = n)) +
+  geom_col(color = "dodgerblue3", fill = "dodgerblue3", alpha = 0.8) +
+  geom_label(aes(label = n)) +
+  labs(x = "Diagnóstico", y = "Frecuencia")
+```
 
 ## Train y Test
 
@@ -99,6 +130,8 @@ library(tidyquant)
 ## Importancia de variables
 
 # Producción de sorgo
+
+## Base de datos
 
 ## Análisis exploratorio
 

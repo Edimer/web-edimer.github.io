@@ -4,7 +4,7 @@ description: |
   Ejemplo aplicado del algoritmo LightGBM (Microsoft) con R, en problemas de clasificación y regresión. 
 preview: img1.png  
 author:
-  - name: Edimer David Jaramillo
+  - name: Edimer David Jaramillo (Sidereus)
     url: https://edimer.github.io/
     affiliation: R+Py
     affiliation_url: https://edimer.github.io/

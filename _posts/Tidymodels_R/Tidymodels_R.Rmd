@@ -4,7 +4,7 @@ description: |
   Algoritmos de machine learning supervisado con tidymodels y R. Entranamiento de modelos en problema de clasificación. Replicación de estudio publicado en Plos One.
 preview: img1.jpg  
 author:
-  - name: Edimer David Jaramillo
+  - name: Edimer David Jaramillo (Sidereus)
     url: https://edimer.github.io/
     affiliation: R+Py
     affiliation_url: https://edimer.github.io/

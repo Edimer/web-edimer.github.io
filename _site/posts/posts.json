@@ -5,7 +5,7 @@
     "description": "Ejemplo aplicado del algoritmo LightGBM (Microsoft) con R, en problemas de clasificación y regresión.",
     "author": [
       {
-        "name": "Edimer David Jaramillo",
+        "name": "Edimer David Jaramillo (Sidereus)",
         "url": "https://edimer.github.io/"
       }
     ],
@@ -17,7 +17,7 @@
     ],
     "contents": "\r\nRegresión: predicción de la producción de sorgo\r\nArtículo publicado en Nature\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/LGBM_Py/img1.png",
-    "last_modified": "2021-05-01T22:43:38-05:00",
+    "last_modified": "2021-05-01T22:46:49-05:00",
     "input_file": {}
   },
   {
@@ -67,7 +67,7 @@
     "description": "Algoritmos de machine learning supervisado con tidymodels y R. Entranamiento de modelos en problema de clasificación. Replicación de estudio publicado en Plos One.",
     "author": [
       {
-        "name": "Edimer David Jaramillo",
+        "name": "Edimer David Jaramillo (Sidereus)",
         "url": "https://edimer.github.io/"
       }
     ],
@@ -77,9 +77,9 @@
       "Tidymodels",
       "ML"
     ],
-    "contents": "\r\nGeneralidades\r\nArtículo Plos One\r\n",
+    "contents": "\r\nGeneralidades\r\nArtículo Plos One\r\n\r\n\r\n\r\n",
     "preview": "posts/Tidymodels_R/img1.jpg",
-    "last_modified": "2020-05-02T22:00:07-05:00",
+    "last_modified": "2021-05-01T22:47:29-05:00",
     "input_file": {}
   },
   {

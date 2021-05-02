@@ -1,5 +1,26 @@
 [
   {
+    "path": "posts/LGBM_Py/",
+    "title": "LightGBM con R",
+    "description": "Ejemplo aplicado del algoritmo LightGBM (Microsoft) con R, en problemas de clasificación y regresión.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2021-05-01",
+    "categories": [
+      "R",
+      "lightgbm",
+      "Gradient Boosting"
+    ],
+    "contents": "\r\nRegresión: predicción de la producción de sorgo\r\nArtículo publicado en Nature\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/LGBM_Py/img1.png",
+    "last_modified": "2021-05-01T22:43:38-05:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/XGBoost_R/",
     "title": "XGBoost: R",
     "description": "Algortimo XGBoost con R para resolver problemas de aprendizaje supervisado (clasificación).",
@@ -59,27 +80,6 @@
     "contents": "\r\nGeneralidades\r\nArtículo Plos One\r\n",
     "preview": "posts/Tidymodels_R/img1.jpg",
     "last_modified": "2020-05-02T22:00:07-05:00",
-    "input_file": {}
-  },
-  {
-    "path": "posts/LGBM_Py/",
-    "title": "LightGBM con R",
-    "description": "Ejemplo aplicado del algoritmo LightGBM (Microsoft) con R, en problemas de clasificación y regresión.",
-    "author": [
-      {
-        "name": "Edimer David Jaramillo",
-        "url": "https://edimer.github.io/"
-      }
-    ],
-    "date": "2020-04-19",
-    "categories": [
-      "R",
-      "lightgbm",
-      "Gradient Boosting"
-    ],
-    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n",
-    "preview": "posts/LGBM_Py/img1.png",
-    "last_modified": "2021-02-05T18:55:46-05:00",
     "input_file": {}
   },
   {

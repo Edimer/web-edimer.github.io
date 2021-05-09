@@ -1,0 +1,31 @@
+---
+title: "Forecasting con R: fable"
+description: |
+  Comparación de modelos de series de tiempo para pronóstico de exportaciones de café desde Colombia.
+preview: img1.png   
+author:
+  - name: Edimer David Jaramillo (Sidereus)
+    url: https://edimer.github.io/
+    affiliation: R+Py
+    affiliation_url: https://edimer.github.io/
+date: 05-09-2021
+categories:
+  - R
+  - Series Temporales
+  - Forecast
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating blogs with Distill at:
+# https://rstudio.github.io/distill/blog.html
+
+```
+
+# Exportaciones de café Colombia 
+
+- [Datos](https://www.agronet.gov.co/estadistica/Paginas/home.aspx?cod=20)

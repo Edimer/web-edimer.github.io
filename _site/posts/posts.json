@@ -1,5 +1,26 @@
 [
   {
+    "path": "posts/TimesSeries_R/",
+    "title": "Forecasting con R: fable",
+    "description": "Comparación de modelos de series de tiempo para pronóstico de exportaciones de café desde Colombia.",
+    "author": [
+      {
+        "name": "Edimer David Jaramillo (Sidereus)",
+        "url": "https://edimer.github.io/"
+      }
+    ],
+    "date": "2021-05-09",
+    "categories": [
+      "R",
+      "Series Temporales",
+      "Forecast"
+    ],
+    "contents": "\r\nExportaciones de café Colombia\r\nDatos\r\n\r\n\r\n\r\n",
+    "preview": "posts/TimesSeries_R/img1.png",
+    "last_modified": "2021-05-09T11:29:43-05:00",
+    "input_file": "TimesSeries_R.utf8.md"
+  },
+  {
     "path": "posts/LGBM_Py/",
     "title": "LightGBM con R",
     "description": "Ejemplo aplicado del algoritmo LightGBM (Microsoft) con R, en problemas de clasificación y regresión.",

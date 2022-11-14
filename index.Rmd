@@ -1,5 +1,0 @@
----
-title: "Machine Learning con R y Python"
-site: distill::distill_website
-listing: posts
----

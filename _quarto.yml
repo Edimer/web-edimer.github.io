@@ -4,6 +4,8 @@ project:
 website:
   favicon: favicon.png
   title: "Machine Learning con R y Python"
+  site-url: https://blogrpy.netlify.app/
+  description: "Machine Learning con R y Python"
   navbar:
     right:
       - about.qmd
@@ -11,6 +13,8 @@ website:
         href: https://github.com/Edimer
       - icon: linkedin
         href: https://co.linkedin.com/in/edimer-david-jaramillo-94a510199 
+      - icon: rss
+        href: index.xml  
 format:
   html:
     theme:

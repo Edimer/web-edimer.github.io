@@ -1,0 +1,603 @@
+---
+title: "XGBoost con R"
+author: "Edimer (Sidereus)"
+date: "05-01-2021"
+description: "Algortimo XGBoost con R para resolver problemas de aprendizaje supervisado (clasificación)."
+categories:
+  - R
+  - xgboost
+  - Gradient Boosting
+  - ML
+image: "img2.png "
+lang: es
+css: estilo.css
+format: 
+  html:
+    toc: true
+    toc-title: "Tabla de contenido"
+    smooth-scroll: true
+    code-fold: true
+    df-print: paged
+    toc-location: left
+    number-depth: 4
+    code-copy: true
+    highlight-style: github
+    code-tools: 
+      source: true 
+    code-link: true 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+# Learn more about creating blogs with Distill at:
+# https://rstudio.github.io/distill/blog.html
+
+```
+
+## Documentación `xgboost`
+
+- [Documentación oficial `xgboost`](https://xgboost.readthedocs.io/en/latest/#)
+- [Biblioteca `xgboost` en R](https://cran.r-project.org/web/packages/xgboost/xgboost.pdf)
+- [Tutorial de `xgboost` en R](https://xgboost.readthedocs.io/en/latest/R-package/xgboostPresentation.html)
+
+# Datos de ejemplo
+
+En este documento se muestra cómo implementar el algoritmo *XGBoost* con R a través de la biblioteca que lleva el mismo nombre y haciendo uso del [`tidymodels`.](https://www.tidymodels.org/) Para ejemplificar el ajuste de *modelos de clasificación* se obtuvieron datos de ejemplo aplicado en ciencias animales, específicamente en la detección de patrones de infección de mastitis en vacas.
+
+## Detección de mastitis
+
+- [Artículo publicado en PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0249136)
+
+<center>
+<img src = "img/paper_classification.PNG" width = 750/>
+</center>
+
+
+# Requisitos previos
+
+- Para replicar este documento es necesario instalar las siguientes bibliotecas:
+  - **`tidyverse`:** manipulación  y visualización de datos.
+  - **`readxl`:** lectura de datos en formato de Excel.
+  - **`janitor`:** manipulación de datos.
+  - **`visdat`:** análisis exploratorio de datos. 
+  - **`tidymodels`:** entrenamiento y evaluación de modelos de machine learning.
+  - **`xgboost`:** algoritmo `xgboost`. 
+  - **`doParallel`:** procesamiento en paralelo (cómputo distribuido).
+  - **`parallel`** procesamiento en paralelo (cómputo distribuido).
+  - **`vip`:** calcular importancia de variables.
+  - **`ggsci`:** paletas de colores.
+  - **`ggforce`** complemento para gráficos.
+  - **`FactoMineR`:** análisis multivariado.
+  - **`knitr`:** presentación de tablas (`data.frame`).
+- Descargar los datos para ejemplo:
+  - [Datos para detección de mastitis](https://www.nature.com/articles/s41598-020-61126-8#Sec15)
+- **Nota:** es importante mencionar que cuando cargamos la *meta-biblioteca* `tidymodels` se activan otras bibliotecas que usaremos más adelante.
+
+# Bibliotecas
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(visdat)
+library(janitor)
+library(FactoMineR)
+library(tidymodels)
+library(xgboost)
+library(doParallel)
+library(parallel)
+library(vip)
+library(ggsci)
+library(ggforce)
+library(knitr)
+```
+
+# Tema para `ggplot2`
+
+```{r}
+mi_temagg <- theme_minimal() +
+  theme(axis.text.x = element_text(color = "black"),
+        axis.text.y = element_text(color = "black"),
+        strip.background = element_rect(fill = "gray5"),
+        strip.text = element_text(color = "white", size = 12),
+        legend.position = "top")
+
+theme_set(mi_temagg)
+```
+
+# Detección de mastitis
+
+- La variable respuesta está identificada como `diagnosis`. En principio tiene 4 niveles, sin embargo, para el ejemplo fueron filtrados sólo los niveles `EDP` (transmisión en el período seco - sin lactancia) y `EL` (transmisión en período de lactancia).
+- La base de datos consta de 1000 observaciones y 229 variables, es decir, que existen 228 variables predictoras. Cuando se aplicó el filtro quedaron 914 observaciones.
+
+## Base de datos
+
+```{r}
+mastitis <- read_csv("data/mastitis.csv") %>% 
+  clean_names() %>% 
+  filter(diagnosis %in% c("EDP", "EL"))
+
+mastitis %>% 
+  select(diagnosis, 1:5) %>%
+  head() %>%
+  kable(caption = "6 primeras filas de la base de datos con 6 columnas")
+```
+
+## Análisis exploratorio
+
+- Frecuencia absoluta para niveles de la variable respuesta.
+
+```{r, fig.cap="Frecuencia absoluta de variable respuesta"}
+mastitis %>% 
+  count(diagnosis) %>% 
+  ggplot(aes(x = diagnosis, y = n)) +
+  geom_col(color = "dodgerblue3", fill = "dodgerblue3", alpha = 0.8) +
+  geom_label(aes(label = n)) +
+  labs(x = "Diagnóstico", y = "Frecuencia")
+```
+
+- Distribuciones de algunas variables numéricas: como el número de variables es alto, selecciono al azar 8 de ellas para construir el gráfico.
+
+```{r,fig.width=8, fig.cap="Densidades de 8 variables al azar (transformación con logaritmo en base 10)", fig.height=4.5}
+# Números al azar
+set.seed(1992)
+variables_azar <- sample(x = 228, size = 8, replace = FALSE)
+
+mastitis %>% 
+  select(diagnosis, variables_azar) %>% 
+  pivot_longer(cols = -diagnosis) %>% 
+  ggplot(aes(x = value, fill = diagnosis, color = diagnosis)) +
+  facet_wrap(~name, scales = "free", ncol = 4) +
+  geom_density(alpha = 0.8) +
+  scale_x_log10() +
+  scale_color_jama() +
+  scale_fill_jama() +
+  labs(x = "", y = "Densidad", color = "Diagnóstico",
+       fill = "Diagnóstico")
+  
+```
+
+- Verificamos si existen valores ausentes. Se observan algunas filas con valores `NA`.
+
+```{r, fig.width=8, fig.height=6, fig.cap="Valores ausentes en el conjunto de datos"}
+vis_miss(mastitis)
+```
+
+- Con la finalidad de evidenciar si existe algún patrón de asociación subyacente en el total de variables, se realizó análisis de componentes principales y se grafican los dos primeros componentes. No existe algún comportamiento de agrupación al reducir la dimensión a los dos primeros componentes. Se observó que la retención de variabilidad de estas dos coordenadas apenas alcanzó el 30% aproximadamente.
+
+```{r, fig.cap="Componente principal 1 vs componente principal 2"}
+# Análisis de componentes principales
+datos_pca <- mastitis
+pca <- PCA(X = datos_pca %>%
+             select(where(is.numeric)),
+           scale.unit = TRUE,
+           graph = FALSE)
+
+# Agregando componentes a la base de datos
+datos_pca$cp1 <- pca$ind$coord[, 1]
+datos_pca$cp2 <- pca$ind$coord[, 2]
+
+# Gráfico de las 2 primeras componentes
+datos_pca %>% 
+  ggplot(aes(x = cp1, y = cp2, color = diagnosis)) +
+  geom_point() +
+  geom_hline(yintercept = 0, color = "black", linetype = 2) +
+  geom_vline(xintercept = 0, color = "black", linetype = 2) +
+  scale_color_jama() +
+  labs(x = "CP1 (15.74 %)", y = "CP2 (14.09 %)", color = "Diagnóstico")
+```
+
+- Los resultados exploratorios sugieren cuatro cosas importantes:
+  - El problema de clasificación bajo análisis podría ser denominado de *clases balanceadas*, ya que las frecuencias absolutas son similares para cada nivel a predecir.
+  - Algunas variables predictoras no tienen comportamiento gaussiano. Parte de la estrategia del análisis, en estos casos, podría ser la implementación de algún tipo de transformación previo al entrenamiento de los modelos, no obstante, este paso no se aplicará dada la robustez que presenta el algoritmo *XGBoost* frente a distribuciones asimétricas.
+  - Existen observaciones con valores ausentes para una o más variables. Algunos algoritmos como la *regresión logística* o los *bosques aleatorios*, no permiten la inclusión de valores `NA` al entrenar los modelos, sin embargo, con *XGBoost* no existe este inconveniente, puesto que soporta valores vacíos.
+  - El análisis de componentes principales no muestra alguna tendencia de agrupación entre las clases evaluadas. La retención de variabilidad de las tres primeras componentes no supera el 50%, resultado que podría sugerir que las relaciones de tipo lineal no son plausibles en este conjunto de datos.
+
+## Train y Test
+
+- En este ejemplo los datos fueron divididos en *train* y *test* con proporciones de 80 y 20 %, respectivamente. Se utiliza muestreo estratificado en función de la variable respuesta. Se eliminaron 4 variables que tienen información de fechas; aunque podrían ser tratadas de alguna manera especial, en este caso no fueron tenidas en cuenta.
+- La biblioteca [`rsample`](https://rsample.tidymodels.org/) permite realizar la división.
+
+```{r}
+# Variables fechas
+variables_fechas <- mastitis %>% 
+  select(is.character, -diagnosis) %>% 
+  names()
+
+# Datos para modelos
+data_modelos <- mastitis %>% select(-variables_fechas)
+
+set.seed(1992)
+particiones <- initial_split(data = data_modelos, prop = 0.80, strata = diagnosis)
+train <- training(particiones)
+test <- testing(particiones)
+```
+
+- Podemos ver el objeto `particiones` que proporciona información de la partición de datos. Los modelos son entrenados con 733 observaciones y con 181 se evalúa el desempeño de los mismos.
+
+```{r}
+particiones
+```
+
+## Validación cruzada
+
+- Se utiliza validación cruzada *k-fold* con $k = 10$.
+- La biblioteca [`rsample`](https://rsample.tidymodels.org/) permite configurar diferentes métodos de validación cruzada.
+
+```{r}
+set.seed(1992)
+config_cv <- vfold_cv(data = train, v = 10)
+```
+
+## Preprocesamiento
+
+- En este ejemplo no se hará énfasis en las estrategias de preprocesamiento o ingeniería de características, sin embargo, serán comparados algoritmos con imputación de valores ausentes (con método k vecinos más cercanos) respecto a algoritmos sin imputación. 
+- La biblioteca [`recipes`](https://recipes.tidymodels.org/) permite realizar múltiples tareas de preprocesamiento e ingeniería de características.
+
+```{r}
+no_impute <- recipe(diagnosis ~ ., data = train)
+si_impute <- recipe(diagnosis ~ ., data = train) %>% 
+  step_impute_knn(all_predictors())
+```
+
+## Modelo XGBoost
+
+- El algoritmo *XGboost* tiene múltiples hiperparámetros que pueden ser sintonizados, sin embargo, en este ejemplo sólo ser hará tuning sobre los siguientes:
+  - `mtry`: número de predictores que se muestrearán aleatoriamente en cada división al crear los modelos.
+  - `min_n`: número mínimo de observaciones requeridas en un nodo para que se produzca la división.
+  - `tree_depth`: profundidad máxima del árbol (número de divisiones).
+- El número de árboles (`trees`) se estableció en 1000.
+- La tasa de aprendizaje (`learn_rate`) se estableció en 0.1.
+- La proporción de observaciones muestreadas (`sample_size`) en cada rutina de ajuste se estableció en 0.8.
+- Los demás hiperparámetros se mantienen por defecto.
+- Para más información acerca de los hiperparámetros que permite ajustar [`parsnip`](https://parsnip.tidymodels.org/), consultar [este enlace.](https://parsnip.tidymodels.org/reference/boost_tree.html)
+
+```{r}
+modelo_xgboost <- boost_tree(mtry = tune(),
+                             min_n = tune(),
+                             tree_depth = tune(),
+                             trees = 1000,
+                             learn_rate = 0.1,
+                             sample_size = 0.8) %>% 
+  set_engine("xgboost") %>% 
+  set_mode("classification")
+```
+
+## Flujos de trabajo (*pipelines*)
+
+- Los flujos de trabajo son una manera flexible de trabajar con *tidymodels*. Se fundamenta en la misma idea de los *pipelines* de [scikit-learn](https://scikit-learn.org/stable/) de Python. Es posible construir nuestro flujo de trabajo con recetas y modelos declarados previamente.
+- Consultar más información de la biblioteca [workflows.](https://workflows.tidymodels.org/) 
+
+- Flujo de trabajo sin imputación:
+
+```{r}
+wf_no_impute <- workflow() %>% 
+  add_recipe(no_impute) %>% 
+  add_model(modelo_xgboost)
+```
+
+- Flujo de trabajo con imputación:
+
+```{r}
+wf_si_impute <- workflow() %>% 
+  add_recipe(si_impute) %>% 
+  add_model(modelo_xgboost)
+```
+
+## Grid 
+
+- En este caso se utiliza la cuadrícula a través de diseños de llenado de espacio (*space-filling designs*), los cuales intentan encontrar una configuración de puntos (combinaciones) que cubren el espacio de parámetros con menor probabilidad de valores que se traslapan. Para este ejemplo el tamaño de la cuadrícula fue de 10.
+- Para este caso particular se usan diseños de máxima entropía, descritos en el año 1987 por Shewry y Wynn en el artículo *"Maximum Entropy Sampling".* También podrían ser implementados diseños de hipercubos latinos o diseños de proyección máxima. Si no se desea utilizar alguno de estos métodos, podría ser implementada una cuadrícula regular a través de métodos aleatorios (*grid random*).
+- Mayor información en la página web de la biblioteca [dials.](https://dials.tidymodels.org/index.html)
+
+```{r}
+# Parámetros para tuning
+params_xgb <- parameters(
+  finalize(mtry(), x = train[, -1]),
+  min_n(range = c(2L, 50L)),
+  tree_depth(range = c(3L, 8L))
+)
+
+# Grid
+set.seed(2021)
+grid_xgb <- params_xgb %>% 
+  grid_max_entropy(size = 10)
+```
+
+- A continuación se muestra la cuadrícula de búsqueda de los mejores hiperparámetros. Se evidencia que los puntos no se solapan, de tal manera que el espacio de búsqueda no es redundante.
+
+```{r, fig.cap="Cuadrícula de tamaño 10 con método de máxima entropía"}
+grid_xgb %>% 
+  ggplot(aes(x = .panel_x, y = .panel_y)) +
+  facet_matrix(vars(mtry, min_n, tree_depth), layer.diag = 2) +
+  geom_point()
+```
+
+
+## Tuning con `tidymodels`
+
+- La función `tune_grid()` de la biblioteca [tune](https://tune.tidymodels.org/) permite evaluar los modelos con cada combinación de paramétros establecidos previamente en la cuadrícula.
+- Tuning sin imputación:
+
+```{r, eval=FALSE}
+registerDoParallel(parallel::detectCores() - 1) # Inicio Paralelización
+
+set.seed(2021)
+tuned_no_impute <- tune_grid(
+  object = wf_no_impute,
+  resamples = config_cv,
+  grid = grid_xgb
+)
+
+stopImplicitCluster() # Fin Paralelización
+```
+
+- Tuning con imputación:
+
+```{r, eval=FALSE}
+registerDoParallel(parallel::detectCores() - 1) # Inicio Paralelización
+
+set.seed(2021)
+tuned_si_impute <- tune_grid(
+  object = wf_si_impute,
+  resamples = config_cv,
+  grid = grid_xgb
+)
+
+stopImplicitCluster() # Fin Paralelización
+```
+
+```{r, echo=FALSE}
+load("tune_no_impute.Rdata")
+load("tune_si_impute.Rdata")
+```
+
+## Resultados *Accuracy*
+
+- Resultados de *Accuracy* en modelos sin imputación. La precisión más alta se consigue con aproximadamente 150 variables (`mtry`), menos de 10 observaciones para que se produzca la división del árbol (`min_n`) y profunidad de más o menos 6 (`tree_depth`).
+
+```{r}
+tuned_no_impute %>% 
+  collect_metrics() %>% 
+  filter(.metric == "accuracy") %>% 
+  ggplot(aes(x = mtry, y = min_n, size = tree_depth, color = mean)) +
+  geom_point() +
+  scale_color_viridis_c() +
+  labs(color = "Accuracy")
+```
+
+- Resultados de *Accuracy* en modelos con imputación. La precisión más alta se consigue con aproximadamente 25 variables (`mtry`), poco menos de 50 observaciones para que se produzca la división del árbol (`min_n`) y profunidad de más o menos 4 (`tree_depth`).
+
+```{r}
+tuned_si_impute %>% 
+  collect_metrics() %>% 
+  filter(.metric == "accuracy") %>% 
+  ggplot(aes(x = mtry, y = min_n, size = tree_depth, color = mean)) +
+  geom_point() +
+  scale_color_viridis_c() +
+  labs(color = "Accuracy")
+```
+
+- Se observa que los mejores hiperparámetros para los algoritmos entrenados con y sin imputación, discrepan considerablemente. Aunque en este caso realicé la evaluación del desempeño de los modelos basado en la métrica *Accuracy*, es posible utilizar cualquier otra para problemas de clasificación.
+
+## Mejores hiperparámetros
+
+- Mejores hiperparámetros en modelos sin imputación:
+
+```{r}
+mejor_no_impute <- tuned_no_impute %>% 
+  select_best(metric = "accuracy")
+
+mejor_no_impute
+```
+
+- Mejores hiperparámetros en modelos con imputación:
+
+```{r}
+mejor_si_impute <- tuned_si_impute %>% 
+  select_best(metric = "accuracy")
+
+mejor_si_impute
+```
+
+## Ajuste final
+
+- Modelo sin imputación:
+
+```{r, warning=FALSE, message=FALSE}
+final_no_impute <- finalize_workflow(
+  x = wf_no_impute,
+  parameters = mejor_no_impute
+) %>% 
+  fit(data = train)
+```
+
+- Modelo con imputación:
+
+```{r, warning=FALSE, message=FALSE}
+final_si_impute <- finalize_workflow(
+  x = wf_si_impute,
+  parameters = mejor_si_impute
+) %>% 
+  fit(data = train)
+```
+
+## Predicciones Train
+
+- Modelo sin imputación:
+
+```{r}
+pred_no_impute_train <- final_no_impute %>% 
+  predict(new_data = train, type = "class")
+```
+
+- Modelo con imputación:
+
+```{r}
+pred_si_impute_train <- final_si_impute %>% 
+  predict(new_data = train, type = "class") 
+```
+
+## Predicciones Test
+
+- Modelo sin imputación:
+
+```{r}
+pred_no_impute_test <- final_no_impute %>% 
+  predict(new_data = test, type = "class")
+```
+
+- Modelo con imputación:
+
+```{r}
+pred_si_impute_test <- final_si_impute %>% 
+  predict(new_data = test, type = "class") 
+```
+
+## Matriz de confusión Train
+
+- Matriz de confusión modelo sin imputación:
+
+```{r, fig.cap="Matriz de confusión en train - modelo sin imputación"}
+data.frame(
+  predicho = as.factor(pred_no_impute_train$.pred_class),
+  real = as.factor(train$diagnosis)
+) %>% 
+  conf_mat(truth = real, estimate = predicho) %>% 
+  pluck(1) %>% 
+  as_tibble()  %>% 
+  ggplot(aes(x = Prediction, y = Truth, alpha = n)) +
+  geom_tile(show.legend = FALSE) +
+  geom_text(aes(label = n), colour = "white", alpha = 1, size = 8)
+```
+
+- Matriz de confusión modelo con imputación:
+
+```{r, fig.cap="Matriz de confusión en train - modelo con imputación"}
+data.frame(
+  predicho = as.factor(pred_si_impute_train$.pred_class),
+  real = as.factor(train$diagnosis)
+) %>% 
+  conf_mat(truth = real, estimate = predicho) %>% 
+  pluck(1) %>% 
+  as_tibble()  %>% 
+  ggplot(aes(x = Prediction, y = Truth, alpha = n)) +
+  geom_tile(show.legend = FALSE) +
+  geom_text(aes(label = n), colour = "white", alpha = 1, size = 8)
+```
+
+## Matriz de confusión Test
+
+- Matriz de confusión modelo sin imputación:
+
+```{r, fig.cap="Matriz de confusión en test - modelo sin imputación"}
+data.frame(
+  predicho = as.factor(pred_no_impute_test$.pred_class),
+  real = as.factor(test$diagnosis)
+) %>% 
+  conf_mat(truth = real, estimate = predicho) %>% 
+  pluck(1) %>% 
+  as_tibble()  %>% 
+  ggplot(aes(x = Prediction, y = Truth, alpha = n)) +
+  geom_tile(show.legend = FALSE) +
+  geom_text(aes(label = n), colour = "white", alpha = 1, size = 8)
+```
+
+- Matriz de confusión modelo con imputación:
+
+```{r, fig.cap="Matriz de confusión en test - modelo con imputación"}
+data.frame(
+  predicho = as.factor(pred_si_impute_test$.pred_class),
+  real = as.factor(test$diagnosis)
+) %>% 
+  conf_mat(truth = real, estimate = predicho) %>% 
+  pluck(1) %>% 
+  as_tibble()  %>% 
+  ggplot(aes(x = Prediction, y = Truth, alpha = n)) +
+  geom_tile(show.legend = FALSE) +
+  geom_text(aes(label = n), colour = "white", alpha = 1, size = 8)
+```
+
+## Desempeño de modelos
+
+- Genero una base de datos con los resultados de las clases predichas en cada tipo de modelo (con y sin imputación) para los conjuntos de entrenamiento y prueba.
+
+```{r}
+tabla_accuracy <- data.frame(
+  predicho = pred_no_impute_train$.pred_class,
+  real = train$diagnosis,
+  datos = "Train",
+  tipo = "Sin imputación"
+) %>%
+  bind_rows(
+    data.frame(
+      predicho = pred_si_impute_train$.pred_class,
+      real = train$diagnosis,
+      datos = "Train",
+      tipo = "Con imputación"
+    )
+  ) %>%
+  bind_rows(
+    data.frame(
+      predicho = pred_no_impute_test$.pred_class,
+      real = test$diagnosis,
+      datos = "Test",
+      tipo = "Sin imputación"
+    )
+  ) %>% 
+  bind_rows(
+    data.frame(
+      predicho = pred_si_impute_test$.pred_class,
+      real = test$diagnosis,
+      datos = "Test",
+      tipo = "Con imputación"
+    )
+  ) %>% 
+  mutate(across(where(is.character), as.factor))
+
+tabla_accuracy %>%
+  group_by(datos, tipo) %>% 
+  summarise(accuracy = accuracy_vec(truth = real, estimate = predicho)) %>% 
+  kable(caption = "Accuracy en train y test para dos modelos XGBoost")
+
+```
+- Gráfico *Accuracy:* la capacidad predictiva es superior en el modelo que fue entrenado sin acudir a la imputación de datos.
+
+```{r, fig.cap="Accuracy en train y test para dos modelos XGBoost"}
+tabla_accuracy %>%
+  group_by(datos, tipo) %>% 
+  summarise(accuracy = accuracy_vec(truth = real, estimate = predicho)) %>% 
+  ggplot(aes(x = tipo, y = accuracy, color = datos, fill = datos)) +
+  geom_col(position = "dodge", alpha = 0.8) +
+  scale_color_jama() +
+  scale_fill_jama() +
+  labs(x = "Preprocesamiento", y = "Accuracy",
+       color = "", fill = "")
+```
+
+
+## Importancia de variables
+
+- 10 variables de mayor importancia en modelo sin imputación:
+
+```{r, fig.cap="Importancia de variables - modelo sin imputación"}
+final_no_impute %>% 
+  pull_workflow_fit() %>%
+  vip(geom = "point", n = 10)
+```
+
+- 10 variables de mayor importancia en modelo sin imputación:
+
+```{r, fig.cap="Importancia de variables - modelo con imputación"}
+final_si_impute %>% 
+  pull_workflow_fit() %>%
+  vip(geom = "point", n = 10)
+```
+
+# Referencias
+
+- Hyde, R.M., Down, P.M., Bradley, A.J. et al. *"Automated prediction of mastitis infection patterns in dairy herds using machine learning"*. Sci Rep 10, 4289 (2020). https://doi.org/10.1038/s41598-020-61126-8
+- Chen Tianqi, Guestrin Carlos. *"XGBoost: A Scalable Tree Boosting System"*. CoRR, Vol 1603.02754 (2016). https://arxiv.org/abs/1603.02754
+- Boehmke Bradley, Greenwell Brandon. *"Hands-On Machine Learning with R"*. Chapman and Hall/CRC (2019). https://bradleyboehmke.github.io/HOML/gbm.html
+- Shewry, M, and H Wynn. *"Maximum Entropy Sampling."* Journal of Applied Statistics 14 (2): 165–70  (1987). https://doi.org/10.1080/02664768700000020
+- Kuhn Max, Silge Julia. *"Tidy Modeling with R"*. (2020). https://www.tmwr.org/

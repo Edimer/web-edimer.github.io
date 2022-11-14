@@ -7,3 +7,4 @@
 <img src = "https://raw.githubusercontent.com/rweekly/image/master/2022/W31/quarto.png"/>
 </center>
 
+- [Utilidad: remover fondo de imágenes](https://www.remove.bg/es/upload)

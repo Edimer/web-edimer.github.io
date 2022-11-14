@@ -2,6 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/XGBoost_R/XGBoost_R.html",
+      "/posts/tree_decision/TreeD_R.html",
+      "/posts/caret_r/caret_R.html",
       "/posts/pyr1/Py_R_1.html"
     ]
   }

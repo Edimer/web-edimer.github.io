@@ -1,0 +1,149 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Información",
+    "section": "",
+    "text": "¡Soy más amigo de Salviati que de Simplicio, aunque respeto y admiro la visión neutral de Sagredo!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Machine Learning con R y Python",
+    "section": "",
+    "text": "R\n\n\nPython\n\n\nProgramación\n\n\n\n\nUtilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.\n\n\n\n\n\n\n20 ene 2020\n\n\nEdimer (Sidereus)\n\n\n\n\n\n\nNo hay resultados"
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html",
+    "href": "posts/pyr1/Py_R_1.html",
+    "title": "R + Python: I",
+    "section": "",
+    "text": "Tener instalado Python\n\nRecomendable instalar Anaconda Navigator\n\nInstalar la biblioteca reticulate desde R."
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#importando-numpy",
+    "href": "posts/pyr1/Py_R_1.html#importando-numpy",
+    "title": "R + Python: I",
+    "section": "Importando numpy\n",
+    "text": "Importando numpy\n\n\nCódigonp <- import(\"numpy\")\nnp$argmin(c(2, 1, 3))\n\n[1] 1\n\n\n\nEn esta salida se muestra cómo aplicar la función arcgmin de python sobre un vector de R. Devuelve la posición (índice) donde se encuentra el valor mínimo del vector dado.\nEs posible acceder a todas las funciones de numpy desde el objeto np con el símbolo dólar $."
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#importando-os",
+    "href": "posts/pyr1/Py_R_1.html#importando-os",
+    "title": "R + Python: I",
+    "section": "Importando os\n",
+    "text": "Importando os\n\n\nCódigoos <- import(\"os\")\nos$getcwd()\n\n[1] \"D:\\\\Otros\\\\Github\\\\web-edimer\\\\web-edimer.github.io\\\\posts\\\\pyr1\""
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#tupla-desde-r",
+    "href": "posts/pyr1/Py_R_1.html#tupla-desde-r",
+    "title": "R + Python: I",
+    "section": "Tupla desde R\n",
+    "text": "Tupla desde R\n\n\nCreando una tupla y obteniendo su clase:\n\n\nCódigotupla1 <- tuple(c(1, 2, 3, \"A\"))\ntupla1\n## (['1', '2', '3', 'A'],)\n\n# Clase en python\nclass(tupla1)\n## [1] \"python.builtin.tuple\"  \"python.builtin.object\"\n\n\n\nCoercionar el objeto tupla1 de clase tuple en python directamente a R:\n\n\nCódigotupla1_r <- py_to_r(tupla1)\ntupla1_r\n## [[1]]\n## [1] \"1\" \"2\" \"3\" \"A\"\n\n# Clase en R\nclass(tupla1_r)\n## [1] \"list\""
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#diccionario-desde-r",
+    "href": "posts/pyr1/Py_R_1.html#diccionario-desde-r",
+    "title": "R + Python: I",
+    "section": "Diccionario desde R\n",
+    "text": "Diccionario desde R\n\n\nCódigo# Objeto\ndict1 <- dict(x = \"Hola\", y = 3.5, z = 1L)\ndict1\n## {'x': 'Hola', 'y': 3.5, 'z': 1}\n\n# Clase\nclass(dict1)\n## [1] \"python.builtin.dict\"   \"python.builtin.object\"\n\n# Nombres\nnames(dict1)\n## [1] \"x\" \"y\" \"z\"\n\n# Atributos\nattributes(dict1)\n## $class\n## [1] \"python.builtin.dict\"   \"python.builtin.object\"\n\n# Coerción a objeto RR\ndict1_r <- py_to_r(dict1)\ndict1_r\n## $x\n## [1] \"Hola\"\n## \n## $y\n## [1] 3.5\n## \n## $z\n## [1] 1\n\n# Clase en R\nclass(dict1_r)\n## [1] \"list\""
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#tupla-en-python",
+    "href": "posts/pyr1/Py_R_1.html#tupla-en-python",
+    "title": "R + Python: I",
+    "section": "Tupla en python\n",
+    "text": "Tupla en python\n\n\nCreando tupla en python:\n\n\nCódigo# Creando tupla\naltura = (1.65, 1.72, 1.56, 1.84, 1.92)\naltura\n\n(1.65, 1.72, 1.56, 1.84, 1.92)\n\n\n\nCódigo# Otra tupla\npeso = (67, 75, 67, 78, 85)\npeso\n\n(67, 75, 67, 78, 85)\n\n\n\nCódigo# Tipo (clase) de objetos\ntype(altura)\n\n<class 'tuple'>\n\nCódigotype(peso)\n\n<class 'tuple'>\n\n\n\nLlamando la tupla desde R:\n\n\nCódigoclass(py$altura)\n## [1] \"list\"\nplot(x = py$altura, y = py$peso, pch = 19, cex = 2)"
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#tipos-de-objetos-en-ambos-lenguajes",
+    "href": "posts/pyr1/Py_R_1.html#tipos-de-objetos-en-ambos-lenguajes",
+    "title": "R + Python: I",
+    "section": "Tipos de objetos en ambos lenguajes",
+    "text": "Tipos de objetos en ambos lenguajes"
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#instalando-pandas",
+    "href": "posts/pyr1/Py_R_1.html#instalando-pandas",
+    "title": "R + Python: I",
+    "section": "Instalando pandas\n",
+    "text": "Instalando pandas\n\n\nCódigopy_install(\"pandas\")"
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#importando-pandas-y-leyendo-archivo-.csv",
+    "href": "posts/pyr1/Py_R_1.html#importando-pandas-y-leyendo-archivo-.csv",
+    "title": "R + Python: I",
+    "section": "Importando pandas y leyendo archivo .csv\n",
+    "text": "Importando pandas y leyendo archivo .csv\n\n\nCódigoimport pandas as pd\niris_py = pd.read_csv(\"Iris.csv\")\niris_py\n\n     Sepal.Length  Sepal.Width  Petal.Length  Petal.Width    Species\n0             5.1          3.5           1.4          0.2     setosa\n1             4.9          3.0           1.4          0.2     setosa\n2             4.7          3.2           1.3          0.2     setosa\n3             4.6          3.1           1.5          0.2     setosa\n4             5.0          3.6           1.4          0.2     setosa\n..            ...          ...           ...          ...        ...\n145           6.7          3.0           5.2          2.3  virginica\n146           6.3          2.5           5.0          1.9  virginica\n147           6.5          3.0           5.2          2.0  virginica\n148           6.2          3.4           5.4          2.3  virginica\n149           5.9          3.0           5.1          1.8  virginica\n\n[150 rows x 5 columns]\n\n\n\nCódigotype(iris_py)\n\n<class 'pandas.core.frame.DataFrame'>\n\n\n\nEstadísticos descriptivos:\n\n\nCódigoiris_py.describe()\n\n       Sepal.Length  Sepal.Width  Petal.Length  Petal.Width\ncount    150.000000   150.000000    150.000000   150.000000\nmean       5.843333     3.057333      3.758000     1.199333\nstd        0.828066     0.435866      1.765298     0.762238\nmin        4.300000     2.000000      1.000000     0.100000\n25%        5.100000     2.800000      1.600000     0.300000\n50%        5.800000     3.000000      4.350000     1.300000\n75%        6.400000     3.300000      5.100000     1.800000\nmax        7.900000     4.400000      6.900000     2.500000\n\n\n\nSeleccionando variables por nombre:\n\n\nCódigoiris_py[[\"Sepal.Length\", \"Sepal.Width\"]]\n\n     Sepal.Length  Sepal.Width\n0             5.1          3.5\n1             4.9          3.0\n2             4.7          3.2\n3             4.6          3.1\n4             5.0          3.6\n..            ...          ...\n145           6.7          3.0\n146           6.3          2.5\n147           6.5          3.0\n148           6.2          3.4\n149           5.9          3.0\n\n[150 rows x 2 columns]\n\n\n\nFiltrando datos:\n\n\nCódigofiltro = iris_py[\"Sepal.Width\"] <= 2.2\niris_py[filtro]\n\n     Sepal.Length  Sepal.Width  Petal.Length  Petal.Width     Species\n60            5.0          2.0           3.5          1.0  versicolor\n62            6.0          2.2           4.0          1.0  versicolor\n68            6.2          2.2           4.5          1.5  versicolor\n119           6.0          2.2           5.0          1.5   virginica\n\n\n\n\nDataframe como array:\n\n\nCódigoiris_py.values\n\narray([[5.1, 3.5, 1.4, 0.2, 'setosa'],\n       [4.9, 3.0, 1.4, 0.2, 'setosa'],\n       [4.7, 3.2, 1.3, 0.2, 'setosa'],\n       [4.6, 3.1, 1.5, 0.2, 'setosa'],\n       [5.0, 3.6, 1.4, 0.2, 'setosa'],\n       [5.4, 3.9, 1.7, 0.4, 'setosa'],\n       [4.6, 3.4, 1.4, 0.3, 'setosa'],\n       [5.0, 3.4, 1.5, 0.2, 'setosa'],\n       [4.4, 2.9, 1.4, 0.2, 'setosa'],\n       [4.9, 3.1, 1.5, 0.1, 'setosa'],\n       [5.4, 3.7, 1.5, 0.2, 'setosa'],\n       [4.8, 3.4, 1.6, 0.2, 'setosa'],\n       [4.8, 3.0, 1.4, 0.1, 'setosa'],\n       [4.3, 3.0, 1.1, 0.1, 'setosa'],\n       [5.8, 4.0, 1.2, 0.2, 'setosa'],\n       [5.7, 4.4, 1.5, 0.4, 'setosa'],\n       [5.4, 3.9, 1.3, 0.4, 'setosa'],\n       [5.1, 3.5, 1.4, 0.3, 'setosa'],\n       [5.7, 3.8, 1.7, 0.3, 'setosa'],\n       [5.1, 3.8, 1.5, 0.3, 'setosa'],\n       [5.4, 3.4, 1.7, 0.2, 'setosa'],\n       [5.1, 3.7, 1.5, 0.4, 'setosa'],\n       [4.6, 3.6, 1.0, 0.2, 'setosa'],\n       [5.1, 3.3, 1.7, 0.5, 'setosa'],\n       [4.8, 3.4, 1.9, 0.2, 'setosa'],\n       [5.0, 3.0, 1.6, 0.2, 'setosa'],\n       [5.0, 3.4, 1.6, 0.4, 'setosa'],\n       [5.2, 3.5, 1.5, 0.2, 'setosa'],\n       [5.2, 3.4, 1.4, 0.2, 'setosa'],\n       [4.7, 3.2, 1.6, 0.2, 'setosa'],\n       [4.8, 3.1, 1.6, 0.2, 'setosa'],\n       [5.4, 3.4, 1.5, 0.4, 'setosa'],\n       [5.2, 4.1, 1.5, 0.1, 'setosa'],\n       [5.5, 4.2, 1.4, 0.2, 'setosa'],\n       [4.9, 3.1, 1.5, 0.2, 'setosa'],\n       [5.0, 3.2, 1.2, 0.2, 'setosa'],\n       [5.5, 3.5, 1.3, 0.2, 'setosa'],\n       [4.9, 3.6, 1.4, 0.1, 'setosa'],\n       [4.4, 3.0, 1.3, 0.2, 'setosa'],\n       [5.1, 3.4, 1.5, 0.2, 'setosa'],\n       [5.0, 3.5, 1.3, 0.3, 'setosa'],\n       [4.5, 2.3, 1.3, 0.3, 'setosa'],\n       [4.4, 3.2, 1.3, 0.2, 'setosa'],\n       [5.0, 3.5, 1.6, 0.6, 'setosa'],\n       [5.1, 3.8, 1.9, 0.4, 'setosa'],\n       [4.8, 3.0, 1.4, 0.3, 'setosa'],\n       [5.1, 3.8, 1.6, 0.2, 'setosa'],\n       [4.6, 3.2, 1.4, 0.2, 'setosa'],\n       [5.3, 3.7, 1.5, 0.2, 'setosa'],\n       [5.0, 3.3, 1.4, 0.2, 'setosa'],\n       [7.0, 3.2, 4.7, 1.4, 'versicolor'],\n       [6.4, 3.2, 4.5, 1.5, 'versicolor'],\n       [6.9, 3.1, 4.9, 1.5, 'versicolor'],\n       [5.5, 2.3, 4.0, 1.3, 'versicolor'],\n       [6.5, 2.8, 4.6, 1.5, 'versicolor'],\n       [5.7, 2.8, 4.5, 1.3, 'versicolor'],\n       [6.3, 3.3, 4.7, 1.6, 'versicolor'],\n       [4.9, 2.4, 3.3, 1.0, 'versicolor'],\n       [6.6, 2.9, 4.6, 1.3, 'versicolor'],\n       [5.2, 2.7, 3.9, 1.4, 'versicolor'],\n       [5.0, 2.0, 3.5, 1.0, 'versicolor'],\n       [5.9, 3.0, 4.2, 1.5, 'versicolor'],\n       [6.0, 2.2, 4.0, 1.0, 'versicolor'],\n       [6.1, 2.9, 4.7, 1.4, 'versicolor'],\n       [5.6, 2.9, 3.6, 1.3, 'versicolor'],\n       [6.7, 3.1, 4.4, 1.4, 'versicolor'],\n       [5.6, 3.0, 4.5, 1.5, 'versicolor'],\n       [5.8, 2.7, 4.1, 1.0, 'versicolor'],\n       [6.2, 2.2, 4.5, 1.5, 'versicolor'],\n       [5.6, 2.5, 3.9, 1.1, 'versicolor'],\n       [5.9, 3.2, 4.8, 1.8, 'versicolor'],\n       [6.1, 2.8, 4.0, 1.3, 'versicolor'],\n       [6.3, 2.5, 4.9, 1.5, 'versicolor'],\n       [6.1, 2.8, 4.7, 1.2, 'versicolor'],\n       [6.4, 2.9, 4.3, 1.3, 'versicolor'],\n       [6.6, 3.0, 4.4, 1.4, 'versicolor'],\n       [6.8, 2.8, 4.8, 1.4, 'versicolor'],\n       [6.7, 3.0, 5.0, 1.7, 'versicolor'],\n       [6.0, 2.9, 4.5, 1.5, 'versicolor'],\n       [5.7, 2.6, 3.5, 1.0, 'versicolor'],\n       [5.5, 2.4, 3.8, 1.1, 'versicolor'],\n       [5.5, 2.4, 3.7, 1.0, 'versicolor'],\n       [5.8, 2.7, 3.9, 1.2, 'versicolor'],\n       [6.0, 2.7, 5.1, 1.6, 'versicolor'],\n       [5.4, 3.0, 4.5, 1.5, 'versicolor'],\n       [6.0, 3.4, 4.5, 1.6, 'versicolor'],\n       [6.7, 3.1, 4.7, 1.5, 'versicolor'],\n       [6.3, 2.3, 4.4, 1.3, 'versicolor'],\n       [5.6, 3.0, 4.1, 1.3, 'versicolor'],\n       [5.5, 2.5, 4.0, 1.3, 'versicolor'],\n       [5.5, 2.6, 4.4, 1.2, 'versicolor'],\n       [6.1, 3.0, 4.6, 1.4, 'versicolor'],\n       [5.8, 2.6, 4.0, 1.2, 'versicolor'],\n       [5.0, 2.3, 3.3, 1.0, 'versicolor'],\n       [5.6, 2.7, 4.2, 1.3, 'versicolor'],\n       [5.7, 3.0, 4.2, 1.2, 'versicolor'],\n       [5.7, 2.9, 4.2, 1.3, 'versicolor'],\n       [6.2, 2.9, 4.3, 1.3, 'versicolor'],\n       [5.1, 2.5, 3.0, 1.1, 'versicolor'],\n       [5.7, 2.8, 4.1, 1.3, 'versicolor'],\n       [6.3, 3.3, 6.0, 2.5, 'virginica'],\n       [5.8, 2.7, 5.1, 1.9, 'virginica'],\n       [7.1, 3.0, 5.9, 2.1, 'virginica'],\n       [6.3, 2.9, 5.6, 1.8, 'virginica'],\n       [6.5, 3.0, 5.8, 2.2, 'virginica'],\n       [7.6, 3.0, 6.6, 2.1, 'virginica'],\n       [4.9, 2.5, 4.5, 1.7, 'virginica'],\n       [7.3, 2.9, 6.3, 1.8, 'virginica'],\n       [6.7, 2.5, 5.8, 1.8, 'virginica'],\n       [7.2, 3.6, 6.1, 2.5, 'virginica'],\n       [6.5, 3.2, 5.1, 2.0, 'virginica'],\n       [6.4, 2.7, 5.3, 1.9, 'virginica'],\n       [6.8, 3.0, 5.5, 2.1, 'virginica'],\n       [5.7, 2.5, 5.0, 2.0, 'virginica'],\n       [5.8, 2.8, 5.1, 2.4, 'virginica'],\n       [6.4, 3.2, 5.3, 2.3, 'virginica'],\n       [6.5, 3.0, 5.5, 1.8, 'virginica'],\n       [7.7, 3.8, 6.7, 2.2, 'virginica'],\n       [7.7, 2.6, 6.9, 2.3, 'virginica'],\n       [6.0, 2.2, 5.0, 1.5, 'virginica'],\n       [6.9, 3.2, 5.7, 2.3, 'virginica'],\n       [5.6, 2.8, 4.9, 2.0, 'virginica'],\n       [7.7, 2.8, 6.7, 2.0, 'virginica'],\n       [6.3, 2.7, 4.9, 1.8, 'virginica'],\n       [6.7, 3.3, 5.7, 2.1, 'virginica'],\n       [7.2, 3.2, 6.0, 1.8, 'virginica'],\n       [6.2, 2.8, 4.8, 1.8, 'virginica'],\n       [6.1, 3.0, 4.9, 1.8, 'virginica'],\n       [6.4, 2.8, 5.6, 2.1, 'virginica'],\n       [7.2, 3.0, 5.8, 1.6, 'virginica'],\n       [7.4, 2.8, 6.1, 1.9, 'virginica'],\n       [7.9, 3.8, 6.4, 2.0, 'virginica'],\n       [6.4, 2.8, 5.6, 2.2, 'virginica'],\n       [6.3, 2.8, 5.1, 1.5, 'virginica'],\n       [6.1, 2.6, 5.6, 1.4, 'virginica'],\n       [7.7, 3.0, 6.1, 2.3, 'virginica'],\n       [6.3, 3.4, 5.6, 2.4, 'virginica'],\n       [6.4, 3.1, 5.5, 1.8, 'virginica'],\n       [6.0, 3.0, 4.8, 1.8, 'virginica'],\n       [6.9, 3.1, 5.4, 2.1, 'virginica'],\n       [6.7, 3.1, 5.6, 2.4, 'virginica'],\n       [6.9, 3.1, 5.1, 2.3, 'virginica'],\n       [5.8, 2.7, 5.1, 1.9, 'virginica'],\n       [6.8, 3.2, 5.9, 2.3, 'virginica'],\n       [6.7, 3.3, 5.7, 2.5, 'virginica'],\n       [6.7, 3.0, 5.2, 2.3, 'virginica'],\n       [6.3, 2.5, 5.0, 1.9, 'virginica'],\n       [6.5, 3.0, 5.2, 2.0, 'virginica'],\n       [6.2, 3.4, 5.4, 2.3, 'virginica'],\n       [5.9, 3.0, 5.1, 1.8, 'virginica']], dtype=object)"
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#importando-tensorflow-desde-python",
+    "href": "posts/pyr1/Py_R_1.html#importando-tensorflow-desde-python",
+    "title": "R + Python: I",
+    "section": "Importando tensorflow desde python",
+    "text": "Importando tensorflow desde python\n\nCódigoimport tensorflow as tf\n\n\n\nFunciones desde tf:"
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#ejemplo-1",
+    "href": "posts/pyr1/Py_R_1.html#ejemplo-1",
+    "title": "R + Python: I",
+    "section": "Ejemplo 1",
+    "text": "Ejemplo 1\n\nCódigoimport matplotlib.pyplot as plt\nx = np.arange(0, 20)\ny = x**2\ng1 = plt.plot(x, y, \"g--\")\ng1 = plt.title(\"X vs Y\")\ng1 = plt.xlabel(\"Eje x\")\ng1 = plt.ylabel(\"Eje Y\")  \ng1"
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#ejemplo-2",
+    "href": "posts/pyr1/Py_R_1.html#ejemplo-2",
+    "title": "R + Python: I",
+    "section": "Ejemplo 2",
+    "text": "Ejemplo 2\n\nCódigow = np.arange(0, 50).reshape(5, 10)\nw\n\narray([[ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9],\n       [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],\n       [20, 21, 22, 23, 24, 25, 26, 27, 28, 29],\n       [30, 31, 32, 33, 34, 35, 36, 37, 38, 39],\n       [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]])\n\n\n\nCódigog2 = plt.imshow(w)\ng2 = plt.colorbar()\nplt.show()"
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#ejemplo-3",
+    "href": "posts/pyr1/Py_R_1.html#ejemplo-3",
+    "title": "R + Python: I",
+    "section": "Ejemplo 3",
+    "text": "Ejemplo 3\n\nGráfico desde un Dataframe:\n\n\nCódigog3 = iris_py.plot(x = \"Sepal.Length\", y = \"Sepal.Width\", kind = \"scatter\",\n                  color = \"red\")                 \ng3"
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#importando-módulos-de-python-1",
+    "href": "posts/pyr1/Py_R_1.html#importando-módulos-de-python-1",
+    "title": "R + Python: I",
+    "section": "Importando módulos de python\n",
+    "text": "Importando módulos de python\n\n\nCódigoimport pandas as pd\nimport sklearn\nfrom sklearn.tree import DecisionTreeClassifier \nfrom sklearn.model_selection import train_test_split \nfrom sklearn import metrics"
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#cargando-datos",
+    "href": "posts/pyr1/Py_R_1.html#cargando-datos",
+    "title": "R + Python: I",
+    "section": "Cargando datos",
+    "text": "Cargando datos\n\nCódigocol_names = ['pregnant', 'glucose', 'bp', 'skin', 'insulin', 'bmi', 'pedigree',\n             'age', 'label']\n# load dataset\npima = pd.read_csv(\"diabetes.csv\", header=None, names=col_names)\npima = pima[1:]\npima.head()\n\n  pregnant glucose  bp skin insulin   bmi pedigree age label\n1        6     148  72   35       0  33.6    0.627  50     1\n2        1      85  66   29       0  26.6    0.351  31     0\n3        8     183  64    0       0  23.3    0.672  32     1\n4        1      89  66   23      94  28.1    0.167  21     0\n5        0     137  40   35     168  43.1    2.288  33     1"
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#selección-de-características",
+    "href": "posts/pyr1/Py_R_1.html#selección-de-características",
+    "title": "R + Python: I",
+    "section": "Selección de características",
+    "text": "Selección de características\n\nCódigo# Fraccionando la base de datos en predictoras (X) y respuesta (Y)\nfeature_cols = ['pregnant', 'insulin', 'bmi', 'age','glucose','bp','pedigree']\nX = pima[feature_cols] \ny = pima.label"
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#train---test",
+    "href": "posts/pyr1/Py_R_1.html#train---test",
+    "title": "R + Python: I",
+    "section": "Train - Test",
+    "text": "Train - Test\n\nCódigoX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1)"
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#construyendo-modelo",
+    "href": "posts/pyr1/Py_R_1.html#construyendo-modelo",
+    "title": "R + Python: I",
+    "section": "Construyendo Modelo",
+    "text": "Construyendo Modelo\n\nCódigo# Clasificador\nclf = DecisionTreeClassifier()\n\n# Clasificador en train --> Entrenando modelo\nclf_fit = clf.fit(X = X_train, y = y_train)"
+  },
+  {
+    "objectID": "posts/pyr1/Py_R_1.html#evaluación-del-modelo",
+    "href": "posts/pyr1/Py_R_1.html#evaluación-del-modelo",
+    "title": "R + Python: I",
+    "section": "Evaluación del modelo",
+    "text": "Evaluación del modelo\n\nCódigo# Predicciones\ny_pred = clf_fit.predict(X_test)\nprint(\"Accuracy:\", metrics.accuracy_score(y_test, y_pred))\n\nAccuracy: 0.6753246753246753"
+  }
+]

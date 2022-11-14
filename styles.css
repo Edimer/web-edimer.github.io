@@ -1,0 +1,23 @@
+/* css styles */
+
+/* ----- Clase para movimiento de texto */
+.ml6 {
+  position: relative;
+  font-weight: 900;
+  font-size: 1.2em;
+}
+
+.ml6 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+}
+
+.ml6 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+

@@ -1,0 +1,20 @@
+project:
+  type: website
+
+website:
+  favicon: favicon.png
+  title: "Machine Learning con R y Python"
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/Edimer
+      - icon: linkedin
+        href: https://co.linkedin.com/in/edimer-david-jaramillo-94a510199 
+format:
+  html:
+    theme:
+      light: litera
+      dark: solar
+    css: styles.css
+

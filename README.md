@@ -1,12 +1,9 @@
 # Blog para R y Python
 
 - **URL:** https://blogrpy.netlify.com/
-- Para conocer más de la biblioteca `distill`:
-    - [Blog con `distill`](https://rstudio.github.io/distill/blog.html)
-    - [Creación de página web con `distill`](https://rstudio.github.io/distill/publish_website.html)
-    - [Biblioteca `distill`](https://rstudio.github.io/distill/)
+- [Blog con quarto](https://quarto.org/docs/websites/website-blog.html#publishing)
 
 <center>
-<img src = "https://www.maximaformacion.es/wp-content/uploads/2018/09/r-VS-pYTHON-2018.png"/>
+<img src = "https://raw.githubusercontent.com/rweekly/image/master/2022/W31/quarto.png"/>
 </center>
 

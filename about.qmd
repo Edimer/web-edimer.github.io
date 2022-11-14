@@ -1,0 +1,22 @@
+---
+title: "Información"
+image: logo.webp
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://co.linkedin.com/in/edimer-david-jaramillo-94a510199
+    - icon: github
+      text: Github
+      href: https://github.com/Edimer
+
+---
+
+Este blog contiene tutoriales cortos de *Statistical Learning*, *Machine Learning* y *Deep Learning* con R y Python. Mi propósito es proporcionar recursos de información en **español** acerca de *Ciencia de Datos* con ambos lenguajes de programación.
+
+<p class="ml6">
+  <span class="text-wrapper">
+    *¡Soy más amigo de Salviati que de Simplicio, aunque respeto y admiro la visión neutral de Sagredo!*
+  </span>
+</p>

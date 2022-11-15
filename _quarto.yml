@@ -6,6 +6,7 @@ website:
   title: "Machine Learning con R y Python"
   site-url: https://blogrpy.netlify.app/
   description: "Machine Learning con R y Python"
+  margin-header: subscribe.html
   navbar:
     right:
       - about.qmd
@@ -21,4 +22,3 @@ format:
       light: litera
       dark: solar
     css: styles.css
-

@@ -2,16 +2,20 @@
     "left": {
         "splitterpos": 149,
 <<<<<<< HEAD
+<<<<<<< HEAD
         "topwindowstate": "MAXIMIZE",
 =======
         "topwindowstate": "HIDE",
+>>>>>>> dev-posts
+=======
+        "topwindowstate": "MAXIMIZE",
 >>>>>>> dev-posts
         "panelheight": 342,
         "windowheight": 380
     },
     "right": {
         "splitterpos": 224,
-        "topwindowstate": "MAXIMIZE",
+        "topwindowstate": "MINIMIZE",
         "panelheight": 342,
         "windowheight": 380
     }

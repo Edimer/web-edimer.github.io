@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/chaos_theory_r/growth-simulation.html",
       "/posts/XGBoost_R/XGBoost_R.html",
       "/posts/tree_decision/TreeD_R.html",
       "/posts/caret_r/caret_R.html",

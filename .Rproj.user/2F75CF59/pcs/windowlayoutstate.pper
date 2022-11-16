@@ -1,6 +1,7 @@
 {
     "left": {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "splitterpos": 149,
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -19,11 +20,17 @@
         "panelheight": 394,
         "windowheight": 432
 >>>>>>> dev-posts
+=======
+        "splitterpos": 189,
+        "topwindowstate": "MAXIMIZE",
+        "panelheight": 437,
+        "windowheight": 475
+>>>>>>> dev-posts
     },
     "right": {
-        "splitterpos": 258,
+        "splitterpos": 286,
         "topwindowstate": "MINIMIZE",
-        "panelheight": 394,
-        "windowheight": 432
+        "panelheight": 437,
+        "windowheight": 475
     }
 }

@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Machine Learning con R y Python",
     "section": "",
-    "text": "R\n\n\nxgboost\n\n\nGradient Boosting\n\n\nML\n\n\n\n\nAlgortimo XGBoost con R para resolver problemas de aprendizaje supervisado (clasificación).\n\n\n\n\n\n\n1 may 2021\n\n\nEdimer (Sidereus)\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nTree Decision\n\n\nML\n\n\n\n\nEjemplo de árboles de decisión en machine learning supervisado para clasificación. Uso de las bibliotecas rpart, rpart.plot y caret en perfilamiento de riesgo crediticio.\n\n\n\n\n\n\n18 jul 2020\n\n\nEdimer (Sidereus)\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\ncaret\n\n\nML\n\n\n\n\nAlgoritmos de machine learning con caret y R. Entrenamiento de modelos random forest y support vector machine en problemas de clasificación supervisada.\n\n\n\n\n\n\n23 mar 2020\n\n\nEdimer (Sidereus)\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nPython\n\n\nProgramación\n\n\n\n\nUtilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.\n\n\n\n\n\n\n20 ene 2020\n\n\nEdimer (Sidereus)\n\n\n\n\n\n\nNo hay resultados"
+    "text": "R\n\n\nSimulación\n\n\nMatemáticas\n\n\n\n\nEn este documento se ejemplifican simulaciones con R para la ecuación diferencial logística. 😁🐟🐒🐤🐖🐓☘️🐄😁\n\n\n\n\n\n\n15 nov 2022\n\n\nEdimer (Sidereus)\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nxgboost\n\n\nGradient Boosting\n\n\nML\n\n\n\n\nAlgortimo XGBoost con R para resolver problemas de aprendizaje supervisado (clasificación).\n\n\n\n\n\n\n1 may 2021\n\n\nEdimer (Sidereus)\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nTree Decision\n\n\nML\n\n\n\n\nEjemplo de árboles de decisión en machine learning supervisado para clasificación. Uso de las bibliotecas rpart, rpart.plot y caret en perfilamiento de riesgo crediticio.\n\n\n\n\n\n\n18 jul 2020\n\n\nEdimer (Sidereus)\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\ncaret\n\n\nML\n\n\n\n\nAlgoritmos de machine learning con caret y R. Entrenamiento de modelos random forest y support vector machine en problemas de clasificación supervisada.\n\n\n\n\n\n\n23 mar 2020\n\n\nEdimer (Sidereus)\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nR\n\n\nPython\n\n\nProgramación\n\n\n\n\nUtilizando python desde R con la biblioteca reticulate. Elementos básicos de python para operaciones numéricas comunes, visualización y ejemplo corto con scikit-learn.\n\n\n\n\n\n\n20 ene 2020\n\n\nEdimer (Sidereus)\n\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "posts/caret_r/caret_R.html",
@@ -61,6 +61,76 @@
     "title": "Algoritmos de ML con caret en R (1)",
     "section": "Comparación de modelos",
     "text": "Comparación de modelos\n\nCódigomod_svmR$resample %>% \n  select(-Resample) %>% \n  mutate(Modelo = \"SVM\") %>% \n  bind_rows(mod_rf$resample) %>% \n  select(-Resample) %>% \n  replace_na(list(Modelo = \"Random Forest\")) %>% \n  gather(key = \"Medida\", value = \"Valor\", -Modelo) %>% \n  ggplot(data = ., aes(x = Modelo, y = Valor, fill = Modelo)) +\n  facet_wrap(~Medida, scales = \"free\", ncol = 2) +\n  geom_violin(alpha = 0.9) +\n  stat_summary(fun = mean, geom = \"point\", pch = 19) +\n  labs(y = \"\", title = \"Comparación de modelos\"\",\n       subtitle = \"Predicción de estrellas púlsar\")\"+ +\n  scale_fill_manual(values =  c(\"#790222\", \"#033660\")) +\n  mi_temagg +\n  theme(legend.position = \"none\")"
+  },
+  {
+    "objectID": "posts/chaos_theory_r/growth-simulation.html#parametrización-en-r",
+    "href": "posts/chaos_theory_r/growth-simulation.html#parametrización-en-r",
+    "title": "Simulación matemática con R: Ecuación Logística",
+    "section": "Parametrización en R",
+    "text": "Parametrización en R\nFunción 1\n\nSe construyen dos funciones para realizar las simulaciones: growth() e iterGrowth()\n\nSe definen los siguientes parámetros para la función growth():\n\n\nrate (\\(\\alpha\\)): tasa de crecimento o razón de cambio. Relación de la natalidad con la mortalidad.\n\nxt: tamaño de la población inicial (%). \\(0 \\leq x_t \\leq 1\\)\n\n\nRetorno: esta función devuelve el cálculo de la población mediante la ecuación anterior.\n\n\nSe definen los siguientes parámetros para la función iterGrowth():\n\n\nrate (\\(\\alpha\\)): tasa de crecimento o razón de cambio. Relación de la natalidad con la mortalidad\n\nxt: tamaño de la población inicial (%). \\(0 \\leq x_t \\leq 1\\)\n\n\nt: número de generaciones (tiempo generacional) para evaluar el crecimiento poblacional.\n\nxinit: es la misma xt, es decir, la población inicial. Aunque se repite es útil para registrar el tamaño inicial de la población, ya que xt cambia al realizar la iteración recursiva con while().\n\nRetorno: esta función devuelve el cálculo de la población hasta el tiempo t, haciendo uso de la función growth() y sus parámetros específicos.\n\n\n\n\nCódigo# =========== Función para simulación con ecuación logísticatica\n\n# Crecimiento = (rate * xt) * (1 - xt)\ngrowth <- function(rate, xt) {\n  pob = (rate * xt) * (1 - xt)\n  return(pob)\n}\n\n# Función recursiva para obtener la población para cada tiempo \"t\"t\"\niterGrowth <- function(xt, rate, t, xinit) {\n  res = NULL\n  if (t == 0) {\n    res = xt\n    return(res)\n  } else if (t == 1) {\n    res = growth(rate = rate, xt = xt)\n    return(res)\n  } else{\n    i = 1\n    while (i <= (t)) {\n      res[i + 1] = growth(rate = rate, xt = xt)\n      xt = growth(rate = rate, xt = xt)\n      i = i + 1\n    }\n    res[1] = xinit\n    return(res)\n  }\n}\n\n\nFunción 2\n\nEsta función facilita el proceso de conformar un tibble con los resultados de la simulación.\n\n\nCódigodfGrowth <- function(xt, rate, t, xinit) {\n  res = iterGrowth(xt,\n                   rate,\n                   t,\n                   xinit) %>%\n    enframe() %>%\n    mutate(t = name - 1) %>%\n    select(t, pob = value) %>%\n    mutate(rate = as.factor(rate))\n  return(res)\n}"
+  },
+  {
+    "objectID": "posts/chaos_theory_r/growth-simulation.html#simulación-1",
+    "href": "posts/chaos_theory_r/growth-simulation.html#simulación-1",
+    "title": "Simulación matemática con R: Ecuación Logística",
+    "section": "Simulación 1",
+    "text": "Simulación 1\n\n¿Qué pasa en 100 generaciones con una población cuya natalidad es 1.72 veces mayor que la mortalidad y su población actual es 62% del máximo teórico? ¿En qué valor se estabiliza el crecimiento de la población? ¿Se extingue la población?\n\n\nrate: 1.72\n\nxt: 0.62\n\nt: 100\n\nxinit: 0.62\n\n\n\n\nCódigor <- 1.72\nxt <- 0.62\nt <- 100\nxinit <- xt\n\niterGrowth(rate = r, xt = xt, t = t, xinit = xinit) %>% \n  enframe() %>% \n  mutate(t = name - 1) %>% \n  select(t, pob = value) %>% \n  ggplot(aes(x = t, y = pob)) +\n  geom_line(color = \"firebrick2\") +\n  labs(x = \"Tasa\",\n       y = \"Estabilidad poblacional\",\n       title = \"Equilibrio poblacional\",\n       subtitle = TeX(r'($x_{t+1}= (\\alpha x_t) \\times (1-x_t)$)'))"
+  },
+  {
+    "objectID": "posts/chaos_theory_r/growth-simulation.html#simulación-2",
+    "href": "posts/chaos_theory_r/growth-simulation.html#simulación-2",
+    "title": "Simulación matemática con R: Ecuación Logística",
+    "section": "Simulación 2",
+    "text": "Simulación 2\n\n¿Qué pasa en 100 generaciones con una población cuya natalidad es 0.72 veces menor que la mortalidad y su población actual es 62% del máximo teórico? ¿En qué valor se estabiliza el crecimiento de la población? ¿Se extingue la población?\n\n\nrate: 0.72\n\nxt: 0.62\n\nt: 100\n\nxinit: 0.62\n\n\n\n\nCódigor <- 0.72\nxt <- 0.62\nt <- 100\nxinit <- xt\n\niterGrowth(rate = r, xt = xt, t = t, xinit = xinit) %>% \n  enframe() %>% \n  mutate(t = name - 1) %>% \n  select(t, pob = value) %>% \n  ggplot(aes(x = t, y = pob)) +\n  geom_line(color = \"firebrick2\") +\n  labs(x = \"Tasa\",\n       y = \"Equilibrio poblacional\",\n       title = \"Estabilidad poblacional\",\n       subtitle = TeX(r'($x_{t+1}= (\\alpha x_t) \\times (1-x_t)$)'))"
+  },
+  {
+    "objectID": "posts/chaos_theory_r/growth-simulation.html#simulación-3",
+    "href": "posts/chaos_theory_r/growth-simulation.html#simulación-3",
+    "title": "Simulación matemática con R: Ecuación Logística",
+    "section": "Simulación 3",
+    "text": "Simulación 3\n\n¿Qué pasa en 100 generaciones con una población cuya natalidad es igual que la mortalidad y su población actual es 62% del máximo teórico? ¿En qué valor se estabiliza el crecimiento de la población? ¿Se extingue la población?\n\n\nrate: 0.72\n\nxt: 0.62\n\nt: 100\n\nxinit: 0.62\n\n\n\n\nCódigor <- 1\nxt <- 0.62\nt <- 100\nxinit <- xt\n\niterGrowth(rate = r, xt = xt, t = t, xinit = xinit) %>% \n  enframe() %>% \n  mutate(t = name - 1) %>% \n  select(t, pob = value) %>% \n  ggplot(aes(x = t, y = pob)) +\n  geom_line(color = \"firebrick2\") +\n  labs(x = \"Tasa\",\n       y = \"Equilibrio poblacional\",\n       title = \"Estabilidad poblacional\",\n       subtitle = TeX(r'($x_{t+1}= (\\alpha x_t) \\times (1-x_t)$)'))"
+  },
+  {
+    "objectID": "posts/chaos_theory_r/growth-simulation.html#simulaciones-en-1",
+    "href": "posts/chaos_theory_r/growth-simulation.html#simulaciones-en-1",
+    "title": "Simulación matemática con R: Ecuación Logística",
+    "section": "3 simulaciones en 1",
+    "text": "3 simulaciones en 1\n\nPodemos graficar las tres simulaciones anteriores en un sólo gráfico.\n\n\nCódigo# ============== Simulación 3 en 11\n\n# Parámetros específicoco\nr_sim1 <- 1.72\nr_sim2 <- 0.72\nr_sim3 <- 1\n\n# Parámetros generaless\nxt <- 0.62\nt <- 100\nxinit <- xt\n\n# Uniendo datos de simulaciones\nsim_1 <-\n  iterGrowth(\n    rate = r_sim1,\n    xt = xt,\n    t = t,\n    xinit = xinit\n  ) %>%\n  enframe() %>%\n  mutate(t = name - 1) %>%\n  select(t, pob = value) %>% \n  mutate(rate = r_sim1)\n\nsim_2 <-\n  iterGrowth(\n    rate = r_sim2,\n    xt = xt,\n    t = t,\n    xinit = xinit\n  ) %>%\n  enframe() %>%\n  mutate(t = name - 1) %>%\n  select(t, pob = value) %>% \n  mutate(rate = r_sim2)\n\nsim_3 <-\n  iterGrowth(\n    rate = r_sim3,\n    xt = xt,\n    t = t,\n    xinit = xinit\n  ) %>%\n  enframe() %>%\n  mutate(t = name - 1) %>%\n  select(t, pob = value) %>% \n  mutate(rate = r_sim3)\n\nsim_total <-\n  bind_rows(sim_1, sim_2, sim_3)\n\nsim_total %>% \n  mutate(rate = as.factor(rate)) %>% \n  ggplot(aes(x = t, y = pob, color = rate)) +\n  geom_line() +\n  scale_color_manual(values = c(\"#76b49f\", \"#ef3840\", \"#edea6f\")) +\n  labs(x = \"Tasa\",\n       y = \"Equilibrio poblacional\",\n       title = \"Estabilidad poblacional\",\n       subtitle = TeX(r'($x_{t+1}= (\\alpha x_t) \\times (1-x_t)$)'))"
+  },
+  {
+    "objectID": "posts/chaos_theory_r/growth-simulation.html#simulación-4",
+    "href": "posts/chaos_theory_r/growth-simulation.html#simulación-4",
+    "title": "Simulación matemática con R: Ecuación Logística",
+    "section": "Simulación 4",
+    "text": "Simulación 4\n\nEn esta simulación se implementan diferentes tasas de crecimiento para ver el resultado en el equilibrio poblacional (en 100 generaciones) con una población cuyo tamaño actual es 62% del máximo teórico.\n\n\nCódigo# Parámetross\nr <- seq(from = 0.1, to = 3.6, by = 0.1)\nxt <- 0.62\nt <- 100\nxinit <- xt\n\n# Gráficoo\nr %>%\n  map_df(.x = .,\n         .f = ~ dfGrowth(\n           rate = .,\n           xt = xt,\n           t = t,\n           xinit = xinit\n         )) %>%\n  ggplot(aes(x = t, y = pob, color = rate)) +\n  geom_line(alpha = 0.2) +\n  scale_color_viridis_d() +\n  labs(x = \"Tasa\",\n       y = \"Equilibrio poblacional\",\n       title = \"Estabilidad poblacional\",\n       subtitle = TeX(r'($x_{t+1}= (\\alpha x_t) \\times (1-x_t)$)'))"
+  },
+  {
+    "objectID": "posts/chaos_theory_r/growth-simulation.html#simulación-5",
+    "href": "posts/chaos_theory_r/growth-simulation.html#simulación-5",
+    "title": "Simulación matemática con R: Ecuación Logística",
+    "section": "Simulación 5",
+    "text": "Simulación 5\n\nEn esta simulación tomo tasas de crecimiento entre 3.5 y 3.8 (justamente donde aparece el caos) para ver el resultado en el equilibrio poblacional (en 100 generaciones) con una población cuyo tamaño actual es 62% del máximo teórico. Nota: para facilitar la visualización de los patrones 😎 se presenta de forma interactiva con plotly.\n\n\nCódigo# Parámetross\nr <- seq(from = 3.5, to = 3.8, length = 20)\nxt <- 0.62\nt <- 100\nxinit <- xt\n\n# Gráficoo\nggplotly(\n  r %>%\n  map_df(.x = .,\n         .f = ~ dfGrowth(\n           rate = .,\n           xt = xt,\n           t = t,\n           xinit = xinit\n         )) %>%\n  ggplot(aes(x = t, y = pob, color = rate)) +\n  geom_line(alpha = 0.2) +\n  scale_color_viridis_d() +\n  labs(x = \"Tasa\",\n       y = \"Equilibrio poblacional\",\n       title = \"Estabilidad poblacional\",\n       subtitle = TeX(r'($x_{t+1}= (\\alpha x_t) \\times (1-x_t)$)'))\n)"
+  },
+  {
+    "objectID": "posts/chaos_theory_r/growth-simulation.html#simulación-completa",
+    "href": "posts/chaos_theory_r/growth-simulation.html#simulación-completa",
+    "title": "Simulación matemática con R: Ecuación Logística",
+    "section": "Simulación completa",
+    "text": "Simulación completa\n\n\nrate: 10 mil valores desde 0.1 a 3.8\n\nxt: 0.62\n\nt: 2 mil\n\nxinit: 0.62\n\nNotas:\n\nEstoy asumiendo que la estabilidad poblacional se logra en la mitad del tiempo, que para este ejemplo corresponde a mil.\nComo la simulación se demora más de 20 mintuos decidí guardar el archivo con los resultados e importarlos para construir los diagramas de bifurcación.\n\n\n\n\nCódigo# Parámetross\nr <- seq(from = 0, to = 4, length = 1000)\nxt <- 0.62\nt <- 2000\nxinit <- xt\nestabPob <- t / 2\n\n# Simulaciónn\nset.seed(2022)\ng <- r %>%\n  map2_df(\n    .x = .,\n    .y = t,\n    .f = ~ prueba(\n      rate = .,\n      xt = xt,\n      t = sample.int(n = .y, size = 1),\n      xinit = xinit\n    ) %>% slice(sample.int(n = .y, size = 1))\n  )\n\n# Exportando resultados simulaciónn\nwrite_csv(x = g, \"data_simulation_rates.csv\")"
+  },
+  {
+    "objectID": "posts/chaos_theory_r/growth-simulation.html#opción-1",
+    "href": "posts/chaos_theory_r/growth-simulation.html#opción-1",
+    "title": "Simulación matemática con R: Ecuación Logística",
+    "section": "Opción 1",
+    "text": "Opción 1\n\nCódigoresult_simulation <- read_csv(\"data/data_simulation_rates.csv\")\n\nresult_simulation %>% \n  ggplot(aes(x = rate, y = pob)) +\n  geom_point(size = 0.1, color = \"white\")"
+  },
+  {
+    "objectID": "posts/chaos_theory_r/growth-simulation.html#opción-2",
+    "href": "posts/chaos_theory_r/growth-simulation.html#opción-2",
+    "title": "Simulación matemática con R: Ecuación Logística",
+    "section": "Opción 2",
+    "text": "Opción 2\n\nCódigoresult_simulation %>% \n  ggplot(aes(x = rate, y = pob, color = pob)) +\n  geom_point(size = 0.4) + \n  labs(x = \"Tasa\",\n       y = \"Estabilidad poblacional\",\n       title = \"Diagrama de bifurcación\"\",\n       subtitle = TeX(r'($x_{t+1}= (\\alpha x_t) \\times (1-x_t)$)'),\n       caption = TeX(r'(Lnea roja: $ \\alpha \\sim 3.57$)')) +\n  geom_vline(xintercept = 3.57, color = \"red\", size = 0.4) +\n  scale_color_viridis_c() +\n  theme_modern_rc() +\n  theme(legend.position = \"none\")"
   },
   {
     "objectID": "posts/pyr1/Py_R_1.html",

@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://blogrpy.netlify.app/about.html</loc>
-    <lastmod>2022-11-15T04:49:24.455Z</lastmod>
+    <lastmod>2022-11-16T03:27:26.378Z</lastmod>
   </url>
   <url>
     <loc>https://blogrpy.netlify.app/index.html</loc>
-    <lastmod>2022-11-15T04:49:25.180Z</lastmod>
+    <lastmod>2022-11-16T03:27:27.097Z</lastmod>
   </url>
   <url>
     <loc>https://blogrpy.netlify.app/posts/caret_r/caret_R.html</loc>
-    <lastmod>2022-11-15T04:49:35.574Z</lastmod>
+    <lastmod>2022-11-16T03:27:37.806Z</lastmod>
+  </url>
+  <url>
+    <loc>https://blogrpy.netlify.app/posts/chaos_theory_r/growth-simulation.html</loc>
+    <lastmod>2022-11-16T03:27:46.173Z</lastmod>
   </url>
   <url>
     <loc>https://blogrpy.netlify.app/posts/pyr1/Py_R_1.html</loc>
-    <lastmod>2022-11-15T04:49:38.660Z</lastmod>
+    <lastmod>2022-11-16T03:27:49.278Z</lastmod>
   </url>
   <url>
     <loc>https://blogrpy.netlify.app/posts/tree_decision/TreeD_R.html</loc>
-    <lastmod>2022-11-15T04:49:52.286Z</lastmod>
+    <lastmod>2022-11-16T03:28:03.625Z</lastmod>
   </url>
   <url>
     <loc>https://blogrpy.netlify.app/posts/XGBoost_R/XGBoost_R.html</loc>
-    <lastmod>2022-11-15T04:50:05.382Z</lastmod>
+    <lastmod>2022-11-16T03:28:18.048Z</lastmod>
   </url>
 </urlset>
